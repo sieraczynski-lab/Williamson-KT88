@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Williamson KT88 UL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: arkusz rysunku technicznego — tabliczka tytułowa, szerokie pola rysunku, pod spodem notatki konstrukcyjne */
+:root{
+  --paper:#eef1ec; --sheet:#f8faf6; --ink:#1c282b; --muted:#56656a; --rule:#c5cdc6;
+  --wire:#22343a; --op:#1f6b6f; --chg:#b4560f; --chgbg:#f6e5d6;
+  --f-disp:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121819; --sheet:#182022; --ink:#dde6e3; --muted:#93a3a3; --rule:#2e3b3d;
+  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121819; --sheet:#182022; --ink:#dde6e3; --muted:#93a3a3; --rule:#2e3b3d;
+  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+header{display:grid;grid-template-columns:1fr auto;gap:16px 32px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:14px}
+h1{font-family:var(--f-disp);font-weight:700;font-size:clamp(2rem,5vw,3.1rem);line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
+.sub{margin:.4rem 0 0;color:var(--muted);max-width:68ch}
+.tb{font-family:var(--f-mono);font-size:12px;border:1px solid var(--ink);display:grid;grid-template-columns:auto auto;min-width:0}
+.tb div{padding:4px 10px;border-bottom:1px solid var(--rule)}
+.tb div:nth-child(odd){color:var(--muted);border-right:1px solid var(--rule)}
+.tb div:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:720px){header{grid-template-columns:1fr}}
+h2{font-family:var(--f-disp);font-weight:600;font-size:1.6rem;margin:0;letter-spacing:.02em;text-wrap:balance}
+h2 small{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);font-weight:400;letter-spacing:.06em;margin-left:.6rem;text-transform:uppercase}
+section{display:grid;gap:12px;min-width:0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:22px;height:10px;display:inline-block;border:1.6px solid var(--wire)}
+.sw.c{border-color:var(--chg);background:var(--chgbg)}
+.sw.o{border:0;height:2px;background:var(--op)}
+.sheet{background:var(--sheet);border:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.sheet svg{display:block;width:100%;min-width:980px;height:auto}
+svg .w{fill:none;stroke:var(--wire);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+svg .part{fill:var(--sheet);stroke:var(--wire);stroke-width:1.6}
+svg .chgp{stroke:var(--chg);fill:var(--chgbg)}
+svg .plate{stroke:var(--wire);stroke-width:2.4;fill:none}
+svg .plate.chgp{stroke:var(--chg)}
+svg .dot{fill:var(--wire)}
+svg .tube{fill:none;stroke:var(--wire);stroke-width:1.6}
+svg .el{fill:none;stroke:var(--wire);stroke-width:2}
+svg .grid{stroke-dasharray:3 3;stroke-width:1.6}
+svg .coil{fill:none;stroke:var(--wire);stroke-width:1.8}
+svg .chgc{stroke:var(--chg)}
+svg .core{stroke:var(--wire);stroke-width:2.4}
+svg .flagm{fill:var(--wire)}
+svg .term{fill:var(--sheet);stroke:var(--wire);stroke-width:1.6}
+svg text{font-family:var(--f-mono);fill:var(--ink)}
+svg .ref{font-size:12px;font-weight:600}
+svg .val{font-size:11.5px;fill:var(--muted)}
+svg .ref.chg,svg .val.chg,svg .rail.chg,svg .tref.chg,svg .ttyp.chg{fill:var(--chg)}
+svg .tref{font-family:var(--f-disp);font-size:16px;font-weight:700}
+svg .ttyp{font-size:11.5px;fill:var(--muted)}
+svg .rail{font-size:12px;font-weight:600}
+svg .op{font-size:11px;fill:var(--op)}
+svg .net{font-size:11px;fill:var(--muted);font-style:italic}
+svg .pol{font-size:13px;fill:var(--wire)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px 32px}
+.cols>*{min-width:0}
+.note{max-width:70ch;margin:0}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-disp);font-weight:600;font-size:15px;letter-spacing:.03em;border-bottom:1.5px solid var(--ink)}
+td.m{font-family:var(--f-mono);font-size:13px;white-space:nowrap}
+tr.c td{color:var(--chg)}
+ul,ol{margin:0;padding-left:1.25rem;display:grid;gap:6px;max-width:72ch}
+li::marker{color:var(--muted)}
+.warn{border-left:3px solid var(--chg);background:var(--chgbg);padding:12px 16px;max-width:72ch}
+.warn p{margin:0}
+code{font-family:var(--f-mono);font-size:.9em}
+</style>
+
+<div class="wrap">
+<header>
+  <div>
+    <h1>Williamson KT88 UL</h1>
+    <p class="sub">Stopień wejściowy, katodyna i driver jak w wersji 6S33S Onyxa (6N2P + 6N6P). Końcówka przeliczona na parę KT88 w ultralinearze z transformatorem TTG-KT88PP z toroidy.pl, do tego nowy zasilacz z osobnym biasem dla każdej lampy.</p>
+  </div>
+  <div class="tb" aria-label="Tabliczka rysunku">
+    <div>Układ</div><div>Williamson PP, 1 kanał</div>
+    <div>Lampy</div><div>6N2P · 6N6P · 2× KT88</div>
+    <div>Moc</div><div>ok. 40 W / 8 Ω</div>
+    <div>Bazuje na</div><div>onyx1944 · 6S33S</div>
+    <div>Wersja</div><div>szkic 1 · 05.11.2026</div>
+  </div>
+</header>
+
+<section>
+  <h2>Schemat kanału <small>tor sygnałowy</small></h2>
+  <div class="legend">
+    <span><i class="sw"></i>jak w wersji 6S33S</span>
+    <span><i class="sw c"></i>zmienione lub nowe dla KT88</span>
+    <span><i class="sw o"></i>napięcia i prądy spoczynkowe (orientacyjne)</span>
+    <span>* do dobrania przy uruchomieniu</span>
+  </div>
+  <div class="sheet">
+    <svg viewBox="0 0 1400 930" role="img" aria-label="Schemat jednego kanału wzmacniacza Williamson na KT88">
+<circle class="term" cx="30" cy="500" r="5"/>
+<text class="ref" x="30" y="485" text-anchor="middle">WE</text>
+<polyline class="w" points="35,500 90,500"/>
+<polyline class="w" points="90,500 90,535"/>
+<polyline class="w" points="90,585 90,620"/>
+<rect class="part" x="83" y="535" width="14" height="50"/>
+<polyline class="w" points="120,560 99,560"/>
+<path class="flagm" d="M98 560 L106 555 L106 565 Z"/>
+<text class="ref" x="77" y="557" text-anchor="end">P1</text>
+<text class="val" x="77" y="571" text-anchor="end">100 k log</text>
+<polyline class="w" points="90,620 90,632"/>
+<line class="w" x1="80" y1="632" x2="100" y2="632"/>
+<line class="w" x1="84" y1="636" x2="96" y2="636"/>
+<line class="w" x1="87.5" y1="640" x2="92.5" y2="640"/>
+<polyline class="w" points="120,560 125,560"/>
+<polyline class="w" points="171,560 176,560"/>
+<rect class="part" x="125" y="553" width="46" height="14"/>
+<text class="ref" x="148" y="534" text-anchor="middle">R100</text>
+<text class="val" x="148" y="548" text-anchor="middle">1 k</text>
+<circle class="tube" cx="210" cy="560" r="34"/>
+<line class="el" x1="197" y1="546" x2="223" y2="546"/>
+<polyline class="w" points="210,546 210,526"/>
+<line class="el grid" x1="197" y1="560" x2="223" y2="560"/>
+<polyline class="w" points="176,560 197,560"/>
+<polyline class="el" points="197,579 197,574 223,574"/>
+<polyline class="w" points="210,574 210,594"/>
+<text class="tref" x="196" y="610" text-anchor="end">V1a</text>
+<text class="ttyp" x="196" y="625" text-anchor="end">½ 6N2P</text>
+<text class="op" x="250" y="548" text-anchor="start">Ua ≈ 120 V</text>
+<text class="op" x="250" y="561" text-anchor="start">Ia 1,5 mA</text>
+<text class="op" x="250" y="574" text-anchor="start">Uk 0,5 V</text>
+<polyline class="w" points="210,526 210,470"/>
+<circle class="dot" cx="210" cy="470" r="3.2"/>
+<polyline class="w" points="210,380 210,402"/>
+<polyline class="w" points="210,448 210,470"/>
+<rect class="part" x="203" y="402" width="14" height="46"/>
+<text class="ref" x="197" y="422" text-anchor="end">R102</text>
+<text class="val" x="197" y="436" text-anchor="end">82 k 1 W</text>
+<circle class="dot" cx="210" cy="380" r="3.2"/>
+<polyline class="w" points="210,280 210,307"/>
+<polyline class="w" points="210,353 210,380"/>
+<rect class="part" x="203" y="307" width="14" height="46"/>
+<text class="ref" x="197" y="327" text-anchor="end">R105</text>
+<text class="val" x="197" y="341" text-anchor="end">82 k 1 W</text>
+<polyline class="w" points="210,280 210,266"/>
+<path class="flagm" d="M204 266 L216 266 L210 258 Z"/>
+<text class="rail" x="210" y="253" text-anchor="middle">+360 V</text>
+<polyline class="w" points="210,380 115,380"/>
+<polyline class="w" points="115,380 115,411"/>
+<polyline class="w" points="115,419 115,450"/>
+<line class="plate chgp" x1="103" y1="411" x2="127" y2="411"/>
+<path class="plate chgp" d="M103 422 Q115 416 127 422" fill="none"/>
+<text class="pol" x="97" y="408" text-anchor="middle">+</text>
+<text class="ref chg" x="98" y="412" text-anchor="end">C102</text>
+<text class="val chg" x="98" y="426" text-anchor="end">47 µ / 550 V*</text>
+<polyline class="w" points="115,450 115,462"/>
+<line class="w" x1="105" y1="462" x2="125" y2="462"/>
+<line class="w" x1="109" y1="466" x2="121" y2="466"/>
+<line class="w" x1="112.5" y1="470" x2="117.5" y2="470"/>
+<text class="op" x="222" y="375" text-anchor="start">≈ +240 V</text>
+<polyline class="w" points="210,594 210,640"/>
+<circle class="dot" cx="210" cy="640" r="3.2"/>
+<polyline class="w" points="210,640 210,657"/>
+<polyline class="w" points="210,703 210,720"/>
+<rect class="part" x="203" y="657" width="14" height="46"/>
+<text class="ref" x="197" y="677" text-anchor="end">R103</text>
+<text class="val" x="197" y="691" text-anchor="end">330 Ω</text>
+<polyline class="w" points="210,720 210,732"/>
+<line class="w" x1="200" y1="732" x2="220" y2="732"/>
+<line class="w" x1="204" y1="736" x2="216" y2="736"/>
+<line class="w" x1="207.5" y1="740" x2="212.5" y2="740"/>
+<polyline class="w" points="210,640 260,640 260,840 275,840"/>
+<circle class="dot" cx="275" cy="840" r="3.2"/>
+<polyline class="w" points="275,840 317,840"/>
+<polyline class="w" points="363,840 405,840"/>
+<rect class="part chgp" x="317" y="833" width="46" height="14"/>
+<text class="ref chg" x="340" y="814" text-anchor="middle">R127</text>
+<text class="val chg" x="340" y="828" text-anchor="middle">68 k*  (dobrać)</text>
+<polyline class="w" points="275,840 275,885"/>
+<polyline class="w" points="275,885 336,885"/>
+<polyline class="w" points="344,885 405,885"/>
+<line class="plate chgp" x1="336" y1="873" x2="336" y2="897"/>
+<line class="plate chgp" x1="344" y1="873" x2="344" y2="897"/>
+<text class="ref chg" x="340" y="911" text-anchor="middle">C100</text>
+<text class="val chg" x="340" y="925" text-anchor="middle">250 p*  (dobrać)</text>
+<polyline class="w" points="405,885 405,840"/>
+<circle class="dot" cx="405" cy="840" r="3.2"/>
+<polyline class="w" points="405,840 1320,840 1320,300"/>
+<text class="net" x="860" y="832" text-anchor="middle">pętla NFB z odczepu 8 Ω</text>
+<polyline class="w" points="210,470 300,470 300,420 336,420"/>
+<circle class="tube" cx="370" cy="420" r="34"/>
+<line class="el" x1="357" y1="406" x2="383" y2="406"/>
+<polyline class="w" points="370,406 370,386"/>
+<line class="el grid" x1="357" y1="420" x2="383" y2="420"/>
+<polyline class="w" points="336,420 357,420"/>
+<polyline class="el" points="357,439 357,434 383,434"/>
+<polyline class="w" points="370,434 370,454"/>
+<text class="tref" x="330" y="505" text-anchor="end">V1b</text>
+<text class="ttyp" x="330" y="520" text-anchor="end">½ 6N2P</text>
+<text class="op" x="410" y="352" text-anchor="start">katodyna</text>
+<text class="op" x="410" y="365" text-anchor="start">Ua ≈ 240 V</text>
+<text class="op" x="410" y="378" text-anchor="start">Uk ≈ 120 V</text>
+<polyline class="w" points="370,386 370,250"/>
+<circle class="dot" cx="370" cy="250" r="3.2"/>
+<polyline class="w" points="370,150 370,177"/>
+<polyline class="w" points="370,223 370,250"/>
+<rect class="part" x="363" y="177" width="14" height="46"/>
+<text class="ref" x="357" y="197" text-anchor="end">R104</text>
+<text class="val" x="357" y="211" text-anchor="end">82 k 1 W</text>
+<polyline class="w" points="370,150 370,136"/>
+<path class="flagm" d="M364 136 L376 136 L370 128 Z"/>
+<text class="rail" x="370" y="123" text-anchor="middle">+360 V</text>
+<polyline class="w" points="370,454 370,590"/>
+<circle class="dot" cx="370" cy="590" r="3.2"/>
+<polyline class="w" points="370,590 370,617"/>
+<polyline class="w" points="370,663 370,690"/>
+<rect class="part" x="363" y="617" width="14" height="46"/>
+<text class="ref" x="357" y="637" text-anchor="end">R106</text>
+<text class="val" x="357" y="651" text-anchor="end">82 k 1 W</text>
+<polyline class="w" points="370,690 370,702"/>
+<line class="w" x1="360" y1="702" x2="380" y2="702"/>
+<line class="w" x1="364" y1="706" x2="376" y2="706"/>
+<line class="w" x1="367.5" y1="710" x2="372.5" y2="710"/>
+<polyline class="w" points="370,250 441,250"/>
+<polyline class="w" points="449,250 520,250"/>
+<line class="plate" x1="441" y1="238" x2="441" y2="262"/>
+<line class="plate" x1="449" y1="238" x2="449" y2="262"/>
+<text class="ref" x="445" y="220" text-anchor="middle">C103</text>
+<text class="val" x="445" y="234" text-anchor="middle">220 n / 630 V</text>
+<circle class="dot" cx="520" cy="250" r="3.2"/>
+<polyline class="w" points="520,250 556,250"/>
+<polyline class="w" points="520,250 520,272"/>
+<polyline class="w" points="520,318 520,340"/>
+<rect class="part" x="513" y="272" width="14" height="46"/>
+<text class="ref" x="533" y="292" text-anchor="start">R107</text>
+<text class="val" x="533" y="306" text-anchor="start">270 k</text>
+<polyline class="w" points="520,340 520,352"/>
+<line class="w" x1="510" y1="352" x2="530" y2="352"/>
+<line class="w" x1="514" y1="356" x2="526" y2="356"/>
+<line class="w" x1="517.5" y1="360" x2="522.5" y2="360"/>
+<polyline class="w" points="370,590 441,590"/>
+<polyline class="w" points="449,590 520,590"/>
+<line class="plate" x1="441" y1="578" x2="441" y2="602"/>
+<line class="plate" x1="449" y1="578" x2="449" y2="602"/>
+<text class="ref" x="445" y="560" text-anchor="middle">C104</text>
+<text class="val" x="445" y="574" text-anchor="middle">220 n / 630 V</text>
+<circle class="dot" cx="520" cy="590" r="3.2"/>
+<polyline class="w" points="520,590 556,590"/>
+<polyline class="w" points="520,590 520,612"/>
+<polyline class="w" points="520,658 520,680"/>
+<rect class="part" x="513" y="612" width="14" height="46"/>
+<text class="ref" x="533" y="632" text-anchor="start">R108</text>
+<text class="val" x="533" y="646" text-anchor="start">270 k</text>
+<polyline class="w" points="520,680 520,692"/>
+<line class="w" x1="510" y1="692" x2="530" y2="692"/>
+<line class="w" x1="514" y1="696" x2="526" y2="696"/>
+<line class="w" x1="517.5" y1="700" x2="522.5" y2="700"/>
+<circle class="tube" cx="590" cy="250" r="34"/>
+<line class="el" x1="577" y1="236" x2="603" y2="236"/>
+<polyline class="w" points="590,236 590,216"/>
+<line class="el grid" x1="577" y1="250" x2="603" y2="250"/>
+<polyline class="w" points="556,250 577,250"/>
+<polyline class="el" points="577,269 577,264 603,264"/>
+<polyline class="w" points="590,264 590,284"/>
+<text class="tref" x="640" y="300" text-anchor="start">V2a</text>
+<text class="ttyp" x="640" y="315" text-anchor="start">½ 6N6P</text>
+<circle class="tube" cx="590" cy="590" r="34"/>
+<line class="el" x1="577" y1="604" x2="603" y2="604"/>
+<polyline class="w" points="590,604 590,624"/>
+<line class="el grid" x1="577" y1="590" x2="603" y2="590"/>
+<polyline class="w" points="556,590 577,590"/>
+<polyline class="el" points="577,571 577,576 603,576"/>
+<polyline class="w" points="590,576 590,556"/>
+<text class="tref" x="640" y="548" text-anchor="start">V2b</text>
+<text class="ttyp" x="640" y="563" text-anchor="start">½ 6N6P</text>
+<text class="op" x="640" y="330" text-anchor="start">Ua ≈ 200 V</text>
+<text class="op" x="640" y="343" text-anchor="start">Ia 12 mA</text>
+<polyline class="w" points="590,216 590,170"/>
+<circle class="dot" cx="590" cy="170" r="3.2"/>
+<polyline class="w" points="590,60 590,92"/>
+<polyline class="w" points="590,138 590,170"/>
+<rect class="part" x="583" y="92" width="14" height="46"/>
+<text class="ref" x="577" y="112" text-anchor="end">R113</text>
+<text class="val" x="577" y="126" text-anchor="end">16k5 (2×33 k ∥) 3 W</text>
+<polyline class="w" points="590,60 590,46"/>
+<path class="flagm" d="M584 46 L596 46 L590 38 Z"/>
+<text class="rail" x="590" y="33" text-anchor="middle">+400 V</text>
+<polyline class="w" points="590,624 590,670"/>
+<circle class="dot" cx="590" cy="670" r="3.2"/>
+<polyline class="w" points="590,670 590,702"/>
+<polyline class="w" points="590,748 590,780"/>
+<rect class="part" x="583" y="702" width="14" height="46"/>
+<text class="ref" x="577" y="722" text-anchor="end">R114</text>
+<text class="val" x="577" y="736" text-anchor="end">16k5 (2×33 k ∥) 3 W</text>
+<polyline class="w" points="590,780 590,794"/>
+<path class="flagm" d="M584 794 L596 794 L590 802 Z"/>
+<text class="rail" x="590" y="816" text-anchor="middle">+400 V</text>
+<polyline class="w" points="590,284 590,370"/>
+<polyline class="w" points="590,556 590,470"/>
+<polyline class="w" points="590,370 590,395"/>
+<polyline class="w" points="590,445 590,470"/>
+<rect class="part" x="583" y="395" width="14" height="50"/>
+<polyline class="w" points="630,420 599,420"/>
+<path class="flagm" d="M598 420 L606 415 L606 425 Z"/>
+<text class="ref" x="577" y="417" text-anchor="end">P100</text>
+<text class="val" x="577" y="431" text-anchor="end">100 Ω  balans AC</text>
+<polyline class="w" points="630,420 642,420"/>
+<polyline class="w" points="688,420 700,420"/>
+<rect class="part" x="642" y="413" width="46" height="14"/>
+<text class="ref" x="665" y="442" text-anchor="middle">R112</text>
+<text class="val" x="665" y="456" text-anchor="middle">270 Ω 1 W</text>
+<polyline class="w" points="700,420 710,420"/>
+<polyline class="w" points="710,420 710,432"/>
+<line class="w" x1="700" y1="432" x2="720" y2="432"/>
+<line class="w" x1="704" y1="436" x2="716" y2="436"/>
+<line class="w" x1="707.5" y1="440" x2="712.5" y2="440"/>
+<text class="op" x="578" y="450" text-anchor="end">Uk ≈ 8,5 V</text>
+<polyline class="w" points="590,170 651,170"/>
+<polyline class="w" points="659,170 720,170"/>
+<line class="plate" x1="651" y1="158" x2="651" y2="182"/>
+<line class="plate" x1="659" y1="158" x2="659" y2="182"/>
+<text class="ref" x="655" y="140" text-anchor="middle">C105</text>
+<text class="val" x="655" y="154" text-anchor="middle">330 n / 630 V</text>
+<polyline class="w" points="720,170 720,226 750,226"/>
+<circle class="dot" cx="750" cy="226" r="3.2"/>
+<polyline class="w" points="590,670 651,670"/>
+<polyline class="w" points="659,670 720,670"/>
+<line class="plate" x1="651" y1="658" x2="651" y2="682"/>
+<line class="plate" x1="659" y1="658" x2="659" y2="682"/>
+<text class="ref" x="655" y="696" text-anchor="middle">C106</text>
+<text class="val" x="655" y="710" text-anchor="middle">330 n / 630 V</text>
+<polyline class="w" points="720,670 720,614 750,614"/>
+<circle class="dot" cx="750" cy="614" r="3.2"/>
+<polyline class="w" points="750,226 772,226"/>
+<polyline class="w" points="818,226 840,226"/>
+<rect class="part" x="772" y="219" width="46" height="14"/>
+<text class="ref" x="795" y="248" text-anchor="middle">R123</text>
+<text class="val" x="795" y="262" text-anchor="middle">1 k</text>
+<polyline class="w" points="750,614 772,614"/>
+<polyline class="w" points="818,614 840,614"/>
+<rect class="part" x="772" y="607" width="46" height="14"/>
+<text class="ref" x="795" y="588" text-anchor="middle">R124</text>
+<text class="val" x="795" y="602" text-anchor="middle">1 k</text>
+<polyline class="w" points="750,110 750,145"/>
+<polyline class="w" points="750,191 750,226"/>
+<rect class="part chgp" x="743" y="145" width="14" height="46"/>
+<text class="ref chg" x="763" y="165" text-anchor="start">R119</text>
+<text class="val chg" x="763" y="179" text-anchor="start">220 k</text>
+<polyline class="w" points="750,614 750,649"/>
+<polyline class="w" points="750,695 750,730"/>
+<rect class="part chgp" x="743" y="649" width="14" height="46"/>
+<text class="ref chg" x="763" y="669" text-anchor="start">R120</text>
+<text class="val chg" x="763" y="683" text-anchor="start">220 k</text>
+<polyline class="w" points="750,110 750,40 1200,40 1200,165 1240,165"/>
+<circle class="dot" cx="1220" cy="165" r="3.2"/>
+<polyline class="w" points="1220,165 1220,196"/>
+<polyline class="w" points="1220,204 1220,235"/>
+<line class="plate" x1="1208" y1="196" x2="1232" y2="196"/>
+<line class="plate" x1="1208" y1="204" x2="1232" y2="204"/>
+<text class="ref" x="1203" y="197" text-anchor="end">C107</text>
+<text class="val" x="1203" y="211" text-anchor="end">10 µ / 100 V</text>
+<polyline class="w" points="1220,235 1220,247"/>
+<line class="w" x1="1210" y1="247" x2="1230" y2="247"/>
+<line class="w" x1="1214" y1="251" x2="1226" y2="251"/>
+<line class="w" x1="1217.5" y1="255" x2="1222.5" y2="255"/>
+<polyline class="w" points="1290,75 1290,61"/>
+<path class="flagm" d="M1284 61 L1296 61 L1290 53 Z"/>
+<text class="rail chg" x="1290" y="48" text-anchor="middle">−90 V</text>
+<polyline class="w" points="1290,75 1290,83"/>
+<polyline class="w" points="1290,117 1290,125"/>
+<rect class="part chgp" x="1283" y="83" width="14" height="34"/>
+<text class="ref chg" x="1277" y="97" text-anchor="end">R130</text>
+<text class="val chg" x="1277" y="111" text-anchor="end">10 k</text>
+<polyline class="w" points="1290,125 1290,145"/>
+<polyline class="w" points="1290,185 1290,205"/>
+<rect class="part chgp" x="1283" y="145" width="14" height="40"/>
+<polyline class="w" points="1240,165 1281,165"/>
+<path class="flagm" d="M1282 165 L1274 160 L1274 170 Z"/>
+<text class="ref chg" x="1303" y="162" text-anchor="start">P201</text>
+<text class="val chg" x="1303" y="176" text-anchor="start">10 k cermet</text>
+<polyline class="w" points="1290,205 1290,213"/>
+<polyline class="w" points="1290,247 1290,255"/>
+<rect class="part chgp" x="1283" y="213" width="14" height="34"/>
+<text class="ref chg" x="1277" y="227" text-anchor="end">R131</text>
+<text class="val chg" x="1277" y="241" text-anchor="end">15 k</text>
+<polyline class="w" points="1290,255 1290,267"/>
+<line class="w" x1="1280" y1="267" x2="1300" y2="267"/>
+<line class="w" x1="1284" y1="271" x2="1296" y2="271"/>
+<line class="w" x1="1287.5" y1="275" x2="1292.5" y2="275"/>
+<text class="ref chg" x="1245" y="152" text-anchor="middle">BIAS V3</text>
+<text class="op" x="1210" y="60" text-anchor="end">−39 … −64 V</text>
+<polyline class="w" points="750,730 750,800 1200,800 1200,695 1240,695"/>
+<circle class="dot" cx="1220" cy="695" r="3.2"/>
+<polyline class="w" points="1220,695 1220,726"/>
+<polyline class="w" points="1220,734 1220,765"/>
+<line class="plate" x1="1208" y1="726" x2="1232" y2="726"/>
+<line class="plate" x1="1208" y1="734" x2="1232" y2="734"/>
+<text class="ref" x="1203" y="727" text-anchor="end">C108</text>
+<text class="val" x="1203" y="741" text-anchor="end">10 µ / 100 V</text>
+<polyline class="w" points="1220,765 1220,777"/>
+<line class="w" x1="1210" y1="777" x2="1230" y2="777"/>
+<line class="w" x1="1214" y1="781" x2="1226" y2="781"/>
+<line class="w" x1="1217.5" y1="785" x2="1222.5" y2="785"/>
+<polyline class="w" points="1290,610 1290,596"/>
+<path class="flagm" d="M1284 596 L1296 596 L1290 588 Z"/>
+<text class="rail chg" x="1290" y="583" text-anchor="middle">−90 V</text>
+<polyline class="w" points="1290,610 1290,615.5"/>
+<polyline class="w" points="1290,649.5 1290,655"/>
+<rect class="part chgp" x="1283" y="615.5" width="14" height="34"/>
+<text class="ref chg" x="1277" y="629.5" text-anchor="end">R132</text>
+<text class="val chg" x="1277" y="643.5" text-anchor="end">10 k</text>
+<polyline class="w" points="1290,655 1290,675"/>
+<polyline class="w" points="1290,715 1290,735"/>
+<rect class="part chgp" x="1283" y="675" width="14" height="40"/>
+<polyline class="w" points="1240,695 1281,695"/>
+<path class="flagm" d="M1282 695 L1274 690 L1274 700 Z"/>
+<text class="ref chg" x="1303" y="692" text-anchor="start">P202</text>
+<text class="val chg" x="1303" y="706" text-anchor="start">10 k cermet</text>
+<polyline class="w" points="1290,735 1290,740.5"/>
+<polyline class="w" points="1290,774.5 1290,780"/>
+<rect class="part chgp" x="1283" y="740.5" width="14" height="34"/>
+<text class="ref chg" x="1277" y="754.5" text-anchor="end">R133</text>
+<text class="val chg" x="1277" y="768.5" text-anchor="end">15 k</text>
+<polyline class="w" points="1290,780 1290,792"/>
+<line class="w" x1="1280" y1="792" x2="1300" y2="792"/>
+<line class="w" x1="1284" y1="796" x2="1296" y2="796"/>
+<line class="w" x1="1287.5" y1="800" x2="1292.5" y2="800"/>
+<text class="ref chg" x="1245" y="682" text-anchor="middle">BIAS V4</text>
+<text class="op" x="1190" y="815" text-anchor="end">−39 … −64 V</text>
+<circle class="tube" cx="880" cy="220" r="40"/>
+<line class="el" x1="865" y1="198" x2="895" y2="198"/>
+<polyline class="w" points="880,198 880,180"/>
+<line class="el grid" x1="865" y1="212" x2="895" y2="212"/>
+<polyline class="w" points="895,212 920,212"/>
+<line class="el grid" x1="865" y1="226" x2="895" y2="226"/>
+<polyline class="w" points="840,226 865,226"/>
+<polyline class="el" points="865,247 865,242 895,242"/>
+<polyline class="w" points="880,242 880,260"/>
+<path class="el grid" d="M856 240 Q853 220 856 204"/>
+<path class="el grid" d="M904 240 Q907 220 904 204"/>
+<circle class="tube" cx="880" cy="620" r="40"/>
+<line class="el" x1="865" y1="642" x2="895" y2="642"/>
+<polyline class="w" points="880,642 880,660"/>
+<line class="el grid" x1="865" y1="628" x2="895" y2="628"/>
+<polyline class="w" points="895,628 920,628"/>
+<line class="el grid" x1="865" y1="614" x2="895" y2="614"/>
+<polyline class="w" points="840,614 865,614"/>
+<polyline class="el" points="865,593 865,598 895,598"/>
+<polyline class="w" points="880,598 880,580"/>
+<path class="el grid" d="M856 600 Q853 620 856 636"/>
+<path class="el grid" d="M904 600 Q907 620 904 636"/>
+<text class="tref chg" x="898" y="147" text-anchor="start">V3</text>
+<text class="ttyp chg" x="926" y="147" text-anchor="start">KT88</text>
+<text class="tref chg" x="898" y="702" text-anchor="start">V4</text>
+<text class="ttyp chg" x="926" y="702" text-anchor="start">KT88</text>
+<polyline class="w" points="880,180 880,120 1040,120"/>
+<polyline class="w" points="880,660 880,720 1040,720"/>
+<polyline class="w" points="920,212 940,212"/>
+<polyline class="w" points="980,212 1000,212"/>
+<rect class="part chgp" x="940" y="205" width="40" height="14"/>
+<text class="ref chg" x="960" y="186" text-anchor="middle">R128</text>
+<text class="val chg" x="960" y="200" text-anchor="middle">220 Ω 1 W</text>
+<polyline class="w" points="1000,212 1010,212 1010,291 1040,291"/>
+<polyline class="w" points="920,628 940,628"/>
+<polyline class="w" points="980,628 1000,628"/>
+<rect class="part chgp" x="940" y="621" width="40" height="14"/>
+<text class="ref chg" x="960" y="650" text-anchor="middle">R129</text>
+<text class="val chg" x="960" y="664" text-anchor="middle">220 Ω 1 W</text>
+<polyline class="w" points="1000,628 1010,628 1010,549 1040,549"/>
+<polyline class="w" points="880,260 880,312"/>
+<polyline class="w" points="880,358 880,410"/>
+<rect class="part chgp" x="873" y="312" width="14" height="46"/>
+<text class="ref chg" x="867" y="332" text-anchor="end">R125</text>
+<text class="val chg" x="867" y="346" text-anchor="end">10 Ω 1% 1 W</text>
+<polyline class="w" points="880,430 880,482"/>
+<polyline class="w" points="880,528 880,580"/>
+<rect class="part chgp" x="873" y="482" width="14" height="46"/>
+<text class="ref chg" x="867" y="502" text-anchor="end">R126</text>
+<text class="val chg" x="867" y="516" text-anchor="end">10 Ω 1% 1 W</text>
+<polyline class="w" points="880,410 880,430"/>
+<circle class="dot" cx="880" cy="420" r="3.2"/>
+<polyline class="w" points="880,420 845,420"/>
+<polyline class="w" points="845,420 845,432"/>
+<line class="w" x1="835" y1="432" x2="855" y2="432"/>
+<line class="w" x1="839" y1="436" x2="851" y2="436"/>
+<line class="w" x1="842.5" y1="440" x2="847.5" y2="440"/>
+<circle class="dot" cx="880" cy="272" r="3.2"/>
+<text class="net" x="888" y="284" text-anchor="start">TP-A</text>
+<circle class="dot" cx="880" cy="568" r="3.2"/>
+<text class="net" x="888" y="562" text-anchor="start">TP-B</text>
+<text class="op" x="896" y="316" text-anchor="start">Ua ≈ 445 V</text>
+<text class="op" x="896" y="329" text-anchor="start">Ik 50 mA</text>
+<text class="op" x="896" y="342" text-anchor="start">(0,50 V na 10 Ω)</text>
+<text class="op" x="896" y="355" text-anchor="start">Ug1 ≈ −45…−55 V</text>
+<path class="coil chgc" d="M1040 120 A7.77273 7.77273 0 0 1 1040 135.545 A7.77273 7.77273 0 0 1 1040 151.091 A7.77273 7.77273 0 0 1 1040 166.636 A7.77273 7.77273 0 0 1 1040 182.182 A7.77273 7.77273 0 0 1 1040 197.727 A7.77273 7.77273 0 0 1 1040 213.273 A7.77273 7.77273 0 0 1 1040 228.818 A7.77273 7.77273 0 0 1 1040 244.364 A7.77273 7.77273 0 0 1 1040 259.909 A7.77273 7.77273 0 0 1 1040 275.455 A7.77273 7.77273 0 0 1 1040 291 A8.0625 8.0625 0 0 1 1040 307.125 A8.0625 8.0625 0 0 1 1040 323.25 A8.0625 8.0625 0 0 1 1040 339.375 A8.0625 8.0625 0 0 1 1040 355.5 A8.0625 8.0625 0 0 1 1040 371.625 A8.0625 8.0625 0 0 1 1040 387.75 A8.0625 8.0625 0 0 1 1040 403.875 A8.0625 8.0625 0 0 1 1040 420 A8.0625 8.0625 0 0 1 1040 436.125 A8.0625 8.0625 0 0 1 1040 452.25 A8.0625 8.0625 0 0 1 1040 468.375 A8.0625 8.0625 0 0 1 1040 484.5 A8.0625 8.0625 0 0 1 1040 500.625 A8.0625 8.0625 0 0 1 1040 516.75 A8.0625 8.0625 0 0 1 1040 532.875 A8.0625 8.0625 0 0 1 1040 549 A7.77273 7.77273 0 0 1 1040 564.545 A7.77273 7.77273 0 0 1 1040 580.091 A7.77273 7.77273 0 0 1 1040 595.636 A7.77273 7.77273 0 0 1 1040 611.182 A7.77273 7.77273 0 0 1 1040 626.727 A7.77273 7.77273 0 0 1 1040 642.273 A7.77273 7.77273 0 0 1 1040 657.818 A7.77273 7.77273 0 0 1 1040 673.364 A7.77273 7.77273 0 0 1 1040 688.909 A7.77273 7.77273 0 0 1 1040 704.455 A7.77273 7.77273 0 0 1 1040 720"/>
+<line class="core" x1="1062" y1="110" x2="1062" y2="730"/>
+<line class="core" x1="1072" y1="110" x2="1072" y2="730"/>
+<path class="coil chgc" d="M1094 300 A8.75 8.75 0 0 0 1094 317.5 A8.75 8.75 0 0 0 1094 335 A8.75 8.75 0 0 0 1094 352.5 A8.75 8.75 0 0 0 1094 370 A7.72727 7.72727 0 0 0 1094 385.455 A7.72727 7.72727 0 0 0 1094 400.909 A7.72727 7.72727 0 0 0 1094 416.364 A7.72727 7.72727 0 0 0 1094 431.818 A7.72727 7.72727 0 0 0 1094 447.273 A7.72727 7.72727 0 0 0 1094 462.727 A7.72727 7.72727 0 0 0 1094 478.182 A7.72727 7.72727 0 0 0 1094 493.636 A7.72727 7.72727 0 0 0 1094 509.091 A7.72727 7.72727 0 0 0 1094 524.545 A7.72727 7.72727 0 0 0 1094 540"/>
+<polyline class="w" points="1040,420 970,420"/>
+<circle class="dot" cx="1040" cy="420" r="3.2"/>
+<polyline class="w" points="970,420 970,394"/>
+<path class="flagm" d="M964 394 L976 394 L970 386 Z"/>
+<text class="rail chg" x="970" y="381" text-anchor="middle">+450 V</text>
+<text class="net" x="1032" y="412" text-anchor="end">CT</text>
+<polyline class="w" points="1094,300 1240,300"/>
+<polyline class="w" points="1094,370 1240,370"/>
+<polyline class="w" points="1094,540 1240,540"/>
+<circle class="term" cx="1245" cy="300" r="5"/>
+<circle class="term" cx="1245" cy="370" r="5"/>
+<circle class="term" cx="1245" cy="540" r="5"/>
+<text class="ref" x="1258" y="286" text-anchor="start">8 Ω</text>
+<text class="ref" x="1258" y="360" text-anchor="start">4 Ω</text>
+<text class="ref" x="1258" y="530" text-anchor="start">COM</text>
+<polyline class="w" points="1250,300 1320,300"/>
+<circle class="dot" cx="1320" cy="300" r="3.2"/>
+<polyline class="w" points="1180,540 1180,560"/>
+<circle class="dot" cx="1180" cy="540" r="3.2"/>
+<polyline class="w" points="1180,560 1180,564"/>
+<line class="w" x1="1170" y1="564" x2="1190" y2="564"/>
+<line class="w" x1="1174" y1="568" x2="1186" y2="568"/>
+<line class="w" x1="1177.5" y1="572" x2="1182.5" y2="572"/>
+<text class="ref chg" x="1067" y="762" text-anchor="middle">TR-OUT  toroidy.pl TTG-KT88PP</text>
+<text class="val chg" x="1067" y="777" text-anchor="middle">Raa 4 kΩ · UL 43% · 80 W · 4/8 Ω</text>
+    </svg>
+  </div>
+  <p class="note">Żarzenie, numery pinów i lampy drugiego kanału pominięte dla czytelności. Połowa V3 jest narysowana normalnie, połowa V4 w lustrzanym odbiciu, jak to się zwykle rysuje w push-pullu. Polaryzację pętli NFB ustala się podłączeniem końców uzwojenia wtórnego.</p>
+</section>
+
+<section>
+  <h2>Punkty pracy <small>wartości docelowe</small></h2>
+  <div class="tw"><table>
+    <thead><tr><th>Stopień</th><th>Lampa</th><th>Ua</th><th>Ia</th><th>Ug</th><th>Uwagi</th></tr></thead>
+    <tbody>
+      <tr><td>Wejście</td><td>½ 6N2P (V1a)</td><td class="m">≈ 120 V</td><td class="m">1,5 mA</td><td class="m">−0,5 V</td><td>Katoda bez kondensatora, tu wchodzi sprzężenie zwrotne.</td></tr>
+      <tr><td>Inwerter</td><td>½ 6N2P (V1b)</td><td class="m">≈ 240 V</td><td class="m">1,5 mA</td><td class="m">≈ −1 V</td><td>Katodyna sprzężona bezpośrednio z V1a, katoda ok. +120 V.</td></tr>
+      <tr><td>Driver</td><td>6N6P (V2a, V2b)</td><td class="m">≈ 200 V</td><td class="m">2× 12 mA</td><td class="m">−8,5 V</td><td>Wspólna katoda, P100 wyrównuje wzmocnienie obu połówek.</td></tr>
+      <tr class="c"><td>Końcówka</td><td>2× KT88, UL 43%</td><td class="m">≈ 445 V</td><td class="m">50 mA</td><td class="m">−45…−55 V</td><td>Prąd katody, czyli 0,50 V na R125/R126. Ok. 21 W na lampę (60% z 35 W).</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Zasilacz <small>wspólny dla obu kanałów</small></h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1400 700" role="img" aria-label="Schemat zasilacza: anodowe, bias i żarzenie">
+<circle class="term" cx="30" cy="120" r="5"/>
+<text class="ref" x="30" y="104" text-anchor="middle">L</text>
+<circle class="term" cx="30" cy="300" r="5"/>
+<text class="ref" x="30" y="326" text-anchor="middle">N</text>
+<polyline class="w" points="35,120 70,120"/>
+<polyline class="w" points="70,120 90,120"/>
+<polyline class="w" points="130,120 150,120"/>
+<rect class="part" x="90" y="113" width="40" height="14"/>
+<text class="ref" x="110" y="94" text-anchor="middle">F1</text>
+<text class="val" x="110" y="108" text-anchor="middle">T 2 A</text>
+<polyline class="w" points="150,120 170,120"/>
+<circle class="dot" cx="170" cy="120" r="2.6"/>
+<line class="w" x1="170" y1="120" x2="198" y2="106"/>
+<circle class="dot" cx="200" cy="120" r="2.6"/>
+<text class="ref" x="185" y="94" text-anchor="middle">S1</text>
+<polyline class="w" points="200,120 220,120"/>
+<polyline class="w" points="220,120 245,120"/>
+<polyline class="w" points="285,120 310,120"/>
+<rect class="part" x="245" y="113" width="40" height="14"/>
+<text class="ref" x="265" y="94" text-anchor="middle">NTC</text>
+<text class="val" x="265" y="108" text-anchor="middle">10 Ω / 5 A (soft-start)</text>
+<polyline class="w" points="310,120 350,120"/>
+<polyline class="w" points="35,300 350,300"/>
+<path class="coil" d="M350 120 A8.18182 8.18182 0 0 1 350 136.364 A8.18182 8.18182 0 0 1 350 152.727 A8.18182 8.18182 0 0 1 350 169.091 A8.18182 8.18182 0 0 1 350 185.455 A8.18182 8.18182 0 0 1 350 201.818 A8.18182 8.18182 0 0 1 350 218.182 A8.18182 8.18182 0 0 1 350 234.545 A8.18182 8.18182 0 0 1 350 250.909 A8.18182 8.18182 0 0 1 350 267.273 A8.18182 8.18182 0 0 1 350 283.636 A8.18182 8.18182 0 0 1 350 300"/>
+<line class="core" x1="374" y1="80" x2="374" y2="640"/>
+<line class="core" x1="384" y1="80" x2="384" y2="640"/>
+<text class="ref" x="379" y="670" text-anchor="middle">TR1  sieciowy ≈ 300 VA</text>
+<text class="val" x="379" y="685" text-anchor="middle">350 V/0,5 A · 70 V/0,1 A · 6,3 V/7 A · 6,3 V/3 A</text>
+<path class="coil" d="M408 80 A7.85714 7.85714 0 0 0 408 95.7143 A7.85714 7.85714 0 0 0 408 111.429 A7.85714 7.85714 0 0 0 408 127.143 A7.85714 7.85714 0 0 0 408 142.857 A7.85714 7.85714 0 0 0 408 158.571 A7.85714 7.85714 0 0 0 408 174.286 A7.85714 7.85714 0 0 0 408 190"/>
+<text class="op" x="420" y="140" text-anchor="start">350 V</text>
+<polyline class="w" points="408,80 470,80 470,95 480,95"/>
+<polyline class="w" points="408,190 470,190 470,175 480,175"/>
+<rect class="part" x="480" y="80" width="90" height="110"/>
+<text class="ref" x="525" y="122" text-anchor="middle">D1–D4</text>
+<text class="val" x="525" y="137" text-anchor="middle">UF4007</text>
+<text class="val" x="525" y="152" text-anchor="middle">mostek</text>
+<text class="val" x="490" y="99" text-anchor="start">~</text>
+<text class="val" x="490" y="179" text-anchor="start">~</text>
+<text class="val" x="560" y="104" text-anchor="end">+</text>
+<text class="val" x="560" y="179" text-anchor="end">−</text>
+<polyline class="w" points="570,175 590,175"/>
+<polyline class="w" points="590,175 590,187"/>
+<line class="w" x1="580" y1="187" x2="600" y2="187"/>
+<line class="w" x1="584" y1="191" x2="596" y2="191"/>
+<line class="w" x1="587.5" y1="195" x2="592.5" y2="195"/>
+<polyline class="w" points="570,100 620,100"/>
+<circle class="dot" cx="620" cy="100" r="3.2"/>
+<polyline class="w" points="620,100 620,146"/>
+<polyline class="w" points="620,154 620,200"/>
+<line class="plate" x1="608" y1="146" x2="632" y2="146"/>
+<path class="plate" d="M608 157 Q620 151 632 157" fill="none"/>
+<text class="pol" x="602" y="143" text-anchor="middle">+</text>
+<text class="ref" x="637" y="147" text-anchor="start">C1</text>
+<text class="val" x="637" y="161" text-anchor="start">100 µ / 550 V*</text>
+<polyline class="w" points="620,200 620,212"/>
+<line class="w" x1="610" y1="212" x2="630" y2="212"/>
+<line class="w" x1="614" y1="216" x2="626" y2="216"/>
+<line class="w" x1="617.5" y1="220" x2="622.5" y2="220"/>
+<polyline class="w" points="620,100 650,100"/>
+<path class="coil" d="M650 100 A9.16667 9.16667 0 0 1 668.333 100 A9.16667 9.16667 0 0 1 686.667 100 A9.16667 9.16667 0 0 1 705 100 A9.16667 9.16667 0 0 1 723.333 100 A9.16667 9.16667 0 0 1 741.667 100 A9.16667 9.16667 0 0 1 760 100"/>
+<text class="ref" x="705" y="70" text-anchor="middle">L1</text>
+<text class="val" x="705" y="84" text-anchor="middle">5 H / 400 mA</text>
+<polyline class="w" points="760,100 790,100"/>
+<circle class="dot" cx="790" cy="100" r="3.2"/>
+<polyline class="w" points="790,100 790,146"/>
+<polyline class="w" points="790,154 790,200"/>
+<line class="plate" x1="778" y1="146" x2="802" y2="146"/>
+<path class="plate" d="M778 157 Q790 151 802 157" fill="none"/>
+<text class="pol" x="772" y="143" text-anchor="middle">+</text>
+<text class="ref" x="807" y="147" text-anchor="start">C2</text>
+<text class="val" x="807" y="161" text-anchor="start">220 µ / 550 V*</text>
+<polyline class="w" points="790,200 790,212"/>
+<line class="w" x1="780" y1="212" x2="800" y2="212"/>
+<line class="w" x1="784" y1="216" x2="796" y2="216"/>
+<line class="w" x1="787.5" y1="220" x2="792.5" y2="220"/>
+<polyline class="w" points="790,100 990,100"/>
+<circle class="dot" cx="930" cy="100" r="3.2"/>
+<polyline class="w" points="930,100 930,127"/>
+<polyline class="w" points="930,173 930,200"/>
+<rect class="part" x="923" y="127" width="14" height="46"/>
+<text class="ref" x="943" y="147" text-anchor="start">R301</text>
+<text class="val" x="943" y="161" text-anchor="start">220 k 2 W</text>
+<polyline class="w" points="930,200 930,212"/>
+<line class="w" x1="920" y1="212" x2="940" y2="212"/>
+<line class="w" x1="924" y1="216" x2="936" y2="216"/>
+<line class="w" x1="927.5" y1="220" x2="932.5" y2="220"/>
+<circle class="dot" cx="960" cy="100" r="3.2"/>
+<polyline class="w" points="960,100 960,78"/>
+<path class="flagm" d="M954 78 L966 78 L960 70 Z"/>
+<text class="rail" x="960" y="65" text-anchor="middle">+450 V → TR-OUT</text>
+<polyline class="w" points="990,100 1007,100"/>
+<polyline class="w" points="1053,100 1070,100"/>
+<rect class="part" x="1007" y="93" width="46" height="14"/>
+<text class="ref" x="1030" y="122" text-anchor="middle">R201</text>
+<text class="val" x="1030" y="136" text-anchor="middle">1k8 3 W</text>
+<polyline class="w" points="1070,100 1110,100"/>
+<circle class="dot" cx="1110" cy="100" r="3.2"/>
+<polyline class="w" points="1110,100 1110,146"/>
+<polyline class="w" points="1110,154 1110,200"/>
+<line class="plate" x1="1098" y1="146" x2="1122" y2="146"/>
+<path class="plate" d="M1098 157 Q1110 151 1122 157" fill="none"/>
+<text class="pol" x="1092" y="143" text-anchor="middle">+</text>
+<text class="ref" x="1127" y="147" text-anchor="start">C3</text>
+<text class="val" x="1127" y="161" text-anchor="start">47 µ / 550 V*</text>
+<polyline class="w" points="1110,200 1110,212"/>
+<line class="w" x1="1100" y1="212" x2="1120" y2="212"/>
+<line class="w" x1="1104" y1="216" x2="1116" y2="216"/>
+<line class="w" x1="1107.5" y1="220" x2="1112.5" y2="220"/>
+<polyline class="w" points="1110,100 1110,78"/>
+<path class="flagm" d="M1104 78 L1116 78 L1110 70 Z"/>
+<text class="rail" x="1110" y="65" text-anchor="middle">+400 V driver</text>
+<polyline class="w" points="1110,100 1150,100"/>
+<polyline class="w" points="1150,100 1172,100"/>
+<polyline class="w" points="1218,100 1240,100"/>
+<rect class="part" x="1172" y="93" width="46" height="14"/>
+<text class="ref" x="1195" y="122" text-anchor="middle">R202</text>
+<text class="val" x="1195" y="136" text-anchor="middle">13 k 1 W</text>
+<polyline class="w" points="1240,100 1270,100"/>
+<circle class="dot" cx="1270" cy="100" r="3.2"/>
+<polyline class="w" points="1270,100 1270,146"/>
+<polyline class="w" points="1270,154 1270,200"/>
+<line class="plate" x1="1258" y1="146" x2="1282" y2="146"/>
+<path class="plate" d="M1258 157 Q1270 151 1282 157" fill="none"/>
+<text class="pol" x="1252" y="143" text-anchor="middle">+</text>
+<text class="ref" x="1287" y="147" text-anchor="start">C4</text>
+<text class="val" x="1287" y="161" text-anchor="start">47 µ / 550 V*</text>
+<polyline class="w" points="1270,200 1270,212"/>
+<line class="w" x1="1260" y1="212" x2="1280" y2="212"/>
+<line class="w" x1="1264" y1="216" x2="1276" y2="216"/>
+<line class="w" x1="1267.5" y1="220" x2="1272.5" y2="220"/>
+<polyline class="w" points="1270,100 1270,78"/>
+<path class="flagm" d="M1264 78 L1276 78 L1270 70 Z"/>
+<text class="rail" x="1270" y="65" text-anchor="middle">+360 V wejście</text>
+<text class="net" x="1170" y="250" text-anchor="middle">R201 … C4: osobny łańcuch dla każdego kanału</text>
+<path class="coil" d="M408 250 A8 8 0 0 0 408 266 A8 8 0 0 0 408 282 A8 8 0 0 0 408 298 A8 8 0 0 0 408 314 A8 8 0 0 0 408 330"/>
+<text class="op" x="420" y="296" text-anchor="start">70 V</text>
+<polyline class="w" points="408,330 440,330"/>
+<polyline class="w" points="440,330 440,342"/>
+<line class="w" x1="430" y1="342" x2="450" y2="342"/>
+<line class="w" x1="434" y1="346" x2="446" y2="346"/>
+<line class="w" x1="437.5" y1="350" x2="442.5" y2="350"/>
+<polyline class="w" points="408,250 470,250"/>
+<polyline class="w" points="470,250 506,250"/>
+<polyline class="w" points="524,250 560,250"/>
+<path class="flagm" d="M524 241 L524 259 L508 250 Z"/>
+<line class="plate" x1="507" y1="241" x2="507" y2="259"/>
+<text class="ref" x="515" y="224" text-anchor="middle">D5</text>
+<text class="val" x="515" y="238" text-anchor="middle">1N4007</text>
+<polyline class="w" points="560,250 600,250"/>
+<circle class="dot" cx="600" cy="250" r="3.2"/>
+<polyline class="w" points="600,250 600,286"/>
+<polyline class="w" points="600,294 600,330"/>
+<line class="plate" x1="588" y1="286" x2="612" y2="286"/>
+<line class="plate" x1="588" y1="294" x2="612" y2="294"/>
+<text class="ref" x="617" y="287" text-anchor="start">C5</text>
+<text class="val" x="617" y="301" text-anchor="start">100 µ / 160 V</text>
+<polyline class="w" points="600,330 600,342"/>
+<line class="w" x1="590" y1="342" x2="610" y2="342"/>
+<line class="w" x1="594" y1="346" x2="606" y2="346"/>
+<line class="w" x1="597.5" y1="350" x2="602.5" y2="350"/>
+<polyline class="w" points="600,250 627,250"/>
+<polyline class="w" points="673,250 700,250"/>
+<rect class="part" x="627" y="243" width="46" height="14"/>
+<text class="ref" x="650" y="224" text-anchor="middle">R203</text>
+<text class="val" x="650" y="238" text-anchor="middle">1 k</text>
+<polyline class="w" points="700,250 720,250"/>
+<circle class="dot" cx="720" cy="250" r="3.2"/>
+<polyline class="w" points="720,250 720,286"/>
+<polyline class="w" points="720,294 720,330"/>
+<line class="plate" x1="708" y1="286" x2="732" y2="286"/>
+<line class="plate" x1="708" y1="294" x2="732" y2="294"/>
+<text class="ref" x="737" y="287" text-anchor="start">C6</text>
+<text class="val" x="737" y="301" text-anchor="start">100 µ / 160 V</text>
+<polyline class="w" points="720,330 720,342"/>
+<line class="w" x1="710" y1="342" x2="730" y2="342"/>
+<line class="w" x1="714" y1="346" x2="726" y2="346"/>
+<line class="w" x1="717.5" y1="350" x2="722.5" y2="350"/>
+<text class="op" x="760" y="242" text-anchor="start">−90 V</text>
+<polyline class="w" points="720,250 830,250"/>
+<polyline class="w" points="830,250 850,250"/>
+<path class="flagm" d="M850 244 L850 256 L858 250 Z"/>
+<text class="rail chg" x="863" y="254" text-anchor="start">−90 V → R130/R132 (regulacja biasu przy lampach)</text>
+<text class="net" x="873" y="272" text-anchor="start">4 dzielniki: P201, P202 w każdym kanale</text>
+<path class="coil" d="M408 400 A8.75 8.75 0 0 0 408 417.5 A8.75 8.75 0 0 0 408 435 A8.75 8.75 0 0 0 408 452.5 A8.75 8.75 0 0 0 408 470"/>
+<text class="op" x="420" y="440" text-anchor="start">6,3 V</text>
+<polyline class="w" points="408,400 650,400"/>
+<polyline class="w" points="408,470 650,470"/>
+<polyline class="w" points="540,400 540,407.5"/>
+<polyline class="w" points="540,427.5 540,435"/>
+<rect class="part" x="533" y="407.5" width="14" height="20"/>
+<text class="ref" x="553" y="414.5" text-anchor="start"></text>
+<text class="val" x="553" y="428.5" text-anchor="start"></text>
+<polyline class="w" points="540,435 540,442.5"/>
+<polyline class="w" points="540,462.5 540,470"/>
+<rect class="part" x="533" y="442.5" width="14" height="20"/>
+<text class="ref" x="553" y="449.5" text-anchor="start"></text>
+<text class="val" x="553" y="463.5" text-anchor="start"></text>
+<text class="val" x="552" y="425" text-anchor="start">2× 100 Ω</text>
+<circle class="dot" cx="540" cy="400" r="3.2"/>
+<circle class="dot" cx="540" cy="470" r="3.2"/>
+<circle class="dot" cx="540" cy="435" r="3.2"/>
+<polyline class="w" points="540,435 510,435"/>
+<polyline class="w" points="510,435 510,441"/>
+<line class="w" x1="500" y1="441" x2="520" y2="441"/>
+<line class="w" x1="504" y1="445" x2="516" y2="445"/>
+<line class="w" x1="507.5" y1="449" x2="512.5" y2="449"/>
+<text class="net" x="660" y="430" text-anchor="start">→ żarzenie 4× KT88</text>
+<text class="net" x="660" y="445" text-anchor="start">6,4 A, AC</text>
+<path class="coil" d="M408 540 A8.75 8.75 0 0 0 408 557.5 A8.75 8.75 0 0 0 408 575 A8.75 8.75 0 0 0 408 592.5 A8.75 8.75 0 0 0 408 610"/>
+<text class="op" x="420" y="580" text-anchor="start">6,3 V</text>
+<polyline class="w" points="408,540 640,540"/>
+<polyline class="w" points="408,610 640,610"/>
+<polyline class="w" points="540,540 540,547.5"/>
+<polyline class="w" points="540,567.5 540,575"/>
+<rect class="part" x="533" y="547.5" width="14" height="20"/>
+<text class="ref" x="553" y="554.5" text-anchor="start"></text>
+<text class="val" x="553" y="568.5" text-anchor="start"></text>
+<polyline class="w" points="540,575 540,582.5"/>
+<polyline class="w" points="540,602.5 540,610"/>
+<rect class="part" x="533" y="582.5" width="14" height="20"/>
+<text class="ref" x="553" y="589.5" text-anchor="start"></text>
+<text class="val" x="553" y="603.5" text-anchor="start"></text>
+<text class="val" x="552" y="566" text-anchor="start">2× 100 Ω</text>
+<circle class="dot" cx="540" cy="540" r="3.2"/>
+<circle class="dot" cx="540" cy="610" r="3.2"/>
+<circle class="dot" cx="540" cy="575" r="3.2"/>
+<text class="net" x="432" y="530" text-anchor="start">→ żarzenie 6N2P, 6N6P · 2,2 A</text>
+<polyline class="w" points="540,575 760,575"/>
+<circle class="dot" cx="760" cy="575" r="3.2"/>
+<polyline class="w" points="760,495 760,517"/>
+<polyline class="w" points="760,553 760,575"/>
+<rect class="part" x="753" y="517" width="14" height="36"/>
+<text class="ref" x="773" y="532" text-anchor="start">R206</text>
+<text class="val" x="773" y="546" text-anchor="start">470 k</text>
+<polyline class="w" points="760,495 760,485"/>
+<path class="flagm" d="M754 485 L766 485 L760 477 Z"/>
+<text class="rail" x="760" y="472" text-anchor="middle">+450 V</text>
+<polyline class="w" points="760,575 760,595"/>
+<polyline class="w" points="760,625 760,645"/>
+<rect class="part" x="753" y="595" width="14" height="30"/>
+<text class="ref" x="747" y="607" text-anchor="end">R207</text>
+<text class="val" x="747" y="621" text-anchor="end">82 k</text>
+<polyline class="w" points="760,645 760,651"/>
+<line class="w" x1="750" y1="651" x2="770" y2="651"/>
+<line class="w" x1="754" y1="655" x2="766" y2="655"/>
+<line class="w" x1="757.5" y1="659" x2="762.5" y2="659"/>
+<polyline class="w" points="760,575 860,575"/>
+<circle class="dot" cx="860" cy="575" r="3.2"/>
+<polyline class="w" points="860,575 860,603.5"/>
+<polyline class="w" points="860,611.5 860,640"/>
+<line class="plate" x1="848" y1="603.5" x2="872" y2="603.5"/>
+<path class="plate" d="M848 614.5 Q860 608.5 872 614.5" fill="none"/>
+<text class="pol" x="842" y="600.5" text-anchor="middle">+</text>
+<text class="ref" x="877" y="604.5" text-anchor="start">C8</text>
+<text class="val" x="877" y="618.5" text-anchor="start">47 µ / 100 V</text>
+<polyline class="w" points="860,640 860,646"/>
+<line class="w" x1="850" y1="646" x2="870" y2="646"/>
+<line class="w" x1="854" y1="650" x2="866" y2="650"/>
+<line class="w" x1="857.5" y1="654" x2="862.5" y2="654"/>
+<text class="op" x="870" y="560" text-anchor="start">≈ +67 V podniesienie żarzenia</text>
+    </svg>
+  </div>
+  <p class="note">* Na zimno, zanim KT88 się nagrzeją, wszystkie węzły anodowe dochodzą do szczytowej wartości uzwojenia, ok. 495 V, a przy +10% w sieci nawet 545 V. Stąd 550 V na wszystkich elektrolitach. W praktyce to pary 2× 400 V połączone szeregowo z rezystorami wyrównującymi 220 k na każdym. C5 i C6 to elektrolity z plusem do masy.</p>
+</section>
+
+<div class="cols">
+<section>
+  <h2>Co się zmienia względem 6S33S</h2>
+  <ul>
+    <li><b>Anodowe</b> 450 V zamiast 165 V na końcówce. Prąd spoczynkowy spada z 200 mA do 50 mA na lampę.</li>
+    <li><b>Transformator wyjściowy</b> 4 kΩ z odczepami UL zamiast 1 kΩ. Siatki drugie idą przez R128/R129 na odczepy 43%.</li>
+    <li><b>Rezystory upływowe</b> R119/R120 zmniejszone do 220 k. To górna granica dla KT88 przy stałym biasie.</li>
+    <li><b>Bias</b> z osobnym dzielnikiem i potencjometrem dla każdej lampy, bo toroid wymaga dobrego balansu prądów stałych.</li>
+    <li><b>Rezystory katodowe</b> 10 Ω 1% zamiast 1 Ω, żeby wygodnie mierzyć prąd: 50 mA daje 0,50 V.</li>
+    <li><b>Sprzężenie zwrotne</b> z odczepu 8 Ω. Wzmocnienie pętli wychodzi podobne jak w oryginale (szacunkowo 6–10 dB), ale R127 i C100 trzeba sprawdzić na oscyloskopie.</li>
+    <li><b>Żarzenie</b> lżejsze: 6,4 A dla KT88 zamiast 13 A dla 6S33S. Żarzenie małych lamp podniesione do ok. +67 V, bo katoda katodyny siedzi na +120 V.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Uruchomienie</h2>
+  <ol>
+    <li>Najpierw sam zasilacz bez lamp, przez żarówkę w szereg z siecią. Sprawdź −90 V, a potem ustaw P201 i P202 w obu kanałach na maksimum ujemnego napięcia (ok. −64 V na suwaku).</li>
+    <li>Włóż lampy, podłącz rezystor 8 Ω zamiast głośnika, NFB na razie odłączone (R127 rozpięty).</li>
+    <li>Po nagrzaniu sprawdź napięcia z tabeli. Podnoś prąd KT88 potencjometrami P201 (V3) i P202 (V4) do 0,50 V na TP-A i TP-B, z różnicą najwyżej ok. 10 mV (1 mA).</li>
+    <li>Podłącz R127. Jeśli wzmocnienie wzrośnie zamiast spaść albo pojawi się wzbudzenie, zamień końce uzwojenia wtórnego (8 Ω z COM).</li>
+    <li>Na generatorze 1 kHz ustaw P100 na minimum zniekształceń albo na równe amplitudy na anodach V2a i V2b.</li>
+    <li>Prostokąt 10 kHz na 8 Ω, potem z dołożonym 0,1–0,47 µF równolegle. Dobierz C100 tak, żeby nie było dzwonienia.</li>
+    <li>Po kilku godzinach grania i po pierwszych tygodniach ponownie wyrównaj bias.</li>
+  </ol>
+</section>
+</div>
+
+<section>
+  <h2>Lista elementów zmienionych i nowych <small>na kanał</small></h2>
+  <div class="tw"><table>
+    <thead><tr><th>Ozn.</th><th>Wartość</th><th>Funkcja</th></tr></thead>
+    <tbody>
+      <tr><td class="m">V3, V4</td><td>KT88, para dobrana</td><td>Lampy mocy w UL</td></tr>
+      <tr><td class="m">TR-OUT</td><td>toroidy.pl TTG-KT88PP</td><td>4 kΩ, UL 43%, 80 W, wyjścia 4 i 8 Ω</td></tr>
+      <tr><td class="m">R119, R120</td><td>220 kΩ 0,6 W</td><td>Upływowe siatek KT88</td></tr>
+      <tr><td class="m">R123, R124</td><td>1 kΩ 0,6 W</td><td>Antyoscylacyjne g1, przy samej podstawce</td></tr>
+      <tr><td class="m">R128, R129</td><td>220 Ω 1 W</td><td>Antyoscylacyjne g2, przy podstawce</td></tr>
+      <tr><td class="m">R125, R126</td><td>10 Ω 1% 1 W</td><td>Pomiar prądu katody</td></tr>
+      <tr><td class="m">C105, C106</td><td>330 nF / 630 V foliowy</td><td>Sprzęgające driver → KT88</td></tr>
+      <tr><td class="m">P201, P202</td><td>10 kΩ cermet, wieloobrotowy</td><td>Regulacja biasu V3 i V4, zakres ok. −39…−64 V</td></tr>
+      <tr><td class="m">R130, R132</td><td>10 kΩ 0,6 W</td><td>Górna część dzielnika biasu (od −90 V)</td></tr>
+      <tr><td class="m">R131, R133</td><td>15 kΩ 0,6 W</td><td>Dolna część dzielnika biasu (do masy)</td></tr>
+      <tr><td class="m">C107, C108</td><td>10 µF / 100 V</td><td>Odsprzęganie napięcia biasu, plus do masy</td></tr>
+      <tr><td class="m">R201 / R202</td><td>1,8 kΩ 3 W / 13 kΩ 1 W</td><td>Spadek 450 → 400 → 360 V</td></tr>
+      <tr><td class="m">R127, C100</td><td>68 kΩ, 250 pF (start)</td><td>Sieć sprzężenia zwrotnego</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<div class="warn"><p><b>Wysokie napięcie.</b> W tym wzmacniaczu jest do 545 V DC, które utrzymuje się na kondensatorach po wyłączeniu. R301 rozładowuje je w ok. minutę, ale przed dotknięciem układu zawsze zmierz napięcie. Pracuj jedną ręką, a pierwsze uruchomienie rób przez żarówkę albo autotransformator.</p></div>
+
+<section>
+  <h2>Do potwierdzenia</h2>
+  <ul>
+    <li>Wartości front endu przepisałem ze schematu 6S33S Onyxa. Jeśli dostaniesz jego schemat KT88, porównaj zwłaszcza R127/C100 i napięcia zasilania.</li>
+    <li>Napięcie +450 V zależy od transformatora sieciowego i dławika. Uzwojenie 350 V AC jest dobrane pod ok. 260 mA poboru w spoczynku z obu kanałów.</li>
+    <li>Transformator sieciowy (≈ 300 VA) i dławik 5 H / 400 mA możesz zamówić w toroidy.pl razem z głośnikowymi.</li>
+  </ul>
+</section>
+</div>

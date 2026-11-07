@@ -1,0 +1,194 @@
+<title>Williamson KT88 UL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: arkusz rysunku technicznego — tabliczka tytułowa, szerokie pola rysunku, pod spodem notatki konstrukcyjne */
+:root{
+  --paper:#eef1ec; --sheet:#f8faf6; --ink:#1c282b; --muted:#56656a; --rule:#c5cdc6;
+  --wire:#22343a; --op:#1f6b6f; --chg:#b4560f; --chgbg:#f6e5d6;
+  --f-disp:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121819; --sheet:#182022; --ink:#dde6e3; --muted:#93a3a3; --rule:#2e3b3d;
+  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121819; --sheet:#182022; --ink:#dde6e3; --muted:#93a3a3; --rule:#2e3b3d;
+  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+header{display:grid;grid-template-columns:1fr auto;gap:16px 32px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:14px}
+h1{font-family:var(--f-disp);font-weight:700;font-size:clamp(2rem,5vw,3.1rem);line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
+.sub{margin:.4rem 0 0;color:var(--muted);max-width:68ch}
+.tb{font-family:var(--f-mono);font-size:12px;border:1px solid var(--ink);display:grid;grid-template-columns:auto auto;min-width:0}
+.tb div{padding:4px 10px;border-bottom:1px solid var(--rule)}
+.tb div:nth-child(odd){color:var(--muted);border-right:1px solid var(--rule)}
+.tb div:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:720px){header{grid-template-columns:1fr}}
+h2{font-family:var(--f-disp);font-weight:600;font-size:1.6rem;margin:0;letter-spacing:.02em;text-wrap:balance}
+h2 small{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);font-weight:400;letter-spacing:.06em;margin-left:.6rem;text-transform:uppercase}
+section{display:grid;gap:12px;min-width:0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:22px;height:10px;display:inline-block;border:1.6px solid var(--wire)}
+.sw.c{border-color:var(--chg);background:var(--chgbg)}
+.sw.o{border:0;height:2px;background:var(--op)}
+.sheet{background:var(--sheet);border:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.sheet svg{display:block;width:100%;min-width:980px;height:auto}
+svg .w{fill:none;stroke:var(--wire);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+svg .part{fill:var(--sheet);stroke:var(--wire);stroke-width:1.6}
+svg .chgp{stroke:var(--chg);fill:var(--chgbg)}
+svg .plate{stroke:var(--wire);stroke-width:2.4;fill:none}
+svg .plate.chgp{stroke:var(--chg)}
+svg .dot{fill:var(--wire)}
+svg .tube{fill:none;stroke:var(--wire);stroke-width:1.6}
+svg .el{fill:none;stroke:var(--wire);stroke-width:2}
+svg .grid{stroke-dasharray:3 3;stroke-width:1.6}
+svg .coil{fill:none;stroke:var(--wire);stroke-width:1.8}
+svg .chgc{stroke:var(--chg)}
+svg .core{stroke:var(--wire);stroke-width:2.4}
+svg .flagm{fill:var(--wire)}
+svg .term{fill:var(--sheet);stroke:var(--wire);stroke-width:1.6}
+svg text{font-family:var(--f-mono);fill:var(--ink)}
+svg .ref{font-size:12px;font-weight:600}
+svg .val{font-size:11.5px;fill:var(--muted)}
+svg .ref.chg,svg .val.chg,svg .rail.chg,svg .tref.chg,svg .ttyp.chg{fill:var(--chg)}
+svg .tref{font-family:var(--f-disp);font-size:16px;font-weight:700}
+svg .ttyp{font-size:11.5px;fill:var(--muted)}
+svg .rail{font-size:12px;font-weight:600}
+svg .op{font-size:11px;fill:var(--op)}
+svg .net{font-size:11px;fill:var(--muted);font-style:italic}
+svg .pol{font-size:13px;fill:var(--wire)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px 32px}
+.cols>*{min-width:0}
+.note{max-width:70ch;margin:0}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-disp);font-weight:600;font-size:15px;letter-spacing:.03em;border-bottom:1.5px solid var(--ink)}
+td.m{font-family:var(--f-mono);font-size:13px;white-space:nowrap}
+tr.c td{color:var(--chg)}
+ul,ol{margin:0;padding-left:1.25rem;display:grid;gap:6px;max-width:72ch}
+li::marker{color:var(--muted)}
+.warn{border-left:3px solid var(--chg);background:var(--chgbg);padding:12px 16px;max-width:72ch}
+.warn p{margin:0}
+code{font-family:var(--f-mono);font-size:.9em}
+</style>
+
+<div class="wrap">
+<header>
+  <div>
+    <h1>Williamson KT88 UL</h1>
+    <p class="sub">Stopień wejściowy, katodyna i driver jak w wersji 6S33S Onyxa (6N2P + 6N6P). Końcówka przeliczona na parę KT88 w ultralinearze z transformatorem TTG-KT88PP z toroidy.pl, do tego nowy zasilacz z osobnym biasem dla każdej lampy.</p>
+  </div>
+  <div class="tb" aria-label="Tabliczka rysunku">
+    <div>Układ</div><div>Williamson PP, 1 kanał</div>
+    <div>Lampy</div><div>6N2P · 6N6P · 2× KT88</div>
+    <div>Moc</div><div>ok. 40 W / 8 Ω</div>
+    <div>Bazuje na</div><div>onyx1944 · 6S33S</div>
+    <div>Wersja</div><div>szkic 1 · 05.11.2026</div>
+  </div>
+</header>
+
+<section>
+  <h2>Schemat kanału <small>tor sygnałowy</small></h2>
+  <div class="legend">
+    <span><i class="sw"></i>jak w wersji 6S33S</span>
+    <span><i class="sw c"></i>zmienione lub nowe dla KT88</span>
+    <span><i class="sw o"></i>napięcia i prądy spoczynkowe (orientacyjne)</span>
+    <span>* do dobrania przy uruchomieniu</span>
+  </div>
+  <div class="sheet">
+    <svg viewBox="0 0 1400 930" role="img" aria-label="Schemat jednego kanału wzmacniacza Williamson na KT88">
+%%AMP%%
+    </svg>
+  </div>
+  <p class="note">Żarzenie, numery pinów i lampy drugiego kanału pominięte dla czytelności. Połowa V3 jest narysowana normalnie, połowa V4 w lustrzanym odbiciu, jak to się zwykle rysuje w push-pullu. Polaryzację pętli NFB ustala się podłączeniem końców uzwojenia wtórnego.</p>
+</section>
+
+<section>
+  <h2>Punkty pracy <small>wartości docelowe</small></h2>
+  <div class="tw"><table>
+    <thead><tr><th>Stopień</th><th>Lampa</th><th>Ua</th><th>Ia</th><th>Ug</th><th>Uwagi</th></tr></thead>
+    <tbody>
+      <tr><td>Wejście</td><td>½ 6N2P (V1a)</td><td class="m">≈ 120 V</td><td class="m">1,5 mA</td><td class="m">−0,5 V</td><td>Katoda bez kondensatora, tu wchodzi sprzężenie zwrotne.</td></tr>
+      <tr><td>Inwerter</td><td>½ 6N2P (V1b)</td><td class="m">≈ 240 V</td><td class="m">1,5 mA</td><td class="m">≈ −1 V</td><td>Katodyna sprzężona bezpośrednio z V1a, katoda ok. +120 V.</td></tr>
+      <tr><td>Driver</td><td>6N6P (V2a, V2b)</td><td class="m">≈ 200 V</td><td class="m">2× 12 mA</td><td class="m">−8,5 V</td><td>Wspólna katoda, P100 wyrównuje wzmocnienie obu połówek.</td></tr>
+      <tr class="c"><td>Końcówka</td><td>2× KT88, UL 43%</td><td class="m">≈ 445 V</td><td class="m">50 mA</td><td class="m">−45…−55 V</td><td>Prąd katody, czyli 0,50 V na R125/R126. Ok. 21 W na lampę (60% z 35 W).</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Zasilacz <small>wspólny dla obu kanałów</small></h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1400 700" role="img" aria-label="Schemat zasilacza: anodowe, bias i żarzenie">
+%%PSU%%
+    </svg>
+  </div>
+  <p class="note">* Na zimno, zanim KT88 się nagrzeją, wszystkie węzły anodowe dochodzą do szczytowej wartości uzwojenia, ok. 495 V, a przy +10% w sieci nawet 545 V. Stąd 550 V na wszystkich elektrolitach. W praktyce to pary 2× 400 V połączone szeregowo z rezystorami wyrównującymi 220 k na każdym. C5 i C6 to elektrolity z plusem do masy.</p>
+</section>
+
+<div class="cols">
+<section>
+  <h2>Co się zmienia względem 6S33S</h2>
+  <ul>
+    <li><b>Anodowe</b> 450 V zamiast 165 V na końcówce. Prąd spoczynkowy spada z 200 mA do 50 mA na lampę.</li>
+    <li><b>Transformator wyjściowy</b> 4 kΩ z odczepami UL zamiast 1 kΩ. Siatki drugie idą przez R128/R129 na odczepy 43%.</li>
+    <li><b>Rezystory upływowe</b> R119/R120 zmniejszone do 220 k. To górna granica dla KT88 przy stałym biasie.</li>
+    <li><b>Bias</b> z osobnym dzielnikiem i potencjometrem dla każdej lampy, bo toroid wymaga dobrego balansu prądów stałych.</li>
+    <li><b>Rezystory katodowe</b> 10 Ω 1% zamiast 1 Ω, żeby wygodnie mierzyć prąd: 50 mA daje 0,50 V.</li>
+    <li><b>Sprzężenie zwrotne</b> z odczepu 8 Ω. Wzmocnienie pętli wychodzi podobne jak w oryginale (szacunkowo 6–10 dB), ale R127 i C100 trzeba sprawdzić na oscyloskopie.</li>
+    <li><b>Żarzenie</b> lżejsze: 6,4 A dla KT88 zamiast 13 A dla 6S33S. Żarzenie małych lamp podniesione do ok. +67 V, bo katoda katodyny siedzi na +120 V.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Uruchomienie</h2>
+  <ol>
+    <li>Najpierw sam zasilacz bez lamp, przez żarówkę w szereg z siecią. Sprawdź −90 V, a potem ustaw P201 i P202 w obu kanałach na maksimum ujemnego napięcia (ok. −64 V na suwaku).</li>
+    <li>Włóż lampy, podłącz rezystor 8 Ω zamiast głośnika, NFB na razie odłączone (R127 rozpięty).</li>
+    <li>Po nagrzaniu sprawdź napięcia z tabeli. Podnoś prąd KT88 potencjometrami P201 (V3) i P202 (V4) do 0,50 V na TP-A i TP-B, z różnicą najwyżej ok. 10 mV (1 mA).</li>
+    <li>Podłącz R127. Jeśli wzmocnienie wzrośnie zamiast spaść albo pojawi się wzbudzenie, zamień końce uzwojenia wtórnego (8 Ω z COM).</li>
+    <li>Na generatorze 1 kHz ustaw P100 na minimum zniekształceń albo na równe amplitudy na anodach V2a i V2b.</li>
+    <li>Prostokąt 10 kHz na 8 Ω, potem z dołożonym 0,1–0,47 µF równolegle. Dobierz C100 tak, żeby nie było dzwonienia.</li>
+    <li>Po kilku godzinach grania i po pierwszych tygodniach ponownie wyrównaj bias.</li>
+  </ol>
+</section>
+</div>
+
+<section>
+  <h2>Lista elementów zmienionych i nowych <small>na kanał</small></h2>
+  <div class="tw"><table>
+    <thead><tr><th>Ozn.</th><th>Wartość</th><th>Funkcja</th></tr></thead>
+    <tbody>
+      <tr><td class="m">V3, V4</td><td>KT88, para dobrana</td><td>Lampy mocy w UL</td></tr>
+      <tr><td class="m">TR-OUT</td><td>toroidy.pl TTG-KT88PP</td><td>4 kΩ, UL 43%, 80 W, wyjścia 4 i 8 Ω</td></tr>
+      <tr><td class="m">R119, R120</td><td>220 kΩ 0,6 W</td><td>Upływowe siatek KT88</td></tr>
+      <tr><td class="m">R123, R124</td><td>1 kΩ 0,6 W</td><td>Antyoscylacyjne g1, przy samej podstawce</td></tr>
+      <tr><td class="m">R128, R129</td><td>220 Ω 1 W</td><td>Antyoscylacyjne g2, przy podstawce</td></tr>
+      <tr><td class="m">R125, R126</td><td>10 Ω 1% 1 W</td><td>Pomiar prądu katody</td></tr>
+      <tr><td class="m">C105, C106</td><td>330 nF / 630 V foliowy</td><td>Sprzęgające driver → KT88</td></tr>
+      <tr><td class="m">P201, P202</td><td>10 kΩ cermet, wieloobrotowy</td><td>Regulacja biasu V3 i V4, zakres ok. −39…−64 V</td></tr>
+      <tr><td class="m">R130, R132</td><td>10 kΩ 0,6 W</td><td>Górna część dzielnika biasu (od −90 V)</td></tr>
+      <tr><td class="m">R131, R133</td><td>15 kΩ 0,6 W</td><td>Dolna część dzielnika biasu (do masy)</td></tr>
+      <tr><td class="m">C107, C108</td><td>10 µF / 100 V</td><td>Odsprzęganie napięcia biasu, plus do masy</td></tr>
+      <tr><td class="m">R201 / R202</td><td>1,8 kΩ 3 W / 13 kΩ 1 W</td><td>Spadek 450 → 400 → 360 V</td></tr>
+      <tr><td class="m">R127, C100</td><td>68 kΩ, 250 pF (start)</td><td>Sieć sprzężenia zwrotnego</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<div class="warn"><p><b>Wysokie napięcie.</b> W tym wzmacniaczu jest do 545 V DC, które utrzymuje się na kondensatorach po wyłączeniu. R301 rozładowuje je w ok. minutę, ale przed dotknięciem układu zawsze zmierz napięcie. Pracuj jedną ręką, a pierwsze uruchomienie rób przez żarówkę albo autotransformator.</p></div>
+
+<section>
+  <h2>Do potwierdzenia</h2>
+  <ul>
+    <li>Wartości front endu przepisałem ze schematu 6S33S Onyxa. Jeśli dostaniesz jego schemat KT88, porównaj zwłaszcza R127/C100 i napięcia zasilania.</li>
+    <li>Napięcie +450 V zależy od transformatora sieciowego i dławika. Uzwojenie 350 V AC jest dobrane pod ok. 260 mA poboru w spoczynku z obu kanałów.</li>
+    <li>Transformator sieciowy (≈ 300 VA) i dławik 5 H / 400 mA możesz zamówić w toroidy.pl razem z głośnikowymi.</li>
+  </ul>
+</section>
+</div>
