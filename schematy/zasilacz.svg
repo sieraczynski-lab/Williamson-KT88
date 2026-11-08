@@ -120,7 +120,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="1053,100 1070,100"/>
 <rect class="part" x="1007" y="93" width="46" height="14"/>
 <text class="ref" x="1030" y="122" text-anchor="middle">R201</text>
-<text class="val" x="1030" y="136" text-anchor="middle">1k8 3 W</text>
+<text class="val" x="1030" y="136" text-anchor="middle">2k2 2 W</text>
 <polyline class="w" points="1070,100 1110,100"/>
 <circle class="dot" cx="1110" cy="100" r="3.2"/>
 <polyline class="w" points="1110,100 1110,146"/>
@@ -136,13 +136,13 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <line class="w" x1="1107.5" y1="220" x2="1112.5" y2="220"/>
 <polyline class="w" points="1110,100 1110,78"/>
 <path class="flagm" d="M1104 78 L1116 78 L1110 70 Z"/>
-<text class="rail" x="1110" y="65" text-anchor="middle">+400 V driver</text>
+<text class="rail" x="1110" y="65" text-anchor="middle">+410 V driver</text>
 <polyline class="w" points="1110,100 1150,100"/>
 <polyline class="w" points="1150,100 1172,100"/>
 <polyline class="w" points="1218,100 1240,100"/>
 <rect class="part" x="1172" y="93" width="46" height="14"/>
 <text class="ref" x="1195" y="122" text-anchor="middle">R202</text>
-<text class="val" x="1195" y="136" text-anchor="middle">13 k 1 W</text>
+<text class="val" x="1195" y="136" text-anchor="middle">4k7 1 W</text>
 <polyline class="w" points="1240,100 1270,100"/>
 <circle class="dot" cx="1270" cy="100" r="3.2"/>
 <polyline class="w" points="1270,100 1270,146"/>
@@ -158,7 +158,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <line class="w" x1="1267.5" y1="220" x2="1272.5" y2="220"/>
 <polyline class="w" points="1270,100 1270,78"/>
 <path class="flagm" d="M1264 78 L1276 78 L1270 70 Z"/>
-<text class="rail" x="1270" y="65" text-anchor="middle">+360 V wejście</text>
+<text class="rail" x="1270" y="65" text-anchor="middle">+400 V wejście</text>
 <text class="net" x="1170" y="250" text-anchor="middle">R201 … C4: osobny łańcuch dla każdego kanału</text>
 <path class="coil" d="M408 250 A8 8 0 0 0 408 266 A8 8 0 0 0 408 282 A8 8 0 0 0 408 298 A8 8 0 0 0 408 314 A8 8 0 0 0 408 330"/>
 <text class="op" x="420" y="296" text-anchor="start">70 V</text>
@@ -252,7 +252,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <circle class="dot" cx="540" cy="540" r="3.2"/>
 <circle class="dot" cx="540" cy="610" r="3.2"/>
 <circle class="dot" cx="540" cy="575" r="3.2"/>
-<text class="net" x="432" y="530" text-anchor="start">→ żarzenie 6N2P, 6N6P · 2,2 A</text>
+<text class="net" x="432" y="530" text-anchor="start">→ żarzenie 6SL7, 6SN7 · 1,8 A</text>
 <polyline class="w" points="540,575 760,575"/>
 <circle class="dot" cx="760" cy="575" r="3.2"/>
 <polyline class="w" points="760,495 760,517"/>

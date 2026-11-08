@@ -27,9 +27,15 @@ TTG-KT88PP i LO PP80-1 mają niemal identyczne przekładnie (31,6:1 i 22,3:1), c
 
 **Ogonowski LO PP80-1.** Rdzeń EI dużo lepiej toleruje niezrównoważenie DC, a pasmo jest najszersze. Onyx używał transformatorów Ogonowskiego w wersji 6S33S (LO PP80-3). Najdroższy.
 
+## Co miał Onyx
+
+Na zdjęciu wzmacniacza Onyxa w wersji KT88 widać na transformatorach wyjściowych etykiety Hammonda z oznaczeniem, które wygląda na **1650HA**, a pośrodku toroidalny transformator sieciowy. Brzmienie, które było punktem odniesienia przy wyborze tego projektu, pochodzi więc z Hammondów 6,6 kΩ, a nie z toroidu 4 kΩ.
+
+Przy kolumnach 4 Ω z dołkiem 2,5 Ω Hammond 6,6 kΩ na odczepie 4 Ω byłby wygodniejszy dla lamp: ok. 4,1 kΩ w dołku zamiast ok. 2,5 kΩ, kosztem mocy (ok. 30–35 W).
+
 ## Decyzja
 
-Wybrany: **toroidy.pl TTG-KT88PP**. To transformator dedykowany do KT88 w UL, nowy, z gwarancją i ze znanymi parametrami. Warunek: osobna regulacja biasu dla każdej KT88 (jest na schemacie: P201, P202) i dobrze dobrane lampy.
+Wybrany: **toroidy.pl TTG-KT88PP**. Używana para Hammondów 1650HA z OLX (800 zł) się sprzedała, a nowe są wyraźnie droższe. Toroid jest dedykowany do KT88 w UL, nowy, z gwarancją i ze znanymi parametrami. Warunek: osobna regulacja biasu dla każdej KT88 (jest na schemacie: P201, P202) i dobrze dobrane lampy. Punkt pracy i sprzężenie zwrotne są w szkicu policzone pod 4 kΩ, a nie przepisane od Onyxa, więc trzeba je zweryfikować przy uruchomieniu.
 
 ## Montaż toroidu
 

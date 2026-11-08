@@ -50,4 +50,40 @@ W oryginalnym Williamsonie wszystkie stopnie sterujące były na 6SN7. Onyx zast
 
 - **Wejście:** 6N2P wzmacnia ok. 50×, 6SN7 ok. 15×. Więcej wzmocnienia to głębsze sprzężenie zwrotne i lepsza czułość.
 - **Driver:** 6N6P ma ok. 4× mniejsze Ri i pracuje przy 12 mA, więc łatwiej wysterowuje pojemność wejściową KT88 i ma większy zapas amplitudy.
-- 6SN7 **nie da się wstawić bezpośrednio** (inny cokół, piny i punkty pracy). Jeśli już, to sensownie tylko w driverze (ok. 7–8 mA, przeliczone rezystory), z wejściem pozostawionym na 6N2P.
+
+## Wybór lamp sterujących dla tego projektu
+
+Płytka Onyxa w wersji KT88 (VA1523) ma **wyłącznie podstawki oktalowe**: V1 (wejście + katodyna w jednej lampie), V2 (driver) i dwie KT88 na kanał. 6N2P i 6N6P odpadają, więc front end jest przeliczony na oktale.
+
+**Wybór: V1 = 6SL7 (6N9S), V2 = 6SN7 (6N8S).** Obie lampy mają ten sam układ nóżek (8BD), ale różne punkty pracy, więc zamiana wymaga zmiany rezystorów.
+
+| V1 (wejście + katodyna) | Wzmocnienie wejścia | Wzmocnienie bez NFB | Czułość przy ~20 dB NFB |
+|---|---|---|---|
+| **6SL7 (6N9S)** | ok. 45× | ok. 47 dB | **ok. 0,6 V** |
+| 6SN7 (6N8S) | ok. 10× | ok. 34 dB | ok. 2,5 V (za mało czuły) |
+
+- **6SL7 na wejściu** daje zapas wzmocnienia na ok. 21 dB sprzężenia zwrotnego. To obniża impedancję wyjściową, co ma znaczenie przy kolumnach z dołkiem 2,5 Ω.
+- **6SN7 w driverze** przy 8 mA potrzebuje tylko ok. 3,4 V szczytowo na siatce, żeby dać 50 V na siatkę KT88. To połowa jego biasu (−7,5 V), więc zapas jest dwukrotny.
+- Na zdjęciu wzmacniacza Onyxa naklejka na driverze podaje ok. 6,4 i 7,7 mA na triodę. To potwierdza 6SN7 (6N8S) w driverze. Co miał na wejściu, nie wiadomo, bo 6N8S i 6N9S wyglądają z zewnątrz tak samo.
+- Mocniejszy driver na później: 6BX7 lub 6BL7 (niższe Ri), ale 1,5 A żarzenia na lampę i inne punkty pracy.
+
+Punkty pracy (model 3/2 dopasowany do danych katalogowych, do weryfikacji pomiarem):
+
+| | Lampa | Zasilanie | Ua | Ia | Ug | Rk / Ra |
+|---|---|---|---|---|---|---|
+| Wejście V1a | ½ 6SL7 | 400 V | 133 V | 1,0 mA | −1,0 V | Rk 1 k, Ra 47 k + 220 k |
+| Katodyna V1b | ½ 6SL7 | 400 V | 266 V (Uk 134 V) | 1,2 mA | −0,9 V | 110 k / 110 k |
+| Driver V2 | 6SN7 | 410 V | 234 V | 2× 8 mA | −7,5 V | Ra 22 k, Rk wspólny 390 Ω + P100 |
+
+Bieguny na dole pasma są celowo rozsunięte: katodyna → driver 470 nF / 470 kΩ (0,7 Hz), driver → KT88 100 nF / 220 kΩ (7 Hz), toroid poniżej 1 Hz. W Williamsonie z globalną pętlą zmniejsza to ryzyko pompowania (motorboatingu).
+
+Żarzenie lamp sterujących jest podniesione do ok. +67 V, bo katoda katodyny jest na +134 V, a 6SL7 dopuszcza ok. 90 V między żarzeniem a katodą.
+
+### Konkretne lampy
+
+| Typ | Tanio i dobrze (NOS) | Nowa produkcja |
+|---|---|---|
+| 6SL7 | **6N9S** (radzieckie) | Tung-Sol 6SL7GT, Electro-Harmonix 6SL7EH |
+| 6SN7 | **6N8S** (radzieckie), 5692 (wojskowa, droga) | Tung-Sol 6SN7GTB, EH 6SN7EH, Psvane 6SN7 / CV181 |
+
+Na pierwsze uruchomienie: radzieckie 6N9S i 6N8S. Droższe wersje porównywać na dostrojonym wzmacniaczu. Driver warto dobrać tak, żeby obie triody miały zbliżony prąd; resztę wyrównuje P100.

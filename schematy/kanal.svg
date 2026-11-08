@@ -52,47 +52,47 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="176,560 197,560"/>
 <polyline class="el" points="197,579 197,574 223,574"/>
 <polyline class="w" points="210,574 210,594"/>
-<text class="tref" x="196" y="610" text-anchor="end">V1a</text>
-<text class="ttyp" x="196" y="625" text-anchor="end">½ 6N2P</text>
-<text class="op" x="250" y="548" text-anchor="start">Ua ≈ 120 V</text>
-<text class="op" x="250" y="561" text-anchor="start">Ia 1,5 mA</text>
-<text class="op" x="250" y="574" text-anchor="start">Uk 0,5 V</text>
+<text class="tref chg" x="196" y="610" text-anchor="end">V1a</text>
+<text class="ttyp chg" x="196" y="625" text-anchor="end">½ 6SL7 (6N9S)</text>
+<text class="op" x="250" y="548" text-anchor="start">Ua ≈ 133 V</text>
+<text class="op" x="250" y="561" text-anchor="start">Ia 1,0 mA</text>
+<text class="op" x="250" y="574" text-anchor="start">Uk 1,0 V</text>
 <polyline class="w" points="210,526 210,470"/>
 <circle class="dot" cx="210" cy="470" r="3.2"/>
 <polyline class="w" points="210,380 210,402"/>
 <polyline class="w" points="210,448 210,470"/>
-<rect class="part" x="203" y="402" width="14" height="46"/>
-<text class="ref" x="197" y="422" text-anchor="end">R102</text>
-<text class="val" x="197" y="436" text-anchor="end">82 k 1 W</text>
+<rect class="part chgp" x="203" y="402" width="14" height="46"/>
+<text class="ref chg" x="197" y="422" text-anchor="end">R102</text>
+<text class="val chg" x="197" y="436" text-anchor="end">220 k 1 W</text>
 <circle class="dot" cx="210" cy="380" r="3.2"/>
 <polyline class="w" points="210,280 210,307"/>
 <polyline class="w" points="210,353 210,380"/>
-<rect class="part" x="203" y="307" width="14" height="46"/>
-<text class="ref" x="197" y="327" text-anchor="end">R105</text>
-<text class="val" x="197" y="341" text-anchor="end">82 k 1 W</text>
+<rect class="part chgp" x="203" y="307" width="14" height="46"/>
+<text class="ref chg" x="197" y="327" text-anchor="end">R105</text>
+<text class="val chg" x="197" y="341" text-anchor="end">47 k 1 W</text>
 <polyline class="w" points="210,280 210,266"/>
 <path class="flagm" d="M204 266 L216 266 L210 258 Z"/>
-<text class="rail" x="210" y="253" text-anchor="middle">+360 V</text>
+<text class="rail" x="210" y="253" text-anchor="middle">+400 V</text>
 <polyline class="w" points="210,380 115,380"/>
 <polyline class="w" points="115,380 115,411"/>
 <polyline class="w" points="115,419 115,450"/>
 <line class="plate chgp" x1="103" y1="411" x2="127" y2="411"/>
 <path class="plate chgp" d="M103 422 Q115 416 127 422" fill="none"/>
-<text class="pol" x="97" y="408" text-anchor="middle">+</text>
+<text class="pol" x="133" y="408" text-anchor="middle">+</text>
 <text class="ref chg" x="98" y="412" text-anchor="end">C102</text>
 <text class="val chg" x="98" y="426" text-anchor="end">47 µ / 550 V*</text>
 <polyline class="w" points="115,450 115,462"/>
 <line class="w" x1="105" y1="462" x2="125" y2="462"/>
 <line class="w" x1="109" y1="466" x2="121" y2="466"/>
 <line class="w" x1="112.5" y1="470" x2="117.5" y2="470"/>
-<text class="op" x="222" y="375" text-anchor="start">≈ +240 V</text>
+<text class="op" x="222" y="375" text-anchor="start">≈ +353 V</text>
 <polyline class="w" points="210,594 210,640"/>
 <circle class="dot" cx="210" cy="640" r="3.2"/>
 <polyline class="w" points="210,640 210,657"/>
 <polyline class="w" points="210,703 210,720"/>
-<rect class="part" x="203" y="657" width="14" height="46"/>
-<text class="ref" x="197" y="677" text-anchor="end">R103</text>
-<text class="val" x="197" y="691" text-anchor="end">330 Ω</text>
+<rect class="part chgp" x="203" y="657" width="14" height="46"/>
+<text class="ref chg" x="197" y="677" text-anchor="end">R103</text>
+<text class="val chg" x="197" y="691" text-anchor="end">1 k</text>
 <polyline class="w" points="210,720 210,732"/>
 <line class="w" x1="200" y1="732" x2="220" y2="732"/>
 <line class="w" x1="204" y1="736" x2="216" y2="736"/>
@@ -103,18 +103,18 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="363,840 405,840"/>
 <rect class="part chgp" x="317" y="833" width="46" height="14"/>
 <text class="ref chg" x="340" y="814" text-anchor="middle">R127</text>
-<text class="val chg" x="340" y="828" text-anchor="middle">68 k*  (dobrać)</text>
+<text class="val chg" x="340" y="828" text-anchor="middle">22 k*  (dobrać)</text>
 <polyline class="w" points="275,840 275,885"/>
 <polyline class="w" points="275,885 336,885"/>
 <polyline class="w" points="344,885 405,885"/>
 <line class="plate chgp" x1="336" y1="873" x2="336" y2="897"/>
 <line class="plate chgp" x1="344" y1="873" x2="344" y2="897"/>
 <text class="ref chg" x="340" y="911" text-anchor="middle">C100</text>
-<text class="val chg" x="340" y="925" text-anchor="middle">250 p*  (dobrać)</text>
+<text class="val chg" x="340" y="925" text-anchor="middle">180 p*  (dobrać)</text>
 <polyline class="w" points="405,885 405,840"/>
 <circle class="dot" cx="405" cy="840" r="3.2"/>
-<polyline class="w" points="405,840 1320,840 1320,300"/>
-<text class="net" x="860" y="832" text-anchor="middle">pętla NFB z odczepu 8 Ω</text>
+<polyline class="w" points="405,840 1320,840 1320,370"/>
+<text class="net" x="860" y="832" text-anchor="middle">pętla NFB z odczepu 4 Ω (ok. 21 dB)</text>
 <polyline class="w" points="210,470 300,470 300,420 336,420"/>
 <circle class="tube" cx="370" cy="420" r="34"/>
 <line class="el" x1="357" y1="406" x2="383" y2="406"/>
@@ -123,62 +123,63 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="336,420 357,420"/>
 <polyline class="el" points="357,439 357,434 383,434"/>
 <polyline class="w" points="370,434 370,454"/>
-<text class="tref" x="330" y="505" text-anchor="end">V1b</text>
-<text class="ttyp" x="330" y="520" text-anchor="end">½ 6N2P</text>
+<text class="tref chg" x="330" y="505" text-anchor="end">V1b</text>
+<text class="ttyp chg" x="330" y="520" text-anchor="end">½ 6SL7 (6N9S)</text>
 <text class="op" x="410" y="352" text-anchor="start">katodyna</text>
-<text class="op" x="410" y="365" text-anchor="start">Ua ≈ 240 V</text>
-<text class="op" x="410" y="378" text-anchor="start">Uk ≈ 120 V</text>
+<text class="op" x="410" y="365" text-anchor="start">Ua ≈ 266 V</text>
+<text class="op" x="410" y="378" text-anchor="start">Uk ≈ 134 V</text>
+<text class="op" x="410" y="391" text-anchor="start">Ia 1,2 mA</text>
 <polyline class="w" points="370,386 370,250"/>
 <circle class="dot" cx="370" cy="250" r="3.2"/>
 <polyline class="w" points="370,150 370,177"/>
 <polyline class="w" points="370,223 370,250"/>
-<rect class="part" x="363" y="177" width="14" height="46"/>
-<text class="ref" x="357" y="197" text-anchor="end">R104</text>
-<text class="val" x="357" y="211" text-anchor="end">82 k 1 W</text>
+<rect class="part chgp" x="363" y="177" width="14" height="46"/>
+<text class="ref chg" x="357" y="197" text-anchor="end">R104</text>
+<text class="val chg" x="357" y="211" text-anchor="end">110 k 1 W</text>
 <polyline class="w" points="370,150 370,136"/>
 <path class="flagm" d="M364 136 L376 136 L370 128 Z"/>
-<text class="rail" x="370" y="123" text-anchor="middle">+360 V</text>
+<text class="rail" x="370" y="123" text-anchor="middle">+400 V</text>
 <polyline class="w" points="370,454 370,590"/>
 <circle class="dot" cx="370" cy="590" r="3.2"/>
 <polyline class="w" points="370,590 370,617"/>
 <polyline class="w" points="370,663 370,690"/>
-<rect class="part" x="363" y="617" width="14" height="46"/>
-<text class="ref" x="357" y="637" text-anchor="end">R106</text>
-<text class="val" x="357" y="651" text-anchor="end">82 k 1 W</text>
+<rect class="part chgp" x="363" y="617" width="14" height="46"/>
+<text class="ref chg" x="357" y="637" text-anchor="end">R106</text>
+<text class="val chg" x="357" y="651" text-anchor="end">110 k 1 W</text>
 <polyline class="w" points="370,690 370,702"/>
 <line class="w" x1="360" y1="702" x2="380" y2="702"/>
 <line class="w" x1="364" y1="706" x2="376" y2="706"/>
 <line class="w" x1="367.5" y1="710" x2="372.5" y2="710"/>
 <polyline class="w" points="370,250 441,250"/>
 <polyline class="w" points="449,250 520,250"/>
-<line class="plate" x1="441" y1="238" x2="441" y2="262"/>
-<line class="plate" x1="449" y1="238" x2="449" y2="262"/>
-<text class="ref" x="445" y="220" text-anchor="middle">C103</text>
-<text class="val" x="445" y="234" text-anchor="middle">220 n / 630 V</text>
+<line class="plate chgp" x1="441" y1="238" x2="441" y2="262"/>
+<line class="plate chgp" x1="449" y1="238" x2="449" y2="262"/>
+<text class="ref chg" x="445" y="220" text-anchor="middle">C103</text>
+<text class="val chg" x="445" y="234" text-anchor="middle">470 n / 630 V</text>
 <circle class="dot" cx="520" cy="250" r="3.2"/>
 <polyline class="w" points="520,250 556,250"/>
 <polyline class="w" points="520,250 520,272"/>
 <polyline class="w" points="520,318 520,340"/>
-<rect class="part" x="513" y="272" width="14" height="46"/>
-<text class="ref" x="533" y="292" text-anchor="start">R107</text>
-<text class="val" x="533" y="306" text-anchor="start">270 k</text>
+<rect class="part chgp" x="513" y="272" width="14" height="46"/>
+<text class="ref chg" x="533" y="292" text-anchor="start">R107</text>
+<text class="val chg" x="533" y="306" text-anchor="start">470 k</text>
 <polyline class="w" points="520,340 520,352"/>
 <line class="w" x1="510" y1="352" x2="530" y2="352"/>
 <line class="w" x1="514" y1="356" x2="526" y2="356"/>
 <line class="w" x1="517.5" y1="360" x2="522.5" y2="360"/>
 <polyline class="w" points="370,590 441,590"/>
 <polyline class="w" points="449,590 520,590"/>
-<line class="plate" x1="441" y1="578" x2="441" y2="602"/>
-<line class="plate" x1="449" y1="578" x2="449" y2="602"/>
-<text class="ref" x="445" y="560" text-anchor="middle">C104</text>
-<text class="val" x="445" y="574" text-anchor="middle">220 n / 630 V</text>
+<line class="plate chgp" x1="441" y1="578" x2="441" y2="602"/>
+<line class="plate chgp" x1="449" y1="578" x2="449" y2="602"/>
+<text class="ref chg" x="445" y="560" text-anchor="middle">C104</text>
+<text class="val chg" x="445" y="574" text-anchor="middle">470 n / 630 V</text>
 <circle class="dot" cx="520" cy="590" r="3.2"/>
 <polyline class="w" points="520,590 556,590"/>
 <polyline class="w" points="520,590 520,612"/>
 <polyline class="w" points="520,658 520,680"/>
-<rect class="part" x="513" y="612" width="14" height="46"/>
-<text class="ref" x="533" y="632" text-anchor="start">R108</text>
-<text class="val" x="533" y="646" text-anchor="start">270 k</text>
+<rect class="part chgp" x="513" y="612" width="14" height="46"/>
+<text class="ref chg" x="533" y="632" text-anchor="start">R108</text>
+<text class="val chg" x="533" y="646" text-anchor="start">470 k</text>
 <polyline class="w" points="520,680 520,692"/>
 <line class="w" x1="510" y1="692" x2="530" y2="692"/>
 <line class="w" x1="514" y1="696" x2="526" y2="696"/>
@@ -190,8 +191,8 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="556,250 577,250"/>
 <polyline class="el" points="577,269 577,264 603,264"/>
 <polyline class="w" points="590,264 590,284"/>
-<text class="tref" x="640" y="300" text-anchor="start">V2a</text>
-<text class="ttyp" x="640" y="315" text-anchor="start">½ 6N6P</text>
+<text class="tref chg" x="640" y="300" text-anchor="start">V2a</text>
+<text class="ttyp chg" x="640" y="315" text-anchor="start">½ 6SN7 (6N8S)</text>
 <circle class="tube" cx="590" cy="590" r="34"/>
 <line class="el" x1="577" y1="604" x2="603" y2="604"/>
 <polyline class="w" points="590,604 590,624"/>
@@ -199,30 +200,30 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="556,590 577,590"/>
 <polyline class="el" points="577,571 577,576 603,576"/>
 <polyline class="w" points="590,576 590,556"/>
-<text class="tref" x="640" y="548" text-anchor="start">V2b</text>
-<text class="ttyp" x="640" y="563" text-anchor="start">½ 6N6P</text>
-<text class="op" x="640" y="330" text-anchor="start">Ua ≈ 200 V</text>
-<text class="op" x="640" y="343" text-anchor="start">Ia 12 mA</text>
+<text class="tref chg" x="640" y="548" text-anchor="start">V2b</text>
+<text class="ttyp chg" x="640" y="563" text-anchor="start">½ 6SN7 (6N8S)</text>
+<text class="op" x="640" y="336" text-anchor="start">Ua ≈ 234 V</text>
+<text class="op" x="640" y="349" text-anchor="start">Ia 8 mA</text>
 <polyline class="w" points="590,216 590,170"/>
 <circle class="dot" cx="590" cy="170" r="3.2"/>
 <polyline class="w" points="590,60 590,92"/>
 <polyline class="w" points="590,138 590,170"/>
-<rect class="part" x="583" y="92" width="14" height="46"/>
-<text class="ref" x="577" y="112" text-anchor="end">R113</text>
-<text class="val" x="577" y="126" text-anchor="end">16k5 (2×33 k ∥) 3 W</text>
+<rect class="part chgp" x="583" y="92" width="14" height="46"/>
+<text class="ref chg" x="577" y="112" text-anchor="end">R113</text>
+<text class="val chg" x="577" y="126" text-anchor="end">22 k 3 W</text>
 <polyline class="w" points="590,60 590,46"/>
 <path class="flagm" d="M584 46 L596 46 L590 38 Z"/>
-<text class="rail" x="590" y="33" text-anchor="middle">+400 V</text>
+<text class="rail" x="590" y="33" text-anchor="middle">+410 V</text>
 <polyline class="w" points="590,624 590,670"/>
 <circle class="dot" cx="590" cy="670" r="3.2"/>
 <polyline class="w" points="590,670 590,702"/>
 <polyline class="w" points="590,748 590,780"/>
-<rect class="part" x="583" y="702" width="14" height="46"/>
-<text class="ref" x="577" y="722" text-anchor="end">R114</text>
-<text class="val" x="577" y="736" text-anchor="end">16k5 (2×33 k ∥) 3 W</text>
+<rect class="part chgp" x="583" y="702" width="14" height="46"/>
+<text class="ref chg" x="577" y="722" text-anchor="end">R114</text>
+<text class="val chg" x="577" y="736" text-anchor="end">22 k 3 W</text>
 <polyline class="w" points="590,780 590,794"/>
 <path class="flagm" d="M584 794 L596 794 L590 802 Z"/>
-<text class="rail" x="590" y="816" text-anchor="middle">+400 V</text>
+<text class="rail" x="590" y="816" text-anchor="middle">+410 V</text>
 <polyline class="w" points="590,284 590,370"/>
 <polyline class="w" points="590,556 590,470"/>
 <polyline class="w" points="590,370 590,395"/>
@@ -234,29 +235,29 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <text class="val" x="577" y="431" text-anchor="end">100 Ω  balans AC</text>
 <polyline class="w" points="630,420 642,420"/>
 <polyline class="w" points="688,420 700,420"/>
-<rect class="part" x="642" y="413" width="46" height="14"/>
-<text class="ref" x="665" y="442" text-anchor="middle">R112</text>
-<text class="val" x="665" y="456" text-anchor="middle">270 Ω 1 W</text>
+<rect class="part chgp" x="642" y="413" width="46" height="14"/>
+<text class="ref chg" x="665" y="442" text-anchor="middle">R112</text>
+<text class="val chg" x="665" y="456" text-anchor="middle">390 Ω 1 W</text>
 <polyline class="w" points="700,420 710,420"/>
 <polyline class="w" points="710,420 710,432"/>
 <line class="w" x1="700" y1="432" x2="720" y2="432"/>
 <line class="w" x1="704" y1="436" x2="716" y2="436"/>
 <line class="w" x1="707.5" y1="440" x2="712.5" y2="440"/>
-<text class="op" x="578" y="450" text-anchor="end">Uk ≈ 8,5 V</text>
+<text class="op" x="578" y="450" text-anchor="end">Uk ≈ 7,5 V</text>
 <polyline class="w" points="590,170 651,170"/>
 <polyline class="w" points="659,170 720,170"/>
-<line class="plate" x1="651" y1="158" x2="651" y2="182"/>
-<line class="plate" x1="659" y1="158" x2="659" y2="182"/>
-<text class="ref" x="655" y="140" text-anchor="middle">C105</text>
-<text class="val" x="655" y="154" text-anchor="middle">330 n / 630 V</text>
+<line class="plate chgp" x1="651" y1="158" x2="651" y2="182"/>
+<line class="plate chgp" x1="659" y1="158" x2="659" y2="182"/>
+<text class="ref chg" x="655" y="140" text-anchor="middle">C105</text>
+<text class="val chg" x="655" y="154" text-anchor="middle">100 n / 630 V</text>
 <polyline class="w" points="720,170 720,226 750,226"/>
 <circle class="dot" cx="750" cy="226" r="3.2"/>
 <polyline class="w" points="590,670 651,670"/>
 <polyline class="w" points="659,670 720,670"/>
-<line class="plate" x1="651" y1="658" x2="651" y2="682"/>
-<line class="plate" x1="659" y1="658" x2="659" y2="682"/>
-<text class="ref" x="655" y="696" text-anchor="middle">C106</text>
-<text class="val" x="655" y="710" text-anchor="middle">330 n / 630 V</text>
+<line class="plate chgp" x1="651" y1="658" x2="651" y2="682"/>
+<line class="plate chgp" x1="659" y1="658" x2="659" y2="682"/>
+<text class="ref chg" x="655" y="696" text-anchor="middle">C106</text>
+<text class="val chg" x="655" y="710" text-anchor="middle">100 n / 630 V</text>
 <polyline class="w" points="720,670 720,614 750,614"/>
 <circle class="dot" cx="750" cy="614" r="3.2"/>
 <polyline class="w" points="750,226 772,226"/>
@@ -439,8 +440,9 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <text class="ref" x="1258" y="286" text-anchor="start">8 Ω</text>
 <text class="ref" x="1258" y="360" text-anchor="start">4 Ω</text>
 <text class="ref" x="1258" y="530" text-anchor="start">COM</text>
-<polyline class="w" points="1250,300 1320,300"/>
-<circle class="dot" cx="1320" cy="300" r="3.2"/>
+<polyline class="w" points="1250,370 1320,370"/>
+<circle class="dot" cx="1320" cy="370" r="3.2"/>
+<text class="net" x="1258" y="400" text-anchor="start">← kolumny 4 Ω</text>
 <polyline class="w" points="1180,540 1180,560"/>
 <circle class="dot" cx="1180" cy="540" r="3.2"/>
 <polyline class="w" points="1180,560 1180,564"/>
