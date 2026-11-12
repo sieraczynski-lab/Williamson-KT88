@@ -15,6 +15,10 @@ Oznaczenia elementów i złączy Soloista według jego wersji 0.23 (płytki) i 0
 
 ![Płytka zasilacza](../schematy/plytka_zasilacza.svg)
 
+Projekt PCB (KiCad 4/5, import do EasyEDA, otwiera się też w KiCad 8): [`pcb/`](../pcb/), opis w [`pcb/CZYTAJ_MNIE.txt`](../pcb/CZYTAJ_MNIE.txt). Płytka 120 × 100 mm, rozmieszczona, ścieżki do poprowadzenia w EasyEDA.
+
+![Rozmieszczenie płytki zasilacza](../pcb/zasilacz_williamson_rozmieszczenie.png)
+
 ## 9.1 Schemat blokowy
 
 ```
