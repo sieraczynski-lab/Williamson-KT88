@@ -1,6 +1,9 @@
-﻿klasa;szerokosc sciezki mm;odstep mm;sieci;uwagi
-SIEC;1.5;2.5;L_SW N_SW L_K1 L_TR L_TR2;230 V AC, do ok. 2 A
-ANODY;1.0;2.5;HT_TR HT_F K3_MID HT_K3 HT_IN HT_B;360 V AC (510 V szczyt), ok. 0,65 A
-UA;0.5;2.5;UA HVS1 HVS2 LED_M;465 V DC, ok. 1 mA
-BIAS;0.5;1.0;B_AC1 B_AC2 B_F;58 V AC, ok. 30 mA
-NISKIE;0.5;0.3;+12V RLY1 RLY2 RLY3 RLY4 HV_SENSE LED_A GND;12 V, sygnal pomiaru
+﻿Klasa;Szerokosc sciezki [mm];Odstep [mm];Odstep specjalny;Sieci;Uwagi
+SIEC_230;2.0;3.0;6,0 do CEWKI;L_SW L_K1 L_TR N_SW L_TR2;"230 V, ok. 1,8 A + udar; izolacja wzmocniona do 12 V"
+HT_AC;1.5;3.0;6,0 do CEWKI;HT_TR HT_F K3_MID HT_K3 HT_IN HT_B;S1 360 V AC (510 V szczyt), ok. 0,65 A + impulsy ladowania
+HV_DC;0.6;3.0;;UA;Ua 465 V z plytki Onyxa, ok. 1 mA
+HV_MID;0.6;2.0;;HVS1 HVS2 LED_M;155-310 V, dzielnik pomiarowy i LED
+BIAS_AC;0.6;1.0;;B_AC1 B_AC2 B_F;S4 58 V AC, ok. 30 mA
+POMIAR;0.4;0.5;3,0 do HV_DC/HT_AC;HV_SENSE LED_A;HV_SENSE ok. 2,3 V do ADS1115
+CEWKI;0.5;0.3;6,0 do SIEC_230/HT_AC;+12V RLY1 RLY2 RLY3 RLY4;ok. 35 mA na cewke
+GND;1.0;0.3;;GND;

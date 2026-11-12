@@ -6,7 +6,9 @@ Uruchom:  python3 zasilacz_pcb.py   -> ../../pcb/
 import os, sys, shutil, zipfile, csv
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
-from pcbgen import Board, F, SYM
+from pcbgen import Board, F, SYM, FOOT, reg, box_cap
+F["FUSEV"] = reg(box_cap("Fuseholder_5x20_Closed_P22.5", 22.5, 28.0, 10.0, 1.5, 3.0, v=True))
+import netclasses
 from schwired import WiredSch
 
 NAME = "zasilacz_williamson"
@@ -37,7 +39,7 @@ def board():
         ("J5", "TR1_PRI", "CONN_2", ["L_TR", "N_SW"], g_m, "zlacze srubowe: pierwotne TR1, 1 L, 2 N"),
         # ---- anody ----
         ("J7", "S1_IN", "CONN_2", ["HT_TR", "HT_B"], g_ht, "zlacze srubowe 7,62 mm: S1 360 V z TR1 (1 przez F3, 2 drugi koniec)"),
-        ("F3", "T1A 500V", "FUSE", ["HT_TR", "HT_F"], g_ht, "bezpiecznik anodowy, napiecie znamionowe >= 400 V AC; oprawka 5x20 lub 6,3x32"),
+        ("F3", "T1A 500V", "FUSE", ["HT_TR", "HT_F"], g_ht, "bezpiecznik anodowy 5x20, napiecie znamionowe >= 400 V AC (np. Schurter SPT 5x20 500 V)"),
         ("K3", "G2RL-2-DC12", "RELAY_G2RL", {"1": "+12V", "8": "RLY3", "3": "HT_F", "2": None, "4": "K3_MID",
                                        "6": "K3_MID", "7": None, "5": "HT_K3"}, g_ht, "anody (+45 s); dwa styki szeregowo"),
         ("R2", "100R 10W", "R", ["HT_K3", "HT_IN"], g_ht, "R_IN: udar ladowania kondensatorow Onyxa ok. 5 A"),
@@ -74,24 +76,25 @@ def board():
 
     fixed = {"K1": (25, 12, "T", "G2RL"), "K2": (25, 30, "T", "G2RL"),
              "K3": (25, 54, "T", "G2RL"), "K4": (25, 72, "T", "G2RL"),
-             "R1": (70, 21, "T", "R10"), "R2": (70, 63, "T", "R10"),
-             "MH1": (4.5, 4.5, "", "MH"), "MH2": (115.5, 4.5, "", "MH"), "MH3": (4.5, 95.5, "", "MH"), "MH4": (115.5, 95.5, "", "MH")}
+             "R1": (46, 32, "T", "R10V"), "R2": (58, 50, "T", "R10V"),
+             "MH1": (4.5, 4.5, "", "MH"), "MH2": (95.5, 4.5, "", "MH"), "MH3": (4.5, 95.5, "", "MH"), "MH4": (95.5, 95.5, "", "MH")}
     auto = [
         ("J1", (5, 13, "", ["TB2V"])), ("J3", (5, 30, "", ["TB2V"])),
-        ("F2", (70, 8, "T", ["FUSE"])), ("J5", (115, 17, "", ["TB2V"])),
-        ("J16", (50, 33, "T", ["H3H", "H3"])), ("D2", (62, 31, "T", ["DO35", "DO35V"])), ("D3", (62, 35, "T", ["DO35", "DO35V"])),
-        ("J7", (5, 54, "", ["TB762_2V"])), ("F3", (75, 44, "T", ["FUSE2", "FUSE"])),
-        ("J8", (115, 50, "", ["TB762_2V"])), ("J9", (115, 68, "", ["TB762_2V"])),
-        ("J17", (50, 75, "T", ["H3H", "H3"])), ("D4", (62, 74, "T", ["DO35", "DO35V"])), ("D5", (62, 78, "T", ["DO35", "DO35V"])),
+        ("F2", (77, 12, "T", ["FUSE"])), ("J5", (95, 22, "", ["TB2V"])),
+        ("J7", (5, 54, "", ["TB762_2V"])), ("F3", (70, 38, "T", ["FUSEV"])),
+        ("J8", (95, 42, "", ["TB762_2V"])), ("J9", (95, 60, "", ["TB762_2V"])),
+        ("J16", (46, 66, "T", ["H3"])), ("J17", (46, 78, "T", ["H3"])),
+        ("D2", (50, 66, "T", ["DO35V"])), ("D3", (50, 77, "T", ["DO35V"])),
+        ("D4", (42, 86, "T", ["DO35V"])), ("D5", (46, 86, "T", ["DO35V"])),
         ("J10", (5, 84, "", ["TB2V"])), ("F4", (24, 92, "T", ["FUSE"])),
-        ("J11", (45, 95, "", ["TB2"])), ("J12", (57, 95, "", ["TB2"])),
-        ("J13", (72, 80, "", ["PADL"])),
-        ("R7", (77, 89, "T", ["R1V"])), ("R8", (82, 89, "T", ["R1V"])), ("D1", (87, 92, "T", ["LED3"])),
-        ("R3", (93, 89, "T", ["R1V"])), ("R4", (98, 89, "T", ["R1V"])), ("R5", (103, 89, "T", ["R1V"])),
-        ("R6", (108, 89, "T", ["R05V"])), ("J14", (113, 82, "", ["PAD"])), ("J18", (113, 89, "", ["PAD"])),
-        ("J15", (67, 93, "", ["PADL"])),
+        ("J11", (46, 95, "", ["TB2"])), ("J12", (57, 95, "", ["TB2"])),
+        ("J13", (70, 75, "", ["PADL"])),
+        ("R7", (66, 88, "T", ["R1V"])), ("R8", (71, 88, "T", ["R1V"])), ("D1", (68, 98, "T", ["LED3"])),
+        ("R3", (77, 88, "T", ["R1V"])), ("R4", (82, 88, "T", ["R1V"])), ("R5", (87, 88, "T", ["R1V"])),
+        ("R6", (92, 84, "T", ["R05V"])), ("J14", (97, 76, "", ["PAD"])), ("J18", (97, 82, "", ["PAD"])),
+        ("J15", (97, 88, "", ["PADL"])),
     ]
-    b = Board(NAME, "Williamson KT88 - plytka zasilacza (siec, opoznienie anod, bias AC, pomiar Ua)", 120, 100)
+    b = Board(NAME, "Williamson KT88 - plytka zasilacza (siec, opoznienie anod, bias AC, pomiar Ua)", 100, 100)
     pos = dict(fixed)
     pos.update({r: (p[0], p[1], p[2], p[3][0]) for r, p in auto})
     for (ref, value, symbol, nets, group, note) in comps:
@@ -99,7 +102,7 @@ def board():
         b.add(ref, value, symbol, F[fk], x, y, nets, group, note, side or "T")
     Board.VOLT = VOLT
     b.failed = b.autoplace([r for r, p in auto], dict(auto), list(fixed))
-    b.texts = [(54, 55, "WILLIAMSON KT88 ZASILACZ v1.0", 1.1)]
+    b.texts = [(77, 67.5, "WILLIAMSON KT88", 1.1), (77, 70, "ZASILACZ v1.0", 1.1)]
     return b
 
 
@@ -180,13 +183,6 @@ LibName1={lib}
 version=1
 """
 
-CLASSES = [
-    ("SIEC", 1.5, 2.5, "L_SW N_SW L_K1 L_TR L_TR2", "230 V AC, do ok. 2 A"),
-    ("ANODY", 1.0, 2.5, "HT_TR HT_F K3_MID HT_K3 HT_IN HT_B", "360 V AC (510 V szczyt), ok. 0,65 A"),
-    ("UA", 0.5, 2.5, "UA HVS1 HVS2 LED_M", "465 V DC, ok. 1 mA"),
-    ("BIAS", 0.5, 1.0, "B_AC1 B_AC2 B_F", "58 V AC, ok. 30 mA"),
-    ("NISKIE", 0.5, 0.3, "+12V RLY1 RLY2 RLY3 RLY4 HV_SENSE LED_A GND", "12 V, sygnal pomiaru"),
-]
 
 
 def write_lib(path, names, prefix=""):
@@ -241,11 +237,7 @@ def main():
             z.write(os.path.join(k5, f), f)
     # BOM, net classes, placement drawing
     b.write_csv(OUT)
-    with open(os.path.join(OUT, NAME + "_klasy_sieci.csv"), "w", newline="", encoding="utf-8-sig") as fh:
-        w = csv.writer(fh, delimiter=";")
-        w.writerow(["klasa", "szerokosc sciezki mm", "odstep mm", "sieci", "uwagi"])
-        for r in CLASSES:
-            w.writerow(r)
+    netclasses.write_csv(b, OUT)
     svg = b.svg(hv_nets=HV)
     open(os.path.join(OUT, NAME + "_rozmieszczenie.svg"), "w").write(svg)
     shutil.copy(os.path.join(D, "CZYTAJ_MNIE_pcb.txt"), os.path.join(OUT, "CZYTAJ_MNIE.txt"))

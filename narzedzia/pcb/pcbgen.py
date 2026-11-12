@@ -462,10 +462,10 @@ class Board:
                 if a[5] != b[5] and a[5] is not None and b[5] is not None:
                     va, vb = cls.VOLT.get(a[5], 0), cls.VOLT.get(b[5], 0)
                     if va == "AC" or vb == "AC":
-                        g = 2.5
+                        g = 3.0
                     else:
                         dv = abs(va - vb)
-                        g = 2.5 if dv >= 200 else (1.0 if dv >= 50 else 0.5)
+                        g = 3.0 if dv >= 200 else (1.0 if dv >= 50 else 0.5)
                 if cls._ov(a, b, g):
                     return "pads-HV" if g > 0.5 else "pads"
         if any(cls._ov(a, b, 0.2) for a in B1 for b in P2) or any(cls._ov(a, b, 0.2) for a in B2 for b in P1):
@@ -765,6 +765,6 @@ class Board:
             elif c.fp != F["MH"]:
                 o.append('<text x="%.2f" y="%.2f" class="%s" text-anchor="middle">%s</text>' % (lx, ly + 0.9, "ref bot" if c.side == "B" else "ref", c.ref))
         for (tx, ty, t, sz) in self.texts:
-            o.append('<text x="%.2f" y="%.2f" class="title">%s</text>' % (tx, ty, t))
+            o.append('<text x="%.2f" y="%.2f" class="title" text-anchor="middle">%s</text>' % (tx, ty, t))
         o.append("</svg>")
         return "\n".join(o)

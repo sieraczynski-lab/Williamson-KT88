@@ -1,40 +1,40 @@
 ﻿Oznaczenie;Wartosc;Footprint;Strona;X [mm];Y [mm];Grupa;LCSC;Uwagi
 J1;SIEC;TerminalBlock_1x02_P5.08_V;GORA;5.00;13.00;SIEC 230 V;;zlacze srubowe: 1 L (po F1 w gniezdzie IEC i wylaczniku), 2 N
-F2;T500mA 250V;Fuseholder_5x20_Closed_P22.5;GORA;70.00;8.00;SIEC 230 V;;bezpiecznik PS1 (IRM-15-12)
+F2;T500mA 250V;Fuseholder_5x20_Closed_P22.5;GORA;77.00;12.00;SIEC 230 V;;bezpiecznik PS1 (IRM-15-12)
 J3;PS1;TerminalBlock_1x02_P5.08_V;GORA;5.00;30.00;SIEC 230 V;;zlacze srubowe: 230 V czuwania do PS1 IRM-15-12 (sterowanie J1)
 K1;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;25.00;12.00;SIEC 230 V;C61458;"siec przez R_SS; Omron G2RL-2 12 V, 2 styki rownolegle (LCSC C61458)"
 K2;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;25.00;30.00;SIEC 230 V;C61458;"bocznik R_SS (+1,5 s); 2 styki rownolegle"
-R1;47R 10W;R_Cement_10W_P55.88;GORA;70.00;21.00;SIEC 230 V;;R_SS, rezystor cementowy
-J5;TR1_PRI;TerminalBlock_1x02_P5.08_V;GORA;115.00;17.00;SIEC 230 V;;zlacze srubowe: pierwotne TR1, 1 L, 2 N
+R1;47R 10W;R_Cement_10W_P55.88_V;GORA;46.00;32.00;SIEC 230 V;;R_SS, rezystor cementowy
+J5;TR1_PRI;TerminalBlock_1x02_P5.08_V;GORA;95.00;22.00;SIEC 230 V;;zlacze srubowe: pierwotne TR1, 1 L, 2 N
 J7;S1_IN;TerminalBlock_1x02_P7.62_V;GORA;5.50;55.00;ANODY (AC);;zlacze srubowe 7,62 mm: S1 360 V z TR1 (1 przez F3, 2 drugi koniec)
-F3;T1A 500V;Fuseholder_5x20_P22.5_or_6.3x32_P30;GORA;75.00;44.00;ANODY (AC);;"bezpiecznik anodowy, napiecie znamionowe >= 400 V AC; oprawka 5x20 lub 6,3x32"
+F3;T1A 500V;Fuseholder_5x20_Closed_P22.5_V;GORA;70.00;38.00;ANODY (AC);;bezpiecznik anodowy 5x20, napiecie znamionowe >= 400 V AC (np. Schurter SPT 5x20 500 V)
 K3;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;25.00;54.00;ANODY (AC);C61458;"anody (+45 s); dwa styki szeregowo"
-R2;100R 10W;R_Cement_10W_P55.88;GORA;70.00;63.00;ANODY (AC);;R_IN: udar ladowania kondensatorow Onyxa ok. 5 A
+R2;100R 10W;R_Cement_10W_P55.88_V;GORA;58.00;50.00;ANODY (AC);;R_IN: udar ladowania kondensatorow Onyxa ok. 5 A
 K4;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;25.00;72.00;ANODY (AC);C61458;"bocznik R_IN (+1,5 s); 2 styki rownolegle"
-J8;HT_L;TerminalBlock_1x02_P7.62_V;GORA;114.00;50.00;ANODY (AC);;zlacze srubowe 7,62 mm: do Onyx J103 (1 -> pin 1, 2 -> pin 2)
-J9;HT_R;TerminalBlock_1x02_P7.62_V;GORA;114.00;68.00;ANODY (AC);;zlacze srubowe 7,62 mm: do Onyx J203
+J8;HT_L;TerminalBlock_1x02_P7.62_V;GORA;94.00;42.00;ANODY (AC);;zlacze srubowe 7,62 mm: do Onyx J103 (1 -> pin 1, 2 -> pin 2)
+J9;HT_R;TerminalBlock_1x02_P7.62_V;GORA;94.00;60.00;ANODY (AC);;zlacze srubowe 7,62 mm: do Onyx J203
 J10;S4_IN;TerminalBlock_1x02_P5.08_V;GORA;5.00;84.00;BIAS (AC);;zlacze srubowe: S4 58 V z TR1
 F4;T100mA 250V;Fuseholder_5x20_Closed_P22.5;GORA;24.00;92.00;BIAS (AC);;bezpiecznik uzwojenia biasu
-J11;BIAS_L;TerminalBlock_1x02_P5.08;GORA;45.00;95.00;BIAS (AC);;zlacze srubowe: do Onyx J106
-J12;BIAS_R;TerminalBlock_1x02_P5.08;GORA;57.00;95.00;BIAS (AC);;zlacze srubowe: do Onyx J206
-J13;UA_IN;WirePad_4.5;GORA;72.00;80.00;POMIAR Ua;;"z Ua-L na plytce Onyxa (plus C121); przewod w izolacji 1 kV"
-R3;1M 1600V;R_Axial_1W_P15.24_V;GORA;93.00;89.00;POMIAR Ua;;np. Vishay VR37
-R4;1M 1600V;R_Axial_1W_P15.24_V;GORA;98.00;89.00;POMIAR Ua;;
-R5;1M 1600V;R_Axial_1W_P15.24_V;GORA;103.00;89.00;POMIAR Ua;;
-R6;15k;R_Axial_0.5W_P12.7_V;GORA;108.00;89.00;POMIAR Ua;;ok. 2,3 V przy 465 V
-J14;HV_SENSE;WirePad_3.5;GORA;113.00;82.00;POMIAR Ua;;do sterowania J5 pin 2
-J15;GND_ONYX;WirePad_4.5;GORA;67.00;93.00;ZLACZA;;masa: do gwiazdy na plytce Onyxa (minus C120)
-J18;GND_STER;WirePad_3.5;GORA;113.00;89.00;ZLACZA;;masa pomiaru: do sterowania J5
-R7;220k 1W;R_Axial_1W_P15.24_V;GORA;77.00;89.00;LED HV;;LED HV ok. 1 mA
-R8;220k 1W;R_Axial_1W_P15.24_V;GORA;82.00;89.00;LED HV;;
-D1;LED HV czerwona;LED_D3.0_P2.54;GORA;87.00;92.00;LED HV;;"swieci, dopoki na plytce Onyxa jest napiecie; NIE ZASTEPUJE MIERNIKA"
-J16;RELAY_A;PinHeader_1x03_P2.54_H;GORA;50.00;33.00;CEWKI K1-K4;;ze sterowania J2 piny 1,2,3
-J17;RELAY_B;PinHeader_1x03_P2.54_H;GORA;50.00;75.00;CEWKI K1-K4;;ze sterowania J2 piny 1,4,5
-D2;1N4148;D_DO-35_P7.62;GORA;62.00;31.00;CEWKI K1-K4;;
-D3;1N4148;D_DO-35_P7.62;GORA;62.00;35.00;CEWKI K1-K4;;
-D4;1N4148;D_DO-35_P7.62;GORA;62.00;74.00;CEWKI K1-K4;;
-D5;1N4148;D_DO-35_P7.62;GORA;62.00;78.00;CEWKI K1-K4;;
+J11;BIAS_L;TerminalBlock_1x02_P5.08;GORA;52.00;95.00;BIAS (AC);;zlacze srubowe: do Onyx J106
+J12;BIAS_R;TerminalBlock_1x02_P5.08;GORA;62.00;95.00;BIAS (AC);;zlacze srubowe: do Onyx J206
+J13;UA_IN;WirePad_4.5;GORA;70.00;75.00;POMIAR Ua;;"z Ua-L na plytce Onyxa (plus C121); przewod w izolacji 1 kV"
+R3;1M 1600V;R_Axial_1W_P15.24_V;GORA;80.00;88.00;POMIAR Ua;;np. Vishay VR37
+R4;1M 1600V;R_Axial_1W_P15.24_V;GORA;85.00;88.00;POMIAR Ua;;
+R5;1M 1600V;R_Axial_1W_P15.24_V;GORA;90.00;88.00;POMIAR Ua;;
+R6;15k;R_Axial_0.5W_P12.7_V;GORA;94.00;84.00;POMIAR Ua;;ok. 2,3 V przy 465 V
+J14;HV_SENSE;WirePad_3.5;GORA;97.50;75.00;POMIAR Ua;;do sterowania J5 pin 2
+J15;GND_ONYX;WirePad_4.5;GORA;87.00;74.00;ZLACZA;;masa: do gwiazdy na plytce Onyxa (minus C120)
+J18;GND_STER;WirePad_3.5;GORA;92.00;74.50;ZLACZA;;masa pomiaru: do sterowania J5
+R7;220k 1W;R_Axial_1W_P15.24_V;GORA;70.00;88.00;LED HV;;LED HV ok. 1 mA
+R8;220k 1W;R_Axial_1W_P15.24_V;GORA;75.00;89.00;LED HV;;
+D1;LED HV czerwona;LED_D3.0_P2.54;GORA;63.50;89.00;LED HV;;"swieci, dopoki na plytce Onyxa jest napiecie; NIE ZASTEPUJE MIERNIKA"
+J16;RELAY_A;PinHeader_1x03_P2.54;GORA;46.00;68.00;CEWKI K1-K4;;ze sterowania J2 piny 1,2,3
+J17;RELAY_B;PinHeader_1x03_P2.54;GORA;46.00;78.00;CEWKI K1-K4;;ze sterowania J2 piny 1,4,5
+D2;1N4148;D_DO-35_P7.62_V;GORA;52.00;66.00;CEWKI K1-K4;;
+D3;1N4148;D_DO-35_P7.62_V;GORA;50.00;77.00;CEWKI K1-K4;;
+D4;1N4148;D_DO-35_P7.62_V;GORA;42.00;86.00;CEWKI K1-K4;;
+D5;1N4148;D_DO-35_P7.62_V;GORA;45.50;87.00;CEWKI K1-K4;;
 MH1;M3;MountingHole_M3;GORA;4.50;4.50;OTWORY;;
-MH2;M3;MountingHole_M3;GORA;115.50;4.50;OTWORY;;
+MH2;M3;MountingHole_M3;GORA;95.50;4.50;OTWORY;;
 MH3;M3;MountingHole_M3;GORA;4.50;95.50;OTWORY;;
-MH4;M3;MountingHole_M3;GORA;115.50;95.50;OTWORY;;
+MH4;M3;MountingHole_M3;GORA;95.50;95.50;OTWORY;;

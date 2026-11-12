@@ -1,7 +1,7 @@
 WILLIAMSON KT88 - PLYTKA ZASILACZA v1.0 (12.11.2026)
 ====================================================
 
-Plytka 120 x 100 mm, dwustronna, FR-4 1,6 mm, miedz 1 oz. 39 elementow, 26 sieci.
+Plytka 100 x 100 mm (cena JLCPCB jak dla malych plytek), dwustronna, FR-4 1,6 mm, miedz 1 oz. 39 elementow, 26 sieci.
 Bez prostownikow i kondensatorow (sa na plytce Onyxa). Opis ukladu: docs/09-integracja-soloist.md.
 
 PLIKI
@@ -13,16 +13,19 @@ PLIKI
     zasilacz_williamson_Standard_pcb.zip        - EasyEDA Standard: import PCB (KiCad 4)
   KiCad4_dla_EasyEDA_Standard/, KiCad5_dla_EasyEDA_Pro_i_KiCad8/ - te same projekty rozpakowane
   zasilacz_williamson_BOM.csv, _netlista.csv     - lista elementow i polaczen
-  zasilacz_williamson_klasy_sieci.csv            - szerokosci sciezek i odstepy do ustawienia w EasyEDA
+  zasilacz_williamson_klasy_sieci.csv            - szerokosci sciezek i odstepy (tylko do wgladu - sa juz w plikach PCB)
   zasilacz_williamson_rozmieszczenie.png/.svg    - rozmieszczenie (czerwone pola = wysokie napiecie)
   zasilacz_williamson_schemat.png                - podglad schematu
 
 PCB JEST ROZMIESZCZONE, ALE NIEPOPROWADZONE (linie polaczen / ratsnest), jak plytki Soloista.
-  1. Ustaw klasy sieci z pliku _klasy_sieci.csv (SIEC 1,5 mm, ANODY 1,0 mm, odstep 2,5 mm).
-  2. Poprowadz recznie albo autorouterem, potem DRC.
-  3. Masy nie lacz z otworami montazowymi (plytka na tulejach dystansowych).
-  4. Miedzy sieciami 230 V / anodowymi a reszta zostaw min. 2,5 mm (najlepiej frezowanie
-     szczeliny pod K1-K4 miedzy cewka a stykami, jesli zmiesci sie w DRC).
+  KLASY SIECI SA W PLIKACH .kicad_pcb (net_class) - EasyEDA wczytuje je przy imporcie, nic nie
+  wpisujesz recznie. Kazda siec ma przypisana szerokosc sciezki i odstep:
+    SIEC_230 2,0 / 3,0 mm   HT_AC 1,5 / 3,0   HV_DC 0,6 / 3,0   HV_MID 0,6 / 2,0
+    BIAS_AC 0,6 / 1,0       POMIAR 0,4 / 0,5  CEWKI 0,5 / 0,3   GND 1,0 / 0,3
+  1. Poprowadz recznie albo autorouterem (EasyEDA bierze szerokosci z klas), potem DRC.
+  2. Masy nie lacz z otworami montazowymi (plytka na tulejach dystansowych).
+  3. Odstep cewki K1-K4 od stykow (230 V / anody) najlepiej 6 mm - nie prowadz +12V/RLY
+     miedzy nozkami stykow.
 
 ZLACZA
   J1  SIEC      1 L (po F1 w IEC i wylaczniku), 2 N           sruby 5,08 mm
@@ -43,10 +46,9 @@ ZLACZA
 PRZED ZAMOWIENIEM SPRAWDZ
   1. Przekaznik G2RL-2: bez zasilania cewki 3-2 i 6-7 zwarte, przy 12 V na 1-8 zwarte 3-4 i 6-5
      (jak w Soloiscie; uklad otworow z biblioteki KiCad).
-  2. Oprawki bezpiecznikow (F3 ma otwory na 5x20 i 6,3x32), zlacza srubowe, rezystory 10 W
+  2. Oprawki bezpiecznikow 5x20 (F3 pionowo; bezpiecznik 500 V, np. Schurter SPT), zlacza srubowe, rezystory 10 W
      (rozstaw 55,88 mm) i 1M 1600 V (rozstaw 15,24 mm) - przyloz do wydruku 1:1.
-  3. Miejsce w obudowie: plytka ma 120 mm szerokosci (zajmuje miejsce po zasilacz_siec i czesc
-     wolnego miejsca po zasilacz_hv w przednim rzedzie).
+  3. Rezystory 10 W stoja wzdluz plytki (pionowo na rysunku) - w obudowie miejsce po zasilacz_siec.
 
 Generator: narzedzia/pcb/zasilacz_pcb.py (python3 zasilacz_pcb.py). Biblioteka footprintow i
 symboli (pcbgen.py, schwired.py) z projektu Soloist-KT88.

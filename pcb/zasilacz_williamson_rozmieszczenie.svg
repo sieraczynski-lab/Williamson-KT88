@@ -1,49 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.0 -6.0 132.0 112.0" width="132.0mm" height="112.0mm" font-family="IBM Plex Mono, monospace">
-<rect x="0" y="0" width="120.00" height="100.00" class="board"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.0 -6.0 112.0 112.0" width="112.0mm" height="112.0mm" font-family="IBM Plex Mono, monospace">
+<rect x="0" y="0" width="100.00" height="100.00" class="board"/>
 <rect x="0.75" y="7.92" width="8.50" height="10.16" class="body"/>
-<rect x="56.00" y="3.00" width="28.00" height="10.00" class="body"/>
+<rect x="63.00" y="7.00" width="28.00" height="10.00" class="body"/>
 <rect x="0.75" y="24.92" width="8.50" height="10.16" class="body"/>
 <rect x="10.60" y="5.75" width="28.80" height="12.50" class="body"/>
 <rect x="10.60" y="23.75" width="28.80" height="12.50" class="body"/>
-<rect x="46.00" y="16.00" width="48.00" height="10.00" class="body"/>
-<rect x="110.75" y="11.92" width="8.50" height="10.16" class="body"/>
+<rect x="41.00" y="8.00" width="10.00" height="48.00" class="body"/>
+<rect x="90.75" y="16.92" width="8.50" height="10.16" class="body"/>
 <rect x="0.50" y="47.38" width="10.00" height="15.24" class="body"/>
-<rect x="61.00" y="39.00" width="28.00" height="10.00" class="body"/>
-<rect x="55.00" y="38.00" width="40.00" height="12.00" class="body"/>
+<rect x="65.00" y="24.00" width="10.00" height="28.00" class="body"/>
 <rect x="10.60" y="47.75" width="28.80" height="12.50" class="body"/>
-<rect x="46.00" y="58.00" width="48.00" height="10.00" class="body"/>
+<rect x="53.00" y="26.00" width="10.00" height="48.00" class="body"/>
 <rect x="10.60" y="65.75" width="28.80" height="12.50" class="body"/>
-<rect x="109.00" y="42.38" width="10.00" height="15.24" class="body"/>
-<rect x="109.00" y="60.38" width="10.00" height="15.24" class="body"/>
+<rect x="89.00" y="34.38" width="10.00" height="15.24" class="body"/>
+<rect x="89.00" y="52.38" width="10.00" height="15.24" class="body"/>
 <rect x="0.75" y="78.92" width="8.50" height="10.16" class="body"/>
 <rect x="10.00" y="87.00" width="28.00" height="10.00" class="body"/>
-<rect x="39.92" y="90.75" width="10.16" height="8.50" class="body"/>
-<rect x="51.92" y="90.75" width="10.16" height="8.50" class="body"/>
-<circle cx="72.00" cy="80.00" r="2.85" class="body"/>
-<rect x="90.75" y="83.25" width="4.50" height="11.50" class="body"/>
-<rect x="95.75" y="83.25" width="4.50" height="11.50" class="body"/>
-<rect x="100.75" y="83.25" width="4.50" height="11.50" class="body"/>
-<rect x="106.40" y="84.50" width="3.20" height="9.00" class="body"/>
-<circle cx="113.00" cy="82.00" r="2.35" class="body"/>
-<circle cx="67.00" cy="93.00" r="2.85" class="body"/>
-<circle cx="113.00" cy="89.00" r="2.35" class="body"/>
-<rect x="74.75" y="83.25" width="4.50" height="11.50" class="body"/>
-<rect x="79.75" y="83.25" width="4.50" height="11.50" class="body"/>
-<circle cx="87.00" cy="92.00" r="1.60" class="body"/>
-<rect x="46.19" y="31.73" width="7.62" height="2.54" class="body"/>
-<rect x="46.19" y="73.73" width="7.62" height="2.54" class="body"/>
-<rect x="60.00" y="30.05" width="4.00" height="1.90" class="body"/>
-<rect x="60.00" y="34.05" width="4.00" height="1.90" class="body"/>
-<rect x="60.00" y="73.05" width="4.00" height="1.90" class="body"/>
-<rect x="60.00" y="77.05" width="4.00" height="1.90" class="body"/>
+<rect x="46.92" y="90.75" width="10.16" height="8.50" class="body"/>
+<rect x="56.92" y="90.75" width="10.16" height="8.50" class="body"/>
+<circle cx="70.00" cy="75.00" r="2.85" class="body"/>
+<rect x="77.75" y="82.25" width="4.50" height="11.50" class="body"/>
+<rect x="82.75" y="82.25" width="4.50" height="11.50" class="body"/>
+<rect x="87.75" y="82.25" width="4.50" height="11.50" class="body"/>
+<rect x="92.40" y="79.50" width="3.20" height="9.00" class="body"/>
+<circle cx="97.50" cy="75.00" r="2.35" class="body"/>
+<circle cx="87.00" cy="74.00" r="2.85" class="body"/>
+<circle cx="92.00" cy="74.50" r="2.35" class="body"/>
+<rect x="67.75" y="82.25" width="4.50" height="11.50" class="body"/>
+<rect x="72.75" y="83.25" width="4.50" height="11.50" class="body"/>
+<circle cx="63.50" cy="89.00" r="1.60" class="body"/>
+<rect x="44.73" y="64.19" width="2.54" height="7.62" class="body"/>
+<rect x="44.73" y="74.19" width="2.54" height="7.62" class="body"/>
+<rect x="51.05" y="64.00" width="1.90" height="4.00" class="body"/>
+<rect x="49.05" y="75.00" width="1.90" height="4.00" class="body"/>
+<rect x="41.05" y="84.00" width="1.90" height="4.00" class="body"/>
+<rect x="44.55" y="85.00" width="1.90" height="4.00" class="body"/>
 <circle cx="4.50" cy="4.50" r="3.60" class="body"/>
-<circle cx="115.50" cy="4.50" r="3.60" class="body"/>
+<circle cx="95.50" cy="4.50" r="3.60" class="body"/>
 <circle cx="4.50" cy="95.50" r="3.60" class="body"/>
-<circle cx="115.50" cy="95.50" r="3.60" class="body"/>
+<circle cx="95.50" cy="95.50" r="3.60" class="body"/>
 <rect x="3.80" y="9.26" width="2.40" height="2.40" class="pad hv"/>
 <ellipse cx="5.00" cy="15.54" rx="1.20" ry="1.20" class="pad hv"/>
-<ellipse cx="58.75" cy="8.00" rx="1.50" ry="1.50" class="pad hv"/>
-<ellipse cx="81.25" cy="8.00" rx="1.50" ry="1.50" class="pad hv"/>
+<ellipse cx="65.75" cy="12.00" rx="1.50" ry="1.50" class="pad hv"/>
+<ellipse cx="88.25" cy="12.00" rx="1.50" ry="1.50" class="pad hv"/>
 <rect x="3.80" y="26.26" width="2.40" height="2.40" class="pad hv"/>
 <ellipse cx="5.00" cy="32.54" rx="1.20" ry="1.20" class="pad hv"/>
 <rect x="11.65" y="14.50" width="2.50" height="2.50" class="pad"/>
@@ -62,16 +61,14 @@
 <ellipse cx="32.90" cy="26.25" rx="1.25" ry="1.25" class="pad hv"/>
 <ellipse cx="27.90" cy="26.25" rx="1.25" ry="1.25" class="pad"/>
 <ellipse cx="12.90" cy="26.25" rx="1.25" ry="1.25" class="pad"/>
-<ellipse cx="42.06" cy="21.00" rx="1.40" ry="1.40" class="pad hv"/>
-<ellipse cx="97.94" cy="21.00" rx="1.40" ry="1.40" class="pad hv"/>
-<rect x="113.80" y="13.26" width="2.40" height="2.40" class="pad hv"/>
-<ellipse cx="115.00" cy="19.54" rx="1.20" ry="1.20" class="pad hv"/>
+<ellipse cx="46.00" cy="4.06" rx="1.40" ry="1.40" class="pad hv"/>
+<ellipse cx="46.00" cy="59.94" rx="1.40" ry="1.40" class="pad hv"/>
+<rect x="93.80" y="18.26" width="2.40" height="2.40" class="pad hv"/>
+<ellipse cx="95.00" cy="24.54" rx="1.20" ry="1.20" class="pad hv"/>
 <rect x="4.00" y="49.69" width="3.00" height="3.00" class="pad hv"/>
 <ellipse cx="5.50" cy="58.81" rx="1.50" ry="1.50" class="pad hv"/>
-<rect x="62.35" y="42.60" width="2.80" height="2.80" class="pad hv"/>
-<ellipse cx="86.25" cy="44.00" rx="1.40" ry="1.40" class="pad hv"/>
-<rect x="58.60" y="42.60" width="2.80" height="2.80" class="pad hv"/>
-<ellipse cx="90.00" cy="44.00" rx="1.40" ry="1.40" class="pad hv"/>
+<ellipse cx="70.00" cy="26.75" rx="1.50" ry="1.50" class="pad hv"/>
+<ellipse cx="70.00" cy="49.25" rx="1.50" ry="1.50" class="pad hv"/>
 <rect x="11.65" y="56.50" width="2.50" height="2.50" class="pad"/>
 <ellipse cx="27.90" cy="57.75" rx="1.25" ry="1.25" class="pad"/>
 <ellipse cx="32.90" cy="57.75" rx="1.25" ry="1.25" class="pad hv"/>
@@ -80,8 +77,8 @@
 <ellipse cx="32.90" cy="50.25" rx="1.25" ry="1.25" class="pad hv"/>
 <ellipse cx="27.90" cy="50.25" rx="1.25" ry="1.25" class="pad"/>
 <ellipse cx="12.90" cy="50.25" rx="1.25" ry="1.25" class="pad"/>
-<ellipse cx="42.06" cy="63.00" rx="1.40" ry="1.40" class="pad hv"/>
-<ellipse cx="97.94" cy="63.00" rx="1.40" ry="1.40" class="pad hv"/>
+<ellipse cx="58.00" cy="22.06" rx="1.40" ry="1.40" class="pad hv"/>
+<ellipse cx="58.00" cy="77.94" rx="1.40" ry="1.40" class="pad hv"/>
 <rect x="11.65" y="74.50" width="2.50" height="2.50" class="pad"/>
 <ellipse cx="27.90" cy="75.75" rx="1.25" ry="1.25" class="pad"/>
 <ellipse cx="32.90" cy="75.75" rx="1.25" ry="1.25" class="pad hv"/>
@@ -90,88 +87,89 @@
 <ellipse cx="32.90" cy="68.25" rx="1.25" ry="1.25" class="pad hv"/>
 <ellipse cx="27.90" cy="68.25" rx="1.25" ry="1.25" class="pad"/>
 <ellipse cx="12.90" cy="68.25" rx="1.25" ry="1.25" class="pad"/>
-<rect x="112.50" y="44.69" width="3.00" height="3.00" class="pad hv"/>
-<ellipse cx="114.00" cy="53.81" rx="1.50" ry="1.50" class="pad hv"/>
-<rect x="112.50" y="62.69" width="3.00" height="3.00" class="pad hv"/>
-<ellipse cx="114.00" cy="71.81" rx="1.50" ry="1.50" class="pad hv"/>
+<rect x="92.50" y="36.69" width="3.00" height="3.00" class="pad hv"/>
+<ellipse cx="94.00" cy="45.81" rx="1.50" ry="1.50" class="pad hv"/>
+<rect x="92.50" y="54.69" width="3.00" height="3.00" class="pad hv"/>
+<ellipse cx="94.00" cy="63.81" rx="1.50" ry="1.50" class="pad hv"/>
 <rect x="3.80" y="80.26" width="2.40" height="2.40" class="pad"/>
 <ellipse cx="5.00" cy="86.54" rx="1.20" ry="1.20" class="pad"/>
 <ellipse cx="12.75" cy="92.00" rx="1.50" ry="1.50" class="pad"/>
 <ellipse cx="35.25" cy="92.00" rx="1.50" ry="1.50" class="pad"/>
-<rect x="41.26" y="93.80" width="2.40" height="2.40" class="pad"/>
-<ellipse cx="47.54" cy="95.00" rx="1.20" ry="1.20" class="pad"/>
-<rect x="53.26" y="93.80" width="2.40" height="2.40" class="pad"/>
-<ellipse cx="59.54" cy="95.00" rx="1.20" ry="1.20" class="pad"/>
-<ellipse cx="72.00" cy="80.00" rx="2.25" ry="2.25" class="pad hv"/>
-<ellipse cx="93.00" cy="81.38" rx="1.00" ry="1.00" class="pad hv"/>
-<ellipse cx="93.00" cy="96.62" rx="1.00" ry="1.00" class="pad hv"/>
-<ellipse cx="98.00" cy="81.38" rx="1.00" ry="1.00" class="pad hv"/>
-<ellipse cx="98.00" cy="96.62" rx="1.00" ry="1.00" class="pad hv"/>
-<ellipse cx="103.00" cy="81.38" rx="1.00" ry="1.00" class="pad hv"/>
-<ellipse cx="103.00" cy="96.62" rx="1.00" ry="1.00" class="pad"/>
-<ellipse cx="108.00" cy="82.65" rx="0.90" ry="0.90" class="pad"/>
-<ellipse cx="108.00" cy="95.35" rx="0.90" ry="0.90" class="pad"/>
-<ellipse cx="113.00" cy="82.00" rx="1.75" ry="1.75" class="pad"/>
-<ellipse cx="67.00" cy="93.00" rx="2.25" ry="2.25" class="pad"/>
-<ellipse cx="113.00" cy="89.00" rx="1.75" ry="1.75" class="pad"/>
-<ellipse cx="77.00" cy="81.38" rx="1.00" ry="1.00" class="pad hv"/>
-<ellipse cx="77.00" cy="96.62" rx="1.00" ry="1.00" class="pad hv"/>
-<ellipse cx="82.00" cy="81.38" rx="1.00" ry="1.00" class="pad hv"/>
-<ellipse cx="82.00" cy="96.62" rx="1.00" ry="1.00" class="pad"/>
-<rect x="84.93" y="91.20" width="1.60" height="1.60" class="pad"/>
-<ellipse cx="88.27" cy="92.00" rx="0.80" ry="0.80" class="pad"/>
-<rect x="46.61" y="32.15" width="1.70" height="1.70" class="pad"/>
-<ellipse cx="50.00" cy="33.00" rx="0.85" ry="0.85" class="pad"/>
-<ellipse cx="52.54" cy="33.00" rx="0.85" ry="0.85" class="pad"/>
-<rect x="46.61" y="74.15" width="1.70" height="1.70" class="pad"/>
-<ellipse cx="50.00" cy="75.00" rx="0.85" ry="0.85" class="pad"/>
-<ellipse cx="52.54" cy="75.00" rx="0.85" ry="0.85" class="pad"/>
-<rect x="57.39" y="30.20" width="1.60" height="1.60" class="pad"/>
-<ellipse cx="65.81" cy="31.00" rx="0.80" ry="0.80" class="pad"/>
-<rect x="57.39" y="34.20" width="1.60" height="1.60" class="pad"/>
-<ellipse cx="65.81" cy="35.00" rx="0.80" ry="0.80" class="pad"/>
-<rect x="57.39" y="73.20" width="1.60" height="1.60" class="pad"/>
-<ellipse cx="65.81" cy="74.00" rx="0.80" ry="0.80" class="pad"/>
-<rect x="57.39" y="77.20" width="1.60" height="1.60" class="pad"/>
-<ellipse cx="65.81" cy="78.00" rx="0.80" ry="0.80" class="pad"/>
+<rect x="48.26" y="93.80" width="2.40" height="2.40" class="pad"/>
+<ellipse cx="54.54" cy="95.00" rx="1.20" ry="1.20" class="pad"/>
+<rect x="58.26" y="93.80" width="2.40" height="2.40" class="pad"/>
+<ellipse cx="64.54" cy="95.00" rx="1.20" ry="1.20" class="pad"/>
+<ellipse cx="70.00" cy="75.00" rx="2.25" ry="2.25" class="pad hv"/>
+<ellipse cx="80.00" cy="80.38" rx="1.00" ry="1.00" class="pad hv"/>
+<ellipse cx="80.00" cy="95.62" rx="1.00" ry="1.00" class="pad hv"/>
+<ellipse cx="85.00" cy="80.38" rx="1.00" ry="1.00" class="pad hv"/>
+<ellipse cx="85.00" cy="95.62" rx="1.00" ry="1.00" class="pad hv"/>
+<ellipse cx="90.00" cy="80.38" rx="1.00" ry="1.00" class="pad hv"/>
+<ellipse cx="90.00" cy="95.62" rx="1.00" ry="1.00" class="pad"/>
+<ellipse cx="94.00" cy="77.65" rx="0.90" ry="0.90" class="pad"/>
+<ellipse cx="94.00" cy="90.35" rx="0.90" ry="0.90" class="pad"/>
+<ellipse cx="97.50" cy="75.00" rx="1.75" ry="1.75" class="pad"/>
+<ellipse cx="87.00" cy="74.00" rx="2.25" ry="2.25" class="pad"/>
+<ellipse cx="92.00" cy="74.50" rx="1.75" ry="1.75" class="pad"/>
+<ellipse cx="70.00" cy="80.38" rx="1.00" ry="1.00" class="pad hv"/>
+<ellipse cx="70.00" cy="95.62" rx="1.00" ry="1.00" class="pad hv"/>
+<ellipse cx="75.00" cy="81.38" rx="1.00" ry="1.00" class="pad hv"/>
+<ellipse cx="75.00" cy="96.62" rx="1.00" ry="1.00" class="pad"/>
+<rect x="61.43" y="88.20" width="1.60" height="1.60" class="pad"/>
+<ellipse cx="64.77" cy="89.00" rx="0.80" ry="0.80" class="pad"/>
+<rect x="45.15" y="64.61" width="1.70" height="1.70" class="pad"/>
+<ellipse cx="46.00" cy="68.00" rx="0.85" ry="0.85" class="pad"/>
+<ellipse cx="46.00" cy="70.54" rx="0.85" ry="0.85" class="pad"/>
+<rect x="45.15" y="74.61" width="1.70" height="1.70" class="pad"/>
+<ellipse cx="46.00" cy="78.00" rx="0.85" ry="0.85" class="pad"/>
+<ellipse cx="46.00" cy="80.54" rx="0.85" ry="0.85" class="pad"/>
+<rect x="51.20" y="61.39" width="1.60" height="1.60" class="pad"/>
+<ellipse cx="52.00" cy="69.81" rx="0.80" ry="0.80" class="pad"/>
+<rect x="49.20" y="72.39" width="1.60" height="1.60" class="pad"/>
+<ellipse cx="50.00" cy="80.81" rx="0.80" ry="0.80" class="pad"/>
+<rect x="41.20" y="81.39" width="1.60" height="1.60" class="pad"/>
+<ellipse cx="42.00" cy="89.81" rx="0.80" ry="0.80" class="pad"/>
+<rect x="44.70" y="82.39" width="1.60" height="1.60" class="pad"/>
+<ellipse cx="45.50" cy="90.81" rx="0.80" ry="0.80" class="pad"/>
 <circle cx="4.50" cy="4.50" r="1.60" class="hole"/>
-<circle cx="115.50" cy="4.50" r="1.60" class="hole"/>
+<circle cx="95.50" cy="4.50" r="1.60" class="hole"/>
 <circle cx="4.50" cy="95.50" r="1.60" class="hole"/>
-<circle cx="115.50" cy="95.50" r="1.60" class="hole"/>
+<circle cx="95.50" cy="95.50" r="1.60" class="hole"/>
 <text x="5.00" y="13.90" class="ref" text-anchor="middle">J1</text>
-<text x="70.00" y="8.90" class="ref" text-anchor="middle">F2</text>
+<text x="77.00" y="12.90" class="ref" text-anchor="middle">F2</text>
 <text x="5.00" y="30.90" class="ref" text-anchor="middle">J3</text>
 <text x="25.00" y="12.90" class="ref" text-anchor="middle">K1</text>
 <text x="25.00" y="30.90" class="ref" text-anchor="middle">K2</text>
-<text x="70.00" y="21.90" class="ref" text-anchor="middle">R1</text>
-<text x="115.00" y="17.90" class="ref" text-anchor="middle">J5</text>
+<text x="46.00" y="32.90" class="ref" text-anchor="middle">R1</text>
+<text x="95.00" y="22.90" class="ref" text-anchor="middle">J5</text>
 <text x="5.50" y="55.90" class="ref" text-anchor="middle">J7</text>
-<text x="75.00" y="44.90" class="ref" text-anchor="middle">F3</text>
+<text x="70.00" y="38.90" class="ref" text-anchor="middle">F3</text>
 <text x="25.00" y="54.90" class="ref" text-anchor="middle">K3</text>
-<text x="70.00" y="63.90" class="ref" text-anchor="middle">R2</text>
+<text x="58.00" y="50.90" class="ref" text-anchor="middle">R2</text>
 <text x="25.00" y="72.90" class="ref" text-anchor="middle">K4</text>
-<text x="114.00" y="50.90" class="ref" text-anchor="middle">J8</text>
-<text x="114.00" y="68.90" class="ref" text-anchor="middle">J9</text>
+<text x="94.00" y="42.90" class="ref" text-anchor="middle">J8</text>
+<text x="94.00" y="60.90" class="ref" text-anchor="middle">J9</text>
 <text x="5.00" y="84.90" class="ref" text-anchor="middle">J10</text>
 <text x="24.00" y="92.90" class="ref" text-anchor="middle">F4</text>
-<text x="45.00" y="95.90" class="ref" text-anchor="middle">J11</text>
-<text x="57.00" y="95.90" class="ref" text-anchor="middle">J12</text>
-<text x="72.00" y="85.45" class="lab" text-anchor="middle">UA_IN</text>
-<text x="93.00" y="89.90" class="ref" text-anchor="middle">R3</text>
-<text x="98.00" y="89.90" class="ref" text-anchor="middle">R4</text>
-<text x="103.00" y="89.90" class="ref" text-anchor="middle">R5</text>
-<text x="108.00" y="89.90" class="ref" text-anchor="middle">R6</text>
-<text x="113.00" y="86.95" class="lab" text-anchor="middle">HV_SENSE</text>
-<text x="67.00" y="98.45" class="lab" text-anchor="middle">GND_ONYX</text>
-<text x="113.00" y="93.95" class="lab" text-anchor="middle">GND_STER</text>
-<text x="77.00" y="89.90" class="ref" text-anchor="middle">R7</text>
-<text x="82.00" y="89.90" class="ref" text-anchor="middle">R8</text>
-<text x="87.00" y="92.90" class="ref" text-anchor="middle">D1</text>
-<text x="50.00" y="33.90" class="ref" text-anchor="middle">J16</text>
-<text x="50.00" y="75.90" class="ref" text-anchor="middle">J17</text>
-<text x="62.00" y="31.90" class="ref" text-anchor="middle">D2</text>
-<text x="62.00" y="35.90" class="ref" text-anchor="middle">D3</text>
-<text x="62.00" y="74.90" class="ref" text-anchor="middle">D4</text>
-<text x="62.00" y="78.90" class="ref" text-anchor="middle">D5</text>
-<text x="54.00" y="55.00" class="title">WILLIAMSON KT88 ZASILACZ v1.0</text>
+<text x="52.00" y="95.90" class="ref" text-anchor="middle">J11</text>
+<text x="62.00" y="95.90" class="ref" text-anchor="middle">J12</text>
+<text x="70.00" y="80.45" class="lab" text-anchor="middle">UA_IN</text>
+<text x="80.00" y="88.90" class="ref" text-anchor="middle">R3</text>
+<text x="85.00" y="88.90" class="ref" text-anchor="middle">R4</text>
+<text x="90.00" y="88.90" class="ref" text-anchor="middle">R5</text>
+<text x="94.00" y="84.90" class="ref" text-anchor="middle">R6</text>
+<text x="97.50" y="79.95" class="lab" text-anchor="middle">HV_SENSE</text>
+<text x="87.00" y="79.45" class="lab" text-anchor="middle">GND_ONYX</text>
+<text x="92.00" y="79.45" class="lab" text-anchor="middle">GND_STER</text>
+<text x="70.00" y="88.90" class="ref" text-anchor="middle">R7</text>
+<text x="75.00" y="89.90" class="ref" text-anchor="middle">R8</text>
+<text x="63.50" y="89.90" class="ref" text-anchor="middle">D1</text>
+<text x="46.00" y="68.90" class="ref" text-anchor="middle">J16</text>
+<text x="46.00" y="78.90" class="ref" text-anchor="middle">J17</text>
+<text x="52.00" y="66.90" class="ref" text-anchor="middle">D2</text>
+<text x="50.00" y="77.90" class="ref" text-anchor="middle">D3</text>
+<text x="42.00" y="86.90" class="ref" text-anchor="middle">D4</text>
+<text x="45.50" y="87.90" class="ref" text-anchor="middle">D5</text>
+<text x="77.00" y="67.50" class="title" text-anchor="middle">WILLIAMSON KT88</text>
+<text x="77.00" y="70.00" class="title" text-anchor="middle">ZASILACZ v1.0</text>
 </svg>
