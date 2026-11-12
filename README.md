@@ -17,11 +17,14 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 |---|---|
 | [`schematy/kanal.svg`](schematy/kanal.svg) | Jeden kanał wg VA1523: 6SN7 (wejście + katodyna) → 6SN7 (driver) → 2× KT88 UL, bias osobno dla każdej lampy |
 | [`schematy/zasilacz.svg`](schematy/zasilacz.svg) | Zasilacz z płytki (osobno w każdym kanale): mostek, CLC z dławikiem 10 H, Uaa przez R128, bias, podniesienie żarzenia |
+| [`schematy/plytka_zasilacza.svg`](schematy/plytka_zasilacza.svg) | Własna płytka zasilacza: bezpieczniki, miękki start K1/K2, opóźnione anody K3/K4 z R_IN, napięcia przemienne do płytki Onyxa, pomiar Ua i dioda HV |
 | [`schematy/williamson-kt88.html`](schematy/williamson-kt88.html) | Oba schematy z punktami pracy, różnicami płytka/schemat, listą zmian i uruchomieniem (otwórz w przeglądarce) |
 
 ![Schemat kanału](schematy/kanal.svg)
 
 ![Zasilacz](schematy/zasilacz.svg)
+
+![Płytka zasilacza](schematy/plytka_zasilacza.svg)
 
 ## Najważniejsze dane
 
@@ -33,8 +36,8 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | Transformator wyjściowy | toroidy.pl **TTG-KT88PP** (u Onyxa Hammond 1650HA 6,6 kΩ) |
 | Sprzężenie zwrotne | R129 22k z **odczepu 8 Ω** (ok. 10 dB), C123 niemontowany |
 | Czułość / moc | ok. 0,5 V / ok. 40 W na kanał, kolumny na odczepie 4 Ω |
-| Transformator sieciowy | 400 VA: 360 V (+345 V)/0,65 A, 65 V/50 mA, 6,3 V/8 A, 6,3 V/3 A (ta sama specyfikacja co w Soloiście) |
-| Dławiki | z zasilaczem Soloista: jeden L1 12 H (L106/L206 zwarte); samodzielnie: 2× 10 H (L106, L206), min. 200 mA |
+| Transformator sieciowy | 400 VA: 360 V (odczepy 345/375 V)/0,65 A, 58 V/50 mA, 6,3 V/8 A, 6,3 V/3 A, ekran ([docs/08](docs/08-zamowienie-toroidy.md)) |
+| Dławiki | 2× 10 H na L106 / L206, min. 200 mA, DCR < 100 Ω |
 
 ## Płytka a schemat Onyxa
 
@@ -44,9 +47,9 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | R124 / R224 | 10 Ω / 470k | **10 Ω / 10 Ω** |
 | C123 / C223 | 56 pF | **brak** |
 
-## Zasilacz, sterowanie, dodatki i obudowa z Soloista
+## Zasilacz, sterowanie, dodatki i obudowa
 
-Płytka Onyxa dostaje całą infrastrukturę z [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88): miękki start i opóźnione anody, sterownik ESP32 z automatyczną korektą biasu, przełącznik UL / trioda, przełącznik kolumn z triggerem, selektor z drabinką głośności i obudowę. Płytki Soloista bez zmian w PCB, płytka Onyxa bez cięcia ścieżek. Szczegóły: [docs/09-integracja-soloist.md](docs/09-integracja-soloist.md), obudowa: [`obudowa/`](obudowa/).
+Płytka Onyxa dostaje własną, prostą płytkę zasilacza (bez prostowników i filtrów, bo te są na płytce Onyxa): miękki start, opóźnione anody, pomiar Ua. Z [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88) bierze sterownik ESP32 z automatyczną korektą biasu, przełącznik UL / trioda, przełącznik kolumn z triggerem, selektor z drabinką głośności i obudowę. Te płytki Soloista bez zmian w PCB, płytka Onyxa bez cięcia ścieżek. Szczegóły: [docs/09-integracja-soloist.md](docs/09-integracja-soloist.md), obudowa: [`obudowa/`](obudowa/).
 
 ![Obudowa z płytką Onyxa pod pokrywą](obudowa/widok_przod.png)
 
@@ -58,7 +61,7 @@ Płytka Onyxa dostaje całą infrastrukturę z [Soloist-KT88](https://github.com
 - **Dodatek:** rezystor 100 Ω / 2 W między 4 Ω a COM (wzmacniacz nie pracuje bez obciążenia).
 - **Odpowiedzi Onyxa (12.11.2026):** u niego TR1 to toroidy.pl TSTA-0300/001 (300 VA), radzi większy, więc 400 VA jest w porządku. Sprzężenie zwrotne z odczepu 8 Ω (zgodnie z planem). C123 i ewentualnie R102/C101 tylko pod prostokąt (u niego niepotrzebne). Pomyłki na schemacie potwierdzone. Szczegóły w [docs/07](docs/07-wersje-onyxa.md#odpowiedzi-onyxa-12112026).
 - **Do sprawdzenia na płytce:** dokąd idzie sieć UaFF-L2 (środek żarzenia KT88).
-- Projekt równoległy: [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88) (Mullard: EF86 + E88CC LTP + KT88), z tym samym transformatorem sieciowym i toroidami.
+- Projekt równoległy: [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88) (Mullard: EF86 + E88CC LTP + KT88), z podobnym transformatorem sieciowym i tymi samymi toroidami.
 
 ## Notatki
 
@@ -70,7 +73,7 @@ Płytka Onyxa dostaje całą infrastrukturę z [Soloist-KT88](https://github.com
 6. [Zamawianie płytek PCB](docs/06-pcb.md)
 7. [Wersje Onyxa: zdjęcia, schemat i płytka VA1523](docs/07-wersje-onyxa.md)
 8. [Specyfikacja do zamówienia w toroidy.pl](docs/08-zamowienie-toroidy.md)
-9. [Zasilacz, sterowanie, dodatki i obudowa z Soloista](docs/09-integracja-soloist.md)
+9. [Zasilacz, sterowanie, dodatki i obudowa](docs/09-integracja-soloist.md)
 
 ## Generowanie schematów
 

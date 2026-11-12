@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" width="1400" height="700">
+<style>
+.w{fill:none;stroke:#22343a;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.part{fill:#f8faf6;stroke:#22343a;stroke-width:1.6}
+.chgp{stroke:#b4560f;fill:#f6e5d6}
+.plate{stroke:#22343a;stroke-width:2.4;fill:none}
+.plate.chgp{stroke:#b4560f}
+.dot{fill:#22343a}
+.tube{fill:none;stroke:#22343a;stroke-width:1.6}
+.el{fill:none;stroke:#22343a;stroke-width:2}
+.grid{stroke-dasharray:3 3;stroke-width:1.6}
+.coil{fill:none;stroke:#22343a;stroke-width:1.8}
+.chgc{stroke:#b4560f}
+.core{stroke:#22343a;stroke-width:2.4}
+.flagm{fill:#22343a}
+.term{fill:#f8faf6;stroke:#22343a;stroke-width:1.6}
+text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
+.ref{font-size:12px;font-weight:600}
+.val{font-size:11.5px;fill:#56656a}
+.ref.chg,.val.chg,.rail.chg,.tref.chg,.ttyp.chg{fill:#b4560f}
+.tref{font-family:"Arial Narrow",sans-serif;font-size:16px;font-weight:700}
+.ttyp{font-size:11.5px;fill:#56656a}
+.rail{font-size:12px;font-weight:600}
+.op{font-size:11px;fill:#1f6b6f}
+.net{font-size:11px;fill:#56656a;font-style:italic}
+.pol{font-size:13px;fill:#22343a}
+</style>
+<rect width="100%" height="100%" fill="#f8faf6"/>
+<circle class="term" cx="30" cy="100" r="5"/>
+<text class="ref" x="30" y="84" text-anchor="middle">L</text>
+<circle class="term" cx="30" cy="300" r="5"/>
+<text class="ref" x="30" y="326" text-anchor="middle">N</text>
+<polyline class="w" points="35,100 50,100"/>
+<polyline class="w" points="50,100 67,100"/>
+<polyline class="w" points="103,100 120,100"/>
+<rect class="part" x="67" y="93" width="36" height="14"/>
+<text class="ref" x="85" y="122" text-anchor="middle">F1</text>
+<text class="val" x="85" y="136" text-anchor="middle">T2,5 A (gniazdo IEC)</text>
+<polyline class="w" points="120,100 150,100"/>
+<circle class="dot" cx="140" cy="100" r="3.2"/>
+<polyline class="w" points="140,100 140,170 160,170"/>
+<polyline class="w" points="160,170 182,170"/>
+<polyline class="w" points="218,170 240,170"/>
+<rect class="part" x="182" y="163" width="36" height="14"/>
+<text class="ref" x="200" y="192" text-anchor="middle">F2</text>
+<text class="val" x="200" y="206" text-anchor="middle">T500 mA</text>
+<polyline class="w" points="240,170 260,170"/>
+<circle class="term" cx="265" cy="170" r="5"/>
+<polyline class="w" points="35,300 400,300"/>
+<circle class="dot" cx="250" cy="300" r="3.2"/>
+<polyline class="w" points="250,300 250,200 260,200"/>
+<circle class="term" cx="265" cy="200" r="5"/>
+<text class="ref" x="277" y="174" text-anchor="start">J3 L</text>
+<text class="ref" x="277" y="204" text-anchor="start">J3 N</text>
+<text class="net" x="277" y="224" text-anchor="start">→ PS1 czuwanie</text>
+<text class="net" x="277" y="238" text-anchor="start">IRM-15-12</text>
+<polyline class="w" points="150,100 162,100"/>
+<polyline class="w" points="218,100 230,100"/>
+<circle class="dot" cx="162" cy="100" r="2.6"/>
+<circle class="dot" cx="218" cy="100" r="2.6"/>
+<line class="w" x1="162" y1="100" x2="216" y2="86"/>
+<text class="ref" x="190" y="122" text-anchor="middle">K1</text>
+<text class="val" x="190" y="136" text-anchor="middle">sieć</text>
+<circle class="dot" cx="240" cy="100" r="3.2"/>
+<polyline class="w" points="230,100 260,100"/>
+<polyline class="w" points="260,100 285,100"/>
+<polyline class="w" points="325,100 350,100"/>
+<rect class="part" x="285" y="93" width="40" height="14"/>
+<text class="ref" x="305" y="122" text-anchor="middle">R1  R_SS</text>
+<text class="val" x="305" y="136" text-anchor="middle">47 Ω 10 W</text>
+<polyline class="w" points="350,100 400,100"/>
+<circle class="dot" cx="370" cy="100" r="3.2"/>
+<polyline class="w" points="240,100 240,50"/>
+<polyline class="w" points="240,50 252,50"/>
+<polyline class="w" points="358,50 370,50"/>
+<circle class="dot" cx="252" cy="50" r="2.6"/>
+<circle class="dot" cx="358" cy="50" r="2.6"/>
+<line class="w" x1="252" y1="50" x2="356" y2="36"/>
+<text class="ref" x="305" y="16" text-anchor="middle">K2</text>
+<text class="val" x="305" y="30" text-anchor="middle">+1,5 s</text>
+<polyline class="w" points="370,50 370,100"/>
+<path class="coil" d="M400 100 A8.33333 8.33333 0 0 1 400 116.667 A8.33333 8.33333 0 0 1 400 133.333 A8.33333 8.33333 0 0 1 400 150 A8.33333 8.33333 0 0 1 400 166.667 A8.33333 8.33333 0 0 1 400 183.333 A8.33333 8.33333 0 0 1 400 200 A8.33333 8.33333 0 0 1 400 216.667 A8.33333 8.33333 0 0 1 400 233.333 A8.33333 8.33333 0 0 1 400 250 A8.33333 8.33333 0 0 1 400 266.667 A8.33333 8.33333 0 0 1 400 283.333 A8.33333 8.33333 0 0 1 400 300"/>
+<line class="core" x1="424" y1="50" x2="424" y2="640"/>
+<line class="core" x1="434" y1="50" x2="434" y2="640"/>
+<text class="ref chg" x="429" y="672" text-anchor="middle">TR1 toroid 400 VA, ekran do PE</text>
+<text class="val chg" x="429" y="687" text-anchor="middle">S1 360 V (345 / 375) · S4 58 V · S2 6,3 V/8 A · S3 6,3 V/3 A</text>
+<path class="coil" d="M458 70 A8.125 8.125 0 0 0 458 86.25 A8.125 8.125 0 0 0 458 102.5 A8.125 8.125 0 0 0 458 118.75 A8.125 8.125 0 0 0 458 135 A8.125 8.125 0 0 0 458 151.25 A8.125 8.125 0 0 0 458 167.5 A8.125 8.125 0 0 0 458 183.75 A8.125 8.125 0 0 0 458 200"/>
+<text class="op" x="470" y="132" text-anchor="start">S1 360 V / 0,65 A</text>
+<text class="op" x="470" y="146" text-anchor="start">odczepy 345 / 375 V</text>
+<polyline class="w" points="458,70 470,70"/>
+<polyline class="w" points="470,70 492,70"/>
+<polyline class="w" points="528,70 550,70"/>
+<rect class="part" x="492" y="63" width="36" height="14"/>
+<text class="ref" x="510" y="92" text-anchor="middle">F3</text>
+<text class="val" x="510" y="106" text-anchor="middle">T1 A 500 V</text>
+<polyline class="w" points="550,70 562,70"/>
+<polyline class="w" points="638,70 650,70"/>
+<circle class="dot" cx="562" cy="70" r="2.6"/>
+<circle class="dot" cx="638" cy="70" r="2.6"/>
+<line class="w" x1="562" y1="70" x2="636" y2="56"/>
+<text class="ref" x="600" y="92" text-anchor="middle">K3</text>
+<text class="val" x="600" y="106" text-anchor="middle">+45 s</text>
+<polyline class="w" points="650,70 670,70"/>
+<circle class="dot" cx="670" cy="70" r="3.2"/>
+<polyline class="w" points="670,70 708,70"/>
+<polyline class="w" points="752,70 790,70"/>
+<rect class="part" x="708" y="63" width="44" height="14"/>
+<text class="ref" x="730" y="92" text-anchor="middle">R2  R_IN</text>
+<text class="val" x="730" y="106" text-anchor="middle">100 Ω 10 W</text>
+<polyline class="w" points="790,70 830,70"/>
+<circle class="dot" cx="810" cy="70" r="3.2"/>
+<polyline class="w" points="670,70 670,30"/>
+<polyline class="w" points="670,30 682,30"/>
+<polyline class="w" points="798,30 810,30"/>
+<circle class="dot" cx="682" cy="30" r="2.6"/>
+<circle class="dot" cx="798" cy="30" r="2.6"/>
+<line class="w" x1="682" y1="30" x2="796" y2="16"/>
+<text class="ref" x="740" y="-4" text-anchor="middle"></text>
+<text class="val" x="740" y="10" text-anchor="middle"></text>
+<text class="ref" x="740" y="20" text-anchor="middle">K4  +1,5 s</text>
+<polyline class="w" points="810,30 810,70"/>
+<polyline class="w" points="830,70 900,70"/>
+<circle class="dot" cx="880" cy="70" r="3.2"/>
+<polyline class="w" points="880,70 880,96 900,96"/>
+<circle class="term" cx="905" cy="70" r="5"/>
+<circle class="term" cx="905" cy="96" r="5"/>
+<text class="ref" x="917" y="74" text-anchor="start">J103-1 (L)</text>
+<text class="ref" x="917" y="100" text-anchor="start">J203-1 (P)</text>
+<polyline class="w" points="458,200 880,200"/>
+<circle class="dot" cx="860" cy="200" r="3.2"/>
+<polyline class="w" points="860,200 860,226 900,226"/>
+<polyline class="w" points="880,200 900,200"/>
+<circle class="term" cx="905" cy="200" r="5"/>
+<circle class="term" cx="905" cy="226" r="5"/>
+<text class="ref" x="917" y="204" text-anchor="start">J103-2</text>
+<text class="ref" x="917" y="230" text-anchor="start">J203-2</text>
+<text class="net" x="620" y="132" text-anchor="start">→ mostki, filtry i dławiki 10 H</text>
+<text class="net" x="620" y="146" text-anchor="start">   na płytce Onyxa: Ua ≈ 465 V</text>
+<path class="coil" d="M458 250 A8.75 8.75 0 0 0 458 267.5 A8.75 8.75 0 0 0 458 285 A8.75 8.75 0 0 0 458 302.5 A8.75 8.75 0 0 0 458 320"/>
+<text class="op" x="470" y="290" text-anchor="start">S4 58 V</text>
+<polyline class="w" points="458,250 560,250"/>
+<polyline class="w" points="560,250 582,250"/>
+<polyline class="w" points="618,250 640,250"/>
+<rect class="part" x="582" y="243" width="36" height="14"/>
+<text class="ref" x="600" y="224" text-anchor="middle">F4</text>
+<text class="val" x="600" y="238" text-anchor="middle">T100 mA</text>
+<polyline class="w" points="640,250 880,250"/>
+<circle class="dot" cx="880" cy="250" r="3.2"/>
+<polyline class="w" points="880,250 880,276 900,276"/>
+<polyline class="w" points="880,250 900,250"/>
+<polyline class="w" points="458,320 880,320"/>
+<circle class="dot" cx="860" cy="320" r="3.2"/>
+<polyline class="w" points="860,320 860,346 900,346"/>
+<polyline class="w" points="880,320 900,320"/>
+<circle class="term" cx="905" cy="250" r="5"/>
+<circle class="term" cx="905" cy="276" r="5"/>
+<circle class="term" cx="905" cy="320" r="5"/>
+<circle class="term" cx="905" cy="346" r="5"/>
+<text class="ref" x="917" y="254" text-anchor="start">J106-1</text>
+<text class="ref" x="917" y="280" text-anchor="start">J206-1</text>
+<text class="ref" x="917" y="324" text-anchor="start">J106-2</text>
+<text class="ref" x="917" y="350" text-anchor="start">J206-2</text>
+<text class="net" x="580" y="290" text-anchor="start">→ mostki biasu Onyxa: ok. −80 V</text>
+<path class="coil" d="M458 400 A7.5 7.5 0 0 0 458 415 A7.5 7.5 0 0 0 458 430 A7.5 7.5 0 0 0 458 445 A7.5 7.5 0 0 0 458 460"/>
+<text class="op" x="470" y="436" text-anchor="start">S2 6,3 V / 8 A</text>
+<polyline class="w" points="458,400 880,400"/>
+<polyline class="w" points="458,460 880,460"/>
+<circle class="dot" cx="860" cy="400" r="3.2"/>
+<circle class="dot" cx="840" cy="460" r="3.2"/>
+<polyline class="w" points="860,400 860,426 900,426"/>
+<polyline class="w" points="840,460 840,486 900,486"/>
+<polyline class="w" points="880,400 900,400"/>
+<polyline class="w" points="880,460 900,460"/>
+<circle class="term" cx="905" cy="400" r="5"/>
+<circle class="term" cx="905" cy="426" r="5"/>
+<circle class="term" cx="905" cy="460" r="5"/>
+<circle class="term" cx="905" cy="486" r="5"/>
+<text class="ref" x="917" y="404" text-anchor="start">J105-1</text>
+<text class="ref" x="917" y="430" text-anchor="start">J205-1</text>
+<text class="ref" x="917" y="464" text-anchor="start">J105-2</text>
+<text class="ref" x="917" y="490" text-anchor="start">J205-2</text>
+<text class="net" x="730" y="446" text-anchor="start">→ 4× KT88, 6,4 A</text>
+<circle class="dot" cx="640" cy="400" r="3.2"/>
+<circle class="dot" cx="640" cy="460" r="3.2"/>
+<polyline class="w" points="640,400 640,406"/>
+<polyline class="w" points="640,424 640,430"/>
+<rect class="part chgp" x="633" y="406" width="14" height="18"/>
+<text class="ref chg" x="653" y="412" text-anchor="start"></text>
+<text class="val chg" x="653" y="426" text-anchor="start"></text>
+<polyline class="w" points="640,430 640,436"/>
+<polyline class="w" points="640,454 640,460"/>
+<rect class="part chgp" x="633" y="436" width="14" height="18"/>
+<text class="ref chg" x="653" y="442" text-anchor="start"></text>
+<text class="val chg" x="653" y="456" text-anchor="start"></text>
+<polyline class="w" points="640,430 700,430"/>
+<polyline class="w" points="700,430 700,436"/>
+<line class="w" x1="690" y1="436" x2="710" y2="436"/>
+<line class="w" x1="694" y1="440" x2="706" y2="440"/>
+<line class="w" x1="697.5" y1="444" x2="702.5" y2="444"/>
+<text class="val chg" x="660" y="420" text-anchor="start">R11, R12 100 Ω 1 W</text>
+<text class="net" x="520" y="510" text-anchor="start">tylko gdy środek R132/R133 Onyxa pływa (UaFF-L2)</text>
+<path class="coil" d="M458 540 A7.5 7.5 0 0 0 458 555 A7.5 7.5 0 0 0 458 570 A7.5 7.5 0 0 0 458 585 A7.5 7.5 0 0 0 458 600"/>
+<text class="op" x="470" y="576" text-anchor="start">S3 6,3 V / 3 A</text>
+<polyline class="w" points="458,540 880,540"/>
+<polyline class="w" points="458,600 880,600"/>
+<circle class="dot" cx="860" cy="540" r="3.2"/>
+<circle class="dot" cx="840" cy="600" r="3.2"/>
+<polyline class="w" points="860,540 860,566 900,566"/>
+<polyline class="w" points="840,600 840,626 900,626"/>
+<polyline class="w" points="880,540 900,540"/>
+<polyline class="w" points="880,600 900,600"/>
+<circle class="term" cx="905" cy="540" r="5"/>
+<circle class="term" cx="905" cy="566" r="5"/>
+<circle class="term" cx="905" cy="600" r="5"/>
+<circle class="term" cx="905" cy="626" r="5"/>
+<text class="ref" x="917" y="544" text-anchor="start">J104-1</text>
+<text class="ref" x="917" y="570" text-anchor="start">J204-1</text>
+<text class="ref" x="917" y="604" text-anchor="start">J104-2</text>
+<text class="ref" x="917" y="630" text-anchor="start">J204-2</text>
+<text class="net" x="600" y="576" text-anchor="start">→ 4× 6SN7, 2,4 A</text>
+<circle class="term" cx="1040" cy="70" r="5"/>
+<text class="ref" x="1040" y="50" text-anchor="middle">Ua-L z płytki Onyxa</text>
+<polyline class="w" points="1045,70 1060,70"/>
+<circle class="dot" cx="1060" cy="70" r="3.2"/>
+<polyline class="w" points="1060,70 1075,70"/>
+<polyline class="w" points="1105,70 1120,70"/>
+<rect class="part" x="1075" y="63" width="30" height="14"/>
+<text class="ref" x="1090" y="92" text-anchor="middle">R3</text>
+<text class="val" x="1090" y="106" text-anchor="middle">1 M</text>
+<polyline class="w" points="1120,70 1135,70"/>
+<polyline class="w" points="1165,70 1180,70"/>
+<rect class="part" x="1135" y="63" width="30" height="14"/>
+<text class="ref" x="1150" y="92" text-anchor="middle">R4</text>
+<text class="val" x="1150" y="106" text-anchor="middle">1 M</text>
+<polyline class="w" points="1180,70 1195,70"/>
+<polyline class="w" points="1225,70 1240,70"/>
+<rect class="part" x="1195" y="63" width="30" height="14"/>
+<text class="ref" x="1210" y="92" text-anchor="middle">R5</text>
+<text class="val" x="1210" y="106" text-anchor="middle">1 M</text>
+<polyline class="w" points="1240,70 1260,70"/>
+<circle class="dot" cx="1260" cy="70" r="3.2"/>
+<text class="val" x="1150" y="124" text-anchor="middle">R3–R5 1600 V</text>
+<polyline class="w" points="1260,70 1260,95"/>
+<polyline class="w" points="1260,125 1260,150"/>
+<rect class="part" x="1253" y="95" width="14" height="30"/>
+<text class="ref" x="1273" y="107" text-anchor="start">R6</text>
+<text class="val" x="1273" y="121" text-anchor="start">15 k</text>
+<polyline class="w" points="1260,150 1260,162"/>
+<line class="w" x1="1250" y1="162" x2="1270" y2="162"/>
+<line class="w" x1="1254" y1="166" x2="1266" y2="166"/>
+<line class="w" x1="1257.5" y1="170" x2="1262.5" y2="170"/>
+<polyline class="w" points="1260,70 1260,56"/>
+<path class="flagm" d="M1254 56 L1266 56 L1260 48 Z"/>
+<text class="rail" x="1260" y="43" text-anchor="middle">HV_SENSE → sterowanie J5-2</text>
+<text class="op" x="1275" y="170" text-anchor="start">≈ 2,3 V przy 465 V</text>
+<polyline class="w" points="1060,70 1060,200"/>
+<polyline class="w" points="1060,200 1060,215"/>
+<polyline class="w" points="1060,245 1060,260"/>
+<rect class="part" x="1053" y="215" width="14" height="30"/>
+<text class="ref" x="1047" y="227" text-anchor="end">R7</text>
+<text class="val" x="1047" y="241" text-anchor="end">220 k 1 W</text>
+<polyline class="w" points="1060,260 1060,275"/>
+<polyline class="w" points="1060,305 1060,320"/>
+<rect class="part" x="1053" y="275" width="14" height="30"/>
+<text class="ref" x="1047" y="287" text-anchor="end">R8</text>
+<text class="val" x="1047" y="301" text-anchor="end">220 k 1 W</text>
+<polyline class="w" points="1060,320 1060,336"/>
+<polyline class="w" points="1060,354 1060,370"/>
+<path class="flagm" d="M1051 337 L1069 337 L1060 352 Z"/>
+<line class="plate" x1="1051" y1="353" x2="1069" y2="353"/>
+<line class="w" x1="1072" y1="341" x2="1080" y2="333"/>
+<line class="w" x1="1072" y1="347" x2="1080" y2="339"/>
+<text class="ref" x="1086" y="342" text-anchor="start">D1</text>
+<text class="val" x="1086" y="356" text-anchor="start">LED HV</text>
+<polyline class="w" points="1060,370 1060,382"/>
+<line class="w" x1="1050" y1="382" x2="1070" y2="382"/>
+<line class="w" x1="1054" y1="386" x2="1066" y2="386"/>
+<line class="w" x1="1057.5" y1="390" x2="1062.5" y2="390"/>
+<text class="net" x="1090" y="214" text-anchor="start">świeci, dopóki na płytce</text>
+<text class="net" x="1090" y="228" text-anchor="start">Onyxa jest napięcie</text>
+<rect class="part" x="1040" y="430" width="340" height="96"/>
+<text class="ref" x="1210" y="456" text-anchor="middle">Cewki K1–K4 (Omron G2RL-2-DC12)</text>
+<text class="val" x="1210" y="474" text-anchor="middle">+12 V, RLY1–RLY4 ← sterowanie J2</text>
+<text class="val" x="1210" y="490" text-anchor="middle">diody 1N4148 równolegle do cewek</text>
+<text class="val" x="1210" y="506" text-anchor="middle">K1/K2/K4 styki równol., K3 szeregowo</text>
+<circle class="term" cx="1040" cy="600" r="5"/>
+<text class="ref" x="1052" y="604" text-anchor="start">GND – gwiazda (płytka Onyxa, sterowanie)</text>
+</svg>

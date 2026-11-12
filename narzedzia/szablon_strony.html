@@ -129,7 +129,17 @@ code{font-family:var(--f-mono);font-size:.9em}
 %%PSU%%
     </svg>
   </div>
-  <p class="note">Część sieciowa (bezpiecznik, wyłącznik, soft-start) i TR1 są poza płytką. Elektrolity filtrów to pary 2× 120 µF / 400 V szeregowo, z rezystorami wyrównującymi 680 k (R143–R152), czyli 60 µF / 800 V. Przy Ua 465 V i wysokim napięciu sieci zapas jest wystarczający.</p>
+  <p class="note">Część sieciowa (bezpieczniki, miękki start, opóźnienie anod) i TR1 są na osobnej płytce, niżej. Elektrolity filtrów to pary 2× 120 µF / 400 V szeregowo, z rezystorami wyrównującymi 680 k (R143–R152), czyli 60 µF / 800 V. Przy Ua 465 V i wysokim napięciu sieci zapas jest wystarczający.</p>
+</section>
+
+<section>
+  <h2>Płytka zasilacza <small>własna, bez prostowników i filtrów</small></h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1400 700" role="img" aria-label="Schemat płytki zasilacza: bezpieczniki, miękki start, opóźnione anody, napięcia przemienne do płytki Onyxa, pomiar Ua">
+%%PSUW%%
+    </svg>
+  </div>
+  <p class="note">Na płytkę Onyxa idą tylko napięcia przemienne: S1 przez K3 i R_IN na J103/J203, S4 na J106/J206 (bias pojawia się z K1, przed anodami), żarzenie wprost. K1–K4 steruje ESP32 jak w Soloiście. Pomiar HV_SENSE i dioda HV są wpięte w Ua-L na płytce Onyxa, więc pokazują napięcie na jej kondensatorach. R11/R12 tylko, jeśli środek R132/R133 (UaFF-L2) nigdzie nie jest podłączony. Odczepy S1 345 / 375 V do dobrania Ua ok. 465 V.</p>
 </section>
 
 <section>
@@ -152,7 +162,7 @@ code{font-family:var(--f-mono);font-size:.9em}
     <li><b>C123 / C223:</b> najpierw bez. Jeśli prostokąt 10 kHz dzwoni, wlutować 33–150 pF.</li>
     <li><b>R102 / C101 (R202 / C201):</b> sieć RC z anody V1B do węzła odsprzęgającego, niemontowana. Gdyby samo C123 nie wystarczyło: start ok. 1k2 + 680 pF (biegun ok. 28 kHz, zero ok. 190 kHz), dobór prostokątem. 100 nF ze schematu to pomyłka.</li>
     <li><b>R128 / R228 4k7 3 W:</b> dobrać tak, żeby Uaa wyszło ok. 380–420 V przy Twoim Ua.</li>
-    <li><b>Dzielnik biasu</b> (P101/P102 47k, R139/R140 47k, R119/R120 470k): suwak daje od 0,5 do 1,0 napięcia szyny. Przy szynie ok. −90 V zakres −45…−90 V jest dobry.</li>
+    <li><b>Dzielnik biasu</b> (P101/P102 47k, R139/R140 47k, R119/R120 470k): suwak daje od 0,5 do 1,0 napięcia szyny. Przy szynie ok. −80 V (S4 58 V) zakres −40…−80 V jest dobry.</li>
     <li><b>Dławiki L106 i L206:</b> po jednym na kanał, 10 H. Prąd ok. 145 mA na kanał, więc wystarczy 200 mA; Onyx dał 400 mA.</li>
     <li><b>Zworki B101–B104:</b> ustawić pod własne uzwojenia (wspólne anodowe dla obu kanałów, konfiguracja żarzenia).</li>
     <li><b>Dodatek: RL 100 Ω 2 W</b> między 4 Ω a COM, żeby transformator nie pracował bez obciążenia przy odłączonych kolumnach.</li>

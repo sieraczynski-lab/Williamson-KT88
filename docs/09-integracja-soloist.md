@@ -1,6 +1,6 @@
-# 9. Zasilacz, sterowanie, dodatki i obudowa z Soloista
+# 9. Zasilacz, sterowanie, dodatki i obudowa
 
-Płytka Onyxa VA1523 dostaje całą infrastrukturę z projektu [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88):
+Płytka Onyxa VA1523 dostaje infrastrukturę wzorowaną na projekcie [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88):
 
 - miękki start i opóźnione anody,
 - sterownik ESP32 z pomiarem prądów i automatyczną korektą biasu,
@@ -9,63 +9,61 @@ Płytka Onyxa VA1523 dostaje całą infrastrukturę z projektu [Soloist-KT88](ht
 - selektor wejść z drabinką głośności,
 - obudowę.
 
-Płytki Soloista zostają bez zmian w PCB, zmienia się tylko to, co się na nich montuje. Na płytce Onyxa nic się nie przecina: przewody lutuje się do istniejących złączy albo nóżek elementów.
+Zasilacz Soloista nie jest tu wzorem. Płytka Onyxa ma własne prostowniki, filtry, dławiki, prostownik biasu i podniesienie żarzenia, więc dostaje **własną, prostą płytkę zasilacza**: tylko bezpieczniki, miękki start, przekaźniki opóźniające anody, pomiar Ua i dioda HV. Bez mostków, kondensatorów i dławików. Sterowanie, UL, kolumny i selektor biorą płytki Soloista bez zmian w PCB. Na płytce Onyxa nic się nie przecina: przewody lutuje się do istniejących złączy albo nóżek elementów.
 
-Oznaczenia elementów i złączy Soloista według jego wersji 0.23 (płytki) i 0.4 (obudowa). Oznaczenia Onyxa: lewy kanał 1xx, prawy 2xx.
+Oznaczenia elementów i złączy Soloista według jego wersji 0.23 (płytki) i 0.4 (obudowa). Oznaczenia Onyxa: lewy kanał 1xx, prawy 2xx. Schemat płytki zasilacza: [`schematy/plytka_zasilacza.svg`](../schematy/plytka_zasilacza.svg).
+
+![Płytka zasilacza](../schematy/plytka_zasilacza.svg)
 
 ## 9.1 Schemat blokowy
 
 ```
-230 V ─ IEC/F1 ─ zasilacz_siec: K1 (R_SS) → K2 ─ TR1
-                                                 │
-   S1 360 V ── zasilacz_siec F3 ── zasilacz_hv: K3/K4, R_IN, mostek, C1 ─ L1 12 H ─ C2 = B+3 ≈ 470 V
-                                                                                     │
-                                       ┌─────────────────────────────────────────────┴───────┐
-                                  Onyx J103 (L)                                         Onyx J203 (P)
-                                  mostek Onyxa przepuszcza DC → R134 → C119/120 → [L106 zwora] → C121/122 = Ua ≈ 467 V
-   S4 65 V ── zasilacz_siec: mostek, C141–R142–C142 = −80 V ── Onyx J106 / J206 (DC) → szyna Bias-L ≈ −79 V
-   S2 6,3 V/8 A ─────────────────────────────────────────── Onyx J105 / J205 (KT88)
-   S3 6,3 V/3 A ── zasilacz_siec J26 → J28 / J30 ────────── Onyx J104 / J204 (6SN7, podniesienie z płytki Onyxa)
+230 V ─ IEC/F1 T2,5 A ─┬─ K1 (R1 R_SS 47 Ω) → K2 (+1,5 s) ─ TR1 400 VA
+                       └─ F2 T500 mA ─ PS1 IRM-15-12 (12 V czuwania dla sterowania)
 
-sterowanie (ESP32): J2 → K1–K4 · J4 ← prądy 4× KT88 · J5 ← −80 V, B+3 · J10 → korekta biasu 4× KT88
+S1 360 V ─ F3 T1 A ─ K3 (+45 s) ─ R2 R_IN 100 Ω → K4 (+1,5 s) ─┬─ Onyx J103 → mostek, R134, C119/120, L106 10 H, C121/122 = Ua-L ≈ 465 V
+                                                               └─ Onyx J203 → to samo, Ua-P
+S4 58 V ─ F4 T100 mA ──────────────────────────────────────────┬─ Onyx J106 → mostek, C125–R141/R142–C126 = Bias-L ≈ −80 V
+                                                               └─ Onyx J206 → Bias-P
+S2 6,3 V/8 A ──────────────────────────────────────────────────── Onyx J105 / J205 (KT88)
+S3 6,3 V/3 A ──────────────────────────────────────────────────── Onyx J104 / J204 (6SN7, podniesienie z płytki Onyxa)
+
+Ua-L ─ R3–R5 3× 1 M / R6 15 k ─ HV_SENSE → sterowanie J5-2      Ua-L ─ R7/R8 2× 220 k ─ LED HV
+sterowanie (ESP32): J2 → K1–K4 · J4 ← prądy 4× KT88 · J5 ← Bias-L, Ua-L · J10 → korekta biasu 4× KT88
                     J11 → płytki UL · J13 → przełącznik kolumn · J12 ← TRIGGER · I²C → selektor
 ```
 
 ## 9.2 Zasilanie anodowe
 
-Najprostsze i najbezpieczniejsze rozwiązanie: **zasilacz HV Soloista pracuje w całości bez zmian**, a jego wyjście B+3 (napięcie stałe) podaje się na wejścia „AC” mostków na płytce Onyxa. Mostek Onyxa po prostu przepuszcza napięcie stałe przez jedną diodę. Dzięki temu bez żadnych zmian działają:
+Uzwojenie S1 przez F3 i styki K3 (dwa styki szeregowo, większa przerwa przy 500 V szczytowych) oraz R_IN idzie **napięciem przemiennym** na wejścia mostków Onyxa, J103 i J203 równolegle. Po 1,5 s K4 zwiera R_IN. Na płytce Onyxa wszystko zostaje jak u Onyxa: mostek UF5408, R134 10 Ω, C119/C120, **dławik na L106 / L206**, C121/C122.
 
-- opóźnienie anod K3/K4 i ograniczenie udaru R_IN,
-- pomiar B+ dla sterownika (J18 HV_SENSE) i dioda HV,
-- rezystory upływowe R3–R6.
-
-| Skąd (Soloist) | Dokąd (Onyx) | Uwagi |
+| Skąd (płytka zasilacza) | Dokąd (Onyx) | Uwagi |
 |---|---|---|
-| zasilacz_hv J13 B+3_KAN_L | **J103 pin 1** | drugi pin J103 zostaje wolny |
-| zasilacz_hv J14 B+3_KAN_R | **J203 pin 1** | drugi pin J203 zostaje wolny |
-| zasilacz_hv J16 GND_KAN_L | masa płytki Onyxa (minus C120) | przewód 1 mm² do gwiazdy J15 |
-| – | **L106 i L206: zwora** | filtruje dławik L1 Soloista (12 H) |
+| za K4/R_IN | **J103 pin 1**, **J203 pin 1** | dwa przewody 0,75 mm² w izolacji 1 kV |
+| drugi koniec S1 | **J103 pin 2**, **J203 pin 2** | |
+| – | **L106, L206** | dwa dławiki 10 H, min. 200 mA, DCR < 100 Ω ([08](08-zamowienie-toroidy.md#3-dławiki-filtru-anodowego-2-szt)) |
+| masa płytki Onyxa | gwiazda | jeden przewód 1 mm² |
 
-Bilans: B+3 ok. 470 V przy ok. 290 mA (cztery KT88 po 55 mA, siatki drugie, front end ok. 36 mA, dzielniki). Po diodzie mostka i R134 Ua wychodzi ok. **467 V**, a Uaa za R128 ok. 383 V, czyli tyle, ile zakładają punkty pracy.
+**Ua:** z 360 V przy ok. 145 mA na kanał i filtrze CLC Onyxa wychodzi ok. 450–460 V. Odczepy 345 / 375 V pozwalają dobrać ok. **465 V** po pierwszym pomiarze (napięcie sieci, R_DC dławików). Uaa za R128 ok. 380 V.
 
-**Dławik:** wystarczy jeden, L1 Soloista (12 H / 400 mA), już przewidziany w obudowie pod TR1. Na płytce Onyxa złącza L106 i L206 zwiera się przewodem. Alternatywa to dwa dławiki 10 H na płytce Onyxa i zwora zamiast L1 (zasilacz_hv J9–J10); Ua wyjdzie wtedy ok. 470 V. Filtr jest w obu wariantach dwustopniowy, więc tętnienia są pomijalne.
+**R_IN 100 Ω** ogranicza udar ładowania kondensatorów Onyxa (2× 60 µF + 2× 60 µF) do ok. 5 A; po 1,5 s K4 go zwiera.
 
-**Masa:** sprawdź omomierzem, czy masy lewego i prawego kanału są połączone na płytce Onyxa. Jeśli tak, prowadź **jeden** przewód masy do gwiazdy (J16), a J17 zostaw wolne. Dwa przewody zrobiłyby pętlę masy.
+**Masa:** sprawdź omomierzem, czy masy lewego i prawego kanału są połączone na płytce Onyxa. Jeśli tak, prowadź **jeden** przewód masy do gwiazdy. Dwa zrobiłyby pętlę masy.
 
-**Rozładowanie:** po wyłączeniu dioda mostka Onyxa odcina płytkę od zasilacza HV, więc dioda HV na zasilaczu nie pokazuje napięcia na kondensatorach Onyxa. Płytkę rozładowują jej własne R136/R137 (110k) i rezystory wyrównujące. Stała czasowa wynosi ok. 11 s, więc poniżej 50 V jest po ok. 25 s. Przed dotknięciem płytki i tak zawsze mierz napięcie.
+**Rozładowanie:** pomiar HV_SENSE i dioda HV są podłączone do **Ua-L na płytce Onyxa** (plus C121), więc pokazują prawdziwe napięcie na kondensatorach lewego kanału. Prawy kanał rozładowuje się tak samo przez własne R236/R237 i rezystory wyrównujące; stała czasowa ok. 11 s, poniżej 50 V po ok. 25 s. Przed dotknięciem płytki i tak zawsze mierz napięcie.
 
 ## 9.3 Bias
 
-Jedna szyna biasu dla wszystkiego: **−80 V z zasilacza sieciowego Soloista** (S4 65 V, C141–R142 1k–C142). Z niej korzysta też pomiar w sterowniku i przesuwniki korekty.
+Uzwojenie **S4 58 V** przez F4 idzie napięciem przemiennym na J106 i J206. Prostownik i filtr biasu są na płytce Onyxa (mostek, C125, R141/R142, C126). Wychodzi ok. **−80 V** na Bias-L i Bias-P. Bias pojawia się razem z K1, czyli **przed anodami**, więc KT88 są zatkane, zanim przyjdzie Ua.
 
 | Skąd | Dokąd | Uwagi |
 |---|---|---|
-| zasilacz_siec J21 pin 1 | Onyx **J106 pin 1** | podaje DC; mostek Onyxa przepuszcza, Bias-L ≈ −79 V |
-| zasilacz_siec J21 pin 2 | Onyx **J206 pin 1** | |
-| zasilacz_siec J21 pin 3 | sterowanie J5 pin 1 | jak w Soloiście |
+| S4 przez F4 | Onyx **J106**, **J206** | dwa przewody, równolegle |
+| Onyx **Bias-L** (minus C126) | sterowanie **J5 pin 1** | pomiar szyny biasu i źródło przesuwników korekty |
 
-- Zakres potencjometrów P101/P102: suwak daje od 0,5 do 1,0 napięcia szyny, czyli ok. **−40…−79 V**. Na maksimum ujemnego napięcia lampa jest bezpiecznie zatkana.
-- Obciążenie szyny: 4 dzielniki Onyxa (47k + 47k) ok. 3,4 mA, korekta ok. 3,6 mA, pomiar ok. 0,2 mA, razem **ok. 7,2 mA**. To tyle, ile zakłada Soloist (7,3 mA), więc −80 V się utrzymuje.
+- Zakres potencjometrów P101/P102: suwak daje od 0,5 do 1,0 napięcia szyny, czyli ok. **−40…−80 V**. Na maksimum ujemnego napięcia lampa jest bezpiecznie zatkana.
+- Obciążenie Bias-L: 2 dzielniki Onyxa (47k + 47k) ok. 1,7 mA, korekta lewego kanału ok. 1,8 mA, pomiar ok. 0,2 mA. Przesuwniki prawego kanału zasilaj z Bias-P (ok. 1,8 mA), wtedy obie szyny są obciążone podobnie. W programie kontrolujemy tylko Bias-L; jeśli S4 zniknie, znikają obie szyny naraz.
+- Uzwojenie 58 V jest dobrane tak, żeby szyna wyszła ok. −80 V jak w Soloiście; wtedy przesuwniki korekty 68k/33k i progi kontroli szyny zostają bez zmian.
 
 ## 9.4 Pomiar prądów i automatyczna korekta biasu
 
@@ -102,21 +100,19 @@ Przy przerwanym przewodzie prąd może dojść do ok. 70–75 mA, czyli na grani
 
 | Uzwojenie | Droga | Odniesienie |
 |---|---|---|
-| S3 6,3 V / 3 A (4× 6SN7 = 2,4 A) | zasilacz_siec J26 → J28 → Onyx **J104**, J30 → Onyx **J204** | sztuczny środek Onyxa R130/R131 do UaFF ≈ 42 V |
+| S3 6,3 V / 3 A (4× 6SN7 = 2,4 A) | bezpośrednio do Onyx **J104** i **J204** | sztuczny środek Onyxa R130/R131 do UaFF ≈ 42 V |
 | S2 6,3 V / 8 A (4× KT88 = 6,4 A) | bezpośrednio do Onyx **J105** i **J205**, przewody 1–1,5 mm² skręcone | patrz niżej |
 
-Na płytkach Soloista **nie montujesz**:
-- R13, R14 na zasilacz_siec (sztuczny środek S3; robi to płytka Onyxa),
-- R140A, R140B, R141, C140 na zasilacz_hv (podniesienie żarzenia; robi to płytka Onyxa); J34 i J36 zostają wolne.
+Żarzenie jest włączone razem z K1, bez przekaźników.
 
 **Żarzenie KT88: do sprawdzenia przed pierwszym włączeniem.** Na schemacie Onyxa sztuczny środek R132/R133 idzie do sieci **UaFF-L2**, której nie ma nigdzie indziej na schemacie. Zmierz omomierzem, dokąd idzie środek R132/R133 (J105) na płytce:
 
-- **nigdzie (pływa):** zamontuj R11/R12 na zasilacz_siec i połącz J24 z S2. Żarzenie KT88 dostaje odniesienie do masy, jak w Soloiście;
+- **nigdzie (pływa):** zamontuj R11/R12 (100 Ω 1 W) na płytce zasilacza. Żarzenie KT88 dostaje odniesienie do masy;
 - **do UaFF (ok. 42 V):** **nie montuj R11/R12**. Inaczej między masą a UaFF popłynie prąd przez oba sztuczne środki i rezystory się spalą.
 
 ## 9.6 Przekaźniki i sekwencja
 
-K1–K4, ich płytki i sekwencja są bez zmian: K1 (sieć przez R_SS) → K2 (+1,5 s) → kontrola biasu → nagrzewanie 45 s → K3 (anody przez R_IN) → K4 → stabilizacja prądów → zdjęcie MUTE → kolumny na lampę. Wyłączanie: MUTE → kolumny do Marantza → K3/K4 → 3 s → K1/K2.
+Przekaźniki K1–K4 (Omron G2RL-2-DC12, diody 1N4148 na cewkach) są na płytce zasilacza, cewki zasila sterowanie J2 (+12 V, RLY1–RLY4) jak w Soloiście. Sekwencja bez zmian: K1 (sieć przez R_SS, żarzenie i bias) → K2 (+1,5 s) → kontrola biasu → nagrzewanie 45 s → K3 (anody przez R_IN) → K4 → stabilizacja prądów → zdjęcie MUTE → kolumny na lampę. Wyłączanie: MUTE → kolumny do Marantza → K3/K4 → 3 s → K1/K2.
 
 ## 9.7 Przełącznik UL / trioda
 
@@ -172,8 +168,8 @@ Mniejszy nadmiar wzmocnienia niż w Soloiście oznacza też niższy szum w ciszy
 | Prąd docelowy | 55 mA | 50–55 mA |
 | Alarm w ciszy | > 75 mA | **> 70 mA** |
 | Zakres korekty | ±0,7 V (±6 mA) | ±0,78 V (±7 mA) |
-| Szyna biasu (kontrola) | −68…−92 V | bez zmian |
-| B+ (HV_SENSE) | B+3 | bez zmian (B+3, przed mostkami Onyxa) |
+| Szyna biasu (kontrola) | −68…−92 V | bez zmian (Bias-L Onyxa) |
+| B+ (HV_SENSE) | B+3 | Ua-L na płytce Onyxa, ten sam dzielnik (ok. 2,3 V przy 465 V) |
 | Limity głośności | czułość 160 mV | czułość ok. 0,5 V (tabela wyżej) |
 | Czujnik DS18B20 | – | pod płytką Onyxa, przy rzędzie KT88 |
 
@@ -185,19 +181,18 @@ Wariant obudowy Soloista z płytką Onyxa: [`obudowa/`](../obudowa/), opis w [`o
 
 - Płytka Onyxa (360 × 160 mm) **wisi pod pokrywą** na 10 krótkich tulejach M3, jak płytki kanałów Soloista. Od góry ma tylko podstawki, małe rezystory i potencjometry biasu, wysokie elementy są pod spodem.
 - **Pokrywa** ma otwory na 8 podstawek, 4 otwory na śrubokręt do potencjometrów biasu (ok. 8 mm) i otwory wentylacyjne: wieńce wokół KT88, pas między rzędami lamp i pole nad płytkami zasilaczy.
-- **Płytki Soloista na dnie przeniesione do przedniego rzędu** (sterowanie, zasilacz sieciowy, zasilacz HV obok siebie), bo pod płytką Onyxa są kondensatory. Pod płytką zostają tylko niskie płytki UL i puszka selektora.
+- **Płytki na dnie w przednim rzędzie**: sterowanie i płytka zasilacza (pod płytką Onyxa są kondensatory). Model ma jeszcze dwa miejsca po zasilaczach Soloista; nowa płytka zajmuje jedno z nich, drugie zostaje wolne albo na dławiki, jeśli nie zmieszczą się w obudowie transformatorów. Pod płytką Onyxa zostają tylko niskie płytki UL i puszka selektora.
 - Obudowa transformatorów, tył, front i drewno jak w Soloiście 0.4.
 - Do zmierzenia na płytce: wysokość i średnica podstawek, wysokość elementów od spodu, pozycje osi potencjometrów.
 
-## 9.12 Lista „nie montować / zmienić”
+## 9.12 Lista „zamontować / zmienić”
 
 | Płytka | Element | Zmiana |
 |---|---|---|
-| zasilacz_siec | R13, R14 | nie montować |
-| zasilacz_siec | R11, R12 | zależnie od UaFF-L2 (9.5) |
-| zasilacz_hv | R140A, R140B, R141, C140 | nie montować |
-| Onyx | L106, L206 | zwora (filtruje L1 Soloista) |
+| zasilacz (nowa) | R11, R12 | zależnie od UaFF-L2 (9.5) |
+| Onyx | L106, L206 | dwa dławiki 10 H, min. 200 mA |
 | Onyx | R123, R124, R223, R224 | 10 Ω 1 % 3 W (albo zmierzyć) |
 | Onyx | R125, R126, R225, R226 | 270 Ω 2 W (zalecane przy UL/trioda) |
 | Onyx | wejście J100 / J200 | opcjonalnie 22 nF szeregowo |
+| sterowanie | J5 pin 1 | do Bias-L Onyxa; przesuwniki prawego kanału z Bias-P |
 | sterowanie | program | progi z 9.10 |

@@ -11,6 +11,7 @@ runpy.run_path("gen_schemat.py")  # tworzy amp.svgpart i psu.svgpart
 
 amp = open("amp.svgpart").read()
 psu = open("psu.svgpart").read()
+psuw = open("psuw.svgpart").read()
 
 STYLE = """<style>
 .w{fill:none;stroke:#22343a;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
@@ -45,11 +46,12 @@ def svg(body, w, h):
 
 open(os.path.join(ROOT, "schematy", "kanal.svg"), "w").write(svg(amp, 1400, 960))
 open(os.path.join(ROOT, "schematy", "zasilacz.svg"), "w").write(svg(psu, 1400, 700))
+open(os.path.join(ROOT, "schematy", "plytka_zasilacza.svg"), "w").write(svg(psuw, 1400, 700))
 
 page = ('<!doctype html>\n<html lang="pl">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        + open("szablon_strony.html").read().replace("%%AMP%%", amp).replace("%%PSU%%", psu))
+        + open("szablon_strony.html").read().replace("%%AMP%%", amp).replace("%%PSU%%", psu).replace("%%PSUW%%", psuw))
 open(os.path.join(ROOT, "schematy", "williamson-kt88.html"), "w").write(page)
 
-for f in ("amp.svgpart", "psu.svgpart"):
+for f in ("amp.svgpart", "psu.svgpart", "psuw.svgpart"):
     os.remove(f)
-print("OK: schematy/kanal.svg, schematy/zasilacz.svg, schematy/williamson-kt88.html")
+print("OK: schematy/kanal.svg, schematy/zasilacz.svg, schematy/plytka_zasilacza.svg, schematy/williamson-kt88.html")

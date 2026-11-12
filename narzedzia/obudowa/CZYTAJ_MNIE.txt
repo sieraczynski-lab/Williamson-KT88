@@ -36,6 +36,8 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
   DNO (AL_dno_400x460x3)
     - plytki Soloista w PRZEDNIM RZEDZIE (pod plytka Onyxa sa kondensatory do ok. Z 38):
       sterowanie X 45-145, zasilacz_siec X 150-250, zasilacz_hv X 255-355, wszystkie Y 8-108;
+      UWAGA: zasilacz jest teraz jedna prosta plytka (docs/09) - zajmuje miejsce zasilacz_siec,
+      miejsce zasilacz_hv zostaje wolne (zapas, ew. dlawiki 10 H, jesli nie wejda pod oslone TR);
     - plytki UL pod rzedem KT88 (X 40-114 i 286-360, Y 242-290);
     - puszka selektora pod plytka, z przodu z lewej (X 24-136, Y 150-210);
     - bez pierscieni otworow pod podstawki KT88; wentylacja pod srodkiem plytki (Y 156-196).

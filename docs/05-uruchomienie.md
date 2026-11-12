@@ -24,7 +24,7 @@ Oznaczenia dla lewego kanału (1xx). Prawy kanał: to samo z 2xx.
 
 ## Kolejność
 
-1. **Sam zasilacz, bez lamp,** przez żarówkę w szereg z siecią albo autotransformator. Podnoś napięcie powoli, żeby uformować elektrolity, które długo nie pracowały. Sprawdź Bias-L (ok. −90 V) i zakres na suwakach.
+1. **Sam zasilacz, bez lamp,** przez żarówkę w szereg z siecią albo autotransformator. Podnoś napięcie powoli, żeby uformować elektrolity, które długo nie pracowały. Sprawdź Bias-L (ok. −80 V) i zakres na suwakach.
 2. **Tanie lampy,** rezystor 4 Ω / 50 W na odczepie 4 Ω, **J102 odłączone** (bez sprzężenia zwrotnego).
 3. Po nagrzaniu zmierz Ua, Uaa i napięcia z tabeli. Podnoś prąd KT88 potencjometrami do 0,50–0,55 V na R123/R124, różnica w parze najwyżej ok. 10 mV (1 mA). Przy toroidzie to ważne.
 4. Zmierz prądy obu triod V2 (spadki na R115/R116). Do drivera daj lampę, której połówki mają najbliższe prądy.
@@ -42,7 +42,8 @@ Oznaczenia dla lewego kanału (1xx). Prawy kanał: to samo z 2xx.
 | C123 / C223 | n.m. | TR-OUT na wysokich częstotliwościach | dobrać na oscyloskopie, 33–150 pF, jeśli potrzeba |
 | R102 / C101 (R202 / C201) | n.m. | stabilność na w.cz. | tylko gdy C123 nie wystarczy: start 1k2 + 680 pF, dobór prostokątem (100 nF ze schematu to pomyłka) |
 | R128 / R228 | 4k7 3 W | Ua z własnego zasilacza | Uaa ok. 380–420 V |
-| P101/P102, R139/R140, R119/R120 | 47k / 47k / 470k | napięcie uzwojenia biasu | suwak 0,5–1,0 × Bias-L; przy −90 V zakres −45…−90 V |
+| odczep S1 TR1 | – | Ua | 345 / 360 / 375 V, cel Ua ok. 465 V |
+| P101/P102, R139/R140, R119/R120 | 47k / 47k / 470k | napięcie uzwojenia biasu | suwak 0,5–1,0 × Bias-L; przy −80 V zakres −40…−80 V |
 | L106 / L206 | 10 H / 400 mA | – | po jednym dławiku na kanał, min. 200 mA |
 | R134 / R234 | 10 Ω 3 W | uzwojenie anodowe | zostawić |
 | R136 / R137 | 100k / 10k | Ua | zostawić (ok. 10% Ua) |

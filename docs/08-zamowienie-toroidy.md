@@ -24,21 +24,27 @@ Odczep 2 Ω jest do porównania na słuch z kolumnami 4 Ω. Lampy widzą wtedy o
 
 ## 2. Transformator sieciowy: 1 szt.
 
-Płytka Onyxa ma zasilacz anodowy osobno dla każdego kanału (mostek, filtr, dławik), a oba mostki mogą być zasilane z jednego uzwojenia (zworki B103/B104). Pobór: ok. 145 mA na kanał (2× KT88 po 50–55 mA, siatki drugie, front end ok. 18 mA, dzielniki), razem ok. 290 mA.
+Płytka Onyxa ma zasilacz anodowy osobno dla każdego kanału (mostek, filtr, dławik) i własny prostownik biasu, a oba mostki zasila się z jednego uzwojenia. Płytka zasilacza ([09](09-integracja-soloist.md)) podaje na nie tylko napięcia przemienne. Pobór: ok. 145 mA na kanał (2× KT88 po 50–55 mA, siatki drugie, front end ok. 18 mA, dzielniki), razem ok. 290 mA.
 
 | Uzwojenie | Napięcie (pod obciążeniem) | Prąd | Zastosowanie |
 |---|---|---|---|
 | Pierwotne | 230 V | – | ekran elektrostatyczny do PE |
-| Anodowe | **360 V + odczep 345 V** | 0,65 A | J103 i J203 → Ua ok. 465 V |
-| Bias | 65 V | 50 mA | J106 i J206 → ok. −90 V |
-| Żarzenie KT88 | 6,3 V | 8 A | J105 i J205, 4× KT88 = 6,4 A |
-| Żarzenie lamp sterujących | 6,3 V | 3 A | J104 i J204, 4× 6SN7 = 2,4 A |
+| S1 anodowe | **360 V, odczepy 345 V i 375 V** | 0,65 A | J103 i J203 → Ua ok. 450–470 V |
+| S4 bias | **58 V** | 50 mA | J106 i J206 → ok. −80 V |
+| S2 żarzenie KT88 | 6,3 V | 8 A | J105 i J205, 4× KT88 = 6,4 A |
+| S3 żarzenie 6SN7 | 6,3 V | 3 A | J104 i J204, 4× 6SN7 = 2,4 A |
 
-Moc 400 VA. To **ta sama specyfikacja co TR1 w Soloiście**, więc jeden transformator pasuje do obu projektów. Uwagi do zamówienia (pomiar napięcia sieci, napięcia bez obciążenia, obniżona indukcja, wymiary, izolacja) są w [dokumentacji Soloista](https://github.com/sieraczynski-lab/Soloist-KT88/blob/main/docs/02-zasilanie.md#zamówienie-tr1-w-konfiguratorze-toroidypl).
+Moc **400 VA**. Prąd 0,65 A na S1 wynika z prostownika z filtrem pojemnościowym (prąd skuteczny ok. 1,8–2× prąd stały).
+
+Porównanie z transformatorem Onyxa (TSTA-0300/001: 400 V / 0,3 A, 2× 70 V, 3× 6,3 V / 6,6 A): jego 400 V dawało Ua ok. 530–550 V, dobre dla Hammonda 6,6 kΩ. Toroid 4 kΩ potrzebuje ok. 465 V, stąd 360 V. 0,3 A na S1 to za mało na cztery KT88 przy 50–55 mA, a jedno 6,3 V / 6,6 A nie wystarczy na 4× KT88 i 4× 6SN7 (8,8 A).
+
+Uwagi do zamówienia:
+- zmierz napięcie sieci u siebie i podaj je producentowi (każde +5 V sieci to ok. +10 V Ua);
+- poproś o napięcia bez obciążenia; S1 bez obciążenia ok. 380–390 V, czyli ok. 540 V szczytowo na kondensatorach przed wlutowaniem lamp (C119–C122 Onyxa: 2× 400 V szeregowo, zapas jest);
+- obniżona indukcja (cichszy rdzeń, mniejsze pole rozproszenia);
+- odczepy S1 wyprowadzone osobnymi przewodami, izolacja 1,5 kV między S1 a resztą.
 
 ## 3. Dławiki filtru anodowego: 2 szt.
-
-> Przy zasilaczu z Soloista (patrz [09](09-integracja-soloist.md#92-zasilanie-anodowe)) wystarczy jeden dławik L1 12 H / 400 mA z Soloista, a L106 i L206 na płytce Onyxa zwiera się. Poniższa specyfikacja dotyczy wersji samodzielnej.
 
 Na płytce są dwa złącza dławików, L106 i L206, **po jednym na kanał**. Osobne dławiki dają lepszą separację kanałów, a każdy jest mniejszy niż jeden wspólny.
 
