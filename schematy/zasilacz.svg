@@ -187,14 +187,14 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="655,335 680,335"/>
 <rect class="part" x="625" y="328" width="30" height="14"/>
 <text class="ref" x="640" y="357" text-anchor="middle">R141</text>
-<text class="val" x="640" y="371" text-anchor="middle">10 Ω ?</text>
+<text class="val" x="640" y="371" text-anchor="middle">47 Ω</text>
 <polyline class="w" points="680,335 700,335"/>
 <circle class="dot" cx="700" cy="335" r="3.2"/>
 <polyline class="w" points="700,335 725,335"/>
 <polyline class="w" points="755,335 780,335"/>
 <rect class="part" x="725" y="328" width="30" height="14"/>
 <text class="ref" x="740" y="357" text-anchor="middle">R142</text>
-<text class="val" x="740" y="371" text-anchor="middle">100 Ω ?</text>
+<text class="val" x="740" y="371" text-anchor="middle">47 Ω</text>
 <polyline class="w" points="780,335 800,335"/>
 <circle class="dot" cx="800" cy="335" r="3.2"/>
 <polyline class="w" points="800,335 800,347"/>

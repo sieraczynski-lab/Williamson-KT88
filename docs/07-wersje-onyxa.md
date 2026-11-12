@@ -74,8 +74,8 @@ Onyx przesłał schematy obu kanałów i rysunki płytki (bez wartości element�
 | R136 / R137 | 100k / 10k | brak w lewym, 300k / 68k w prawym |
 | R130–R133 | 330 Ω | 390 Ω |
 | R143–R152 | 680k | 560k |
-| R125, R126 | 100 Ω | odczytano 150k – do sprawdzenia (pewnie 150 Ω) |
-| R141, R142 | 10 Ω / 100 Ω | odczytano 47k – do sprawdzenia |
+| R125, R126 | 100 Ω | 150 Ω |
+| R141, R142 | 10 Ω / 100 Ω | 47 Ω / 47 Ω |
 
 Według Onyxa część elementów różni się, bo miał inny transformator sieciowy i Hammondy jako wyjściowe. Lista elementów do dobrania pod toroid jest w [05-uruchomienie.md](05-uruchomienie.md#elementy-do-sprawdzenia-lub-zmiany).
 

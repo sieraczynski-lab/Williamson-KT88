@@ -407,13 +407,13 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="980,212 1000,212"/>
 <rect class="part" x="940" y="205" width="40" height="14"/>
 <text class="ref" x="960" y="186" text-anchor="middle">R125</text>
-<text class="val" x="960" y="200" text-anchor="middle">100 Ω 1 W</text>
+<text class="val" x="960" y="200" text-anchor="middle">150 Ω</text>
 <polyline class="w" points="1000,212 1010,212 1010,291 1040,291"/>
 <polyline class="w" points="920,628 940,628"/>
 <polyline class="w" points="980,628 1000,628"/>
 <rect class="part" x="940" y="621" width="40" height="14"/>
 <text class="ref" x="960" y="650" text-anchor="middle">R126</text>
-<text class="val" x="960" y="664" text-anchor="middle">100 Ω 1 W</text>
+<text class="val" x="960" y="664" text-anchor="middle">150 Ω</text>
 <polyline class="w" points="1000,628 1010,628 1010,549 1040,549"/>
 <polyline class="w" points="880,260 880,312"/>
 <polyline class="w" points="880,358 880,410"/>

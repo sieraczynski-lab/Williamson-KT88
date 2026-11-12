@@ -58,8 +58,8 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | R136 / R137 | 100k / 10k | **brak** w lewym, **300k / 68k** w prawym |
 | R130–R133 | 330 Ω | **390 Ω** |
 | R143–R152 | 680k | **560k** |
-| R125, R126 | 100 Ω | odczytano 150k – **do sprawdzenia** (pewnie 150 Ω) |
-| R141, R142 | 10 Ω / 100 Ω | odczytano 47k – **do sprawdzenia** |
+| R125, R126 | 100 Ω | **150 Ω** |
+| R141, R142 | 10 Ω / 100 Ω | **47 Ω / 47 Ω** |
 
 ## Zasilacz, sterowanie, dodatki i obudowa
 

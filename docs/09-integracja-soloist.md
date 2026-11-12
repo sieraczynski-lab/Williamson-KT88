@@ -128,7 +128,7 @@ Płytka `ul` Soloista (po jednej na kanał) wpina się między płytkę Onyxa a 
 | J2 pin 1 AN_B | anoda B toroidu, ten sam punkt co Onyx J101 pin 5 |
 | J3 | sterowanie J11 piny 1–2 (prawy kanał: J11 piny 3–4) |
 
-Środek toroidu idzie dalej do J101 pin 3. Bez prądu w cewkach jest tryb UL. Przełączanie tylko przy wyłączonym B+, jak w Soloiście. Po przełączeniu na triodę sprawdź prostokątem stabilność, bo zmienia się wzmocnienie pętli. R125/R126 Onyxa mają 100 Ω / 1 W, a Soloist ma w tym miejscu 270 Ω / 2 W. W trybie triodowym siatka druga dostaje pełne napięcie anody i większy prąd, więc warto wymienić je na **270 Ω 2 W** (lepiej chronią siatkę i tłumią oscylacje).
+Środek toroidu idzie dalej do J101 pin 3. Bez prądu w cewkach jest tryb UL. Przełączanie tylko przy wyłączonym B+, jak w Soloiście. Po przełączeniu na triodę sprawdź prostokątem stabilność, bo zmienia się wzmocnienie pętli. R125/R126 Onyxa mają na płytce 150 Ω, a Soloist ma w tym miejscu 270 Ω / 2 W. W trybie triodowym siatka druga dostaje pełne napięcie anody i większy prąd, więc warto wymienić je na **270 Ω 2 W** (lepiej chronią siatkę i tłumią oscylacje).
 
 ## 9.8 Przełącznik kolumn i trigger
 

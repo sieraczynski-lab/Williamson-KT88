@@ -20,7 +20,6 @@ Oznaczenia dla lewego kanału (1xx). Prawy kanał: to samo z 2xx.
 1. Obejrzyj płytkę: luty, elektrolity (wybrzuszenia, wycieki), przebarwienia przy rezystorach mocy. Wyczyść kurz, wysusz (płytka leżała na strychu).
 2. Ustaw zworki B101–B104 pod własne uzwojenia. Sprawdź, dokąd idzie sieć UaFF-L2 (żarzenie KT88).
    Wlutuj brakujące **R136 300k 2 W (min. 500 V) i R137 68k** w lewym kanale (jak R236/R237) i sprawdź, czy jest C124.
-   Sprawdź **R125/R126 (odczyt 150k)** i **R141/R142 (odczyt 47k)**: patrz tabela niżej.
 3. Wlut dodatkowy RL 100 Ω / 2 W między odczep 4 Ω a COM (przy złączach albo przy transformatorze).
 4. P101/P102 (i P201/P202) ustaw tak, żeby suwak dawał **maksimum ujemnego napięcia**.
 
@@ -49,7 +48,7 @@ Oznaczenia dla lewego kanału (1xx). Prawy kanał: to samo z 2xx.
 | L106 / L206 | 10 H / 400 mA | – | po jednym dławiku na kanał, min. 200 mA |
 | R134 / R234 | 5,1 Ω (płytka) | uzwojenie anodowe | zostawić |
 | R136 / R137 | brak (L), 300k / 68k (P) | Ua | wlutować w lewym 300k 2 W + 68k, podniesienie ok. 86 V |
-| R125 / R126 | odczyt 150k | – | siatki drugie KT88: musi być ok. 100–270 Ω; zmierzyć, przy UL/trioda 270 Ω 2 W |
-| R141 / R142 | odczyt 47k | – | filtr biasu w gałęzi masy, przez nie płynie cały prąd dzielników: 47k szeregowo nie może być; sprawdzić, gdzie siedzą |
+| R125 / R126 | 150 Ω (płytka) | – | zostawić; przy UL/trioda można 270 Ω 2 W |
+| R141 / R142 | 47 Ω / 47 Ω (płytka) | – | filtr biasu, zostawić |
 | wejście | – | – | kondensator 220 nF folia szeregowo (z R101 220k: ok. 3 Hz) |
 | RL (dodatek) | – | – | 100 Ω / 2 W między 4 Ω a COM |
