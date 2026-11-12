@@ -1,4 +1,4 @@
-WILLIAMSON KT88 (PLYTKA ONYXA VA1523) W OBUDOWIE SOLOIST 88 - wariant W1 (12.11.2026)
+WILLIAMSON KT88 (PLYTKA ONYXA VA1523) W OBUDOWIE SOLOIST 88 - wariant W2 (12.11.2026)
 =====================================================================================
 
 Na bazie obudowy Soloist 88 v0.4 (repozytorium Soloist-KT88, hardware/case).
@@ -10,47 +10,44 @@ PLIKI
                                           plytki na dnie, puszka selektora, transformatory, tuleje
   DXF/                                  - plaskie kontury kazdej plyty 1:1
   lista_czesci.csv                      - wymiary, material, grubosc
-  widok_*.png                           - podglad (perforacja klatki nie jest modelowana)
+  widok_*.png                           - podglad
 
 UKLAD WSPOLRZEDNYCH (jak w Soloist)
   0,0,0 = lewy przedni dolny rog dna aluminiowego; X w prawo, Y do tylu, Z w gore [mm].
 
+PLYTKA ONYXA
+  - 360 x 160 mm, X 20-380, Y 142-302. Od gory: podstawki oktalowe, male rezystory, potencjometry
+    biasu na srubokret. Wysokie elementy (kondensatory) od spodu.
+  - Wisi pod pokrywa na 10 tulejach M3 dl. 10 mm (jak plytki kanalow Soloista); podstawki wchodza
+    w otwory pokrywy, gora podstawki rowno z wierzchem pokrywy (Z 106). Wierzch plytki Z 93.
+  - Otwory mocujace plytki uzyte: naroza, boki (y 76 i 104 od tylnej krawedzi), dwa w przedniej (x 80 i 280).
+  - KT88: X 50 / 150 / 250 / 350, Y 262. 6SN7: X 50 / 150 / 250 / 350, Y 172.
+
 ZMIANY WZGLEDEM SOLOIST 88 v0.4
   POKRYWA GORNA (AL_pokrywa_gorna)
-    - okno 370 x 170 mm (X 15-385, Y 107-277) na plytke Onyxa, 5 mm odstepu od krawedzi plytki
-      (odstep od aluminium do sciezek HV na krawedziach plytki);
-    - bez otworow KT88 / lamp sterujacych i bez pretow oslony;
-    - 12 otworow M4 na kolnierz klatki; wentylacja 7 x 6 z przodu (nad sterowaniem i zasilaczem sieciowym);
-    - 4 sruby M4 w rogach jak dotad (tuleje 100 mm).
-  PLYTKA ONYXA (REF)
-    - 360 x 160 mm, X 20-380, Y 112-272, wierzch na Z 106 (rowno z wierzchem pokrywy);
-    - 10 tulei M3 z dna, dlugosc ok. 101,4 mm (Z 3 -> 104,4), np. 100 mm + podkladki;
-      otwory w plytce: naroza, boki (y 76 i 104 od tylu) i dwa w przedniej krawedzi (x 80 i 280);
-    - KT88: X 50 / 150 / 250 / 350, Y 232; 6SN7: X 50 / 150 / 250 / 350, Y 142;
-      osie potencjometrow biasu: X 85 / 115 / 285 / 315, Y 232.
-  KLATKA (SS_klatka_*)
-    - stal nierdzewna perforowana 1,5 mm (np. Rv 5-8), X 10,5-389,5, Y 103,5-280,5, Z 106-275;
-    - gora, przod, tyl, boki + kolnierz 8 mm z 12 otworami M4 (lezy na pokrywie);
-    - DXF pokazuje kontury; perforacje dobiera sie z gotowej blachy. Gieta albo skrecana z narozami.
-    - Na wierzchu plytki jest wysokie napiecie: klatka zdejmowana tylko narzedziem i przy wylaczonym zasilaniu.
+    - 8 otworow fi 30 na podstawki (fi = korpus podstawki + 1-2 mm, DO SPRAWDZENIA na podstawce);
+    - 4 otwory fi 8 na srubokret do potencjometrow biasu: X 85 / 115 / 285 / 315, Y 262;
+    - 10 otworow fi 3,4 na tuleje plytki Onyxa;
+    - wentylacja fi 6: wieniec wokol kazdej KT88, pas miedzy rzedami lamp, pole nad plytkami w przednim rzedzie;
+    - bez otworow KT88 fi 60 i bez pretow oslony lamp Soloista (oslona lamp opcjonalnie, do dorobienia);
+    - 4 sruby M4 w rogach jak dotad (tuleje 100 mm). Zdjecie pokrywy podnosi tez plytke Onyxa
+      (przewody do niej musza miec zapas dlugosci, jak w Soloist).
   DNO (AL_dno_400x460x3)
-    - bez pierscieni otworow pod podstawki KT88 i bez wentylacji wokol nich;
-    - 10 otworow pod tuleje plytki Onyxa;
-    - otwory pod 2 plytki UL (X 40-114 i 286-360, Y 186-234) i puszke selektora (X 20-132, Y 12-72);
-    - 2 pola wentylacji pod plytka Onyxa (X 30-130 i 270-370, Y 124-164).
+    - plytki Soloista w PRZEDNIM RZEDZIE (pod plytka Onyxa sa kondensatory do ok. Z 41):
+      sterowanie X 45-145, zasilacz_siec X 150-250, zasilacz_hv X 255-355, wszystkie Y 8-108;
+    - plytki UL pod rzedem KT88 (X 40-114 i 286-360, Y 242-290);
+    - puszka selektora pod plytka, z przodu z lewej (X 24-136, Y 150-210);
+    - bez pierscieni otworow pod podstawki KT88; wentylacja pod srodkiem plytki (Y 156-196).
   BEZ ZMIAN
     boki, przednia scianka, front drewniany, obudowa transformatorow (przod, tyl, przegrody, dach),
-    profile stalowe na przewody wejsciowe, ekran sterowania, plytki na dnie
-    (sterowanie Y 5-105, zasilacz_siec Y 107-207, zasilacz_hv Y 209-309, X 150-250),
+    profile stalowe na przewody wejsciowe, ekran sterowania (przesuwa sie z plytka sterowania),
     plytka glosnikow pod lewym TG.
 
-WYSOKOSCI POD PLYTKA ONYXA (spod plytki na Z 104,4)
-  zasilacz_hv z kondensatorami C1/C2: do Z ok. 65; ekran sterowania Z 50; plytki UL do Z ok. 27;
-  puszka selektora do Z 34 (pod czescia pelna pokrywy). Zapas min. ok. 40 mm.
+WYSOKOSCI POD PLYTKA ONYXA (spod plytki Z 91,4, kondensatory do ok. Z 41)
+  plytki UL do Z ok. 27; puszka selektora do Z 34. Zapas min. ok. 7 mm.
 
-DO USTALENIA
-  - rzeczywiste wysokosci elementow na plytce Onyxa (model zaklada kondensatory do 48 mm, KT88 152 mm
-    ponad plytke - klatka do Z 275 daje ok. 17 mm zapasu);
-  - polozenie zlacz na krawedziach plytki Onyxa wzgledem okna (5 mm odstepu);
-  - tylna scianka: selektor ma 4 wejscia stereo, a tylna scianka Soloista 0.4 ma 2 gniazda RCA - dodac 6;
-  - przepusty przewodow z plytki Onyxa do transformatorow (przednia scianka obudowy trafo, otwory na Z 40).
+DO USTALENIA (zmierzyc na plytce)
+  - wysokosc podstawki nad plytka (przyjeto 13 mm) i srednica jej korpusu (otwor fi 30);
+  - wysokosc najwyzszego elementu pod plytka (przyjeto 50 mm);
+  - pozycje osi potencjometrow (z rysunku Onyxa: 35 i 65 mm od srodka KT88 w strone srodka plytki);
+  - tylna scianka: selektor ma 4 wejscia stereo, a tylna scianka Soloista 0.4 ma 2 gniazda RCA - dodac 6.

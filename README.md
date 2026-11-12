@@ -48,7 +48,7 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 
 Płytka Onyxa dostaje całą infrastrukturę z [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88): miękki start i opóźnione anody, sterownik ESP32 z automatyczną korektą biasu, przełącznik UL / trioda, przełącznik kolumn z triggerem, selektor z drabinką głośności i obudowę. Płytki Soloista bez zmian w PCB, płytka Onyxa bez cięcia ścieżek. Szczegóły: [docs/09-integracja-soloist.md](docs/09-integracja-soloist.md), obudowa: [`obudowa/`](obudowa/).
 
-![Płytka Onyxa jako górny pokład](obudowa/widok_bez_klatki.png)
+![Obudowa z płytką Onyxa pod pokrywą](obudowa/widok_przod.png)
 
 ## Decyzje i otwarte sprawy
 

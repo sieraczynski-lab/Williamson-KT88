@@ -145,7 +145,7 @@ Płytka `glosniki` i wejście TRIGGER bez zmian:
 
 ## 9.9 Selektor i głośność
 
-Płytka selektora Soloista (TubeSel) w puszce aluminiowej (np. Hammond 1590, ok. 112 × 60 × 31 mm) na dnie, z przodu z lewej, pod pełną częścią pokrywy:
+Płytka selektora Soloista (TubeSel) w puszce aluminiowej (np. Hammond 1590, ok. 112 × 60 × 31 mm) na dnie, pod płytką Onyxa z przodu z lewej, blisko wejść J100:
 
 - wyjście selektora (J5) → przewód ekranowany → Onyx **J100** i **J200** (We-L, We-P), ekran podłączony tylko po stronie płytki;
 - wejście Onyxa nie ma kondensatora sprzęgającego (J100 → R100 → siatka, R101 1M do masy). Na wszelki wypadek, żeby odciąć składową stałą ze źródeł, dodaj **22 nF folia** szeregowo: z 1 MΩ daje to filtr ok. 7 Hz;
@@ -181,12 +181,13 @@ Reszta (sekwencja, UL/trioda, kolumny, trigger, selektor, IR, wyświetlacze) bez
 
 ## 9.11 Obudowa
 
-Wariant obudowy Soloista z płytką Onyxa jako górnym pokładem: [`obudowa/`](../obudowa/), opis w [`obudowa/CZYTAJ_MNIE.txt`](../obudowa/CZYTAJ_MNIE.txt).
+Wariant obudowy Soloista z płytką Onyxa: [`obudowa/`](../obudowa/), opis w [`obudowa/CZYTAJ_MNIE.txt`](../obudowa/CZYTAJ_MNIE.txt).
 
-- Płytka Onyxa (360 × 160 mm) leży w oknie pokrywy, wierzch płytki równo z wierzchem pokrywy (Z 106), na 10 tulejach M3 ok. 101 mm od dna.
-- Nad płytką **klatka z perforowanej stali nierdzewnej** (379 × 177 × 169 mm), przykręcana do pokrywy 12 śrubami M4. Na wierzchu płytki jest wysokie napięcie, więc klatkę zdejmuje się tylko narzędziem i tylko przy wyłączonym wzmacniaczu.
-- Pod płytką na dnie bez zmian: sterowanie, zasilacz sieciowy, zasilacz HV (z kondensatorami C1/C2). Do tego dwie płytki UL pod rzędem KT88 i puszka selektora z przodu.
+- Płytka Onyxa (360 × 160 mm) **wisi pod pokrywą** na 10 krótkich tulejach M3, jak płytki kanałów Soloista. Od góry ma tylko podstawki, małe rezystory i potencjometry biasu, wysokie elementy są pod spodem.
+- **Pokrywa** ma otwory na 8 podstawek, 4 otwory na śrubokręt do potencjometrów biasu (ok. 8 mm) i otwory wentylacyjne: wieńce wokół KT88, pas między rzędami lamp i pole nad płytkami zasilaczy.
+- **Płytki Soloista na dnie przeniesione do przedniego rzędu** (sterowanie, zasilacz sieciowy, zasilacz HV obok siebie), bo pod płytką Onyxa są kondensatory. Pod płytką zostają tylko niskie płytki UL i puszka selektora.
 - Obudowa transformatorów, tył, front i drewno jak w Soloiście 0.4.
+- Do zmierzenia na płytce: wysokość i średnica podstawek, wysokość elementów od spodu, pozycje osi potencjometrów.
 
 ## 9.12 Lista „nie montować / zmienić”
 

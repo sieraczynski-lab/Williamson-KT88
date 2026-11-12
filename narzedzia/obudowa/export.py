@@ -40,7 +40,6 @@ def dxf(path, loops, ox, oy):
     open(path, "w").write("\n".join(L) + "\n")
 
 def mat(n):
-    if n.startswith("SS_klatka"): return "stal nierdzewna perforowana (np. Rv 5-8), gieta"
     if n.startswith("AL_"): return "aluminium 5754"
     if n.startswith("ST_"): return "profil stalowy 20x20x1,5 ocynk/czarny - dlugosc"
     return "MDF + fornir"
@@ -58,10 +57,10 @@ with open(os.path.join(OUT, "lista_czesci.csv"), "w", encoding="utf-8-sig") as f
 stepw.write_step(os.path.join(OUT, "Williamson_obudowa.step"), model.parts, "Williamson_obudowa")
 stepw.write_step(os.path.join(OUT, "Williamson_obudowa_z_elementami.step"), model.parts + model.ref, "Williamson_obudowa_z_elementami")
 allp = model.parts + model.ref
-render(allp, os.path.join(OUT, "widok_przod.png"), azim=-62, elev=24, title="Williamson KT88 w obudowie Soloist - widok z przodu")
+render(allp, os.path.join(OUT, "widok_przod.png"), azim=-62, elev=26, title="Williamson KT88 w obudowie Soloist - widok z przodu")
 render(allp, os.path.join(OUT, "widok_tyl.png"), azim=118, elev=26, title="Widok z tylu")
-render(allp, os.path.join(OUT, "widok_bez_klatki.png"), azim=-58, elev=34, title="Bez klatki: plytka Onyxa jako gorny poklad",
-       skip=("SS_klatka",))
-render(allp, os.path.join(OUT, "widok_wnetrze.png"), azim=-58, elev=40, title="Wnetrze (bez pokrywy, plytki Onyxa, klatki, drewna i dachu trafo)",
-       skip=("AL_pokrywa", "DREWNO", "AL_trafo_dach", "SS_", "REF_plytka_Onyx", "REF_KT88", "REF_V", "REF_podstawka", "REF_kondensatory", "REF_potencjometr", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
+render(allp, os.path.join(OUT, "widok_plytka.png"), azim=-58, elev=34, title="Bez pokrywy: plytka Onyxa pod pokrywa",
+       skip=("AL_pokrywa", "DREWNO", "AL_trafo_dach", "REF_KT88", "REF_V", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
+render(allp, os.path.join(OUT, "widok_wnetrze.png"), azim=-58, elev=40, title="Wnetrze (bez pokrywy, plytki Onyxa, drewna i dachu trafo)",
+       skip=("AL_pokrywa", "DREWNO", "AL_trafo_dach", "REF_plytka_Onyx", "REF_KT88", "REF_V", "REF_podstawka", "REF_kondensatory", "REF_potencjometr", "REF_tuleja_M3", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
 print(OUT, len(rows))
