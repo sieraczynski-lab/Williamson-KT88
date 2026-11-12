@@ -64,3 +64,12 @@ Onyx przesłał schematy obu kanałów i rysunki płytki (bez wartości element�
 | C123 / C223 | 56 pF | brak |
 
 Według Onyxa część elementów różni się, bo miał inny transformator sieciowy i Hammondy jako wyjściowe. Lista elementów do dobrania pod toroid jest w [05-uruchomienie.md](05-uruchomienie.md#elementy-do-sprawdzenia-lub-zmiany).
+
+## Odpowiedzi Onyxa (12.11.2026)
+
+- **Transformator sieciowy:** toroidy.pl **TSTA-0300/001** (300 VA). Onyx sugeruje większy, żeby w pełni wykorzystać KT88. Planowany TR1 400 VA (360 V + 345 V / 0,65 A) to spełnia. Dokładnych uzwojeń TSTA-0300/001 nie udało się znaleźć; pokrewny TSTA-0250/001 ma anodowe 275/330 V, bias 50 V i trzy uzwojenia 6,3 V.
+- **Metoda:** „najpierw obrać punkt pracy i do niego dobrać napięcia; jak już są trafa wyjściowe, zacząć od Raa”. Przy Raa 4 kΩ dane GEC dla pary KT88 UL to ok. 460 V i 2× 50 mA (ok. 70 W przy 2% THD), co odpowiada przyjętemu Ua ok. 465 V i 50–55 mA.
+- **Sprzężenie zwrotne:** u niego z odczepu **8 Ω** Hammonda. Tu też z 8 Ω (toroidu).
+- **C123:** żeby nie było wzbudzenia na wysokich częstotliwościach. Podobnie **R102/C101** (i R202/C201) w anodzie pierwszego stopnia; 100 nF na schemacie to błąd. U niego obyło się bez tej sieci RC, ale radzi sprawdzić odpowiedź na prostokąt.
+- **Rezystory katodowe KT88:** przy stałym biasie mogłoby ich nie być, są tylko do pomiaru prądu; wystarczyłby 1 Ω. Tu zostaje **10 Ω 1 %**, bo pod tę wartość jest liczony pomiar w sterowniku Soloista (55 mA = 0,55 V).
+- **Pomyłki na schemacie** (R217, R224) potwierdzone.

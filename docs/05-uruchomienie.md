@@ -40,6 +40,7 @@ Oznaczenia dla lewego kanału (1xx). Prawy kanał: to samo z 2xx.
 |---|---|---|---|
 | R129 / R229 | 22k | przekładnia TR-OUT i odczep | start 22k z odczepu 8 Ω (ok. 10 dB); z 4 Ω byłoby ok. 8 dB |
 | C123 / C223 | n.m. | TR-OUT na wysokich częstotliwościach | dobrać na oscyloskopie, 33–150 pF, jeśli potrzeba |
+| R102 / C101 (R202 / C201) | n.m. | stabilność na w.cz. | tylko gdy C123 nie wystarczy: start 1k2 + 680 pF, dobór prostokątem (100 nF ze schematu to pomyłka) |
 | R128 / R228 | 4k7 3 W | Ua z własnego zasilacza | Uaa ok. 380–420 V |
 | P101/P102, R139/R140, R119/R120 | 47k / 47k / 470k | napięcie uzwojenia biasu | suwak 0,5–1,0 × Bias-L; przy −90 V zakres −45…−90 V |
 | L106 / L206 | 10 H / 400 mA | – | po jednym dławiku na kanał, min. 200 mA |

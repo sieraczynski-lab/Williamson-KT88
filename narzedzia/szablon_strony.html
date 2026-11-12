@@ -150,6 +150,7 @@ code{font-family:var(--f-mono);font-size:.9em}
   <ul>
     <li><b>R129 / R229 22k:</b> start bez zmian. Sprzężenie zwrotne brać z <b>odczepu 8 Ω</b> toroidu (kolumny zostają na 4 Ω). Daje to ok. 10 dB, czyli głębokość zbliżoną do tej u Onyxa z Hammondem. Z odczepu 4 Ω byłoby ok. 8 dB.</li>
     <li><b>C123 / C223:</b> najpierw bez. Jeśli prostokąt 10 kHz dzwoni, wlutować 33–150 pF.</li>
+    <li><b>R102 / C101 (R202 / C201):</b> sieć RC z anody V1B do węzła odsprzęgającego, niemontowana. Gdyby samo C123 nie wystarczyło: start ok. 1k2 + 680 pF (biegun ok. 28 kHz, zero ok. 190 kHz), dobór prostokątem. 100 nF ze schematu to pomyłka.</li>
     <li><b>R128 / R228 4k7 3 W:</b> dobrać tak, żeby Uaa wyszło ok. 380–420 V przy Twoim Ua.</li>
     <li><b>Dzielnik biasu</b> (P101/P102 47k, R139/R140 47k, R119/R120 470k): suwak daje od 0,5 do 1,0 napięcia szyny. Przy szynie ok. −90 V zakres −45…−90 V jest dobry.</li>
     <li><b>Dławiki L106 i L206:</b> po jednym na kanał, 10 H. Prąd ok. 145 mA na kanał, więc wystarczy 200 mA; Onyx dał 400 mA.</li>
@@ -177,12 +178,15 @@ code{font-family:var(--f-mono);font-size:.9em}
 <div class="warn"><p><b>Wysokie napięcie.</b> Ua ok. 465 V, a na zimno i przy wysokim napięciu sieci więcej. Kondensatory filtrów rozładowują się przez rezystory 680 k dość wolno, kilka minut. Przed dotknięciem płytki zawsze zmierz napięcie.</p></div>
 
 <section>
-  <h2>Pytania do Onyxa</h2>
+  <h2>Odpowiedzi Onyxa <small>12.11.2026</small></h2>
   <ul>
-    <li>Jakie było Ua i Uaa przy pracujących lampach oraz napięcie AC uzwojenia biasu?</li>
-    <li>Z którego odczepu Hammonda brał sprzężenie zwrotne (8 czy 16 Ω)?</li>
-    <li>Jaki prąd spoczynkowy ustawiał na KT88?</li>
-    <li>Dokąd idzie sieć UaFF-L2 (podniesienie żarzenia KT88): do masy czy do UaFF?</li>
+    <li><b>Transformator sieciowy:</b> toroidy.pl TSTA-0300/001 (300 VA). Onyx radzi większy, żeby w pełni wykorzystać KT88. Planowany TR1 400 VA (360 V) to spełnia.</li>
+    <li><b>Kolejność projektowania:</b> najpierw punkt pracy, do niego napięcia; przy gotowych transformatorach wyjściowych zacząć od Raa. Dla 4 kΩ dane GEC dla pary KT88 UL to ok. 460 V i 2× 50 mA, czyli to, co przyjęliśmy (Ua ok. 465 V, 50–55 mA).</li>
+    <li><b>Sprzężenie zwrotne:</b> z odczepu 8 Ω, tak jak tutaj.</li>
+    <li><b>C123:</b> po to, żeby wzmacniacz nie wzbudzał się na wysokich częstotliwościach. Podobnie R102/C101 przy anodzie V1B (100 nF na schemacie to błąd). U Onyxa obyło się bez tego, ale warto sprawdzić prostokątem.</li>
+    <li><b>Rezystory katodowe KT88:</b> przy stałym biasie mogłoby ich nie być, służą tylko do pomiaru; wystarczyłoby 1 Ω. Tu zostaje 10 Ω, bo pod 10 Ω jest liczony pomiar w sterowniku Soloista.</li>
+    <li>Pomyłki na schemacie (R217, R224) potwierdzone.</li>
+    <li><b>Otwarte:</b> dokąd idzie sieć UaFF-L2 (środek żarzenia KT88), do sprawdzenia omomierzem na płytce.</li>
   </ul>
 </section>
 </div>
