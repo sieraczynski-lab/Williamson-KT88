@@ -15,9 +15,9 @@ Oznaczenia elementów i złączy Soloista według jego wersji 0.23 (płytki) i 0
 
 ![Płytka zasilacza](../schematy/plytka_zasilacza.svg)
 
-Projekt PCB (KiCad 4/5, import do EasyEDA, otwiera się też w KiCad 8): [`pcb/`](../pcb/), opis w [`pcb/CZYTAJ_MNIE.txt`](../pcb/CZYTAJ_MNIE.txt). Płytka 100 × 100 mm, rozmieszczona, klasy sieci (szerokości i odstępy) zapisane w plikach PCB; ścieżki do poprowadzenia w EasyEDA.
+Projekt PCB (KiCad 4/5, import do EasyEDA, otwiera się też w KiCad 8): [`pcb/zasilacz/`](../pcb/zasilacz/), opis w [`pcb/zasilacz/CZYTAJ_MNIE.txt`](../pcb/zasilacz/CZYTAJ_MNIE.txt). Wszystkie płytki i połączenia między nimi: [`pcb/CZYTAJ_MNIE.txt`](../pcb/CZYTAJ_MNIE.txt). Płytka 100 × 100 mm, rozmieszczona, klasy sieci (szerokości i odstępy) zapisane w plikach PCB; ścieżki do poprowadzenia w EasyEDA.
 
-![Rozmieszczenie płytki zasilacza](../pcb/zasilacz_williamson_rozmieszczenie.png)
+![Rozmieszczenie płytki zasilacza](../pcb/zasilacz/zasilacz_williamson_rozmieszczenie.png)
 
 ## 9.1 Schemat blokowy
 
@@ -66,7 +66,7 @@ Uzwojenie **S4 58 V** przez F4 idzie napięciem przemiennym na J106 i J206. Pros
 | Onyx **Bias-L** (minus C126) | sterowanie **J5 pin 1** | pomiar szyny biasu i źródło przesuwników korekty |
 
 - Zakres potencjometrów P101/P102 (na płytce 20k, R139 4k7, R119 68k): ok. **−19…−80 V**. Na maksimum ujemnego napięcia lampa jest bezpiecznie zatkana.
-- Obciążenie Bias-L: 2 dzielniki z płytki (20k + 4k7, R119 68k) ok. 7 mA, korekta lewego kanału ok. 1,8 mA, pomiar ok. 0,2 mA. Przesuwniki prawego kanału zasilaj z Bias-P (ok. 1,8 mA), wtedy obie szyny są obciążone podobnie. W programie kontrolujemy tylko Bias-L; jeśli S4 zniknie, znikają obie szyny naraz.
+- Obciążenie Bias-L: 2 dzielniki z płytki (20k + 4k7, R119 68k) ok. 7 mA, korekta wszystkich czterech lamp ok. 3,6 mA (płytka sterowania bierze szynę z jednego wejścia J5 pin 1), pomiar ok. 0,2 mA. Bias-P ma tylko swoje dzielniki, więc wyjdzie o ok. 0,3–0,5 V mniej ujemny; to bez znaczenia, bo każdą lampę ustawia się osobnym potencjometrem. W programie kontrolujemy Bias-L; jeśli S4 zniknie, znikają obie szyny naraz.
 - Uzwojenie 58 V jest dobrane tak, żeby szyna wyszła ok. −80 V jak w Soloiście; wtedy przesuwniki korekty 68k/33k i progi kontroli szyny zostają bez zmian.
 
 ## 9.4 Pomiar prądów i automatyczna korekta biasu
@@ -198,5 +198,5 @@ Wariant obudowy Soloista z płytką Onyxa: [`obudowa/`](../obudowa/), opis w [`o
 | Onyx | R125, R126, R225, R226 | 270 Ω 2 W (zalecane przy UL/trioda) |
 | Onyx | wejście J100 / J200 | 220 nF szeregowo |
 | Onyx | R136, R137 (lewy) | wlutować 300k 2 W + 68k |
-| sterowanie | J5 pin 1 | do Bias-L Onyxa; przesuwniki prawego kanału z Bias-P |
+| sterowanie | J5 pin 1 | do Bias-L Onyxa |
 | sterowanie | program | progi z 9.10 |

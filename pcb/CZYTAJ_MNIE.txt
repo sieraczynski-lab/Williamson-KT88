@@ -1,54 +1,89 @@
-WILLIAMSON KT88 - PLYTKA ZASILACZA v1.0 (12.11.2026)
-====================================================
+WILLIAMSON KT88 - PLYTKI PCB (12.11.2026)
+==========================================
 
-Plytka 100 x 100 mm (cena JLCPCB jak dla malych plytek), dwustronna, FR-4 1,6 mm, miedz 1 oz. 39 elementow, 26 sieci.
-Bez prostownikow i kondensatorow (sa na plytce Onyxa). Opis ukladu: docs/09-integracja-soloist.md.
+Plytka wzmacniacza to plytka Onyxa VA1523 (kupiona). Pozostale plytki:
 
-PLIKI
-  import_EasyEDA/
-    zasilacz_williamson_EasyEDA_Pro_KiCad8.zip  - projekt KiCad 5 (schemat + PCB); EasyEDA Pro:
-                                                 File > Import > KiCad; KiCad 8: rozpakuj i otworz .pro
-                                                 (KiCad zapyta o konwersje starego schematu - zgodz sie)
-    zasilacz_williamson_Standard_schemat.zip    - EasyEDA Standard: import schematu (KiCad 4)
-    zasilacz_williamson_Standard_pcb.zip        - EasyEDA Standard: import PCB (KiCad 4)
+  Folder       Plytka                        Rozmiar     Ilosc  Zrodlo
+  zasilacz/    zasilacz Williamsona          100 x 100   1      nowa (narzedzia/pcb/zasilacz_pcb.py)
+  sterowanie/  sterownik ESP32-S3            100 x 100   1      Soloist-KT88 v0.23, bez zmian
+  ul/          przelacznik UL / trioda       74 x 48     2      Soloist-KT88 v0.23, bez zmian
+  glosniki/    przelacznik kolumn + trigger  100 x 42    1      Soloist-KT88 v0.23, bez zmian
+  selektor/    selektor wejsc i glosnosc     -           1      Soloist-KT88 (TubeSel), bez zmian
+
+Plytki kanalu, zasilacz_siec i zasilacz_hv Soloista NIE sa potrzebne (zastepuje je plytka Onyxa
+i plytka zasilacz/).
+
+Opis sterowania i selektora: docs/soloist/03-sterowanie.md, docs/soloist/11-selektor.md.
+Podlaczenie do plytki Onyxa: docs/09-integracja-soloist.md.
+
+
+PLIKI W KAZDYM FOLDERZE (zasilacz, sterowanie, ul, glosniki)
+-------------------------------------------------------------
+  import_EasyEDA/<plytka>_EasyEDA_Pro_KiCad8.zip  - EasyEDA Pro: Import > KiCad (projekt KiCad 5.1,
+                                                   schemat + PCB); KiCad 8: rozpakuj, otworz .pro
+  import_EasyEDA/<plytka>_Standard_schemat.zip    - EasyEDA Standard: schemat (KiCad 4)
+  import_EasyEDA/<plytka>_Standard_pcb.zip        - EasyEDA Standard: PCB (KiCad 4)
   KiCad4_dla_EasyEDA_Standard/, KiCad5_dla_EasyEDA_Pro_i_KiCad8/ - te same projekty rozpakowane
-  zasilacz_williamson_BOM.csv, _netlista.csv     - lista elementow i polaczen
-  zasilacz_williamson_klasy_sieci.csv            - szerokosci sciezek i odstepy (tylko do wgladu - sa juz w plikach PCB)
-  zasilacz_williamson_rozmieszczenie.png/.svg    - rozmieszczenie (czerwone pola = wysokie napiecie)
-  zasilacz_williamson_schemat.png                - podglad schematu
+  <plytka>_BOM.csv, _netlista.csv, _klasy_sieci.csv, _rozmieszczenie.png/.svg
+  <plytka>_rozmieszczenie_1do1.pdf  - do wydruku 100% (sterowanie, ul, glosniki)
+  <plytka>_BOM_LCSC.xlsx            - czesci z numerami LCSC (sterowanie, ul, glosniki)
+  sterowanie/sterowanie_BOM_JLCPCB.csv - montaz SMD w JLCPCB
+Selektor ma wlasny uklad folderow: selektor/kicad (KiCad 8/9) i selektor/kicad5-easyeda.
 
-PCB JEST ROZMIESZCZONE, ALE NIEPOPROWADZONE (linie polaczen / ratsnest), jak plytki Soloista.
-  KLASY SIECI SA W PLIKACH .kicad_pcb (net_class) - EasyEDA wczytuje je przy imporcie, nic nie
-  wpisujesz recznie. Kazda siec ma przypisana szerokosc sciezki i odstep:
-    SIEC_230 2,0 / 3,0 mm   HT_AC 1,5 / 3,0   HV_DC 0,6 / 3,0   HV_MID 0,6 / 2,0
-    BIAS_AC 0,6 / 1,0       POMIAR 0,4 / 0,5  CEWKI 0,5 / 0,3   GND 1,0 / 0,3
-  1. Poprowadz recznie albo autorouterem (EasyEDA bierze szerokosci z klas), potem DRC.
-  2. Masy nie lacz z otworami montazowymi (plytka na tulejach dystansowych).
-  3. Odstep cewki K1-K4 od stykow (230 V / anody) najlepiej 6 mm - nie prowadz +12V/RLY
-     miedzy nozkami stykow.
+KLASY SIECI (szerokosci sciezek i odstepy) sa zapisane w plikach .kicad_pcb (net_class) -
+wczytuja sie przy imporcie. PCB sa rozmieszczone, z polaczeniami (ratsnest), bez sciezek.
+Ilosci w *_BOM_LCSC.xlsx: kolumna "Ilosc razem" liczy 2 plytki UL (tak jak w Williamsonie).
 
-ZLACZA
-  J1  SIEC      1 L (po F1 w IEC i wylaczniku), 2 N           sruby 5,08 mm
-  J3  PS1       1 L przez F2, 2 N -> sterowanie J1 (IRM-15-12) sruby 5,08 mm
-  J5  TR1_PRI   1 L, 2 N                                       sruby 5,08 mm
-  J7  S1_IN     S1 360 V z TR1 (1 przez F3)                    sruby 7,62 mm
-  J8  HT_L      -> Onyx J103 (1->1, 2->2)                      sruby 7,62 mm
-  J9  HT_R      -> Onyx J203                                   sruby 7,62 mm
-  J10 S4_IN     S4 58 V z TR1                                  sruby 5,08 mm
-  J11 BIAS_L    -> Onyx J106    J12 BIAS_R -> Onyx J206       sruby 5,08 mm
-  J13 UA_IN     z Ua-L plytki Onyxa (plus C121), izolacja 1 kV pole lutownicze
-  J14 HV_SENSE  -> sterowanie J5 pin 2                         pole lutownicze
-  J15 GND_ONYX  masa do plytki Onyxa     J18 GND_STER masa do sterowania J5
-  J16 RELAY_A   +12V, RLY1, RLY2 ze sterowania J2 (piny 1,2,3) listwa 2,54
-  J17 RELAY_B   +12V, RLY3, RLY4 ze sterowania J2 (piny 1,4,5) listwa 2,54
-  Zarzenie (S2 8 A, S3 3 A) idzie z TR1 wprost na Onyx J105/J205 i J104/J204, nie przez plytke.
 
-PRZED ZAMOWIENIEM SPRAWDZ
-  1. Przekaznik G2RL-2: bez zasilania cewki 3-2 i 6-7 zwarte, przy 12 V na 1-8 zwarte 3-4 i 6-5
-     (jak w Soloiscie; uklad otworow z biblioteki KiCad).
-  2. Oprawki bezpiecznikow 5x20 (F3 pionowo; bezpiecznik 500 V, np. Schurter SPT), zlacza srubowe, rezystory 10 W
-     (rozstaw 55,88 mm) i 1M 1600 V (rozstaw 15,24 mm) - przyloz do wydruku 1:1.
-  3. Rezystory 10 W stoja wzdluz plytki (pionowo na rysunku) - w obudowie miejsce po zasilacz_siec.
+POLACZENIA MIEDZY PLYTKAMI (WILLIAMSON)
+---------------------------------------
+Siec i TR1:
+  IEC (F1 T2,5A) -> wylacznik -> zasilacz J1;  zasilacz J5 -> pierwotne TR1
+  zasilacz J3 (230 V przez F2) -> sterowanie J1 (PS1 IRM-15-12)
+  TR1 S1 360 V -> zasilacz J7;  zasilacz J8 -> Onyx J103,  J9 -> Onyx J203
+  TR1 S4 58 V  -> zasilacz J10; zasilacz J11 -> Onyx J106, J12 -> Onyx J206
+  TR1 S2 6,3 V/8 A -> Onyx J105 i J205 (wprost);  TR1 S3 6,3 V/3 A -> Onyx J104 i J204 (wprost)
+Przekazniki:
+  sterowanie J2: pin 1 (+12V), 2 (RLY1), 3 (RLY2) -> zasilacz J16
+                 pin 1 (+12V), 4 (RLY3), 5 (RLY4) -> zasilacz J17
+Pomiary:
+  sterowanie J5 pin 1 (VBIAS) <- Onyx Bias-L (minus C126 lewego kanalu)   (w Soloiscie: zasilacz_siec J21)
+  sterowanie J5 pin 2 (HV_SENSE) <- zasilacz J14; zasilacz J18 (masa) -> sterowanie J5 pin 3
+  zasilacz J13 (UA_IN) <- Onyx Ua-L (plus C121);  zasilacz J15 -> masa plytki Onyxa
+  sterowanie J4 (prady KT88): IK_L1 V5, IK_L2 V6, IK_R1 V7, IK_R2 V8 - konce R123/R124/R223/R224
+                 od strony katody; GND do masy Onyxa
+Korekta biasu (przewody skrecone z masa, z dala od anod):
+  sterowanie J10 pin 1 -> Onyx R117 od strony biasu (V5)   pin 2 -> R118 (V6)
+                 pin 3 -> R217 (V7)                       pin 4 -> R218 (V8)
+  Kolejnosc jak w J4. Wszystkie przesuwniki korekty biora szyne z J5 pin 1 (Bias-L).
+UL / trioda:
+  sterowanie J11 piny 1-2 (+12V, RLY_UL) -> plytka UL kanalu L J3;  piny 3-4 -> plytka UL kanalu P J3
+  plytka UL: J1/J2 pin 1 anoda (toroid), 2 odczep UL (toroid), 3 -> Onyx J101 pin 2 / pin 4
+Kolumny:
+  odczep 4 Ohm + COM toroidu -> glosniki J2 (L) / J5 (P); Marantz -> J1/J4; kolumny <- J3/J6
+  cewki glosniki J7 <- sterowanie J13;  TRIGGER (jack 3,5 mm) -> sterowanie J12
+  Sprzezenie zwrotne: odczep 8 Ohm toroidu -> Onyx J102 (przed przekaznikiem)
+Selektor:
+  wyjscie selektora J5 -> przewod ekranowany -> Onyx J100 / J200 przez 220 nF folia szeregowo
+  I2C i MUTE ze sterowania jak w Soloiscie (docs/soloist/11-selektor.md)
 
-Generator: narzedzia/pcb/zasilacz_pcb.py (python3 zasilacz_pcb.py). Biblioteka footprintow i
-symboli (pcbgen.py, schwired.py) z projektu Soloist-KT88.
+Masa: gwiazda na plytce Onyxa. Jeden przewod masy z kazdej plytki (zasilacz J15, sterowanie).
+
+
+ROZNICE W PROGRAMIE ESP32 (docs/09, 9.10)
+-----------------------------------------
+  - lampy w J4/J10: V5, V6, V7, V8 Onyxa; rezystory pomiarowe 10 Ohm (1 % albo wpisac zmierzone)
+  - prad docelowy 50-55 mA; alarm w ciszy > 70 mA (w Soloiscie 75 mA)
+  - zakres korekty ok. +-3 mA z dzielnikiem biasu z plytki Onyxa (20k / 4k7 / 68k)
+  - HV_SENSE mierzy Ua na plytce Onyxa (ok. 2,3 V przy 465 V), szyna biasu ok. -80 V jak w Soloiscie
+  - czulosc ok. 0,65 V: limity glosnosci w selektorze wg docs/09, 9.9
+
+
+PRZED ZAMOWIENIEM
+-----------------
+  1. Przekaznik G2RL-2 (zasilacz, ul, glosniki): bez zasilania cewki zwarte 3-2 i 6-7,
+     przy 12 V na 1-8 zwarte 3-4 i 6-5.
+  2. PS1 IRM-15-12 na sterowaniu: footprint przyblizony - podmien na LCSC C6394169, sprawdz +V / -V.
+  3. ESP32-S3-DevKitC-1: rozstaw listew 22,86 mm - zmierz swoj modul.
+  4. Oprawki bezpiecznikow, zlacza srubowe, rezystory 10 W - przyloz do wydruku 1:1.
+  5. Szczegoly kazdej plytki: zasilacz/CZYTAJ_MNIE.txt, selektor/README.md, docs/soloist/.

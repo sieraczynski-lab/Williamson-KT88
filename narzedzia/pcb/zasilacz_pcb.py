@@ -13,7 +13,7 @@ from schwired import WiredSch
 
 NAME = "zasilacz_williamson"
 LIB = "williamson"
-OUT = os.path.abspath(os.path.join(D, "..", "..", "pcb"))
+OUT = os.path.abspath(os.path.join(D, "..", "..", "pcb", "zasilacz"))
 
 HV = {"L_SW", "N_SW", "L_K1", "L_TR", "L_TR2", "HT_TR", "HT_F", "K3_MID", "HT_K3", "HT_IN", "HT_B", "UA", "HVS1", "HVS2", "LED_M"}
 VOLT = {"L_SW": "AC", "N_SW": "AC", "L_K1": "AC", "L_TR": "AC", "L_TR2": "AC",

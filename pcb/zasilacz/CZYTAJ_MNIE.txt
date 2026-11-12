@@ -1,0 +1,54 @@
+WILLIAMSON KT88 - PLYTKA ZASILACZA v1.0 (12.11.2026)
+====================================================
+
+Plytka 100 x 100 mm (cena JLCPCB jak dla malych plytek), dwustronna, FR-4 1,6 mm, miedz 1 oz. 39 elementow, 26 sieci.
+Bez prostownikow i kondensatorow (sa na plytce Onyxa). Opis ukladu: docs/09-integracja-soloist.md.
+
+PLIKI
+  import_EasyEDA/
+    zasilacz_williamson_EasyEDA_Pro_KiCad8.zip  - projekt KiCad 5 (schemat + PCB); EasyEDA Pro:
+                                                 File > Import > KiCad; KiCad 8: rozpakuj i otworz .pro
+                                                 (KiCad zapyta o konwersje starego schematu - zgodz sie)
+    zasilacz_williamson_Standard_schemat.zip    - EasyEDA Standard: import schematu (KiCad 4)
+    zasilacz_williamson_Standard_pcb.zip        - EasyEDA Standard: import PCB (KiCad 4)
+  KiCad4_dla_EasyEDA_Standard/, KiCad5_dla_EasyEDA_Pro_i_KiCad8/ - te same projekty rozpakowane
+  zasilacz_williamson_BOM.csv, _netlista.csv     - lista elementow i polaczen
+  zasilacz_williamson_klasy_sieci.csv            - szerokosci sciezek i odstepy (tylko do wgladu - sa juz w plikach PCB)
+  zasilacz_williamson_rozmieszczenie.png/.svg    - rozmieszczenie (czerwone pola = wysokie napiecie)
+  zasilacz_williamson_schemat.png                - podglad schematu
+
+PCB JEST ROZMIESZCZONE, ALE NIEPOPROWADZONE (linie polaczen / ratsnest), jak plytki Soloista.
+  KLASY SIECI SA W PLIKACH .kicad_pcb (net_class) - EasyEDA wczytuje je przy imporcie, nic nie
+  wpisujesz recznie. Kazda siec ma przypisana szerokosc sciezki i odstep:
+    SIEC_230 2,0 / 3,0 mm   HT_AC 1,5 / 3,0   HV_DC 0,6 / 3,0   HV_MID 0,6 / 2,0
+    BIAS_AC 0,6 / 1,0       POMIAR 0,4 / 0,5  CEWKI 0,5 / 0,3   GND 1,0 / 0,3
+  1. Poprowadz recznie albo autorouterem (EasyEDA bierze szerokosci z klas), potem DRC.
+  2. Masy nie lacz z otworami montazowymi (plytka na tulejach dystansowych).
+  3. Odstep cewki K1-K4 od stykow (230 V / anody) najlepiej 6 mm - nie prowadz +12V/RLY
+     miedzy nozkami stykow.
+
+ZLACZA
+  J1  SIEC      1 L (po F1 w IEC i wylaczniku), 2 N           sruby 5,08 mm
+  J3  PS1       1 L przez F2, 2 N -> sterowanie J1 (IRM-15-12) sruby 5,08 mm
+  J5  TR1_PRI   1 L, 2 N                                       sruby 5,08 mm
+  J7  S1_IN     S1 360 V z TR1 (1 przez F3)                    sruby 7,62 mm
+  J8  HT_L      -> Onyx J103 (1->1, 2->2)                      sruby 7,62 mm
+  J9  HT_R      -> Onyx J203                                   sruby 7,62 mm
+  J10 S4_IN     S4 58 V z TR1                                  sruby 5,08 mm
+  J11 BIAS_L    -> Onyx J106    J12 BIAS_R -> Onyx J206       sruby 5,08 mm
+  J13 UA_IN     z Ua-L plytki Onyxa (plus C121), izolacja 1 kV pole lutownicze
+  J14 HV_SENSE  -> sterowanie J5 pin 2                         pole lutownicze
+  J15 GND_ONYX  masa do plytki Onyxa     J18 GND_STER masa do sterowania J5
+  J16 RELAY_A   +12V, RLY1, RLY2 ze sterowania J2 (piny 1,2,3) listwa 2,54
+  J17 RELAY_B   +12V, RLY3, RLY4 ze sterowania J2 (piny 1,4,5) listwa 2,54
+  Zarzenie (S2 8 A, S3 3 A) idzie z TR1 wprost na Onyx J105/J205 i J104/J204, nie przez plytke.
+
+PRZED ZAMOWIENIEM SPRAWDZ
+  1. Przekaznik G2RL-2: bez zasilania cewki 3-2 i 6-7 zwarte, przy 12 V na 1-8 zwarte 3-4 i 6-5
+     (jak w Soloiscie; uklad otworow z biblioteki KiCad).
+  2. Oprawki bezpiecznikow 5x20 (F3 pionowo; bezpiecznik 500 V, np. Schurter SPT), zlacza srubowe, rezystory 10 W
+     (rozstaw 55,88 mm) i 1M 1600 V (rozstaw 15,24 mm) - przyloz do wydruku 1:1.
+  3. Rezystory 10 W stoja wzdluz plytki (pionowo na rysunku) - w obudowie miejsce po zasilacz_siec.
+
+Generator: narzedzia/pcb/zasilacz_pcb.py (python3 zasilacz_pcb.py). Biblioteka footprintow i
+symboli (pcbgen.py, schwired.py) z projektu Soloist-KT88.
