@@ -30,7 +30,7 @@ Płytka Onyxa ma zasilacz anodowy osobno dla każdego kanału (mostek, filtr, d�
 |---|---|---|---|
 | Pierwotne | 230 V | – | ekran elektrostatyczny do PE |
 | S1 anodowe | **360 V, odczepy 345 V i 375 V** | 0,65 A | J103 i J203 → Ua ok. 450–470 V |
-| S4 bias | **58 V** | 50 mA | J106 i J206 → ok. −80 V |
+| S4 bias | **58 V** | 100 mA | J106 i J206 → ok. −80 V (dzielniki z płytki biorą ok. 15 mA DC) |
 | S2 żarzenie KT88 | 6,3 V | 8 A | J105 i J205, 4× KT88 = 6,4 A |
 | S3 żarzenie 6SN7 | 6,3 V | 3 A | J104 i J204, 4× 6SN7 = 2,4 A |
 

@@ -45,15 +45,15 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="220,120 245,120"/>
 <polyline class="w" points="285,120 310,120"/>
 <rect class="part" x="245" y="113" width="40" height="14"/>
-<text class="ref" x="265" y="94" text-anchor="middle">NTC</text>
-<text class="val" x="265" y="108" text-anchor="middle">soft-start</text>
+<text class="ref" x="265" y="94" text-anchor="middle">K1/K2</text>
+<text class="val" x="265" y="108" text-anchor="middle">miękki start</text>
 <polyline class="w" points="310,120 350,120"/>
 <polyline class="w" points="35,300 350,300"/>
 <path class="coil" d="M350 120 A8.18182 8.18182 0 0 1 350 136.364 A8.18182 8.18182 0 0 1 350 152.727 A8.18182 8.18182 0 0 1 350 169.091 A8.18182 8.18182 0 0 1 350 185.455 A8.18182 8.18182 0 0 1 350 201.818 A8.18182 8.18182 0 0 1 350 218.182 A8.18182 8.18182 0 0 1 350 234.545 A8.18182 8.18182 0 0 1 350 250.909 A8.18182 8.18182 0 0 1 350 267.273 A8.18182 8.18182 0 0 1 350 283.636 A8.18182 8.18182 0 0 1 350 300"/>
 <line class="core" x1="374" y1="70" x2="374" y2="640"/>
 <line class="core" x1="384" y1="70" x2="384" y2="640"/>
 <text class="ref chg" x="379" y="672" text-anchor="middle">TR1  toroid 400 VA (poza płytką)</text>
-<text class="val chg" x="379" y="687" text-anchor="middle">360 V (+345 V)/0,65 A · 65 V/50 mA · 6,3 V/8 A · 6,3 V/3 A</text>
+<text class="val chg" x="379" y="687" text-anchor="middle">360 V (345/375)/0,65 A · 58 V/100 mA · 6,3 V/8 A · 6,3 V/3 A</text>
 <path class="coil" d="M408 80 A7.85714 7.85714 0 0 0 408 95.7143 A7.85714 7.85714 0 0 0 408 111.429 A7.85714 7.85714 0 0 0 408 127.143 A7.85714 7.85714 0 0 0 408 142.857 A7.85714 7.85714 0 0 0 408 158.571 A7.85714 7.85714 0 0 0 408 174.286 A7.85714 7.85714 0 0 0 408 190"/>
 <text class="op" x="420" y="140" text-anchor="start">360 V</text>
 <polyline class="w" points="408,80 470,80 470,95 480,95"/>
@@ -77,7 +77,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="658,100 680,100"/>
 <rect class="part" x="622" y="93" width="36" height="14"/>
 <text class="ref" x="640" y="122" text-anchor="middle">R134</text>
-<text class="val" x="640" y="136" text-anchor="middle">10 Ω 3 W</text>
+<text class="val" x="640" y="136" text-anchor="middle">5,1 Ω</text>
 <polyline class="w" points="680,100 700,100"/>
 <circle class="dot" cx="700" cy="100" r="3.2"/>
 <polyline class="w" points="700,100 700,141"/>
@@ -133,7 +133,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <line class="w" x1="1187.5" y1="210" x2="1192.5" y2="210"/>
 <polyline class="w" points="1190,100 1190,78"/>
 <path class="flagm" d="M1184 78 L1196 78 L1190 70 Z"/>
-<text class="rail" x="1190" y="65" text-anchor="middle">Uaa ≈ 381 V</text>
+<text class="rail" x="1190" y="65" text-anchor="middle">Uaa ≈ 377 V</text>
 <text class="net" x="1190" y="232" text-anchor="middle">* dobrać, jeśli Ua inne niż ok. 465 V</text>
 <circle class="dot" cx="1040" cy="100" r="3.2"/>
 <polyline class="w" points="1040,100 1040,250"/>
@@ -142,13 +142,13 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="1040,308 1040,330"/>
 <rect class="part" x="1033" y="272" width="14" height="36"/>
 <text class="ref" x="1027" y="287" text-anchor="end">R136</text>
-<text class="val" x="1027" y="301" text-anchor="end">100 k</text>
+<text class="val" x="1027" y="301" text-anchor="end">300 k 2 W*</text>
 <circle class="dot" cx="1040" cy="330" r="3.2"/>
 <polyline class="w" points="1040,330 1040,350"/>
 <polyline class="w" points="1040,380 1040,400"/>
 <rect class="part" x="1033" y="350" width="14" height="30"/>
 <text class="ref" x="1027" y="362" text-anchor="end">R137</text>
-<text class="val" x="1027" y="376" text-anchor="end">10 k</text>
+<text class="val" x="1027" y="376" text-anchor="end">68 k</text>
 <polyline class="w" points="1040,400 1040,412"/>
 <line class="w" x1="1030" y1="412" x2="1050" y2="412"/>
 <line class="w" x1="1034" y1="416" x2="1046" y2="416"/>
@@ -167,10 +167,10 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <line class="w" x1="1117.5" y1="420" x2="1122.5" y2="420"/>
 <polyline class="w" points="1120,330 1180,330"/>
 <path class="flagm" d="M1180 324 L1180 336 L1188 330 Z"/>
-<text class="rail" x="1193" y="334" text-anchor="start">UaFF ≈ 42 V</text>
+<text class="rail" x="1193" y="334" text-anchor="start">UaFF ≈ 86 V</text>
 <polyline class="w" points="1040,250 1040,250"/>
 <path class="coil" d="M408 250 A8 8 0 0 0 408 266 A8 8 0 0 0 408 282 A8 8 0 0 0 408 298 A8 8 0 0 0 408 314 A8 8 0 0 0 408 330"/>
-<text class="op" x="420" y="296" text-anchor="start">65 V</text>
+<text class="op" x="420" y="296" text-anchor="start">58 V</text>
 <polyline class="w" points="408,250 470,250 470,255 480,255"/>
 <polyline class="w" points="408,330 470,330 470,335 480,335"/>
 <text class="ref" x="445" y="242" text-anchor="middle">J106</text>
@@ -187,14 +187,14 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="655,335 680,335"/>
 <rect class="part" x="625" y="328" width="30" height="14"/>
 <text class="ref" x="640" y="357" text-anchor="middle">R141</text>
-<text class="val" x="640" y="371" text-anchor="middle">10 Ω</text>
+<text class="val" x="640" y="371" text-anchor="middle">10 Ω ?</text>
 <polyline class="w" points="680,335 700,335"/>
 <circle class="dot" cx="700" cy="335" r="3.2"/>
 <polyline class="w" points="700,335 725,335"/>
 <polyline class="w" points="755,335 780,335"/>
 <rect class="part" x="725" y="328" width="30" height="14"/>
 <text class="ref" x="740" y="357" text-anchor="middle">R142</text>
-<text class="val" x="740" y="371" text-anchor="middle">100 Ω</text>
+<text class="val" x="740" y="371" text-anchor="middle">100 Ω ?</text>
 <polyline class="w" points="780,335 800,335"/>
 <circle class="dot" cx="800" cy="335" r="3.2"/>
 <polyline class="w" points="800,335 800,347"/>
@@ -219,7 +219,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <polyline class="w" points="800,260 860,260"/>
 <polyline class="w" points="860,260 880,260"/>
 <path class="flagm" d="M880 254 L880 266 L888 260 Z"/>
-<text class="rail" x="893" y="264" text-anchor="start">Bias ≈ −90 V → P101/P102</text>
+<text class="rail" x="893" y="264" text-anchor="start">Bias ≈ −80 V → P101/P102</text>
 <path class="coil" d="M408 420 A8.75 8.75 0 0 0 408 437.5 A8.75 8.75 0 0 0 408 455 A8.75 8.75 0 0 0 408 472.5 A8.75 8.75 0 0 0 408 490"/>
 <text class="op" x="420" y="460" text-anchor="start">6,3 V</text>
 <polyline class="w" points="408,420 640,420"/>
@@ -235,7 +235,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <rect class="part" x="553" y="462.5" width="14" height="20"/>
 <text class="ref" x="573" y="469.5" text-anchor="start"></text>
 <text class="val" x="573" y="483.5" text-anchor="start"></text>
-<text class="val" x="572" y="446" text-anchor="start">R130, R131 330 Ω</text>
+<text class="val" x="572" y="446" text-anchor="start">R130, R131 390 Ω</text>
 <circle class="dot" cx="560" cy="420" r="3.2"/>
 <circle class="dot" cx="560" cy="490" r="3.2"/>
 <circle class="dot" cx="560" cy="455" r="3.2"/>
@@ -257,7 +257,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <rect class="part" x="553" y="582.5" width="14" height="20"/>
 <text class="ref" x="573" y="589.5" text-anchor="start"></text>
 <text class="val" x="573" y="603.5" text-anchor="start"></text>
-<text class="val" x="572" y="566" text-anchor="start">R132, R133 330 Ω</text>
+<text class="val" x="572" y="566" text-anchor="start">R132, R133 390 Ω</text>
 <circle class="dot" cx="560" cy="540" r="3.2"/>
 <circle class="dot" cx="560" cy="610" r="3.2"/>
 <circle class="dot" cx="560" cy="575" r="3.2"/>

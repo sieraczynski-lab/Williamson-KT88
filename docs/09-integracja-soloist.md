@@ -61,8 +61,8 @@ Uzwojenie **S4 58 V** przez F4 idzie napięciem przemiennym na J106 i J206. Pros
 | S4 przez F4 | Onyx **J106**, **J206** | dwa przewody, równolegle |
 | Onyx **Bias-L** (minus C126) | sterowanie **J5 pin 1** | pomiar szyny biasu i źródło przesuwników korekty |
 
-- Zakres potencjometrów P101/P102: suwak daje od 0,5 do 1,0 napięcia szyny, czyli ok. **−40…−80 V**. Na maksimum ujemnego napięcia lampa jest bezpiecznie zatkana.
-- Obciążenie Bias-L: 2 dzielniki Onyxa (47k + 47k) ok. 1,7 mA, korekta lewego kanału ok. 1,8 mA, pomiar ok. 0,2 mA. Przesuwniki prawego kanału zasilaj z Bias-P (ok. 1,8 mA), wtedy obie szyny są obciążone podobnie. W programie kontrolujemy tylko Bias-L; jeśli S4 zniknie, znikają obie szyny naraz.
+- Zakres potencjometrów P101/P102 (na płytce 20k, R139 4k7, R119 68k): ok. **−19…−80 V**. Na maksimum ujemnego napięcia lampa jest bezpiecznie zatkana.
+- Obciążenie Bias-L: 2 dzielniki z płytki (20k + 4k7, R119 68k) ok. 7 mA, korekta lewego kanału ok. 1,8 mA, pomiar ok. 0,2 mA. Przesuwniki prawego kanału zasilaj z Bias-P (ok. 1,8 mA), wtedy obie szyny są obciążone podobnie. W programie kontrolujemy tylko Bias-L; jeśli S4 zniknie, znikają obie szyny naraz.
 - Uzwojenie 58 V jest dobrane tak, żeby szyna wyszła ok. −80 V jak w Soloiście; wtedy przesuwniki korekty 68k/33k i progi kontroli szyny zostają bez zmian.
 
 ## 9.4 Pomiar prądów i automatyczna korekta biasu
@@ -83,16 +83,16 @@ Kolejność w J4 i J10 musi być ta sama. Przewody J10 skręcone z masą, z dala
 
 **R123, R124, R223, R224:** na płytce Onyxa są to rezystory 10 Ω 3 W o zwykłej tolerancji. Wymień je na **10 Ω 1 % 3 W** albo zmierz każdy i wpisz rzeczywistą wartość do programu.
 
-**Zakres korekty** (przesuwnik Soloista 68k/33k + 1k, źródło ok. −53,9…−50,6 V, opór ok. 23 kΩ; węzeł suwaka Onyxa ma przy −50 V ok. 21 kΩ):
+**Zakres korekty** (przesuwnik Soloista 68k/33k + 1k, źródło ok. −53,9…−50,6 V, opór ok. 23 kΩ) zależy od oporu węzła suwaka Onyxa:
 
-| | Wartość |
-|---|---|
-| Udział korekty w węźle | ok. 0,47 |
-| Zakres korekty na siatce | **ok. ±0,78 V, czyli ok. ±7 mA** (Soloist: ±0,7 V) |
-| Przerwany przewód J10 | bias wraca do wartości z samego potencjometru: ok. 2 V cieplej, czyli ok. +15–20 mA |
-| Brak 12 V / awaria ESP32 | jak w Soloiście: najwyżej ok. 0,85 V, D9–D12 trzymają wyjście |
+| Dzielnik biasu | Opór węzła przy ok. −50 V | Zakres korekty na siatce | Przerwany przewód J10 |
+|---|---|---|---|
+| **na płytce**: P 20k, R139 4k7, R119 68k | ok. 5,4 kΩ | **ok. ±0,3 V, czyli ±3 mA** | ok. 0,8 V cieplej, ok. +7 mA |
+| ze schematu: P 47k, R139 47k, R119 470k | ok. 21 kΩ | ok. ±0,78 V, czyli ±7 mA | ok. 2 V cieplej, ok. +15–20 mA |
 
-Przy przerwanym przewodzie prąd może dojść do ok. 70–75 mA, czyli na granicę alarmu Soloista (75 mA). Dla Williamsona **próg alarmu w ciszy obniżamy do 70 mA**.
+Z dzielnikiem z płytki korekta jest słabsza, ale bezpieczniejsza. ±3 mA wystarcza na dryf lamp i sieci; jeśli automat zacznie dochodzić do końca zakresu, wymień w czterech dzielnikach P na 47k, R139/R140 na 47k i R119/R120 na 470k. Brak 12 V / awaria ESP32: jak w Soloiście, D9–D12 trzymają wyjście.
+
+Próg alarmu w ciszy dla Williamsona: **70 mA**.
 
 **Uruchomienie korekty:** jak w Soloiście. DAC w połowie zakresu (ok. 1,65 V na wyjściu MCP4728), z podłączonym J10 ustaw potencjometrami Onyxa 50–55 mA, dopiero potem włącz automat.
 
@@ -100,7 +100,7 @@ Przy przerwanym przewodzie prąd może dojść do ok. 70–75 mA, czyli na grani
 
 | Uzwojenie | Droga | Odniesienie |
 |---|---|---|
-| S3 6,3 V / 3 A (4× 6SN7 = 2,4 A) | bezpośrednio do Onyx **J104** i **J204** | sztuczny środek Onyxa R130/R131 do UaFF ≈ 42 V |
+| S3 6,3 V / 3 A (4× 6SN7 = 2,4 A) | bezpośrednio do Onyx **J104** i **J204** | sztuczny środek Onyxa R130/R131 do UaFF ≈ 86 V |
 | S2 6,3 V / 8 A (4× KT88 = 6,4 A) | bezpośrednio do Onyx **J105** i **J205**, przewody 1–1,5 mm² skręcone | patrz niżej |
 
 Żarzenie jest włączone razem z K1, bez przekaźników.
@@ -108,7 +108,7 @@ Przy przerwanym przewodzie prąd może dojść do ok. 70–75 mA, czyli na grani
 **Żarzenie KT88: do sprawdzenia przed pierwszym włączeniem.** Na schemacie Onyxa sztuczny środek R132/R133 idzie do sieci **UaFF-L2**, której nie ma nigdzie indziej na schemacie. Zmierz omomierzem, dokąd idzie środek R132/R133 (J105) na płytce:
 
 - **nigdzie (pływa):** zamontuj R11/R12 (100 Ω 1 W) na płytce zasilacza. Żarzenie KT88 dostaje odniesienie do masy;
-- **do UaFF (ok. 42 V):** **nie montuj R11/R12**. Inaczej między masą a UaFF popłynie prąd przez oba sztuczne środki i rezystory się spalą.
+- **do UaFF (ok. 86 V):** **nie montuj R11/R12**. Inaczej między masą a UaFF popłynie prąd przez oba sztuczne środki i rezystory się spalą.
 
 ## 9.6 Przekaźniki i sekwencja
 
@@ -144,18 +144,18 @@ Płytka `glosniki` i wejście TRIGGER bez zmian:
 Płytka selektora Soloista (TubeSel) w puszce aluminiowej (np. Hammond 1590, ok. 112 × 60 × 31 mm) na dnie, pod płytką Onyxa z przodu z lewej, blisko wejść J100:
 
 - wyjście selektora (J5) → przewód ekranowany → Onyx **J100** i **J200** (We-L, We-P), ekran podłączony tylko po stronie płytki;
-- wejście Onyxa nie ma kondensatora sprzęgającego (J100 → R100 → siatka, R101 1M do masy). Na wszelki wypadek, żeby odciąć składową stałą ze źródeł, dodaj **22 nF folia** szeregowo: z 1 MΩ daje to filtr ok. 7 Hz;
-- terminator 10 kΩ selektora równolegle z 1 MΩ Onyxa nie zmienia tłumienia drabinki. Impedancja wyjściowa drabinki ≤ 3,2 kΩ z pojemnością wejściową V1B (ok. 60 pF, Miller) daje pasmo powyżej 600 kHz;
+- wejście Onyxa nie ma kondensatora sprzęgającego (J100 → R100 → siatka, R101 do masy; na płytce R101 = 220k). Żeby odciąć składową stałą ze źródeł, dodaj **220 nF folia** szeregowo: z 220 kΩ daje to filtr ok. 3 Hz;
+- terminator 10 kΩ selektora równolegle z 220 kΩ Onyxa nie zmienia tłumienia drabinki. Impedancja wyjściowa drabinki ≤ 3,2 kΩ z pojemnością wejściową V1B (ok. 60 pF, Miller) daje pasmo powyżej 600 kHz;
 - MUTE: K11 selektora przez sterowanie J3, jak w Soloiście.
 
-**Limity głośności** (czułość Williamsona ok. 0,5 V na pełną moc, przy Soloiście 160 mV):
+**Limity głośności** (czułość Williamsona ok. 0,65 V na pełną moc przy R129 15k, przy Soloiście 160 mV):
 
 | Źródło | Najmniejsze tłumienie (limit) |
 |---|---|
-| DAC / CD 2 V | ok. −12 dB |
-| pre-out Marantza 1,2 V | ok. −8 dB |
-| 1 V | ok. −6 dB |
-| 0,3–0,5 V | bez limitu |
+| DAC / CD 2 V | ok. −10 dB |
+| pre-out Marantza 1,2 V | ok. −5 dB |
+| 1 V | ok. −4 dB |
+| 0,3–0,65 V | bez limitu |
 
 Mniejszy nadmiar wzmocnienia niż w Soloiście oznacza też niższy szum w ciszy.
 
@@ -167,10 +167,10 @@ Mniejszy nadmiar wzmocnienia niż w Soloiście oznacza też niższy szum w ciszy
 | Rezystory pomiarowe | 10 Ω 1 % | 10 Ω (wymienić na 1 % albo wpisać zmierzone) |
 | Prąd docelowy | 55 mA | 50–55 mA |
 | Alarm w ciszy | > 75 mA | **> 70 mA** |
-| Zakres korekty | ±0,7 V (±6 mA) | ±0,78 V (±7 mA) |
+| Zakres korekty | ±0,7 V (±6 mA) | ok. ±0,3 V (±3 mA) z dzielnikiem z płytki; ±0,78 V (±7 mA) z 47k/47k/470k |
 | Szyna biasu (kontrola) | −68…−92 V | bez zmian (Bias-L Onyxa) |
 | B+ (HV_SENSE) | B+3 | Ua-L na płytce Onyxa, ten sam dzielnik (ok. 2,3 V przy 465 V) |
-| Limity głośności | czułość 160 mV | czułość ok. 0,5 V (tabela wyżej) |
+| Limity głośności | czułość 160 mV | czułość ok. 0,65 V (tabela wyżej) |
 | Czujnik DS18B20 | – | pod płytką Onyxa, przy rzędzie KT88 |
 
 Reszta (sekwencja, UL/trioda, kolumny, trigger, selektor, IR, wyświetlacze) bez zmian.
@@ -193,6 +193,7 @@ Wariant obudowy Soloista z płytką Onyxa: [`obudowa/`](../obudowa/), opis w [`o
 | Onyx | L106, L206 | dwa dławiki 10 H, min. 200 mA |
 | Onyx | R123, R124, R223, R224 | 10 Ω 1 % 3 W (albo zmierzyć) |
 | Onyx | R125, R126, R225, R226 | 270 Ω 2 W (zalecane przy UL/trioda) |
-| Onyx | wejście J100 / J200 | opcjonalnie 22 nF szeregowo |
+| Onyx | wejście J100 / J200 | 220 nF szeregowo |
+| Onyx | R136, R137 (lewy) | wlutować 300k 2 W + 68k |
 | sterowanie | J5 pin 1 | do Bias-L Onyxa; przesuwniki prawego kanału z Bias-P |
 | sterowanie | program | progi z 9.10 |

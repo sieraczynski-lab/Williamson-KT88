@@ -87,7 +87,7 @@ code{font-family:var(--f-mono);font-size:.9em}
     <div>Układ</div><div>Williamson PP, 1 kanał</div>
     <div>Lampy</div><div>2× 6SN7 · 2× KT88</div>
     <div>Moc</div><div>ok. 40 W / 4 Ω</div>
-    <div>NFB / czułość</div><div>ok. 10 dB / ok. 0,5 V</div>
+    <div>NFB / czułość</div><div>ok. 12 dB / ok. 0,65 V</div>
     <div>Płytka</div><div>onyx1944 · VA1523-V1.0</div>
     <div>Wersja</div><div>3 · 12.11.2026</div>
   </div>
@@ -113,8 +113,8 @@ code{font-family:var(--f-mono);font-size:.9em}
   <div class="tw"><table>
     <thead><tr><th>Stopień</th><th>Lampa</th><th>Ua</th><th>Ia</th><th>Uk</th><th>Uwagi</th></tr></thead>
     <tbody>
-      <tr><td>Wejście</td><td>½ 6SN7 (V1B)</td><td class="m">≈ 89 V</td><td class="m">3,7 mA</td><td class="m">1,9 V</td><td>Wzmocnienie ok. 14. Sprzężenie zwrotne wchodzi na R105 470 Ω; R104 47 Ω jest zbocznikowany przez C102.</td></tr>
-      <tr><td>Katodyna</td><td>½ 6SN7 (V1A)</td><td class="m">≈ 198 V</td><td class="m">4,2 mA</td><td class="m">≈ 92 V</td><td>Obciążenia 22k / 22k, sprzężona bezpośrednio z anodą V1B. Uak ok. 106 V.</td></tr>
+      <tr><td>Wejście</td><td>½ 6SN7 (V1B)</td><td class="m">≈ 95 V</td><td class="m">4,3 mA</td><td class="m">2,0 V</td><td>R103 33k, wzmocnienie ok. 12. Sprzężenie zwrotne wchodzi na R105 470 Ω; na płytce R104 to zwora, C102 brak.</td></tr>
+      <tr><td>Katodyna</td><td>½ 6SN7 (V1A)</td><td class="m">≈ 180 V</td><td class="m">4,5 mA</td><td class="m">≈ 98 V</td><td>Obciążenia 22k / 22k, sprzężona bezpośrednio z anodą V1B. Uak ok. 82 V.</td></tr>
       <tr><td>Driver</td><td>6SN7 (V2A, V2B)</td><td class="m">≈ 144 V</td><td class="m">2× 5 mA</td><td class="m">3,9 V</td><td>Wspólny R110 390 Ω, bez potencjometru balansu: obie triody w V2 powinny mieć zbliżony prąd. Wzmocnienie ok. 16.</td></tr>
       <tr class="c"><td>Końcówka</td><td>2× KT88, UL</td><td class="m">≈ 465 V</td><td class="m">50–55 mA</td><td class="m">Ug1 −45…−55 V</td><td>0,50–0,55 V na R123/R124 (10 Ω). Prąd dobrany pod toroid 4 kΩ; Onyx nie podał swojego.</td></tr>
     </tbody>
@@ -129,7 +129,7 @@ code{font-family:var(--f-mono);font-size:.9em}
 %%PSU%%
     </svg>
   </div>
-  <p class="note">Część sieciowa (bezpieczniki, miękki start, opóźnienie anod) i TR1 są na osobnej płytce, niżej. Elektrolity filtrów to pary 2× 120 µF / 400 V szeregowo, z rezystorami wyrównującymi 680 k (R143–R152), czyli 60 µF / 800 V. Przy Ua 465 V i wysokim napięciu sieci zapas jest wystarczający.</p>
+  <p class="note">Część sieciowa (bezpieczniki, miękki start, opóźnienie anod) i TR1 są na osobnej płytce, niżej. Elektrolity filtrów to pary 2× 120 µF / 400 V szeregowo, z rezystorami wyrównującymi 560 k (R143–R152), czyli 60 µF / 800 V. Przy Ua 465 V i wysokim napięciu sieci zapas jest wystarczający.</p>
 </section>
 
 <section>
@@ -150,6 +150,18 @@ code{font-family:var(--f-mono);font-size:.9em}
       <tr><td class="m">R117 / R217</td><td>220k / 1k</td><td><b>100k / 100k</b></td><td>Upływowe siatek KT88. Na płytce 100k w obu kanałach; 1k w prawym to pomyłka rysunku.</td></tr>
       <tr><td class="m">R124 / R224</td><td>10 Ω / 470k</td><td><b>10 Ω / 10 Ω</b></td><td>Rezystory katodowe KT88; 470k to pomyłka rysunku.</td></tr>
       <tr><td class="m">C123 / C223</td><td>56 pF</td><td><b>brak</b></td><td>Kompensacja sprzężenia zwrotnego. Z Hammondem niepotrzebna, z toroidem do sprawdzenia.</td></tr>
+      <tr><td class="m">R101</td><td>1M</td><td><b>220k</b></td><td>Upływowy wejścia. Bez znaczenia dla brzmienia; kondensator wejściowy daj 220 nF zamiast 22 nF.</td></tr>
+      <tr><td class="m">R103</td><td>47k</td><td><b>33k</b></td><td>Obciążenie V1B: ok. 4,3 mA, Ua ok. 95 V, wzmocnienie ok. 12 zamiast 14.</td></tr>
+      <tr><td class="m">R104 / C102</td><td>47 Ω / 47 µF</td><td><b>zwora / brak</b></td><td>W katodzie V1B zostaje sam R105 470 Ω (i tak był niezbocznikowany). Zostawić.</td></tr>
+      <tr><td class="m">R111, R112</td><td>470k</td><td><b>300k</b></td><td>Upływowe drivera. Biegun C103/C104 47 nF ok. 11 Hz zamiast 7 Hz.</td></tr>
+      <tr><td class="m">P101/P102, R139/R140, R119/R120</td><td>47k / 47k / 470k</td><td><b>20k / 4k7 / 68k</b></td><td>Zakres biasu ok. −19…−80 V (szerszy). Korekta ESP32 słabsza: ok. ±3 mA.</td></tr>
+      <tr><td class="m">R129</td><td>22k</td><td><b>15k</b></td><td>Więcej sprzężenia: ok. 12 dB, czułość ok. 0,65 V. Start z 15k, sprawdzić prostokątem.</td></tr>
+      <tr><td class="m">R134</td><td>10 Ω</td><td><b>5,1 Ω</b></td><td>Ua ok. 1 V wyżej. Zostawić.</td></tr>
+      <tr><td class="m">R136 / R137</td><td>100k / 10k</td><td><b>brak (L), 300k / 68k (P)</b></td><td>Podniesienie żarzenia ok. 86 V. W lewym kanale wlutować 300k 2 W + 68k.</td></tr>
+      <tr><td class="m">R130–R133</td><td>330 Ω</td><td><b>390 Ω</b></td><td>Sztuczne środki żarzenia. Zostawić.</td></tr>
+      <tr><td class="m">R143–R152</td><td>680k</td><td><b>560k</b></td><td>Rezystory wyrównujące. Zostawić.</td></tr>
+      <tr><td class="m">R125, R126</td><td>100 Ω</td><td><b>150k?</b></td><td>Siatki drugie KT88: 150k nie może być. Pewnie 150 Ω – sprawdzić.</td></tr>
+      <tr><td class="m">R141, R142</td><td>10 Ω / 100 Ω</td><td><b>47k?</b></td><td>Filtr biasu w gałęzi masy: 47k szeregowo nie może być – sprawdzić.</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -158,11 +170,12 @@ code{font-family:var(--f-mono);font-size:.9em}
 <section>
   <h2>Do zmiany pod toroid i własny zasilacz</h2>
   <ul>
-    <li><b>R129 / R229 22k:</b> start bez zmian. Sprzężenie zwrotne brać z <b>odczepu 8 Ω</b> toroidu (kolumny zostają na 4 Ω). Daje to ok. 10 dB, czyli głębokość zbliżoną do tej u Onyxa z Hammondem. Z odczepu 4 Ω byłoby ok. 8 dB.</li>
+    <li><b>R129 / R229 15k (płytka):</b> start bez zmian. Sprzężenie zwrotne brać z <b>odczepu 8 Ω</b> toroidu (kolumny zostają na 4 Ω). Daje to ok. 12 dB i czułość ok. 0,65 V. Jeśli prostokąt dzwoni, a C123 nie pomaga, wrócić do 22k (ok. 10 dB).</li>
     <li><b>C123 / C223:</b> najpierw bez. Jeśli prostokąt 10 kHz dzwoni, wlutować 33–150 pF.</li>
     <li><b>R102 / C101 (R202 / C201):</b> sieć RC z anody V1B do węzła odsprzęgającego, niemontowana. Gdyby samo C123 nie wystarczyło: start ok. 1k2 + 680 pF (biegun ok. 28 kHz, zero ok. 190 kHz), dobór prostokątem. 100 nF ze schematu to pomyłka.</li>
     <li><b>R128 / R228 4k7 3 W:</b> dobrać tak, żeby Uaa wyszło ok. 380–420 V przy Twoim Ua.</li>
-    <li><b>Dzielnik biasu</b> (P101/P102 47k, R139/R140 47k, R119/R120 470k): suwak daje od 0,5 do 1,0 napięcia szyny. Przy szynie ok. −80 V (S4 58 V) zakres −40…−80 V jest dobry.</li>
+    <li><b>Dzielnik biasu</b> (na płytce P101/P102 20k, R139/R140 4k7, R119/R120 68k): przy szynie ok. −80 V zakres ok. −19…−80 V. Przed pierwszym włączeniem suwak na maksimum ujemnego napięcia.</li>
+    <li><b>R136 / R137 w lewym kanale:</b> brak na płytce. Wlutować 300k 2 W (min. 500 V) i 68k, jak w prawym, inaczej żarzenie 6SN7 lewego kanału wisi bez odniesienia.</li>
     <li><b>Dławiki L106 i L206:</b> po jednym na kanał, 10 H. Prąd ok. 145 mA na kanał, więc wystarczy 200 mA; Onyx dał 400 mA.</li>
     <li><b>Zworki B101–B104:</b> ustawić pod własne uzwojenia (wspólne anodowe dla obu kanałów, konfiguracja żarzenia).</li>
     <li><b>Dodatek: RL 100 Ω 2 W</b> między 4 Ω a COM, żeby transformator nie pracował bez obciążenia przy odłączonych kolumnach.</li>
@@ -185,7 +198,7 @@ code{font-family:var(--f-mono);font-size:.9em}
 </section>
 </div>
 
-<div class="warn"><p><b>Wysokie napięcie.</b> Ua ok. 465 V, a na zimno i przy wysokim napięciu sieci więcej. Kondensatory filtrów rozładowują się przez rezystory 680 k dość wolno, kilka minut. Przed dotknięciem płytki zawsze zmierz napięcie.</p></div>
+<div class="warn"><p><b>Wysokie napięcie.</b> Ua ok. 465 V, a na zimno i przy wysokim napięciu sieci więcej. Kondensatory filtrów rozładowują się przez rezystory 560 k dość wolno, kilka minut. Przed dotknięciem płytki zawsze zmierz napięcie.</p></div>
 
 <section>
   <h2>Odpowiedzi Onyxa <small>12.11.2026</small></h2>

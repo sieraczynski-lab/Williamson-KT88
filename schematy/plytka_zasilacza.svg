@@ -83,7 +83,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <line class="core" x1="424" y1="50" x2="424" y2="640"/>
 <line class="core" x1="434" y1="50" x2="434" y2="640"/>
 <text class="ref chg" x="429" y="672" text-anchor="middle">TR1 toroid 400 VA, ekran do PE</text>
-<text class="val chg" x="429" y="687" text-anchor="middle">S1 360 V (345 / 375) · S4 58 V · S2 6,3 V/8 A · S3 6,3 V/3 A</text>
+<text class="val chg" x="429" y="687" text-anchor="middle">S1 360 V (345 / 375) · S4 58 V/0,1 A · S2 6,3 V/8 A · S3 6,3 V/3 A</text>
 <path class="coil" d="M458 70 A8.125 8.125 0 0 0 458 86.25 A8.125 8.125 0 0 0 458 102.5 A8.125 8.125 0 0 0 458 118.75 A8.125 8.125 0 0 0 458 135 A8.125 8.125 0 0 0 458 151.25 A8.125 8.125 0 0 0 458 167.5 A8.125 8.125 0 0 0 458 183.75 A8.125 8.125 0 0 0 458 200"/>
 <text class="op" x="470" y="132" text-anchor="start">S1 360 V / 0,65 A</text>
 <text class="op" x="470" y="146" text-anchor="start">odczepy 345 / 375 V</text>

@@ -9,7 +9,7 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 
 > **Status: płytka w ręku, przed uruchomieniem.** Punkty pracy są szacunkowe (model lampy, Ua ≈ 465 V), do potwierdzenia pomiarem.
 
-> ⚠️ **Wysokie napięcie.** Ua ok. 465 V, a na zimno i przy wysokim napięciu sieci więcej. Kondensatory filtrów rozładowują się przez rezystory 680 k przez kilka minut. Przed dotknięciem płytki zawsze zmierz napięcie.
+> ⚠️ **Wysokie napięcie.** Ua ok. 465 V, a na zimno i przy wysokim napięciu sieci więcej. Kondensatory filtrów rozładowują się przez rezystory 560 k i dzielnik żarzenia; to trwa od kilkudziesięciu sekund do kilku minut. Przed dotknięciem płytki zawsze zmierz napięcie.
 
 ## Schematy
 
@@ -31,12 +31,12 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | | Wartość |
 |---|---|
 | Lampy | V1, V2: 6SN7 (6N8S); V5, V6: KT88 (lewy kanał; prawy V3, V4, V7, V8) |
-| Front end | wejście ok. 3,7 mA / 89 V, katodyna 22k/22k ok. 4,2 mA, driver ok. 5 mA na triodę (bez balansu AC) |
+| Front end | wejście ok. 4,3 mA / 95 V, katodyna 22k/22k ok. 4,5 mA, driver ok. 5 mA na triodę (bez balansu AC) |
 | Końcówka | KT88 UL, Ua ≈ 465 V, 50–55 mA (0,50–0,55 V na 10 Ω), Ug1 ≈ −45…−55 V |
 | Transformator wyjściowy | toroidy.pl **TTG-KT88PP** (u Onyxa Hammond 1650HA 6,6 kΩ) |
-| Sprzężenie zwrotne | R129 22k z **odczepu 8 Ω** (ok. 10 dB), C123 niemontowany |
-| Czułość / moc | ok. 0,5 V / ok. 40 W na kanał, kolumny na odczepie 4 Ω |
-| Transformator sieciowy | 400 VA: 360 V (odczepy 345/375 V)/0,65 A, 58 V/50 mA, 6,3 V/8 A, 6,3 V/3 A, ekran ([docs/08](docs/08-zamowienie-toroidy.md)) |
+| Sprzężenie zwrotne | R129 15k z **odczepu 8 Ω** (ok. 12 dB), C123 niemontowany |
+| Czułość / moc | ok. 0,65 V / ok. 40 W na kanał, kolumny na odczepie 4 Ω |
+| Transformator sieciowy | 400 VA: 360 V (odczepy 345/375 V)/0,65 A, 58 V/100 mA, 6,3 V/8 A, 6,3 V/3 A, ekran ([docs/08](docs/08-zamowienie-toroidy.md)) |
 | Dławiki | 2× 10 H na L106 / L206, min. 200 mA, DCR < 100 Ω |
 
 ## Płytka a schemat Onyxa
@@ -46,6 +46,20 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | R117 / R217 | 220k / 1k | **100k / 100k** |
 | R124 / R224 | 10 Ω / 470k | **10 Ω / 10 Ω** |
 | C123 / C223 | 56 pF | **brak** |
+| R101 | 1M | **220k** |
+| R103 | 47k | **33k** |
+| R104 / C102 | 47 Ω / 47 µF | **zwora / brak** |
+| R111, R112 | 470k | **300k** |
+| R119, R120 | 470k | **68k** |
+| P101, P102 | 47k | **20k** |
+| R139, R140 | 47k | **4k7** |
+| R129 | 22k | **15k** |
+| R134 | 10 Ω | **5,1 Ω** |
+| R136 / R137 | 100k / 10k | **brak** w lewym, **300k / 68k** w prawym |
+| R130–R133 | 330 Ω | **390 Ω** |
+| R143–R152 | 680k | **560k** |
+| R125, R126 | 100 Ω | odczytano 150k – **do sprawdzenia** (pewnie 150 Ω) |
+| R141, R142 | 10 Ω / 100 Ω | odczytano 47k – **do sprawdzenia** |
 
 ## Zasilacz, sterowanie, dodatki i obudowa
 
