@@ -34,7 +34,7 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | Sprzężenie zwrotne | R129 22k z **odczepu 8 Ω** (ok. 10 dB), C123 niemontowany |
 | Czułość / moc | ok. 0,5 V / ok. 40 W na kanał, kolumny na odczepie 4 Ω |
 | Transformator sieciowy | 400 VA: 360 V (+345 V)/0,65 A, 65 V/50 mA, 6,3 V/8 A, 6,3 V/3 A (ta sama specyfikacja co w Soloiście) |
-| Dławiki | 2× 10 H (L106, L206), po jednym na kanał, min. 200 mA |
+| Dławiki | z zasilaczem Soloista: jeden L1 12 H (L106/L206 zwarte); samodzielnie: 2× 10 H (L106, L206), min. 200 mA |
 
 ## Płytka a schemat Onyxa
 
@@ -43,6 +43,12 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | R117 / R217 | 220k / 1k | **100k / 100k** |
 | R124 / R224 | 10 Ω / 470k | **10 Ω / 10 Ω** |
 | C123 / C223 | 56 pF | **brak** |
+
+## Zasilacz, sterowanie, dodatki i obudowa z Soloista
+
+Płytka Onyxa dostaje całą infrastrukturę z [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88): miękki start i opóźnione anody, sterownik ESP32 z automatyczną korektą biasu, przełącznik UL / trioda, przełącznik kolumn z triggerem, selektor z drabinką głośności i obudowę. Płytki Soloista bez zmian w PCB, płytka Onyxa bez cięcia ścieżek. Szczegóły: [docs/09-integracja-soloist.md](docs/09-integracja-soloist.md), obudowa: [`obudowa/`](obudowa/).
+
+![Płytka Onyxa jako górny pokład](obudowa/widok_bez_klatki.png)
 
 ## Decyzje i otwarte sprawy
 
@@ -63,6 +69,7 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 6. [Zamawianie płytek PCB](docs/06-pcb.md)
 7. [Wersje Onyxa: zdjęcia, schemat i płytka VA1523](docs/07-wersje-onyxa.md)
 8. [Specyfikacja do zamówienia w toroidy.pl](docs/08-zamowienie-toroidy.md)
+9. [Zasilacz, sterowanie, dodatki i obudowa z Soloista](docs/09-integracja-soloist.md)
 
 ## Generowanie schematów
 
@@ -71,5 +78,7 @@ Schematy są rysowane skryptem (Python 3, bez dodatkowych bibliotek):
 ```bash
 python3 narzedzia/build.py
 ```
+
+Obudowa (STEP, DXF, widoki) powstaje z `python3 narzedzia/obudowa/export.py` (wymaga `numpy` i `matplotlib`).
 
 Skrypt [`narzedzia/gen_schemat.py`](narzedzia/gen_schemat.py) zawiera geometrię i wartości elementów. Po zmianie wartości wystarczy uruchomić `build.py` ponownie, a SVG i strona HTML w `schematy/` zostaną odświeżone.

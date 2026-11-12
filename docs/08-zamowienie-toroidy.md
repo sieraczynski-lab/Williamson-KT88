@@ -38,6 +38,8 @@ Moc 400 VA. To **ta sama specyfikacja co TR1 w Soloiście**, więc jeden transfo
 
 ## 3. Dławiki filtru anodowego: 2 szt.
 
+> Przy zasilaczu z Soloista (patrz [09](09-integracja-soloist.md#92-zasilanie-anodowe)) wystarczy jeden dławik L1 12 H / 400 mA z Soloista, a L106 i L206 na płytce Onyxa zwiera się. Poniższa specyfikacja dotyczy wersji samodzielnej.
+
 Na płytce są dwa złącza dławików, L106 i L206, **po jednym na kanał**. Osobne dławiki dają lepszą separację kanałów, a każdy jest mniejszy niż jeden wspólny.
 
 | Parametr | Wartość |
