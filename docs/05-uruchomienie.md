@@ -18,7 +18,7 @@ Oznaczenia dla lewego kanału (1xx). Prawy kanał: to samo z 2xx.
 ## Przed pierwszym włączeniem
 
 1. Obejrzyj płytkę: luty, elektrolity (wybrzuszenia, wycieki), przebarwienia przy rezystorach mocy. Wyczyść kurz, wysusz (płytka leżała na strychu).
-2. Ustaw zworki B101–B104 pod własne uzwojenia. Sprawdź, dokąd idzie sieć UaFF-L2 (żarzenie KT88).
+2. Ustaw zworki B101–B104 pod własne uzwojenia. Sieć UaFF-L2 (środek żarzenia KT88) idzie do masy przez punkt C108/C126/R142, więc R11/R12 niepotrzebne.
    Wlutuj brakujące **R136 300k 2 W (min. 500 V) i R137 68k** w lewym kanale (jak R236/R237) i sprawdź, czy jest C124.
 3. Wlut dodatkowy RL 100 Ω / 2 W między odczep 4 Ω a COM (przy złączach albo przy transformatorze).
 4. P101/P102 (i P201/P202) ustaw tak, żeby suwak dawał **maksimum ujemnego napięcia**.

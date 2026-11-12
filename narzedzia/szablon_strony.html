@@ -139,7 +139,7 @@ code{font-family:var(--f-mono);font-size:.9em}
 %%PSUW%%
     </svg>
   </div>
-  <p class="note">Na płytkę Onyxa idą tylko napięcia przemienne: S1 przez K3 i R_IN na J103/J203, S4 na J106/J206 (bias pojawia się z K1, przed anodami), żarzenie wprost. K1–K4 steruje ESP32 jak w Soloiście. Pomiar HV_SENSE i dioda HV są wpięte w Ua-L na płytce Onyxa, więc pokazują napięcie na jej kondensatorach. R11/R12 tylko, jeśli środek R132/R133 (UaFF-L2) nigdzie nie jest podłączony. Odczepy S1 345 / 375 V do dobrania Ua ok. 465 V.</p>
+  <p class="note">Na płytkę Onyxa idą tylko napięcia przemienne: S1 przez K3 i R_IN na J103/J203, S4 na J106/J206 (bias pojawia się z K1, przed anodami), żarzenie wprost. K1–K4 steruje ESP32 jak w Soloiście. Pomiar HV_SENSE i dioda HV są wpięte w Ua-L na płytce Onyxa, więc pokazują napięcie na jej kondensatorach. R11/R12 niepotrzebne: środek żarzenia KT88 jest na płytce Onyxa połączony z masą (UaFF-L2). Odczepy S1 345 / 375 V do dobrania Ua ok. 465 V.</p>
 </section>
 
 <section>
@@ -209,7 +209,7 @@ code{font-family:var(--f-mono);font-size:.9em}
     <li><b>C123:</b> po to, żeby wzmacniacz nie wzbudzał się na wysokich częstotliwościach. Podobnie R102/C101 przy anodzie V1B (100 nF na schemacie to błąd). U Onyxa obyło się bez tego, ale warto sprawdzić prostokątem.</li>
     <li><b>Rezystory katodowe KT88:</b> przy stałym biasie mogłoby ich nie być, służą tylko do pomiaru; wystarczyłoby 1 Ω. Tu zostaje 10 Ω, bo pod 10 Ω jest liczony pomiar w sterowniku Soloista.</li>
     <li>Pomyłki na schemacie (R217, R224) potwierdzone.</li>
-    <li><b>Otwarte:</b> dokąd idzie sieć UaFF-L2 (środek żarzenia KT88), do sprawdzenia omomierzem na płytce.</li>
+    <li><b>Sprawdzone:</b> sieć UaFF-L2 (środek żarzenia KT88) to masa: wspólny punkt C108, C126 i R142.</li>
   </ul>
 </section>
 </div>

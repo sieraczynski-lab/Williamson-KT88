@@ -831,9 +831,12 @@ code{font-family:var(--f-mono);font-size:.9em}
 <circle class="dot" cx="560" cy="610" r="3.2"/>
 <circle class="dot" cx="560" cy="575" r="3.2"/>
 <polyline class="w" points="560,575 520,575"/>
-<text class="rail" x="516" y="579" text-anchor="end">UaFF-L2*</text>
+<polyline class="w" points="520,575 520,581"/>
+<line class="w" x1="510" y1="581" x2="530" y2="581"/>
+<line class="w" x1="514" y1="585" x2="526" y2="585"/>
+<line class="w" x1="517.5" y1="589" x2="522.5" y2="589"/>
 <text class="net" x="700" y="570" text-anchor="start">→ 2× KT88 (3,2 A na kanał)</text>
-<text class="net" x="700" y="586" text-anchor="start">* sieć UaFF-L2 sprawdzić na płytce</text>
+<text class="net" x="700" y="586" text-anchor="start">UaFF-L2 = masa (C108, C126, R142)</text>
 <text class="net" x="1060" y="600" text-anchor="middle">Prawy kanał: to samo z oznaczeniami 2xx</text>
 <text class="net" x="1060" y="616" text-anchor="middle">(J203, J206, J204, J205, L206).</text>
 <text class="net" x="1060" y="632" text-anchor="middle">Zworki B103/B104: wspólne uzwojenie anodowe dla obu kanałów.</text>
@@ -1001,25 +1004,7 @@ code{font-family:var(--f-mono);font-size:.9em}
 <text class="ref" x="917" y="464" text-anchor="start">J105-2</text>
 <text class="ref" x="917" y="490" text-anchor="start">J205-2</text>
 <text class="net" x="730" y="446" text-anchor="start">→ 4× KT88, 6,4 A</text>
-<circle class="dot" cx="640" cy="400" r="3.2"/>
-<circle class="dot" cx="640" cy="460" r="3.2"/>
-<polyline class="w" points="640,400 640,406"/>
-<polyline class="w" points="640,424 640,430"/>
-<rect class="part chgp" x="633" y="406" width="14" height="18"/>
-<text class="ref chg" x="653" y="412" text-anchor="start"></text>
-<text class="val chg" x="653" y="426" text-anchor="start"></text>
-<polyline class="w" points="640,430 640,436"/>
-<polyline class="w" points="640,454 640,460"/>
-<rect class="part chgp" x="633" y="436" width="14" height="18"/>
-<text class="ref chg" x="653" y="442" text-anchor="start"></text>
-<text class="val chg" x="653" y="456" text-anchor="start"></text>
-<polyline class="w" points="640,430 700,430"/>
-<polyline class="w" points="700,430 700,436"/>
-<line class="w" x1="690" y1="436" x2="710" y2="436"/>
-<line class="w" x1="694" y1="440" x2="706" y2="440"/>
-<line class="w" x1="697.5" y1="444" x2="702.5" y2="444"/>
-<text class="val chg" x="660" y="420" text-anchor="start">R11, R12 100 Ω 1 W</text>
-<text class="net" x="520" y="510" text-anchor="start">tylko gdy środek R132/R133 Onyxa pływa (UaFF-L2)</text>
+<text class="net" x="520" y="510" text-anchor="start">odniesienie do masy na płytce Onyxa (R132/R133), bez R11/R12</text>
 <path class="coil" d="M458 540 A7.5 7.5 0 0 0 458 555 A7.5 7.5 0 0 0 458 570 A7.5 7.5 0 0 0 458 585 A7.5 7.5 0 0 0 458 600"/>
 <text class="op" x="470" y="576" text-anchor="start">S3 6,3 V / 3 A</text>
 <polyline class="w" points="458,540 880,540"/>
@@ -1108,7 +1093,7 @@ code{font-family:var(--f-mono);font-size:.9em}
 <text class="ref" x="1052" y="604" text-anchor="start">GND – gwiazda (płytka Onyxa, sterowanie)</text>
     </svg>
   </div>
-  <p class="note">Na płytkę Onyxa idą tylko napięcia przemienne: S1 przez K3 i R_IN na J103/J203, S4 na J106/J206 (bias pojawia się z K1, przed anodami), żarzenie wprost. K1–K4 steruje ESP32 jak w Soloiście. Pomiar HV_SENSE i dioda HV są wpięte w Ua-L na płytce Onyxa, więc pokazują napięcie na jej kondensatorach. R11/R12 tylko, jeśli środek R132/R133 (UaFF-L2) nigdzie nie jest podłączony. Odczepy S1 345 / 375 V do dobrania Ua ok. 465 V.</p>
+  <p class="note">Na płytkę Onyxa idą tylko napięcia przemienne: S1 przez K3 i R_IN na J103/J203, S4 na J106/J206 (bias pojawia się z K1, przed anodami), żarzenie wprost. K1–K4 steruje ESP32 jak w Soloiście. Pomiar HV_SENSE i dioda HV są wpięte w Ua-L na płytce Onyxa, więc pokazują napięcie na jej kondensatorach. R11/R12 niepotrzebne: środek żarzenia KT88 jest na płytce Onyxa połączony z masą (UaFF-L2). Odczepy S1 345 / 375 V do dobrania Ua ok. 465 V.</p>
 </section>
 
 <section>
@@ -1178,7 +1163,7 @@ code{font-family:var(--f-mono);font-size:.9em}
     <li><b>C123:</b> po to, żeby wzmacniacz nie wzbudzał się na wysokich częstotliwościach. Podobnie R102/C101 przy anodzie V1B (100 nF na schemacie to błąd). U Onyxa obyło się bez tego, ale warto sprawdzić prostokątem.</li>
     <li><b>Rezystory katodowe KT88:</b> przy stałym biasie mogłoby ich nie być, służą tylko do pomiaru; wystarczyłoby 1 Ω. Tu zostaje 10 Ω, bo pod 10 Ω jest liczony pomiar w sterowniku Soloista.</li>
     <li>Pomyłki na schemacie (R217, R224) potwierdzone.</li>
-    <li><b>Otwarte:</b> dokąd idzie sieć UaFF-L2 (środek żarzenia KT88), do sprawdzenia omomierzem na płytce.</li>
+    <li><b>Sprawdzone:</b> sieć UaFF-L2 (środek żarzenia KT88) to masa: wspólny punkt C108, C126 i R142.</li>
   </ul>
 </section>
 </div>

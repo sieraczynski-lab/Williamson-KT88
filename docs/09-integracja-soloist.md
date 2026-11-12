@@ -105,10 +105,9 @@ Próg alarmu w ciszy dla Williamsona: **70 mA**.
 
 Żarzenie jest włączone razem z K1, bez przekaźników.
 
-**Żarzenie KT88: do sprawdzenia przed pierwszym włączeniem.** Na schemacie Onyxa sztuczny środek R132/R133 idzie do sieci **UaFF-L2**, której nie ma nigdzie indziej na schemacie. Zmierz omomierzem, dokąd idzie środek R132/R133 (J105) na płytce:
+**Żarzenie KT88: sprawdzone na płytce.** Sieć UaFF-L2 (środek R132/R133) idzie do wspólnego punktu C108, C126 i R142, czyli do **masy** (strona masy filtru biasu). Żarzenie KT88 ma więc odniesienie do masy na płytce Onyxa, a katody KT88 są ok. 0,5 V nad masą. **R11/R12 na płytce zasilacza nie montujemy.**
 
-- **nigdzie (pływa):** zamontuj R11/R12 (100 Ω 1 W) na płytce zasilacza. Żarzenie KT88 dostaje odniesienie do masy;
-- **do UaFF (ok. 86 V):** **nie montuj R11/R12**. Inaczej między masą a UaFF popłynie prąd przez oba sztuczne środki i rezystory się spalą.
+Kontrola omomierzem bez zasilania: środek R132/R133 do masy płytki (minus C119/C120) ok. 0 Ω, nóżka żarzenia J105 do masy ok. 195 Ω.
 
 ## 9.6 Przekaźniki i sekwencja
 
@@ -189,7 +188,7 @@ Wariant obudowy Soloista z płytką Onyxa: [`obudowa/`](../obudowa/), opis w [`o
 
 | Płytka | Element | Zmiana |
 |---|---|---|
-| zasilacz (nowa) | R11, R12 | zależnie od UaFF-L2 (9.5) |
+| zasilacz (nowa) | R11, R12 | nie montować (UaFF-L2 = masa, 9.5) |
 | Onyx | L106, L206 | dwa dławiki 10 H, min. 200 mA |
 | Onyx | R123, R124, R223, R224 | 10 Ω 1 % 3 W (albo zmierzyć) |
 | Onyx | R125, R126, R225, R226 | 270 Ω 2 W (zalecane przy UL/trioda) |

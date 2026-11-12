@@ -180,25 +180,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <text class="ref" x="917" y="464" text-anchor="start">J105-2</text>
 <text class="ref" x="917" y="490" text-anchor="start">J205-2</text>
 <text class="net" x="730" y="446" text-anchor="start">→ 4× KT88, 6,4 A</text>
-<circle class="dot" cx="640" cy="400" r="3.2"/>
-<circle class="dot" cx="640" cy="460" r="3.2"/>
-<polyline class="w" points="640,400 640,406"/>
-<polyline class="w" points="640,424 640,430"/>
-<rect class="part chgp" x="633" y="406" width="14" height="18"/>
-<text class="ref chg" x="653" y="412" text-anchor="start"></text>
-<text class="val chg" x="653" y="426" text-anchor="start"></text>
-<polyline class="w" points="640,430 640,436"/>
-<polyline class="w" points="640,454 640,460"/>
-<rect class="part chgp" x="633" y="436" width="14" height="18"/>
-<text class="ref chg" x="653" y="442" text-anchor="start"></text>
-<text class="val chg" x="653" y="456" text-anchor="start"></text>
-<polyline class="w" points="640,430 700,430"/>
-<polyline class="w" points="700,430 700,436"/>
-<line class="w" x1="690" y1="436" x2="710" y2="436"/>
-<line class="w" x1="694" y1="440" x2="706" y2="440"/>
-<line class="w" x1="697.5" y1="444" x2="702.5" y2="444"/>
-<text class="val chg" x="660" y="420" text-anchor="start">R11, R12 100 Ω 1 W</text>
-<text class="net" x="520" y="510" text-anchor="start">tylko gdy środek R132/R133 Onyxa pływa (UaFF-L2)</text>
+<text class="net" x="520" y="510" text-anchor="start">odniesienie do masy na płytce Onyxa (R132/R133), bez R11/R12</text>
 <path class="coil" d="M458 540 A7.5 7.5 0 0 0 458 555 A7.5 7.5 0 0 0 458 570 A7.5 7.5 0 0 0 458 585 A7.5 7.5 0 0 0 458 600"/>
 <text class="op" x="470" y="576" text-anchor="start">S3 6,3 V / 3 A</text>
 <polyline class="w" points="458,540 880,540"/>

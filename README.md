@@ -74,7 +74,7 @@ Płytka Onyxa dostaje własną, prostą płytkę zasilacza (bez prostowników i 
 - **Driver bez balansu AC:** do V2 dawać 6SN7 o zbliżonych prądach obu triod.
 - **Dodatek:** rezystor 100 Ω / 2 W między 4 Ω a COM (wzmacniacz nie pracuje bez obciążenia).
 - **Odpowiedzi Onyxa (12.11.2026):** u niego TR1 to toroidy.pl TSTA-0300/001 (300 VA), radzi większy, więc 400 VA jest w porządku. Sprzężenie zwrotne z odczepu 8 Ω (zgodnie z planem). C123 i ewentualnie R102/C101 tylko pod prostokąt (u niego niepotrzebne). Pomyłki na schemacie potwierdzone. Szczegóły w [docs/07](docs/07-wersje-onyxa.md#odpowiedzi-onyxa-12112026).
-- **Do sprawdzenia na płytce:** dokąd idzie sieć UaFF-L2 (środek żarzenia KT88).
+- **Sprawdzone:** sieć UaFF-L2 (środek żarzenia KT88) to masa (wspólny punkt C108, C126, R142).
 - Projekt równoległy: [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88) (Mullard: EF86 + E88CC LTP + KT88), z podobnym transformatorem sieciowym i tymi samymi toroidami.
 
 ## Notatki

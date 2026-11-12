@@ -262,9 +262,12 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <circle class="dot" cx="560" cy="610" r="3.2"/>
 <circle class="dot" cx="560" cy="575" r="3.2"/>
 <polyline class="w" points="560,575 520,575"/>
-<text class="rail" x="516" y="579" text-anchor="end">UaFF-L2*</text>
+<polyline class="w" points="520,575 520,581"/>
+<line class="w" x1="510" y1="581" x2="530" y2="581"/>
+<line class="w" x1="514" y1="585" x2="526" y2="585"/>
+<line class="w" x1="517.5" y1="589" x2="522.5" y2="589"/>
 <text class="net" x="700" y="570" text-anchor="start">→ 2× KT88 (3,2 A na kanał)</text>
-<text class="net" x="700" y="586" text-anchor="start">* sieć UaFF-L2 sprawdzić na płytce</text>
+<text class="net" x="700" y="586" text-anchor="start">UaFF-L2 = masa (C108, C126, R142)</text>
 <text class="net" x="1060" y="600" text-anchor="middle">Prawy kanał: to samo z oznaczeniami 2xx</text>
 <text class="net" x="1060" y="616" text-anchor="middle">(J203, J206, J204, J205, L206).</text>
 <text class="net" x="1060" y="632" text-anchor="middle">Zworki B103/B104: wspólne uzwojenie anodowe dla obu kanałów.</text>
