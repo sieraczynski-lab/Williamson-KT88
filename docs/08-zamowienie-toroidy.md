@@ -46,6 +46,8 @@ Uwagi do zamówienia:
 
 ## 3. Dławiki filtru anodowego: 2 szt.
 
+**Wybrane: 10 H / 250 mA / 45 Ω DC, 2 szt.** (spadek ok. 6,5 V przy 145 mA, zapas prądu ok. 70 %).
+
 Na płytce są dwa złącza dławików, L106 i L206, **po jednym na kanał**. Osobne dławiki dają lepszą separację kanałów, a każdy jest mniejszy niż jeden wspólny.
 
 | Parametr | Wartość |

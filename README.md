@@ -37,7 +37,7 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | Sprzężenie zwrotne | R129 15k z **odczepu 8 Ω** (ok. 12 dB), C123 niemontowany |
 | Czułość / moc | ok. 0,65 V / ok. 40 W na kanał, kolumny na odczepie 4 Ω |
 | Transformator sieciowy | 400 VA: 360 V (odczepy 345/375 V)/0,65 A, 58 V/100 mA, 6,3 V/8 A, 6,3 V/3 A, ekran ([docs/08](docs/08-zamowienie-toroidy.md)) |
-| Dławiki | 2× 10 H na L106 / L206, min. 200 mA, DCR < 100 Ω |
+| Dławiki | 2× 10 H / 250 mA / 45 Ω na L106 / L206 |
 
 ## Płytka a schemat Onyxa
 
