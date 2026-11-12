@@ -10,17 +10,17 @@
 /* Layout: arkusz rysunku technicznego — tabliczka tytułowa, szerokie pola rysunku, pod spodem notatki konstrukcyjne */
 :root{
   --paper:#eef1ec; --sheet:#f8faf6; --ink:#1c282b; --muted:#56656a; --rule:#c5cdc6;
-  --wire:#22343a; --op:#1f6b6f; --chg:#b4560f; --chgbg:#f6e5d6;
+  --wire:#22343a; --op:#1f6b6f; --chg:#b4560f; --chgbg:#f6e5d6; --prec:#6b3fb0; --precbg:#e6dcf5; --mk:#1d5fd0;
   --f-disp:"Barlow Condensed","Arial Narrow",sans-serif;
   --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#121819; --sheet:#182022; --ink:#dde6e3; --muted:#93a3a3; --rule:#2e3b3d;
-  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; color-scheme:dark}}
+  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; --prec:#b99af0; --precbg:#2e2440; --mk:#6ea4ff; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#121819; --sheet:#182022; --ink:#dde6e3; --muted:#93a3a3; --rule:#2e3b3d;
-  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; color-scheme:dark}
+  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; --prec:#b99af0; --precbg:#2e2440; --mk:#6ea4ff; color-scheme:dark}
 body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
 .wrap{max-width:1240px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
 header{display:grid;grid-template-columns:1fr auto;gap:16px 32px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:14px}
@@ -39,6 +39,8 @@ section{display:grid;gap:12px;min-width:0}
 .sw{width:22px;height:10px;display:inline-block;border:1.6px solid var(--wire)}
 .sw.c{border-color:var(--chg);background:var(--chgbg)}
 .sw.o{border:0;height:2px;background:var(--op)}
+.sw.p{border-color:var(--prec);background:var(--precbg)}
+.mkdot{width:16px;height:16px;border-radius:50%;background:var(--mk);color:var(--sheet);font:700 10px/16px var(--f-mono);text-align:center;display:inline-block}
 .sheet{background:var(--sheet);border:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch}
 .sheet svg{display:block;width:100%;min-width:980px;height:auto}
 svg .w{fill:none;stroke:var(--wire);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
@@ -65,6 +67,12 @@ svg .rail{font-size:12px;font-weight:600}
 svg .op{font-size:11px;fill:var(--op)}
 svg .net{font-size:11px;fill:var(--muted);font-style:italic}
 svg .pol{font-size:13px;fill:var(--wire)}
+svg .precp{stroke:var(--prec);fill:var(--precbg)}
+svg .ref.prec,svg .val.prec{fill:var(--prec)}
+svg .mk{fill:var(--mk);stroke:var(--sheet);stroke-width:1.5}
+svg .mkn{font-size:10px;font-weight:700;fill:var(--sheet)}
+svg .mkl{stroke:var(--mk);stroke-width:1.2;stroke-dasharray:3 2}
+svg .mkt{font-size:11.5px;font-weight:700;fill:var(--mk)}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px 32px}
 .cols>*{min-width:0}
 .note{max-width:70ch;margin:0}
@@ -103,6 +111,8 @@ code{font-family:var(--f-mono);font-size:.9em}
     <span><i class="sw"></i>jak na płytce Onyxa</span>
     <span><i class="sw c"></i>do sprawdzenia lub dobrania pod toroid i własny zasilacz</span>
     <span><i class="sw o"></i>punkty pracy szacunkowe, przy Ua ≈ 465 V</span>
+    <span><i class="sw p"></i>rezystor precyzyjny 1 % (pomiar)</span>
+    <span><i class="mkdot">1</i>punkt podłączenia sterowania / płytki UL</span>
   </div>
   <div class="sheet">
     <svg viewBox="0 0 1400 960" role="img" aria-label="Schemat jednego kanału wzmacniacza Williamson na KT88 według płytki Onyxa">
@@ -497,14 +507,14 @@ code{font-family:var(--f-mono);font-size:.9em}
 <polyline class="w" points="1000,628 1010,628 1010,549 1040,549"/>
 <polyline class="w" points="880,260 880,312"/>
 <polyline class="w" points="880,358 880,410"/>
-<rect class="part" x="873" y="312" width="14" height="46"/>
-<text class="ref" x="867" y="332" text-anchor="end">R123</text>
-<text class="val" x="867" y="346" text-anchor="end">10 Ω 3 W</text>
+<rect class="part precp" x="873" y="312" width="14" height="46"/>
+<text class="ref prec" x="867" y="332" text-anchor="end">R123</text>
+<text class="val prec" x="867" y="346" text-anchor="end">10 Ω 1 % 3 W</text>
 <polyline class="w" points="880,430 880,482"/>
 <polyline class="w" points="880,528 880,580"/>
-<rect class="part" x="873" y="482" width="14" height="46"/>
-<text class="ref" x="867" y="502" text-anchor="end">R124</text>
-<text class="val" x="867" y="516" text-anchor="end">10 Ω 3 W</text>
+<rect class="part precp" x="873" y="482" width="14" height="46"/>
+<text class="ref prec" x="867" y="502" text-anchor="end">R124</text>
+<text class="val prec" x="867" y="516" text-anchor="end">10 Ω 1 % 3 W</text>
 <polyline class="w" points="880,410 880,430"/>
 <circle class="dot" cx="880" cy="420" r="3.2"/>
 <polyline class="w" points="880,420 845,420"/>
@@ -513,9 +523,7 @@ code{font-family:var(--f-mono);font-size:.9em}
 <line class="w" x1="839" y1="436" x2="851" y2="436"/>
 <line class="w" x1="842.5" y1="440" x2="847.5" y2="440"/>
 <circle class="dot" cx="880" cy="272" r="3.2"/>
-<text class="net" x="888" y="284" text-anchor="start">TP</text>
 <circle class="dot" cx="880" cy="568" r="3.2"/>
-<text class="net" x="888" y="562" text-anchor="start">TP</text>
 <text class="op" x="896" y="316" text-anchor="start">Ua ≈ 465 V</text>
 <text class="op" x="896" y="329" text-anchor="start">Ik 50–55 mA</text>
 <text class="op" x="896" y="342" text-anchor="start">(0,50–0,55 V na 10 Ω)</text>
@@ -572,9 +580,130 @@ code{font-family:var(--f-mono);font-size:.9em}
 <line class="w" x1="1157.5" y1="568" x2="1162.5" y2="568"/>
 <text class="ref chg" x="990" y="770" text-anchor="middle">TR-OUT  TTG-KT88PP (u Onyxa: Hammond 1650HA)</text>
 <text class="val chg" x="990" y="785" text-anchor="middle">Raa 4 kΩ · UL 43% · 80 W · 4/8 Ω</text>
+<line class="mkl" x1="880" y1="272" x2="902" y2="276"/>
+<circle class="mk" cx="880" cy="272" r="8"/>
+<text class="mkn" x="880" y="275.5" text-anchor="middle">1</text>
+<text class="mkt" x="906" y="280" text-anchor="start">J4-1 prąd V5</text>
+<line class="mkl" x1="880" y1="568" x2="902" y2="572"/>
+<circle class="mk" cx="880" cy="568" r="8"/>
+<text class="mkn" x="880" y="571.5" text-anchor="middle">2</text>
+<text class="mkt" x="906" y="576" text-anchor="start">J4-2 prąd V6</text>
+<line class="mkl" x1="862" y1="420" x2="835" y2="444"/>
+<circle class="mk" cx="862" cy="420" r="8"/>
+<text class="mkn" x="862" y="423.5" text-anchor="middle">3</text>
+<text class="mkt" x="831" y="448" text-anchor="end">J4-5 masa</text>
+<line class="mkl" x1="750" y1="110" x2="740" y2="100"/>
+<circle class="mk" cx="750" cy="110" r="8"/>
+<text class="mkn" x="750" y="113.5" text-anchor="middle">4</text>
+<text class="mkt" x="736" y="104" text-anchor="end">J10-1 korekta V5</text>
+<line class="mkl" x1="750" y1="730" x2="760" y2="744"/>
+<circle class="mk" cx="750" cy="730" r="8"/>
+<text class="mkn" x="750" y="733.5" text-anchor="middle">5</text>
+<text class="mkt" x="764" y="748" text-anchor="start">J10-2 korekta V6</text>
+<line class="mkl" x1="1240" y1="50" x2="1290" y2="54"/>
+<circle class="mk" cx="1240" cy="50" r="8"/>
+<text class="mkn" x="1240" y="53.5" text-anchor="middle">6</text>
+<text class="mkt" x="1294" y="58" text-anchor="start">J5-1 VBIAS</text>
+<line class="mkl" x1="1010" y1="255" x2="1000" y2="258"/>
+<circle class="mk" cx="1010" cy="255" r="8"/>
+<text class="mkn" x="1010" y="258.5" text-anchor="middle">7</text>
+<text class="mkt" x="996" y="262" text-anchor="end">UL J1-3</text>
+<line class="mkl" x1="1010" y1="595" x2="1000" y2="596"/>
+<circle class="mk" cx="1010" cy="595" r="8"/>
+<text class="mkn" x="1010" y="598.5" text-anchor="middle">8</text>
+<text class="mkt" x="996" y="600" text-anchor="end">UL J2-3</text>
     </svg>
   </div>
   <p class="note">Prawy kanał jest identyczny, z oznaczeniami 2xx (V3, V4, V7, V8). Żarzenie pominięte na tym rysunku (jest w zasilaczu). Złącze J101: 1 anoda V5, 2 odczep UL, 3 środek (Ua), 4 odczep UL, 5 anoda V6. R102 i C101 przy anodzie V1B są na płytce niemontowane (n.m.), więc nie są narysowane.</p>
+</section>
+
+<section>
+  <h2>Punkty podłączenia <small>niebieskie znaczniki na rysunkach</small></h2>
+  <div class="tw"><table>
+    <thead><tr><th>Nr</th><th>Punkt na płytce Onyxa</th><th>Dokąd</th><th>Uwagi</th></tr></thead>
+    <tbody>
+      <tr><td class="m">1</td><td>R123, koniec od katody V5 (nóżka 8)</td><td>sterowanie J4-1 (IK_L1)</td><td>pomiar prądu V5; R123 wymienić na 10 Ω 1 % 3 W</td></tr>
+      <tr><td class="m">2</td><td>R124, koniec od katody V6</td><td>sterowanie J4-2 (IK_L2)</td><td>R124 na 10 Ω 1 %; prawy kanał: R223/R224 → J4-3, J4-4</td></tr>
+      <tr><td class="m">3</td><td>masa przy R123/R124</td><td>sterowanie J4-5</td><td>masa odniesienia pomiaru prądów</td></tr>
+      <tr><td class="m">4</td><td>R117, koniec od strony biasu (suwak P101)</td><td>sterowanie J10-1</td><td>korekta biasu V5; prawy kanał: R217 → J10-3</td></tr>
+      <tr><td class="m">5</td><td>R118, koniec od strony biasu (suwak P102)</td><td>sterowanie J10-2</td><td>korekta biasu V6; prawy kanał: R218 → J10-4</td></tr>
+      <tr><td class="m">6</td><td>Bias-L (minus C126)</td><td>sterowanie J5-1 (VBIAS)</td><td>tylko z lewego kanału</td></tr>
+      <tr><td class="m">7, 8</td><td>J101-2 / J101-4</td><td>płytka UL J1-3 / J2-3</td><td>odczepy UL toroidu idą wtedy na płytkę UL, nie na J101 (rysunek niżej)</td></tr>
+      <tr><td class="m">9</td><td>Ua-L (plus C121)</td><td>płytka zasilacza J13</td><td>pomiar Ua i dioda HV; przewód w izolacji 1 kV</td></tr>
+      <tr><td class="m">10</td><td>masa (gwiazda)</td><td>płytka zasilacza J15, sterowanie</td><td>jeden przewód z każdej płytki</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Przewody J4 i J10 skręcone z masą, z dala od anod. Lutuj od spodu na nóżce elementu, z koszulką termokurczliwą. Kolejność lamp w J4 i J10 musi być ta sama.</p>
+</section>
+
+<section>
+  <h2>Przełącznik UL / trioda <small>okablowanie jednej lampy</small></h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1400 570" role="img" aria-label="Okablowanie przełącznika UL/trioda: toroid, płytka UL i złącze J101 płytki Onyxa">
+<text class="ref" x="40" y="36" text-anchor="start">Przełącznik UL / trioda: lampa V5 lewego kanału (V6 i prawy kanał tak samo, patrz niżej)</text>
+<rect class="part" x="40" y="110" width="290" height="230"/>
+<text class="ref" x="54" y="132" text-anchor="start">Płytka Onyxa</text>
+<circle class="term" cx="330" cy="170" r="5"/>
+<circle class="term" cx="330" cy="270" r="5"/>
+<text class="ref" x="330" y="158" text-anchor="middle">J101-1</text>
+<text class="ref" x="330" y="258" text-anchor="middle">J101-2</text>
+<polyline class="w" points="325,170 250,170"/>
+<text class="net" x="242" y="174" text-anchor="end">anoda V5 (nóżka 3)</text>
+<polyline class="w" points="325,270 300,270"/>
+<polyline class="w" points="220,270 240,270"/>
+<polyline class="w" points="280,270 300,270"/>
+<rect class="part chgp" x="240" y="263" width="40" height="14"/>
+<text class="ref chg" x="260" y="292" text-anchor="middle">R125</text>
+<text class="val chg" x="260" y="306" text-anchor="middle">150 Ω (lepiej 270 Ω 2 W)</text>
+<polyline class="w" points="220,270 200,270"/>
+<text class="net" x="192" y="274" text-anchor="end">g2 V5</text>
+<text class="net" x="192" y="246" text-anchor="end">(nóżka 4)</text>
+<rect class="part" x="540" y="120" width="300" height="210"/>
+<text class="ref" x="554" y="142" text-anchor="start">Płytka UL (kanał L), K1 = lampa V5</text>
+<circle class="term" cx="840" cy="170" r="5"/>
+<text class="val" x="830" y="164" text-anchor="end">J1-1 AN</text>
+<circle class="term" cx="840" cy="220" r="5"/>
+<text class="val" x="830" y="214" text-anchor="end">J1-2 UL</text>
+<circle class="term" cx="840" cy="270" r="5"/>
+<text class="val" x="830" y="264" text-anchor="end">J1-3 G2</text>
+<polyline class="w" points="835,170 724,170"/>
+<polyline class="w" points="835,220 724,220"/>
+<polyline class="w" points="835,270 640,270"/>
+<circle class="term" cx="720" cy="170" r="3.5"/>
+<circle class="term" cx="720" cy="220" r="3.5"/>
+<circle class="dot" cx="640" cy="270" r="3.2"/>
+<line class="w" x1="640" y1="270" x2="716" y2="225"/>
+<line class="w" x1="640" y1="270" x2="716" y2="175" stroke-dasharray="5 4"/>
+<text class="op" x="728" y="194" text-anchor="start">NO: trioda</text>
+<text class="op" x="728" y="244" text-anchor="start">NC: UL</text>
+<text class="val" x="640" y="290" text-anchor="middle">COM</text>
+<rect class="part" x="560" y="296" width="56" height="22"/>
+<text class="val" x="588" y="312" text-anchor="middle">cewka</text>
+<circle class="term" cx="588" cy="330" r="5"/>
+<polyline class="w" points="588,318 588,325"/>
+<text class="net" x="588" y="356" text-anchor="middle">J3 ← sterowanie J11 (12 V)</text>
+<path class="coil chgc" d="M1150 150 A10 10 0 0 1 1150 170 A8.33333 8.33333 0 0 1 1150 186.667 A8.33333 8.33333 0 0 1 1150 203.333 A8.33333 8.33333 0 0 1 1150 220 A8 8 0 0 1 1150 236 A8 8 0 0 1 1150 252 A8 8 0 0 1 1150 268 A8 8 0 0 1 1150 284 A8 8 0 0 1 1150 300"/>
+<text class="ref chg" x="1150" y="132" text-anchor="middle">TTG-KT88PP, uzwojenie pierwotne</text>
+<text class="val" x="1180" y="174" text-anchor="start">anoda A (V5)</text>
+<text class="val" x="1180" y="224" text-anchor="start">odczep UL A</text>
+<text class="val" x="1180" y="304" text-anchor="start">CT → J101-3 bez zmian</text>
+<polyline class="w" points="845,170 1150,170"/>
+<polyline class="w" points="845,220 1150,220"/>
+<circle class="dot" cx="920" cy="170" r="3.2"/>
+<polyline class="w" points="920,170 920,80 430,80 430,170 335,170"/>
+<circle class="dot" cx="430" cy="170" r="3.2"/>
+<text class="net" x="675" y="72" text-anchor="middle">anoda: toroid → J101-1 Onyxa i J1-1 płytki UL</text>
+<text class="net" x="1000" y="212" text-anchor="middle">odczep UL tylko na płytkę UL</text>
+<polyline class="w" points="845,270 900,270 900,400 430,400 430,270 335,270"/>
+<text class="net" x="665" y="420" text-anchor="middle">G2: J1-3 płytki UL → J101-2 Onyxa (dalej przez R125 do g2 V5)</text>
+<text class="val" x="40" y="462" text-anchor="start">Lampa V6: to samo z J2 płytki UL (K2): anoda B toroidu → J101-5 i J2-1, odczep UL B → J2-2, J2-3 → J101-4.</text>
+<text class="val" x="40" y="482" text-anchor="start">Prawy kanał: druga płytka UL i złącze J201 Onyxa. Cewki: sterowanie J11 piny 1–2 → J3 płytki L, piny 3–4 → J3 płytki P.</text>
+<text class="val" x="40" y="502" text-anchor="start">Bez prądu w cewce G2 dostaje odczep UL (tryb UL). Cewka 12 V: G2 dostaje anodę (trioda, ok. 20–25 W).</text>
+<text class="val" x="40" y="522" text-anchor="start">Przełączać tylko przy wyłączonych anodach (ESP32 robi to sam). Przewody anod i odczepów w izolacji min. 1 kV.</text>
+<text class="val" x="40" y="542" text-anchor="start">Płytka UL nie ma masy: mocuj ją na tulejach izolacyjnych.</text>
+    </svg>
+  </div>
+  <p class="note">Jedyna zmiana względem zwykłego okablowania: odczep UL toroidu nie idzie na J101-2, tylko na płytkę UL (J1-2). Na J101-2 trafia wyjście płytki UL (J1-3). Anodę toroidu podłączasz jak zwykle do J101-1 i dodatkowo przewodem do J1-1 płytki UL.</p>
 </section>
 
 <section>
@@ -663,7 +792,7 @@ code{font-family:var(--f-mono);font-size:.9em}
 <polyline class="w" points="700,100 790,100"/>
 <path class="coil" d="M790 100 A8.33333 8.33333 0 0 1 806.667 100 A8.33333 8.33333 0 0 1 823.333 100 A8.33333 8.33333 0 0 1 840 100 A8.33333 8.33333 0 0 1 856.667 100 A8.33333 8.33333 0 0 1 873.333 100 A8.33333 8.33333 0 0 1 890 100"/>
 <text class="ref" x="840" y="70" text-anchor="middle">L106 (prawy: L206)</text>
-<text class="val" x="840" y="84" text-anchor="middle">10 H / 400 mA, zewnętrzny</text>
+<text class="val" x="840" y="84" text-anchor="middle">10 H / 250 mA / 45 Ω, zewnętrzny</text>
 <polyline class="w" points="890,100 920,100"/>
 <circle class="dot" cx="920" cy="100" r="3.2"/>
 <polyline class="w" points="920,100 920,141"/>
@@ -841,6 +970,18 @@ code{font-family:var(--f-mono);font-size:.9em}
 <text class="net" x="1060" y="616" text-anchor="middle">(J203, J206, J204, J205, L206).</text>
 <text class="net" x="1060" y="632" text-anchor="middle">Zworki B103/B104: wspólne uzwojenie anodowe dla obu kanałów.</text>
 <text class="net" x="1060" y="648" text-anchor="middle">Każdy kanał ma własny mostek, filtr i dławik.</text>
+<line class="mkl" x1="1040" y1="190" x2="1052" y2="192"/>
+<circle class="mk" cx="1040" cy="190" r="8"/>
+<text class="mkn" x="1040" y="193.5" text-anchor="middle">9</text>
+<text class="mkt" x="1056" y="196" text-anchor="start">→ zasilacz J13 (pomiar Ua)</text>
+<line class="mkl" x1="830" y1="260" x2="830" y2="242"/>
+<circle class="mk" cx="830" cy="260" r="8"/>
+<text class="mkn" x="830" y="263.5" text-anchor="middle">6</text>
+<text class="mkt" x="830" y="246" text-anchor="middle">sterowanie J5-1</text>
+<line class="mkl" x1="800" y1="335" x2="816" y2="388"/>
+<circle class="mk" cx="800" cy="335" r="8"/>
+<text class="mkn" x="800" y="338.5" text-anchor="middle">10</text>
+<text class="mkt" x="820" y="392" text-anchor="start">masa → zasilacz J15</text>
     </svg>
   </div>
   <p class="note">Część sieciowa (bezpieczniki, miękki start, opóźnienie anod) i TR1 są na osobnej płytce, niżej. Elektrolity filtrów to pary 2× 120 µF / 400 V szeregowo, z rezystorami wyrównującymi 560 k (R143–R152), czyli 60 µF / 800 V. Przy Ua 465 V i wysokim napięciu sieci zapas jest wystarczający.</p>
@@ -1030,27 +1171,27 @@ code{font-family:var(--f-mono);font-size:.9em}
 <circle class="dot" cx="1060" cy="70" r="3.2"/>
 <polyline class="w" points="1060,70 1075,70"/>
 <polyline class="w" points="1105,70 1120,70"/>
-<rect class="part" x="1075" y="63" width="30" height="14"/>
-<text class="ref" x="1090" y="92" text-anchor="middle">R3</text>
-<text class="val" x="1090" y="106" text-anchor="middle">1 M</text>
+<rect class="part precp" x="1075" y="63" width="30" height="14"/>
+<text class="ref prec" x="1090" y="92" text-anchor="middle">R3</text>
+<text class="val prec" x="1090" y="106" text-anchor="middle">1 M</text>
 <polyline class="w" points="1120,70 1135,70"/>
 <polyline class="w" points="1165,70 1180,70"/>
-<rect class="part" x="1135" y="63" width="30" height="14"/>
-<text class="ref" x="1150" y="92" text-anchor="middle">R4</text>
-<text class="val" x="1150" y="106" text-anchor="middle">1 M</text>
+<rect class="part precp" x="1135" y="63" width="30" height="14"/>
+<text class="ref prec" x="1150" y="92" text-anchor="middle">R4</text>
+<text class="val prec" x="1150" y="106" text-anchor="middle">1 M</text>
 <polyline class="w" points="1180,70 1195,70"/>
 <polyline class="w" points="1225,70 1240,70"/>
-<rect class="part" x="1195" y="63" width="30" height="14"/>
-<text class="ref" x="1210" y="92" text-anchor="middle">R5</text>
-<text class="val" x="1210" y="106" text-anchor="middle">1 M</text>
+<rect class="part precp" x="1195" y="63" width="30" height="14"/>
+<text class="ref prec" x="1210" y="92" text-anchor="middle">R5</text>
+<text class="val prec" x="1210" y="106" text-anchor="middle">1 M</text>
 <polyline class="w" points="1240,70 1260,70"/>
 <circle class="dot" cx="1260" cy="70" r="3.2"/>
-<text class="val" x="1150" y="124" text-anchor="middle">R3–R5 1600 V</text>
+<text class="val prec" x="1150" y="124" text-anchor="middle">R3–R5 1600 V, 1 %</text>
 <polyline class="w" points="1260,70 1260,95"/>
 <polyline class="w" points="1260,125 1260,150"/>
-<rect class="part" x="1253" y="95" width="14" height="30"/>
-<text class="ref" x="1273" y="107" text-anchor="start">R6</text>
-<text class="val" x="1273" y="121" text-anchor="start">15 k</text>
+<rect class="part precp" x="1253" y="95" width="14" height="30"/>
+<text class="ref prec" x="1273" y="107" text-anchor="start">R6</text>
+<text class="val prec" x="1273" y="121" text-anchor="start">15 k 1 %</text>
 <polyline class="w" points="1260,150 1260,162"/>
 <line class="w" x1="1250" y1="162" x2="1270" y2="162"/>
 <line class="w" x1="1254" y1="166" x2="1266" y2="166"/>

@@ -6,17 +6,17 @@
 /* Layout: arkusz rysunku technicznego — tabliczka tytułowa, szerokie pola rysunku, pod spodem notatki konstrukcyjne */
 :root{
   --paper:#eef1ec; --sheet:#f8faf6; --ink:#1c282b; --muted:#56656a; --rule:#c5cdc6;
-  --wire:#22343a; --op:#1f6b6f; --chg:#b4560f; --chgbg:#f6e5d6;
+  --wire:#22343a; --op:#1f6b6f; --chg:#b4560f; --chgbg:#f6e5d6; --prec:#6b3fb0; --precbg:#e6dcf5; --mk:#1d5fd0;
   --f-disp:"Barlow Condensed","Arial Narrow",sans-serif;
   --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#121819; --sheet:#182022; --ink:#dde6e3; --muted:#93a3a3; --rule:#2e3b3d;
-  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; color-scheme:dark}}
+  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; --prec:#b99af0; --precbg:#2e2440; --mk:#6ea4ff; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#121819; --sheet:#182022; --ink:#dde6e3; --muted:#93a3a3; --rule:#2e3b3d;
-  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; color-scheme:dark}
+  --wire:#c9d6d3; --op:#6fc3c0; --chg:#f0a055; --chgbg:#3a2a1c; --prec:#b99af0; --precbg:#2e2440; --mk:#6ea4ff; color-scheme:dark}
 body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
 .wrap{max-width:1240px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
 header{display:grid;grid-template-columns:1fr auto;gap:16px 32px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:14px}
@@ -35,6 +35,8 @@ section{display:grid;gap:12px;min-width:0}
 .sw{width:22px;height:10px;display:inline-block;border:1.6px solid var(--wire)}
 .sw.c{border-color:var(--chg);background:var(--chgbg)}
 .sw.o{border:0;height:2px;background:var(--op)}
+.sw.p{border-color:var(--prec);background:var(--precbg)}
+.mkdot{width:16px;height:16px;border-radius:50%;background:var(--mk);color:var(--sheet);font:700 10px/16px var(--f-mono);text-align:center;display:inline-block}
 .sheet{background:var(--sheet);border:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch}
 .sheet svg{display:block;width:100%;min-width:980px;height:auto}
 svg .w{fill:none;stroke:var(--wire);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
@@ -61,6 +63,12 @@ svg .rail{font-size:12px;font-weight:600}
 svg .op{font-size:11px;fill:var(--op)}
 svg .net{font-size:11px;fill:var(--muted);font-style:italic}
 svg .pol{font-size:13px;fill:var(--wire)}
+svg .precp{stroke:var(--prec);fill:var(--precbg)}
+svg .ref.prec,svg .val.prec{fill:var(--prec)}
+svg .mk{fill:var(--mk);stroke:var(--sheet);stroke-width:1.5}
+svg .mkn{font-size:10px;font-weight:700;fill:var(--sheet)}
+svg .mkl{stroke:var(--mk);stroke-width:1.2;stroke-dasharray:3 2}
+svg .mkt{font-size:11.5px;font-weight:700;fill:var(--mk)}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px 32px}
 .cols>*{min-width:0}
 .note{max-width:70ch;margin:0}
@@ -99,6 +107,8 @@ code{font-family:var(--f-mono);font-size:.9em}
     <span><i class="sw"></i>jak na płytce Onyxa</span>
     <span><i class="sw c"></i>do sprawdzenia lub dobrania pod toroid i własny zasilacz</span>
     <span><i class="sw o"></i>punkty pracy szacunkowe, przy Ua ≈ 465 V</span>
+    <span><i class="sw p"></i>rezystor precyzyjny 1 % (pomiar)</span>
+    <span><i class="mkdot">1</i>punkt podłączenia sterowania / płytki UL</span>
   </div>
   <div class="sheet">
     <svg viewBox="0 0 1400 960" role="img" aria-label="Schemat jednego kanału wzmacniacza Williamson na KT88 według płytki Onyxa">
@@ -106,6 +116,35 @@ code{font-family:var(--f-mono);font-size:.9em}
     </svg>
   </div>
   <p class="note">Prawy kanał jest identyczny, z oznaczeniami 2xx (V3, V4, V7, V8). Żarzenie pominięte na tym rysunku (jest w zasilaczu). Złącze J101: 1 anoda V5, 2 odczep UL, 3 środek (Ua), 4 odczep UL, 5 anoda V6. R102 i C101 przy anodzie V1B są na płytce niemontowane (n.m.), więc nie są narysowane.</p>
+</section>
+
+<section>
+  <h2>Punkty podłączenia <small>niebieskie znaczniki na rysunkach</small></h2>
+  <div class="tw"><table>
+    <thead><tr><th>Nr</th><th>Punkt na płytce Onyxa</th><th>Dokąd</th><th>Uwagi</th></tr></thead>
+    <tbody>
+      <tr><td class="m">1</td><td>R123, koniec od katody V5 (nóżka 8)</td><td>sterowanie J4-1 (IK_L1)</td><td>pomiar prądu V5; R123 wymienić na 10 Ω 1 % 3 W</td></tr>
+      <tr><td class="m">2</td><td>R124, koniec od katody V6</td><td>sterowanie J4-2 (IK_L2)</td><td>R124 na 10 Ω 1 %; prawy kanał: R223/R224 → J4-3, J4-4</td></tr>
+      <tr><td class="m">3</td><td>masa przy R123/R124</td><td>sterowanie J4-5</td><td>masa odniesienia pomiaru prądów</td></tr>
+      <tr><td class="m">4</td><td>R117, koniec od strony biasu (suwak P101)</td><td>sterowanie J10-1</td><td>korekta biasu V5; prawy kanał: R217 → J10-3</td></tr>
+      <tr><td class="m">5</td><td>R118, koniec od strony biasu (suwak P102)</td><td>sterowanie J10-2</td><td>korekta biasu V6; prawy kanał: R218 → J10-4</td></tr>
+      <tr><td class="m">6</td><td>Bias-L (minus C126)</td><td>sterowanie J5-1 (VBIAS)</td><td>tylko z lewego kanału</td></tr>
+      <tr><td class="m">7, 8</td><td>J101-2 / J101-4</td><td>płytka UL J1-3 / J2-3</td><td>odczepy UL toroidu idą wtedy na płytkę UL, nie na J101 (rysunek niżej)</td></tr>
+      <tr><td class="m">9</td><td>Ua-L (plus C121)</td><td>płytka zasilacza J13</td><td>pomiar Ua i dioda HV; przewód w izolacji 1 kV</td></tr>
+      <tr><td class="m">10</td><td>masa (gwiazda)</td><td>płytka zasilacza J15, sterowanie</td><td>jeden przewód z każdej płytki</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Przewody J4 i J10 skręcone z masą, z dala od anod. Lutuj od spodu na nóżce elementu, z koszulką termokurczliwą. Kolejność lamp w J4 i J10 musi być ta sama.</p>
+</section>
+
+<section>
+  <h2>Przełącznik UL / trioda <small>okablowanie jednej lampy</small></h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1400 570" role="img" aria-label="Okablowanie przełącznika UL/trioda: toroid, płytka UL i złącze J101 płytki Onyxa">
+%%UL%%
+    </svg>
+  </div>
+  <p class="note">Jedyna zmiana względem zwykłego okablowania: odczep UL toroidu nie idzie na J101-2, tylko na płytkę UL (J1-2). Na J101-2 trafia wyjście płytki UL (J1-3). Anodę toroidu podłączasz jak zwykle do J101-1 i dodatkowo przewodem do J1-1 płytki UL.</p>
 </section>
 
 <section>

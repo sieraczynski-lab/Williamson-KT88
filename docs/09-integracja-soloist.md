@@ -71,6 +71,8 @@ Uzwojenie **S4 58 V** przez F4 idzie napięciem przemiennym na J106 i J206. Pros
 
 ## 9.4 Pomiar prądów i automatyczna korekta biasu
 
+Punkty lutowania są zaznaczone niebieskimi znacznikami (1–10) na [schemacie kanału](../schematy/kanal.svg) i [zasilacza](../schematy/zasilacz.svg); rezystory precyzyjne (fioletowe) to R123/R124 (10 Ω 1 %) i dzielnik pomiaru Ua na płytce zasilacza (R3–R6 1 %).
+
 | sterowanie | Kanał | Lampa Onyxa | Punkt lutowania na płytce Onyxa |
 |---|---|---|---|
 | J4 pin 1 IK_L1 | lewy | V5 | koniec R123 przy katodzie (nóżka 8 V5) |
@@ -119,19 +121,30 @@ Przekaźniki K1–K4 (Omron G2RL-2-DC12, diody 1N4148 na cewkach) są na płytce
 
 ## 9.7 Przełącznik UL / trioda
 
-Płytka `ul` Soloista (po jednej na kanał) wpina się między płytkę Onyxa a transformator. Na płytce Onyxa nic się nie zmienia:
+![Okablowanie UL / trioda](../schematy/ul_trioda.svg)
 
-| Płytka UL kanału L | Połączenie |
-|---|---|
-| J1 pin 3 G2_A | Onyx **J101 pin 2** (siatka druga V5 przez R125) |
-| J1 pin 2 UL_A | odczep UL A toroidu (zamiast do J101-2) |
-| J1 pin 1 AN_A | anoda A toroidu, ten sam punkt co Onyx J101 pin 1 |
-| J2 pin 3 G2_B | Onyx **J101 pin 4** |
-| J2 pin 2 UL_B | odczep UL B toroidu |
-| J2 pin 1 AN_B | anoda B toroidu, ten sam punkt co Onyx J101 pin 5 |
-| J3 | sterowanie J11 piny 1–2 (prawy kanał: J11 piny 3–4) |
+Płytka `ul` Soloista (po jednej na kanał) wpina się między toroid a złącze J101 Onyxa. Na płytce Onyxa nic się nie zmienia. Zmienia się tylko to, **dokąd idą odczepy UL toroidu**: zamiast na J101-2 / J101-4 idą na płytkę UL, a na J101-2 / J101-4 trafia wyjście płytki UL.
 
-Środek toroidu idzie dalej do J101 pin 3. Bez prądu w cewkach jest tryb UL. Przełączanie tylko przy wyłączonym B+, jak w Soloiście. Po przełączeniu na triodę sprawdź prostokątem stabilność, bo zmienia się wzmocnienie pętli. R125/R126 Onyxa mają na płytce 150 Ω, a Soloist ma w tym miejscu 270 Ω / 2 W. W trybie triodowym siatka druga dostaje pełne napięcie anody i większy prąd, więc warto wymienić je na **270 Ω 2 W** (lepiej chronią siatkę i tłumią oscylacje).
+Każda KT88 ma na płytce UL swój przekaźnik i swoje złącze (J1 dla V5, J2 dla V6), każde po 3 przewody:
+
+| Przewód | Skąd | Dokąd |
+|---|---|---|
+| anoda A | toroid, anoda A | Onyx **J101-1** (jak zwykle) **i** płytka UL **J1-1** |
+| odczep UL A | toroid, odczep UL A | płytka UL **J1-2** (nie na J101-2) |
+| G2 V5 | płytka UL **J1-3** | Onyx **J101-2** (dalej przez R125 do g2 V5) |
+| środek | toroid, CT | Onyx **J101-3** (bez zmian) |
+| anoda B | toroid, anoda B | Onyx **J101-5** **i** płytka UL **J2-1** |
+| odczep UL B | toroid, odczep UL B | płytka UL **J2-2** (nie na J101-4) |
+| G2 V6 | płytka UL **J2-3** | Onyx **J101-4** (dalej przez R126 do g2 V6) |
+| cewki | sterowanie **J11** piny 1–2 | płytka UL kanału L **J3** (prawy kanał: piny 3–4) |
+
+Prawy kanał: druga płytka UL i złącze J201 Onyxa.
+
+Jak to działa: przekaźnik ma styk przełączny. Wspólny (COM) idzie przez J1-3 do siatki drugiej. **Bez prądu w cewce** COM jest zwarty z NC, czyli z odczepem UL: normalny tryb UL. **Cewka 12 V** przełącza COM na NO, czyli na anodę: tryb triodowy (ok. 20–25 W). Przełączać tylko przy wyłączonych anodach, jak w Soloiście (ESP32 robi to sam: MUTE, K3/K4 wyłączone, czeka na Ua < 30 V, przełącza, włącza anody).
+
+- Przewody anod i odczepów w izolacji min. 1 kV. Płytka UL nie ma masy, mocuj ją na tulejach izolacyjnych.
+- R125/R126 Onyxa mają na płytce 150 Ω; Soloist ma w tym miejscu 270 Ω / 2 W. W trybie triodowym siatka druga dostaje pełne napięcie anody i większy prąd, więc warto wymienić je na **270 Ω 2 W**.
+- Po przełączeniu na triodę sprawdź prostokątem stabilność, bo zmienia się wzmocnienie pętli.
 
 ## 9.8 Przełącznik kolumn i trigger
 

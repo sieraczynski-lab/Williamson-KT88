@@ -20,6 +20,7 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | [`schematy/plytka_zasilacza.svg`](schematy/plytka_zasilacza.svg) | Własna płytka zasilacza: bezpieczniki, miękki start K1/K2, opóźnione anody K3/K4 z R_IN, napięcia przemienne do płytki Onyxa, pomiar Ua i dioda HV |
 | [`pcb/`](pcb/) | Płytki do zamówienia (KiCad 4 dla EasyEDA Standard, 5 dla EasyEDA Pro i KiCad 8, z klasami sieci): nowy zasilacz 100 × 100 mm oraz z Soloista sterowanie ESP32, 2× UL/trioda, przełącznik kolumn, selektor. Połączenia: [`pcb/CZYTAJ_MNIE.txt`](pcb/CZYTAJ_MNIE.txt) |
 | [`docs/soloist/`](docs/soloist/) | Opis sterowania i selektora (kopia z Soloista) |
+| [`schematy/ul_trioda.svg`](schematy/ul_trioda.svg) | Okablowanie przełącznika UL / trioda: toroid, płytka UL, J101 Onyxa |
 | [`schematy/williamson-kt88.html`](schematy/williamson-kt88.html) | Oba schematy z punktami pracy, różnicami płytka/schemat, listą zmian i uruchomieniem (otwórz w przeglądarce) |
 
 ![Schemat kanału](schematy/kanal.svg)

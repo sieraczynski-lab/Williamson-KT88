@@ -13,8 +13,14 @@ def dot(x, y):
 def txt(x, y, s, cls="val", anchor="start"):
     add('<text class="%s" x="%g" y="%g" text-anchor="%s">%s</text>' % (cls, x, y, anchor, s))
 
+def _cc(chg):
+    return " prec" if chg == "prec" else (" chg" if chg else "")
+
+def _pc(chg):
+    return " precp" if chg == "prec" else (" chgp" if chg else "")
+
 def label2(x, y, ref, val, anchor="start", chg=False):
-    c = " chg" if chg else ""
+    c = _cc(chg)
     txt(x, y, ref, "ref" + c, anchor)
     txt(x, y + 14, val, "val" + c, anchor)
 
@@ -22,7 +28,7 @@ def res_v(x, y1, y2, ref, val, side="r", chg=False, body=46):
     m = (y1 + y2) / 2
     b1, b2 = m - body / 2, m + body / 2
     wire((x, y1), (x, b1)); wire((x, b2), (x, y2))
-    add('<rect class="part%s" x="%g" y="%g" width="14" height="%g"/>' % (" chgp" if chg else "", x - 7, b1, body))
+    add('<rect class="part%s" x="%g" y="%g" width="14" height="%g"/>' % (_pc(chg), x - 7, b1, body))
     if side == "r":
         label2(x + 13, m - 3, ref, val, "start", chg)
     else:
@@ -32,7 +38,7 @@ def res_h(x1, x2, y, ref, val, above=True, chg=False, body=46):
     m = (x1 + x2) / 2
     b1, b2 = m - body / 2, m + body / 2
     wire((x1, y), (b1, y)); wire((b2, y), (x2, y))
-    add('<rect class="part%s" x="%g" y="%g" width="%g" height="14"/>' % (" chgp" if chg else "", b1, y - 7, body))
+    add('<rect class="part%s" x="%g" y="%g" width="%g" height="14"/>' % (_pc(chg), b1, y - 7, body))
     if above:
         label2(m, y - 26, ref, val, "middle", chg)
     else:
@@ -93,7 +99,7 @@ def pot_v(x, y1, y2, wy, wx, ref, val, side="r", chg=False, body=50):
     m = (y1 + y2) / 2
     b1, b2 = m - body / 2, m + body / 2
     wire((x, y1), (x, b1)); wire((x, b2), (x, y2))
-    add('<rect class="part%s" x="%g" y="%g" width="14" height="%g"/>' % (" chgp" if chg else "", x - 7, b1, body))
+    add('<rect class="part%s" x="%g" y="%g" width="14" height="%g"/>' % (_pc(chg), x - 7, b1, body))
     # wiper arrow from wx to body edge
     if wx > x:
         wire((wx, wy), (x + 9, wy))
@@ -175,6 +181,13 @@ def tube_label(x, y, name, typ, anchor="end"):
 def op(x, y, lines, anchor="start"):
     for i, l in enumerate(lines):
         txt(x, y + i * 13, l, "op", anchor)
+
+def mark(x, y, n, text, tx, ty, anchor="start"):
+    """niebieski znacznik punktu podlaczenia: kolko z numerem w punkcie, opis w (tx, ty)"""
+    add('<line class="mkl" x1="%g" y1="%g" x2="%g" y2="%g"/>' % (x, y, tx, ty - 4))
+    add('<circle class="mk" cx="%g" cy="%g" r="8"/>' % (x, y))
+    add('<text class="mkn" x="%g" y="%g" text-anchor="middle">%s</text>' % (x, y + 3.5, n))
+    txt(tx + (4 if anchor == "start" else -4 if anchor == "end" else 0), ty, text, "mkt", anchor)
 
 def term(x, y):
     add('<circle class="term" cx="%g" cy="%g" r="5"/>' % (x, y))
@@ -277,12 +290,11 @@ def amp():
     wire((1000, 212), (1010, 212), (1010, 291), (1040, 291))
     res_h(920, 1000, 628, "R126", "150 Ω", above=False, body=40)
     wire((1000, 628), (1010, 628), (1010, 549), (1040, 549))
-    res_v(880, 260, 410, "R123", "10 Ω 3 W", side="l")
-    res_v(880, 430, 580, "R124", "10 Ω 3 W", side="l")
+    res_v(880, 260, 410, "R123", "10 Ω 1 % 3 W", side="l", chg="prec")
+    res_v(880, 430, 580, "R124", "10 Ω 1 % 3 W", side="l", chg="prec")
     wire((880, 410), (880, 430)); dot(880, 420)
     wire((880, 420), (845, 420)); gnd(845, 420)
-    dot(880, 272); txt(888, 284, "TP", "net")
-    dot(880, 568); txt(888, 562, "TP", "net")
+    dot(880, 272); dot(880, 568)
     op(896, 316, ["Ua ≈ 465 V", "Ik 50–55 mA", "(0,50–0,55 V na 10 Ω)", "Ug1 ≈ −45…−55 V"])
     # transformator wyjściowy, J101: 1 anoda A, 2 UL A, 3 CT, 4 UL B, 5 anoda B
     coil_v(1040, [120, 291, 420, 549, 720], bulge=1, cls="coil chgc")
@@ -306,6 +318,15 @@ def amp():
     wire((1160, 540), (1160, 556)); dot(1160, 540); gnd(1160, 556, stub=4)
     txt(990, 770, "TR-OUT  TTG-KT88PP (u Onyxa: Hammond 1650HA)", "ref chg", "middle")
     txt(990, 785, "Raa 4 kΩ · UL 43% · 80 W · 4/8 Ω", "val chg", "middle")
+    # --- punkty podlaczenia sterowania i plytki UL ---
+    mark(880, 272, 1, "J4-1 prąd V5", 902, 280)
+    mark(880, 568, 2, "J4-2 prąd V6", 902, 576)
+    mark(862, 420, 3, "J4-5 masa", 835, 448, "end")
+    mark(750, 110, 4, "J10-1 korekta V5", 740, 104, "end")
+    mark(750, 730, 5, "J10-2 korekta V6", 760, 748)
+    mark(1240, 50, 6, "J5-1 VBIAS", 1290, 58)
+    mark(1010, 255, 7, "UL J1-3", 1000, 262, "end")
+    mark(1010, 595, 8, "UL J2-3", 1000, 600, "end")
     return "\n".join(S)
 
 # ===================== ZASILACZ (wg VA1523; na płytce osobno dla każdego kanału) =====================
@@ -346,7 +367,7 @@ def psu():
     wire((680, 100), (700, 100)); dot(700, 100)
     cap_v(700, 100, 190, "C119+C120", "2×120 µ/400 V", side="r", polar=True); gnd(700, 190)
     wire((700, 100), (790, 100))
-    coil_h(790, 890, 100, "L106 (prawy: L206)", "10 H / 400 mA, zewnętrzny")
+    coil_h(790, 890, 100, "L106 (prawy: L206)", "10 H / 250 mA / 45 Ω, zewnętrzny")
     wire((890, 100), (920, 100)); dot(920, 100)
     cap_v(920, 100, 190, "C121+C122", "2×120 µ/400 V", side="r", polar=True); gnd(920, 190)
     wire((920, 100), (1060, 100)); dot(1040, 100)
@@ -403,6 +424,9 @@ def psu():
     txt(1060, 616, "(J203, J206, J204, J205, L206).", "net", "middle")
     txt(1060, 632, "Zworki B103/B104: wspólne uzwojenie anodowe dla obu kanałów.", "net", "middle")
     txt(1060, 648, "Każdy kanał ma własny mostek, filtr i dławik.", "net", "middle")
+    mark(1040, 190, 9, "→ zasilacz J13 (pomiar Ua)", 1052, 196)
+    mark(830, 260, 6, "sterowanie J5-1", 830, 246, "middle")
+    mark(800, 335, 10, "masa → zasilacz J15", 816, 392)
     return "\n".join(S)
 
 # ===================== PLYTKA ZASILACZA (wlasna, uproszczona) =====================
@@ -504,12 +528,12 @@ def psu_w():
     # --- pomiar Ua i LED HV ---
     term(1040, 70); txt(1040, 50, "Ua-L z płytki Onyxa", "ref", "middle")
     wire((1045, 70), (1060, 70)); dot(1060, 70)
-    res_h(1060, 1120, 70, "R3", "1 M", above=False, body=30)
-    res_h(1120, 1180, 70, "R4", "1 M", above=False, body=30)
-    res_h(1180, 1240, 70, "R5", "1 M", above=False, body=30)
+    res_h(1060, 1120, 70, "R3", "1 M", above=False, body=30, chg="prec")
+    res_h(1120, 1180, 70, "R4", "1 M", above=False, body=30, chg="prec")
+    res_h(1180, 1240, 70, "R5", "1 M", above=False, body=30, chg="prec")
     wire((1240, 70), (1260, 70)); dot(1260, 70)
-    txt(1150, 124, "R3–R5 1600 V", "val", "middle")
-    res_v(1260, 70, 150, "R6", "15 k", side="r", body=30); gnd(1260, 150)
+    txt(1150, 124, "R3–R5 1600 V, 1 %", "val prec", "middle")
+    res_v(1260, 70, 150, "R6", "15 k 1 %", side="r", body=30, chg="prec"); gnd(1260, 150)
     flag(1260, 70, "HV_SENSE → sterowanie J5-2", d="up", stub=14)
     txt(1275, 170, "≈ 2,3 V przy 465 V", "op")
     wire((1060, 70), (1060, 200))
@@ -526,10 +550,59 @@ def psu_w():
     term(1040, 600); txt(1052, 604, "GND – gwiazda (płytka Onyxa, sterowanie)", "ref")
     return "\n".join(S)
 
+def ul():
+    S.clear()
+    txt(40, 36, "Przełącznik UL / trioda: lampa V5 lewego kanału (V6 i prawy kanał tak samo, patrz niżej)", "ref")
+    # plytka Onyxa
+    add('<rect class="part" x="40" y="110" width="290" height="230"/>')
+    txt(54, 132, "Płytka Onyxa", "ref")
+    term(330, 170); term(330, 270)
+    txt(330, 158, "J101-1", "ref", "middle"); txt(330, 258, "J101-2", "ref", "middle")
+    wire((325, 170), (250, 170)); txt(242, 174, "anoda V5 (nóżka 3)", "net", "end")
+    wire((325, 270), (300, 270))
+    res_h(220, 300, 270, "R125", "150 Ω (lepiej 270 Ω 2 W)", above=False, chg=True, body=40)
+    wire((220, 270), (200, 270)); txt(192, 274, "g2 V5", "net", "end"); txt(192, 246, "(nóżka 4)", "net", "end")
+    # plytka UL
+    add('<rect class="part" x="540" y="120" width="300" height="210"/>')
+    txt(554, 142, "Płytka UL (kanał L), K1 = lampa V5", "ref")
+    for y, t in ((170, "J1-1 AN"), (220, "J1-2 UL"), (270, "J1-3 G2")):
+        term(840, y); txt(830, y - 6, t, "val", "end")
+    wire((835, 170), (724, 170)); wire((835, 220), (724, 220)); wire((835, 270), (640, 270))
+    add('<circle class="term" cx="720" cy="170" r="3.5"/>'); add('<circle class="term" cx="720" cy="220" r="3.5"/>')
+    dot(640, 270)
+    add('<line class="w" x1="640" y1="270" x2="716" y2="225"/>')
+    add('<line class="w" x1="640" y1="270" x2="716" y2="175" stroke-dasharray="5 4"/>')
+    txt(728, 194, "NO: trioda", "op")
+    txt(728, 244, "NC: UL", "op")
+    txt(640, 290, "COM", "val", "middle")
+    add('<rect class="part" x="560" y="296" width="56" height="22"/>'); txt(588, 312, "cewka", "val", "middle")
+    term(588, 330); wire((588, 318), (588, 325))
+    txt(588, 356, "J3 ← sterowanie J11 (12 V)", "net", "middle")
+    # toroid
+    coil_v(1150, [150, 170, 220, 300], bulge=1, cls="coil chgc")
+    txt(1150, 132, "TTG-KT88PP, uzwojenie pierwotne", "ref chg", "middle")
+    txt(1180, 174, "anoda A (V5)", "val"); txt(1180, 224, "odczep UL A", "val"); txt(1180, 304, "CT → J101-3 bez zmian", "val")
+    # przewody
+    wire((845, 170), (1150, 170)); wire((845, 220), (1150, 220))
+    dot(920, 170); wire((920, 170), (920, 80), (430, 80), (430, 170), (335, 170)); dot(430, 170)
+    txt(675, 72, "anoda: toroid → J101-1 Onyxa i J1-1 płytki UL", "net", "middle")
+    txt(1000, 212, "odczep UL tylko na płytkę UL", "net", "middle")
+    wire((845, 270), (900, 270), (900, 400), (430, 400), (430, 270), (335, 270))
+    txt(665, 420, "G2: J1-3 płytki UL → J101-2 Onyxa (dalej przez R125 do g2 V5)", "net", "middle")
+    for k, t in enumerate((
+            "Lampa V6: to samo z J2 płytki UL (K2): anoda B toroidu → J101-5 i J2-1, odczep UL B → J2-2, J2-3 → J101-4.",
+            "Prawy kanał: druga płytka UL i złącze J201 Onyxa. Cewki: sterowanie J11 piny 1–2 → J3 płytki L, piny 3–4 → J3 płytki P.",
+            "Bez prądu w cewce G2 dostaje odczep UL (tryb UL). Cewka 12 V: G2 dostaje anodę (trioda, ok. 20–25 W).",
+            "Przełączać tylko przy wyłączonych anodach (ESP32 robi to sam). Przewody anod i odczepów w izolacji min. 1 kV.",
+            "Płytka UL nie ma masy: mocuj ją na tulejach izolacyjnych.")):
+        txt(40, 462 + 20 * k, t, "val")
+    return "\n".join(S)
+
 AMP = amp()
 PSU = psu()
 
 open("amp.svgpart", "w").write(AMP)
 open("psu.svgpart", "w").write(PSU)
+open("ul.svgpart", "w").write(ul())
 open("psuw.svgpart", "w").write(psu_w())
 print(len(AMP), len(PSU))
