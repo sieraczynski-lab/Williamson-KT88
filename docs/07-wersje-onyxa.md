@@ -67,7 +67,11 @@ Według Onyxa część elementów różni się, bo miał inny transformator siec
 
 ## Odpowiedzi Onyxa (12.11.2026)
 
-- **Transformator sieciowy:** toroidy.pl **TSTA-0300/001** (300 VA). Onyx sugeruje większy, żeby w pełni wykorzystać KT88. Planowany TR1 400 VA (360 V + 345 V / 0,65 A) to spełnia. Dokładnych uzwojeń TSTA-0300/001 nie udało się znaleźć; pokrewny TSTA-0250/001 ma anodowe 275/330 V, bias 50 V i trzy uzwojenia 6,3 V.
+- **Transformator sieciowy:** toroidy.pl **TSTA-0300/001**: 300 VA, anodowe 400 V / 0,3 A, 2× 70 V / 0,3 A, 3× 6,3 V / 6,6 A (wymiary 133 × 46 mm, 2,8 kg). Onyx sugeruje większy, żeby w pełni wykorzystać KT88.
+  - Z 400 V AC wychodzi u niego Ua ok. **530–550 V** i Uaa ok. 440 V. To zgadza się z prądami drivera na zdjęciu (6,4 i 7,7 mA).
+  - Przy Hammondzie 6,6 kΩ takie Ua ma sens. Przy toroidzie 4 kΩ dane GEC dają ok. 460 V; przy 540 V KT88 w spoczynku traciłyby ok. 30 W (86 % dopuszczalnej). Dlatego TR1 zostaje **400 VA, 360 V (+345 V) / 0,65 A**: Ua ok. 465 V.
+  - Uzwojenie 0,3 A jest za słabe przy ok. 290 mA DC i filtrze z kondensatorem na wejściu (ok. 0,5 A skutecznego prądu).
+  - Wartości płytki pod jego napięcia działają też tu: R128 4k7 daje Uaa ok. 383 V, dzielnik biasu przy szynie ok. −79 V zamiast ok. −95 V nadal obejmuje potrzebny zakres.
 - **Metoda:** „najpierw obrać punkt pracy i do niego dobrać napięcia; jak już są trafa wyjściowe, zacząć od Raa”. Przy Raa 4 kΩ dane GEC dla pary KT88 UL to ok. 460 V i 2× 50 mA (ok. 70 W przy 2% THD), co odpowiada przyjętemu Ua ok. 465 V i 50–55 mA.
 - **Sprzężenie zwrotne:** u niego z odczepu **8 Ω** Hammonda. Tu też z 8 Ω (toroidu).
 - **C123:** żeby nie było wzbudzenia na wysokich częstotliwościach. Podobnie **R102/C101** (i R202/C201) w anodzie pierwszego stopnia; 100 nF na schemacie to błąd. U niego obyło się bez tej sieci RC, ale radzi sprawdzić odpowiedź na prostokąt.
