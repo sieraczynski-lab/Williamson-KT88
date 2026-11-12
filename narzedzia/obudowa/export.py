@@ -63,4 +63,5 @@ render(allp, os.path.join(OUT, "widok_plytka.png"), azim=-58, elev=34, title="Be
        skip=("AL_pokrywa", "DREWNO", "AL_trafo_dach", "REF_KT88", "REF_V", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
 render(allp, os.path.join(OUT, "widok_wnetrze.png"), azim=-58, elev=40, title="Wnetrze (bez pokrywy, plytki Onyxa, drewna i dachu trafo)",
        skip=("AL_pokrywa", "DREWNO", "AL_trafo_dach", "REF_plytka_Onyx", "REF_KT88", "REF_V", "REF_podstawka", "REF_kondensatory", "REF_potencjometr", "REF_tuleja_M3", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
+shutil.copy(os.path.join(HERE, "CZYTAJ_MNIE.txt"), OUT)
 print(OUT, len(rows))
