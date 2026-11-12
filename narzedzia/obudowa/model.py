@@ -35,7 +35,7 @@ def slot(cu, cv, lu, lv):
 # uklad plytki z rysunku mechanicznego Onyxa: x od lewej, y od tylnej krawedzi (strona KT88)
 OB_W, OB_D = 360.0, 160.0
 OB_X0, OB_Y1 = 20.0, 302.0            # lewa krawedz plytki, tylna krawedz plytki (Y); przod = Y 142
-SOCK_H = 13.0                         # wysokosc podstawki oktalowej nad plytka (DO SPRAWDZENIA)
+SOCK_H = 16.0                         # wysokosc podstawki oktalowej nad plytka (zmierzone)
 OB_ZTOP = Z_COV + T - SOCK_H          # wierzch plytki: gora podstawki rowno z wierzchem pokrywy (Z 93)
 OB_STANDOFF = Z_COV - OB_ZTOP         # tuleje M3 miedzy plytka a pokrywa (10 mm)
 OB_BOTTOM_H = 50.0                    # wysokie elementy pod plytka (kondensatory, DO SPRAWDZENIA)
