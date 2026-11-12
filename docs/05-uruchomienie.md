@@ -1,60 +1,48 @@
-# Uruchomienie krok po kroku
+# Uruchomienie krok po kroku (płytka Onyxa VA1523 + toroid)
 
-> ⚠️ Do 545 V DC. Pracuj jedną ręką, przed dotknięciem układu mierz napięcie na kondensatorach. R301 rozładowuje filtr w ok. minutę.
+> ⚠️ Ua ok. 465 V, a na zimno i przy wysokim napięciu sieci więcej. Filtry rozładowują się przez rezystory 680 k kilka minut. Pracuj jedną ręką, przed dotknięciem płytki mierz napięcie.
 
-## Punkty pracy docelowe
+Oznaczenia dla lewego kanału (1xx). Prawy kanał: to samo z 2xx.
 
-| Stopień | Lampa | Ua | Ia | Ug | Uwagi |
+## Punkty pracy (szacunek, Ua ≈ 465 V)
+
+| Stopień | Lampa | Ua | Ia | Uk | Uwagi |
 |---|---|---|---|---|---|
-| Wejście | ½ 6SL7 / 6N9S (V1a) | ≈ 133 V | 1,0 mA | −1,0 V | katoda bez kondensatora, tu wchodzi NFB |
-| Inwerter | ½ 6SL7 / 6N9S (V1b) | ≈ 266 V | 1,2 mA | ≈ −0,9 V | katodyna, katoda ok. +134 V |
-| Driver | 6SN7 / 6N8S (V2a, V2b) | ≈ 234 V | 2× 8 mA | −7,5 V | P100 wyrównuje połówki |
-| Końcówka | 2× KT88 UL | ≈ 445 V | 50 mA | −45…−55 V | 0,50 V na R125/R126 (10 Ω) |
+| Wejście | ½ 6SN7 (V1B) | ≈ 89 V | 3,7 mA | 1,9 V | NFB na R105 470 Ω, R104 47 Ω zbocznikowany C102 |
+| Katodyna | ½ 6SN7 (V1A) | ≈ 198 V | 4,2 mA | ≈ 92 V | R107 / R108 22k |
+| Driver | 6SN7 (V2A, V2B) | ≈ 144 V | 2× 5 mA | 3,9 V | wspólny R110 390 Ω, bez balansu AC |
+| Końcówka | 2× KT88 UL | ≈ 465 V | 50–55 mA | – | 0,50–0,55 V na R123/R124 (10 Ω), Ug1 ok. −45…−55 V |
+| Uaa | – | ≈ 381 V | ok. 18 mA | – | za R128 4k7 |
+| Podniesienie żarzenia | – | ≈ 42 V | – | – | R136/R137 |
+
+## Przed pierwszym włączeniem
+
+1. Obejrzyj płytkę: luty, elektrolity (wybrzuszenia, wycieki), przebarwienia przy rezystorach mocy. Wyczyść kurz, wysusz (płytka leżała na strychu).
+2. Ustaw zworki B101–B104 pod własne uzwojenia. Sprawdź, dokąd idzie sieć UaFF-L2 (żarzenie KT88).
+3. Wlut dodatkowy RL 100 Ω / 2 W między odczep 4 Ω a COM (przy złączach albo przy transformatorze).
+4. P101/P102 (i P201/P202) ustaw tak, żeby suwak dawał **maksimum ujemnego napięcia**.
 
 ## Kolejność
 
-1. Sam zasilacz, bez lamp, przez **żarówkę w szereg** z siecią (albo autotransformator). Sprawdzić −90 V. Ustawić P201 i P202 w obu kanałach na maksimum ujemnego napięcia (ok. −64 V na suwaku).
-2. Włożyć lampy. Zamiast głośnika **rezystor 4 Ω na odczepie 4 Ω**. Sprzężenie zwrotne na razie odłączone (R127 rozpięty).
-3. Po nagrzaniu sprawdzić napięcia z tabeli. Podnosić prąd KT88 potencjometrami P201 (V3) i P202 (V4) do **0,50 V na TP-A i TP-B**, z różnicą najwyżej ok. 10 mV (1 mA). To ważne przy toroidzie.
-4. Podłączyć R127. Jeśli wzmocnienie wzrośnie zamiast spaść albo pojawi się wzbudzenie, zamienić końce uzwojenia wtórnego (gorący odczep z COM).
-5. Generator 1 kHz: ustawić P100 na minimum zniekształceń albo na równe amplitudy na anodach V2a i V2b.
-6. Prostokąt 1 kHz i 10 kHz na obciążeniu rezystancyjnym, potem z dołożonym kondensatorem 0,1–0,47 µF równolegle. Dobrać C100 tak, żeby nie było dzwonienia. Sprawdzić też zachowanie przy włączaniu i wyłączaniu (pompowanie membran = problem na dole pasma).
-7. Po kilku godzinach grania i po pierwszych tygodniach ponownie wyrównać bias, bo nowe lampy się „układają”.
+1. **Sam zasilacz, bez lamp,** przez żarówkę w szereg z siecią albo autotransformator. Podnoś napięcie powoli, żeby uformować elektrolity, które długo nie pracowały. Sprawdź Bias-L (ok. −90 V) i zakres na suwakach.
+2. **Tanie lampy,** rezystor 4 Ω / 50 W na odczepie 4 Ω, **J102 odłączone** (bez sprzężenia zwrotnego).
+3. Po nagrzaniu zmierz Ua, Uaa i napięcia z tabeli. Podnoś prąd KT88 potencjometrami do 0,50–0,55 V na R123/R124, różnica w parze najwyżej ok. 10 mV (1 mA). Przy toroidzie to ważne.
+4. Zmierz prądy obu triod V2 (spadki na R115/R116). Do drivera daj lampę, której połówki mają najbliższe prądy.
+5. Jeśli Uaa wyraźnie odbiega od ok. 380–420 V, skoryguj R128/R228.
+6. **Podłącz J102 do odczepu 8 Ω.** Jeśli wzmocnienie wzrośnie zamiast spaść albo pojawi się wzbudzenie, wyłącz i zamień końce uzwojenia wtórnego.
+7. Prostokąt 1 kHz i 10 kHz na 4 Ω, potem z dołożonym 0,1–0,47 µF równolegle. Jeśli zbocza dzwonią, wlutuj C123/C223 i dobierz od ok. 33 pF w górę (do ok. 150 pF).
+8. Obserwuj membrany przy włączaniu i wyłączaniu. Powolne pompowanie: zwiększ C105/C106 z 220 nF do 470 nF (biegun z ok. 6 Hz na ok. 3 Hz, dalej od bieguna C103/C104 ok. 7 Hz).
+9. Po kilku godzinach grania i po pierwszych tygodniach ponownie wyrównaj bias.
 
-## Lista elementów zmienionych i nowych (na kanał)
+## Elementy do sprawdzenia lub zmiany
 
-| Ozn. | Wartość | Funkcja |
-|---|---|---|
-| V1 | 6SL7GT / 6N9S | wejście i katodyna |
-| V2 | 6SN7GT / 6N8S | driver różnicowy |
-| V3, V4 | KT88, para dobrana | lampy mocy w UL |
-| R103 | 1 kΩ 0,6 W | katoda V1a, wejście NFB |
-| R105 / R102 | 47 kΩ 1 W / 220 kΩ 1 W | odsprzęganie i obciążenie anody V1a |
-| R104, R106 | 110 kΩ 1 W | obciążenia katodyny |
-| C103, C104 | 470 nF / 630 V foliowy | sprzęgające katodyna → driver |
-| R107, R108 | 470 kΩ 0,6 W | upływowe siatek drivera |
-| R113, R114 | 22 kΩ 3 W | obciążenia anod drivera |
-| R112, P100 | 390 Ω 1 W, 100 Ω | wspólna katoda drivera, balans AC |
-| TR-OUT | toroidy.pl TTG-KT88PP | 4 kΩ, UL 43%, 80 W, wyjścia 4 i 8 Ω |
-| R119, R120 | 220 kΩ 0,6 W | upływowe siatek KT88 (max dla stałego biasu) |
-| R123, R124 | 1 kΩ 0,6 W | antyoscylacyjne g1, przy podstawce |
-| R128, R129 | 220 Ω 1 W | antyoscylacyjne g2, przy podstawce |
-| R125, R126 | 10 Ω 1% 1 W | pomiar prądu katody |
-| C105, C106 | 100 nF / 630 V foliowy | sprzęgające driver → KT88 (biegun ok. 7 Hz) |
-| P201, P202 | 10 kΩ cermet wieloobrotowy | regulacja biasu V3 i V4, ok. −39…−64 V |
-| R130, R132 | 10 kΩ 0,6 W | górna część dzielnika biasu (od −90 V) |
-| R131, R133 | 15 kΩ 0,6 W | dolna część dzielnika biasu (do masy) |
-| C107, C108 | 10 µF / 100 V | odsprzęganie biasu, plus do masy |
-| R201 / R202 | 2,2 kΩ 2 W / 4,7 kΩ 1 W | spadek 450 → 410 → 400 V (osobno w każdym kanale) |
-| R127, C100 | 22 kΩ, 180 pF (start) | sprzężenie zwrotne z odczepu 4 Ω |
-| C102 | 47 µF / 550 V | odsprzęganie wejścia (w oryginale 450 V) |
-
-## Zasilacz
-
-- TR1 ok. 300 VA: 350 V/0,5 A, 70 V/0,1 A, 6,3 V/7 A (KT88), 6,3 V/3 A (lampy sterujące)
-- mostek UF4007, filtr CLC: C1 100 µF, L1 5 H / 400 mA, C2 220 µF, wszystkie na 550 V
-- bias: D5 1N4007, C5–R203–C6 (100 µF / 160 V, plus do masy), ok. −90 V
-- żarzenie lamp sterujących (6SL7 + 6SN7, 1,8 A) podniesione do ok. +67 V (dzielnik 470 k / 82 k z +450 V), bo katoda katodyny jest na +134 V
-- soft-start: NTC 10 Ω / 5 A, bezpiecznik T 2 A
-
-Uzwojenie 350 V AC jest dobrane pod ok. 260 mA spoczynkowego poboru z obu kanałów. Na zimno węzły anodowe dochodzą do ok. 495 V, przy +10% w sieci do ok. 545 V. Stąd 550 V na elektrolitach (2× 400 V szeregowo z rezystorami wyrównującymi 220 k).
+| Element | Wartość Onyxa | Od czego zależy | Co zrobić |
+|---|---|---|---|
+| R129 / R229 | 22k | przekładnia TR-OUT i odczep | start 22k z odczepu 8 Ω (ok. 10 dB); z 4 Ω byłoby ok. 8 dB |
+| C123 / C223 | n.m. | TR-OUT na wysokich częstotliwościach | dobrać na oscyloskopie, 33–150 pF, jeśli potrzeba |
+| R128 / R228 | 4k7 3 W | Ua z własnego zasilacza | Uaa ok. 380–420 V |
+| P101/P102, R139/R140, R119/R120 | 47k / 47k / 470k | napięcie uzwojenia biasu | suwak 0,5–1,0 × Bias-L; przy −90 V zakres −45…−90 V |
+| L106 / L206 | 10 H / 400 mA | – | po jednym dławiku na kanał, min. 200 mA |
+| R134 / R234 | 10 Ω 3 W | uzwojenie anodowe | zostawić |
+| R136 / R137 | 100k / 10k | Ua | zostawić (ok. 10% Ua) |
+| RL (dodatek) | – | – | 100 Ω / 2 W między 4 Ω a COM |

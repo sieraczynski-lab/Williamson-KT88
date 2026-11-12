@@ -43,7 +43,7 @@ def svg(body, w, h):
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" width="%d" height="%d">\n'
             '%s\n<rect width="100%%" height="100%%" fill="#f8faf6"/>\n%s\n</svg>\n') % (w, h, w, h, STYLE, body)
 
-open(os.path.join(ROOT, "schematy", "kanal.svg"), "w").write(svg(amp, 1400, 930))
+open(os.path.join(ROOT, "schematy", "kanal.svg"), "w").write(svg(amp, 1400, 960))
 open(os.path.join(ROOT, "schematy", "zasilacz.svg"), "w").write(svg(psu, 1400, 700))
 
 page = ('<!doctype html>\n<html lang="pl">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'

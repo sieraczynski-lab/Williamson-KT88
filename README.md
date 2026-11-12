@@ -1,54 +1,57 @@
 # Williamson KT88
 
-Lampowy wzmacniacz push-pull w klasycznej topologii Williamsona, z końcówką na parze KT88 w układzie ultralinearnym (UL). Projekt bazuje na wzmacniaczu **onyx1944**:
+Lampowy wzmacniacz push-pull w klasycznej topologii Williamsona (wszystkie lampy sterujące na 6SN7), z końcówką na parze KT88 w układzie ultralinearnym (UL). Projekt to wzmacniacz **onyx1944** na jego płytce VA1523:
 
 - wersja na KT88 (zdjęcia, PCB): https://onyx1944.wordpress.com/2023/11/21/williamson-kt88/
 - wersja na 6S33S (schemat i zasilacz): https://onyx1944.wordpress.com/2020/03/16/6s33s-williamson-amplifier/
 
-Autor nie opublikował schematu wersji KT88. Schemat w tym repozytorium zachowuje jego topologię (wejście sprzężone bezpośrednio z katodyną, różnicowy driver, para KT88), ale wszystkie wartości są policzone od nowa: front end pod lampy oktalowe 6SL7 + 6SN7, jak na płytce Onyxa VA1523, a końcówka i zasilacz pod KT88 w UL z toroidem 4 kΩ. Co wiadomo o wersjach Onyxa ze zdjęć: [docs/07-wersje-onyxa.md](docs/07-wersje-onyxa.md).
+Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a Onyx udostępnił schematy. Schemat w tym repozytorium jest przerysowany z jego schematu i **poprawiony według wartości faktycznie wlutowanych na płytce**. Pomarańczowe elementy to te, które trzeba sprawdzić albo dobrać pod toroid TTG-KT88PP i własny transformator sieciowy. Oryginalnych plików Onyxa tu nie ma, to jego praca.
 
-> **Status: szkic 2, niesprawdzony w praktyce.** Wartości są policzone na papierze z danych katalogowych. Nikt tego układu jeszcze nie zbudował ani nie zmierzył. Przed zamówieniem transformatora sieciowego i dławika warto dać schemat do przejrzenia komuś doświadczonemu (Onyx, elektroda, audiostereo).
+> **Status: płytka w ręku, przed uruchomieniem.** Punkty pracy są szacunkowe (model lampy, Ua ≈ 465 V), do potwierdzenia pomiarem.
 
-> ⚠️ **Wysokie napięcie.** We wzmacniaczu jest do ok. 545 V DC (na zimno), które utrzymuje się na kondensatorach po wyłączeniu. Przed dotknięciem układu zawsze zmierz napięcie.
+> ⚠️ **Wysokie napięcie.** Ua ok. 465 V, a na zimno i przy wysokim napięciu sieci więcej. Kondensatory filtrów rozładowują się przez rezystory 680 k przez kilka minut. Przed dotknięciem płytki zawsze zmierz napięcie.
 
 ## Schematy
 
 | Plik | Zawartość |
 |---|---|
-| [`schematy/kanal.svg`](schematy/kanal.svg) | Jeden kanał: 6SL7 (wejście + katodyna) → 6SN7 (driver) → 2× KT88 UL, z regulacją biasu każdej lampy |
-| [`schematy/zasilacz.svg`](schematy/zasilacz.svg) | Zasilacz wspólny: anodowe 450/410/400 V, bias −90 V, dwa uzwojenia żarzenia |
-| [`schematy/williamson-kt88.html`](schematy/williamson-kt88.html) | Oba schematy z punktami pracy, listą elementów i procedurą uruchomienia (otwórz w przeglądarce) |
-
-Kolorem pomarańczowym oznaczone są elementy zmienione albo nowe względem schematu wersji 6S33S Onyxa.
+| [`schematy/kanal.svg`](schematy/kanal.svg) | Jeden kanał wg VA1523: 6SN7 (wejście + katodyna) → 6SN7 (driver) → 2× KT88 UL, bias osobno dla każdej lampy |
+| [`schematy/zasilacz.svg`](schematy/zasilacz.svg) | Zasilacz z płytki (osobno w każdym kanale): mostek, CLC z dławikiem 10 H, Uaa przez R128, bias, podniesienie żarzenia |
+| [`schematy/williamson-kt88.html`](schematy/williamson-kt88.html) | Oba schematy z punktami pracy, różnicami płytka/schemat, listą zmian i uruchomieniem (otwórz w przeglądarce) |
 
 ![Schemat kanału](schematy/kanal.svg)
 
 ![Zasilacz](schematy/zasilacz.svg)
 
-## Najważniejsze założenia
+## Najważniejsze dane
 
 | | Wartość |
 |---|---|
-| Lampy | 6SL7 / 6N9S (wejście + katodyna), 6SN7 / 6N8S (driver), 2× KT88 na kanał |
-| Tryb końcówki | ultralinear, odczep 43% |
-| Punkt pracy KT88 | Ua ≈ 445 V, Ik = 50 mA (0,50 V na 10 Ω), Ug1 ≈ −45…−55 V, ok. 21 W na lampę |
-| Moc | ok. 40 W na kanał (kolumny 4 Ω na odczepie 4 Ω) |
-| Wzmocnienie | ok. 47 dB bez pętli, ok. 21 dB sprzężenia zwrotnego, czułość ok. 0,6 V na pełną moc |
-| Transformator wyjściowy | toroidy.pl **TTG-KT88PP**: Raa 4 kΩ, UL 43%, 80 W, 300 mA, 12 Hz–56 kHz, wyjścia 4 i 8 Ω |
-| Bias | stały, osobny potencjometr dla każdej KT88 (P201, P202), zakres ok. −39…−64 V |
-| Sprzężenie zwrotne | globalne z odczepu 4 Ω, R127/C100 do dobrania (start: 22 k / 180 pF) |
-| Transformator sieciowy | ok. 300 VA: 350 V/0,5 A, 70 V/0,1 A, 6,3 V/7 A (KT88), 6,3 V/3 A (lampy sterujące, pobór 1,8 A) |
+| Lampy | V1, V2: 6SN7 (6N8S); V5, V6: KT88 (lewy kanał; prawy V3, V4, V7, V8) |
+| Front end | wejście ok. 3,7 mA / 89 V, katodyna 22k/22k ok. 4,2 mA, driver ok. 5 mA na triodę (bez balansu AC) |
+| Końcówka | KT88 UL, Ua ≈ 465 V, 50–55 mA (0,50–0,55 V na 10 Ω), Ug1 ≈ −45…−55 V |
+| Transformator wyjściowy | toroidy.pl **TTG-KT88PP** (u Onyxa Hammond 1650HA 6,6 kΩ) |
+| Sprzężenie zwrotne | R129 22k z **odczepu 8 Ω** (ok. 10 dB), C123 niemontowany |
+| Czułość / moc | ok. 0,5 V / ok. 40 W na kanał, kolumny na odczepie 4 Ω |
+| Transformator sieciowy | 400 VA: 360 V (+345 V)/0,65 A, 65 V/50 mA, 6,3 V/8 A, 6,3 V/3 A (ta sama specyfikacja co w Soloiście) |
+| Dławiki | 2× 10 H (L106, L206), po jednym na kanał, min. 200 mA |
+
+## Płytka a schemat Onyxa
+
+| Element | Na schemacie | Na płytce |
+|---|---|---|
+| R117 / R217 | 220k / 1k | **100k / 100k** |
+| R124 / R224 | 10 Ω / 470k | **10 Ω / 10 Ω** |
+| C123 / C223 | 56 pF | **brak** |
 
 ## Decyzje i otwarte sprawy
 
-- **Transformatory wyjściowe: toroidy.pl TTG-KT88PP.** Onyx w swojej wersji KT88 używał Hammondów 1650HA (6,6 kΩ), ale używana para z OLX się sprzedała. Szczegóły w [docs/02-transformatory-wyjsciowe.md](docs/02-transformatory-wyjsciowe.md).
-- **Lampy sterujące oktalowe**, bo płytka Onyxa ma podstawki oktalowe: 6SL7 na wejściu (więcej wzmocnienia, czyli głębsze NFB i lepsza czułość), 6SN7 w driverze. Uzasadnienie w [docs/03-topologia.md](docs/03-topologia.md).
-- **Kolumny 4 Ω** (patrz [docs/04-kolumny.md](docs/04-kolumny.md)): podłączone do odczepu **4 Ω**, sprzężenie zwrotne też z 4 Ω (R127 = 22 k).
-- Wszystkie transformatory (2× głośnikowy z odczepem 2/4/8 Ω, sieciowy, dławik) zamówić w toroidy.pl, które robią wykonania nietypowe. Gotowa specyfikacja: [docs/08-zamowienie-toroidy.md](docs/08-zamowienie-toroidy.md).
-- Z toroidem trzeba pilnować **balansu prądów stałych** obu KT88 (różnica najwyżej ok. 1 mA).
-- Wszystkie elektrolity w torze anodowym na **550 V** (w praktyce 2× 400 V szeregowo z rezystorami wyrównującymi).
-- Po otrzymaniu płytek Onyxa sprawdzić, czy topologia przy V1 i V2 zgadza się ze schematem (katodyna sprzężona bezpośrednio, driver ze wspólną katodą). Wartości elementów będą inne niż u Onyxa.
-- Jeśli pojawi się schemat KT88 od Onyxa, porównać z nim zwłaszcza R127/C100 i napięcia zasilania.
+- **Toroid TTG-KT88PP** zamiast Hammonda: sprzężenie zwrotne z odczepu 8 Ω (zbliżona głębokość pętli jak u Onyxa), kolumny na 4 Ω. Kompensację C123 dobrać na oscyloskopie, jeśli prostokąt dzwoni.
+- **R128 / R228** (4k7) dobrać do własnego Ua, żeby Uaa wyszło ok. 380–420 V.
+- **Driver bez balansu AC:** do V2 dawać 6SN7 o zbliżonych prądach obu triod.
+- **Dodatek:** rezystor 100 Ω / 2 W między 4 Ω a COM (wzmacniacz nie pracuje bez obciążenia).
+- **Do potwierdzenia u Onyxa:** Ua i Uaa, napięcie AC biasu, odczep sprzężenia zwrotnego w Hammondzie, prąd KT88, dokąd idzie sieć UaFF-L2.
+- Projekt równoległy: [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88) (Mullard: EF86 + E88CC LTP + KT88), z tym samym transformatorem sieciowym i toroidami.
 
 ## Notatki
 
@@ -58,7 +61,7 @@ Kolorem pomarańczowym oznaczone są elementy zmienione albo nowe względem sche
 4. [Kolumny: impedancja, zwrotnica 2,5-drożna, spadek bafla](docs/04-kolumny.md)
 5. [Uruchomienie krok po kroku](docs/05-uruchomienie.md)
 6. [Zamawianie płytek PCB](docs/06-pcb.md)
-7. [Wersje Onyxa: co widać na zdjęciach](docs/07-wersje-onyxa.md)
+7. [Wersje Onyxa: zdjęcia, schemat i płytka VA1523](docs/07-wersje-onyxa.md)
 8. [Specyfikacja do zamówienia w toroidy.pl](docs/08-zamowienie-toroidy.md)
 
 ## Generowanie schematów

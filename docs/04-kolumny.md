@@ -21,7 +21,7 @@ Dołek 2,5 Ω przy kolumnie 4 Ω jest trochę głębszy, niż przewiduje norma (
 ## Wnioski dla wzmacniacza
 
 - Kolumny podłączyć do **odczepu 4 Ω**.
-- Sprzężenie zwrotne brać z **odczepu 4 Ω**. W szkicu 2 (front end 6SL7 + 6SN7) R127 = **22 k**, co daje ok. 21 dB sprzężenia.
+- Sprzężenie zwrotne na płytce Onyxa (R129 22k) brać z **odczepu 8 Ω** toroidu, nawet gdy kolumny są na 4 Ω (to to samo uzwojenie). Daje to ok. 10 dB, podobnie jak u Onyxa z Hammondem. Z odczepu 4 Ω byłoby ok. 8 dB.
 - Opcja: zamówić TTG-KT88PP z dodatkowym **odczepem 2 Ω**. Kolumna 4 Ω na odczepie 2 Ω daje lampom 8 kΩ nominalnie i ok. 5 kΩ w dołku. Impedancja wyjściowa spada mniej więcej o połowę, lampy pracują lżej, moc spada do ok. 25–30 W (nadal ok. 104–105 dB z metra). Porównać na słuch z odczepem 4 Ω. Sprzężenie zwrotne zawsze z odczepu, do którego podłączone są kolumny.
 - Zwrotnice 3-drożne bywają przy wysokich częstotliwościach obciążeniem pojemnościowym, więc test stabilności z kondensatorem na wyjściu jest tu szczególnie ważny.
 

@@ -53,6 +53,8 @@ W oryginalnym Williamsonie wszystkie stopnie sterujące były na 6SN7. Onyx zast
 
 ## Wybór lamp sterujących dla tego projektu
 
+> **Aktualizacja 12.11.2026:** Onyx potwierdził, a schemat płytki to pokazuje: V1 i V2 to **6SN7**. Obecny schemat w repozytorium odwzorowuje jego układ. Poniższa analiza 6SL7 na wejściu zostaje jako materiał porównawczy.
+
 Płytka Onyxa w wersji KT88 (VA1523) ma **wyłącznie podstawki oktalowe**: V1 (wejście + katodyna w jednej lampie), V2 (driver) i dwie KT88 na kanał. 6N2P i 6N6P odpadają, więc front end jest przeliczony na oktale.
 
 **Wybór: V1 = 6SL7 (6N9S), V2 = 6SN7 (6N8S).** Obie lampy mają ten sam układ nóżek (8BD), ale różne punkty pracy, więc zamiana wymaga zmiany rezystorów.

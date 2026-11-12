@@ -40,6 +40,27 @@ Onyx nie opublikował schematu wersji KT88. Poniższe wnioski pochodzą ze zdję
 
 ## Wnioski dla tego repozytorium
 
-- Topologia schematu odpowiada płytce Onyxa, ale **wartości elementów są policzone od nowa** pod 6SL7 + 6SN7 i toroid 4 kΩ.
-- Przed montażem trzeba prześledzić ścieżki przy V1 i V2 i potwierdzić topologię.
+- Wcześniejsze szkice (1 i 2) zakładały własne wartości. Od wersji 3 schemat jest przerysowany z płytki Onyxa (patrz niżej).
 - Brzmienie z odsłuchu pochodzi z Hammondów 1650HA. Z toroidem 4 kΩ wzmacniacz będzie trochę inny, z większą mocą, ale lampy będą widziały mniejszą impedancję w dołku kolumn.
+
+## Schemat i płytka VA1523 (12.11.2026)
+
+Onyx przesłał schematy obu kanałów i rysunki płytki (bez wartości elementów). Wnioski:
+
+- **Wszystkie lampy sterujące to 6SN7:** V1B wejście, V1A katodyna (22k / 22k), V2 driver ze wspólnym R110 390 Ω, **bez potencjometru balansu**.
+- Sprzężenie zwrotne: R129 22k (∥ C123) ze złącza J102 na R105 470 Ω w katodzie V1B. R104 47 Ω jest zbocznikowany przez C102 47 µF.
+- Front end zasilany z Ua przez **R128 4k7 3 W** (Uaa), z odsprzęganiem C116/C117.
+- KT88: g1 przez 1k, g2 przez 100 Ω, katody przez 10 Ω 3 W do masy, środek transformatora odsprzęgnięty C118 100 nF.
+- Bias: mostek UF5408, filtr C125–R141–R142–C126 w gałęzi masy; dla każdej KT88 dzielnik P101 47k + R139 47k, z R119 470k od szyny do suwaka.
+- Zasilacz anodowy na płytce, **osobno w każdym kanale:** mostek UF5408, R134 10 Ω, C119/C120, zewnętrzny dławik 10 H / 400 mA (L106, L206), C121/C122. Zworki B103/B104 pozwalają zasilić oba mostki z jednego uzwojenia.
+- Żarzenie lamp sterujących podniesione do ok. 10% Ua (R136/R137) przez sztuczny środek R130/R131 330 Ω. Przy Ua 465 V katoda katodyny jest ok. 49 V nad żarzeniem, więc mieści się w ±100 V lampy Psvane AIR 6SN7.
+
+### Różnice płytka / schemat (sprawdzone na płytce)
+
+| Element | Schemat | Płytka |
+|---|---|---|
+| R117 / R217 | 220k / 1k | 100k / 100k |
+| R124 / R224 | 10 Ω / 470k | 10 Ω / 10 Ω |
+| C123 / C223 | 56 pF | brak |
+
+Według Onyxa część elementów różni się, bo miał inny transformator sieciowy i Hammondy jako wyjściowe. Lista elementów do dobrania pod toroid jest w [05-uruchomienie.md](05-uruchomienie.md#elementy-do-sprawdzenia-lub-zmiany).

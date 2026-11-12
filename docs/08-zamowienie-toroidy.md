@@ -24,30 +24,29 @@ Odczep 2 Ω jest do porównania na słuch z kolumnami 4 Ω. Lampy widzą wtedy o
 
 ## 2. Transformator sieciowy: 1 szt.
 
-| Uzwojenie | Napięcie | Prąd | Zastosowanie |
+Płytka Onyxa ma zasilacz anodowy osobno dla każdego kanału (mostek, filtr, dławik), a oba mostki mogą być zasilane z jednego uzwojenia (zworki B103/B104). Pobór: ok. 145 mA na kanał (2× KT88 po 50–55 mA, siatki drugie, front end ok. 18 mA, dzielniki), razem ok. 290 mA.
+
+| Uzwojenie | Napięcie (pod obciążeniem) | Prąd | Zastosowanie |
 |---|---|---|---|
-| Pierwotne | 230 V / 50 Hz | – | sieć |
-| Anodowe | 350 V AC | 0,5 A | mostek + CLC → ok. 450 V przy ok. 245 mA |
-| Bias | 70 V AC | 0,1 A | jednopołówkowo → ok. −90 V |
-| Żarzenie KT88 | 6,3 V AC | 7 A | 4× KT88 = 6,4 A |
-| Żarzenie lamp sterujących | 6,3 V AC | 3 A | 2× 6SL7 + 2× 6SN7 = 1,8 A, podniesione do +67 V |
+| Pierwotne | 230 V | – | ekran elektrostatyczny do PE |
+| Anodowe | **360 V + odczep 345 V** | 0,65 A | J103 i J203 → Ua ok. 465 V |
+| Bias | 65 V | 50 mA | J106 i J206 → ok. −90 V |
+| Żarzenie KT88 | 6,3 V | 8 A | J105 i J205, 4× KT88 = 6,4 A |
+| Żarzenie lamp sterujących | 6,3 V | 3 A | J104 i J204, 4× 6SN7 = 2,4 A |
 
-- Moc ok. **300 VA** (obciążenie realne ok. 245 VA).
-- **Ekran elektrostatyczny** między pierwotnym a wtórnymi.
-- Izolacja uzwojenia anodowego na co najmniej 1,5 kV. Napięcie szczytowe na kondensatorach to ok. 495 V, a przy +10% w sieci ok. 545 V.
-- Duży toroid ma wysoki prąd załączenia: w zasilaczu jest NTC 10 Ω / 5 A i bezpiecznik zwłoczny T 2 A. Zapytać producenta o zalecany bezpiecznik.
-- Toroid sieciowy może buczeć przy składowej stałej w sieci. Jeśli wystąpi, pomaga prosty filtr DC (DC blocker) na pierwotnym.
+Moc 400 VA. To **ta sama specyfikacja co TR1 w Soloiście**, więc jeden transformator pasuje do obu projektów. Uwagi do zamówienia (pomiar napięcia sieci, napięcia bez obciążenia, obniżona indukcja, wymiary, izolacja) są w [dokumentacji Soloista](https://github.com/sieraczynski-lab/Soloist-KT88/blob/main/docs/02-zasilanie.md#zamówienie-tr1-w-konfiguratorze-toroidypl).
 
-## 3. Dławik filtru anodowego: 1 szt.
+## 3. Dławiki filtru anodowego: 2 szt.
+
+Na płytce są dwa złącza dławików, L106 i L206, **po jednym na kanał**. Osobne dławiki dają lepszą separację kanałów, a każdy jest mniejszy niż jeden wspólny.
 
 | Parametr | Wartość |
 |---|---|
-| Indukcyjność | 5 H |
-| Prąd DC | 300 mA (pobór ok. 245 mA) |
-| Rezystancja DC | możliwie mała, najlepiej poniżej ok. 80 Ω (każde 10 Ω to ok. 2,5 V mniej na B+) |
+| Indukcyjność | 10 H (wg Onyxa) |
+| Prąd DC | min. 200 mA (pobór ok. 145 mA na kanał; Onyx dał 400 mA) |
+| Rezystancja DC | możliwie mała, najlepiej poniżej ok. 100 Ω (każde 10 Ω to ok. 1,5 V mniej Ua) |
 | Izolacja | min. 1,5 kV do rdzenia |
-
-Dławik może być na rdzeniu EI ze szczeliną, bo płynie przez niego prąd stały. Toroid bez szczeliny się tu nie nadaje, chyba że producent zaproponuje rdzeń z przerwą.
+| Rdzeń | EI ze szczeliną (płynie prąd stały), nie toroid bez szczeliny |
 
 ## Opcja na przyszłość: łagodniejsze obciążenie w dołku kolumn
 

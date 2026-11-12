@@ -81,129 +81,108 @@ code{font-family:var(--f-mono);font-size:.9em}
 <header>
   <div>
     <h1>Williamson KT88 UL</h1>
-    <p class="sub">Topologia jak u Onyxa: wejście sprzężone bezpośrednio z katodyną, różnicowy driver, para KT88. Lampy sterujące są oktalowe, jak na jego płytce VA1523: 6SL7 na wejściu i w katodynie, 6SN7 w driverze. Końcówka pracuje w ultralinearze z toroidem TTG-KT88PP, a każda KT88 ma własny bias.</p>
+    <p class="sub">Układ Onyxa z płytki VA1523-V1.0, przerysowany z jego schematu i poprawiony według wartości faktycznie wlutowanych na płytce. Pomarańczowe są elementy, które trzeba sprawdzić albo dobrać pod toroid TTG-KT88PP i własny transformator sieciowy.</p>
   </div>
   <div class="tb" aria-label="Tabliczka rysunku">
     <div>Układ</div><div>Williamson PP, 1 kanał</div>
-    <div>Lampy</div><div>6SL7 · 6SN7 · 2× KT88</div>
+    <div>Lampy</div><div>2× 6SN7 · 2× KT88</div>
     <div>Moc</div><div>ok. 40 W / 4 Ω</div>
-    <div>Czułość</div><div>ok. 0,6 V</div>
-    <div>Bazuje na</div><div>onyx1944 · VA1523</div>
-    <div>Wersja</div><div>szkic 2 · 08.11.2026</div>
+    <div>NFB / czułość</div><div>ok. 10 dB / ok. 0,5 V</div>
+    <div>Płytka</div><div>onyx1944 · VA1523-V1.0</div>
+    <div>Wersja</div><div>3 · 12.11.2026</div>
   </div>
 </header>
 
 <section>
-  <h2>Schemat kanału <small>tor sygnałowy</small></h2>
+  <h2>Schemat kanału <small>lewy, oznaczenia 1xx</small></h2>
   <div class="legend">
-    <span><i class="sw"></i>jak w wersji 6S33S Onyxa</span>
-    <span><i class="sw c"></i>zmienione lub nowe (lampy oktalowe, KT88)</span>
-    <span><i class="sw o"></i>napięcia i prądy spoczynkowe (orientacyjne)</span>
-    <span>* do dobrania przy uruchomieniu</span>
+    <span><i class="sw"></i>jak na płytce Onyxa</span>
+    <span><i class="sw c"></i>do sprawdzenia lub dobrania pod toroid i własny zasilacz</span>
+    <span><i class="sw o"></i>punkty pracy szacunkowe, przy Ua ≈ 465 V</span>
   </div>
   <div class="sheet">
-    <svg viewBox="0 0 1400 930" role="img" aria-label="Schemat jednego kanału wzmacniacza Williamson na KT88">
+    <svg viewBox="0 0 1400 960" role="img" aria-label="Schemat jednego kanału wzmacniacza Williamson na KT88 według płytki Onyxa">
 %%AMP%%
     </svg>
   </div>
-  <p class="note">Żarzenie, numery pinów i lampy drugiego kanału pominięte dla czytelności. Połowa V3 jest narysowana normalnie, połowa V4 w lustrzanym odbiciu, jak to się zwykle rysuje w push-pullu. Polaryzację pętli NFB ustala się podłączeniem końców uzwojenia wtórnego. Numeracja lamp jest moja; na płytce Onyxa lampy jednego kanału to V1 (wejście i katodyna), V2 (driver), V5 i V6 (KT88).</p>
+  <p class="note">Prawy kanał jest identyczny, z oznaczeniami 2xx (V3, V4, V7, V8). Żarzenie pominięte na tym rysunku (jest w zasilaczu). Złącze J101: 1 anoda V5, 2 odczep UL, 3 środek (Ua), 4 odczep UL, 5 anoda V6. R102 i C101 przy anodzie V1B są na płytce niemontowane (n.m.), więc nie są narysowane.</p>
 </section>
 
 <section>
-  <h2>Punkty pracy <small>wartości docelowe</small></h2>
+  <h2>Punkty pracy <small>szacunek z modelu lampy, Ua ≈ 465 V</small></h2>
   <div class="tw"><table>
-    <thead><tr><th>Stopień</th><th>Lampa</th><th>Ua</th><th>Ia</th><th>Ug</th><th>Uwagi</th></tr></thead>
+    <thead><tr><th>Stopień</th><th>Lampa</th><th>Ua</th><th>Ia</th><th>Uk</th><th>Uwagi</th></tr></thead>
     <tbody>
-      <tr class="c"><td>Wejście</td><td>½ 6SL7 / 6N9S (V1a)</td><td class="m">≈ 133 V</td><td class="m">1,0 mA</td><td class="m">−1,0 V</td><td>Wzmocnienie ok. 45×. Katoda bez kondensatora, tu wchodzi sprzężenie zwrotne.</td></tr>
-      <tr class="c"><td>Inwerter</td><td>½ 6SL7 / 6N9S (V1b)</td><td class="m">≈ 266 V</td><td class="m">1,2 mA</td><td class="m">≈ −0,9 V</td><td>Katodyna sprzężona bezpośrednio z V1a, katoda ok. +134 V, Uak ok. 132 V.</td></tr>
-      <tr class="c"><td>Driver</td><td>6SN7 / 6N8S (V2a, V2b)</td><td class="m">≈ 234 V</td><td class="m">2× 8 mA</td><td class="m">−7,5 V</td><td>Wzmocnienie ok. 15×. Do 50 V szczytowo na siatkę KT88 potrzeba tylko 3,4 V, czyli połowy biasu.</td></tr>
-      <tr class="c"><td>Końcówka</td><td>2× KT88, UL 43%</td><td class="m">≈ 445 V</td><td class="m">50 mA</td><td class="m">−45…−55 V</td><td>Prąd katody, czyli 0,50 V na R125/R126. Ok. 21 W na lampę (60% z 35 W).</td></tr>
+      <tr><td>Wejście</td><td>½ 6SN7 (V1B)</td><td class="m">≈ 89 V</td><td class="m">3,7 mA</td><td class="m">1,9 V</td><td>Wzmocnienie ok. 14. Sprzężenie zwrotne wchodzi na R105 470 Ω; R104 47 Ω jest zbocznikowany przez C102.</td></tr>
+      <tr><td>Katodyna</td><td>½ 6SN7 (V1A)</td><td class="m">≈ 198 V</td><td class="m">4,2 mA</td><td class="m">≈ 92 V</td><td>Obciążenia 22k / 22k, sprzężona bezpośrednio z anodą V1B. Uak ok. 106 V.</td></tr>
+      <tr><td>Driver</td><td>6SN7 (V2A, V2B)</td><td class="m">≈ 144 V</td><td class="m">2× 5 mA</td><td class="m">3,9 V</td><td>Wspólny R110 390 Ω, bez potencjometru balansu: obie triody w V2 powinny mieć zbliżony prąd. Wzmocnienie ok. 16.</td></tr>
+      <tr class="c"><td>Końcówka</td><td>2× KT88, UL</td><td class="m">≈ 465 V</td><td class="m">50–55 mA</td><td class="m">Ug1 −45…−55 V</td><td>0,50–0,55 V na R123/R124 (10 Ω). Prąd dobrany pod toroid 4 kΩ; Onyx nie podał swojego.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Przy Ua 450 V i 480 V wartości front endu zmieniają się o kilka procent (Uaa 369–393 V). Naklejka na driverze we wzmacniaczu Onyxa (6,4 i 7,7 mA) sugeruje, że jego Ua było wyższe, ok. 520–560 V.</p>
+</section>
+
+<section>
+  <h2>Zasilacz <small>na płytce, osobno w każdym kanale</small></h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1400 700" role="img" aria-label="Schemat zasilacza z płytki: anodowe, bias, podniesienie żarzenia i żarzenie">
+%%PSU%%
+    </svg>
+  </div>
+  <p class="note">Część sieciowa (bezpiecznik, wyłącznik, soft-start) i TR1 są poza płytką. Elektrolity filtrów to pary 2× 120 µF / 400 V szeregowo, z rezystorami wyrównującymi 680 k (R143–R152), czyli 60 µF / 800 V. Przy Ua 465 V i wysokim napięciu sieci zapas jest wystarczający.</p>
+</section>
+
+<section>
+  <h2>Płytka a schemat Onyxa</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Element</th><th>Na schemacie</th><th>Na płytce</th><th>Wniosek</th></tr></thead>
+    <tbody>
+      <tr><td class="m">R117 / R217</td><td>220k / 1k</td><td><b>100k / 100k</b></td><td>Upływowe siatek KT88. Na płytce 100k w obu kanałach; 1k w prawym to pomyłka rysunku.</td></tr>
+      <tr><td class="m">R124 / R224</td><td>10 Ω / 470k</td><td><b>10 Ω / 10 Ω</b></td><td>Rezystory katodowe KT88; 470k to pomyłka rysunku.</td></tr>
+      <tr><td class="m">C123 / C223</td><td>56 pF</td><td><b>brak</b></td><td>Kompensacja sprzężenia zwrotnego. Z Hammondem niepotrzebna, z toroidem do sprawdzenia.</td></tr>
     </tbody>
   </table></div>
 </section>
 
-<section>
-  <h2>Zasilacz <small>wspólny dla obu kanałów</small></h2>
-  <div class="sheet">
-    <svg viewBox="0 0 1400 700" role="img" aria-label="Schemat zasilacza: anodowe, bias i żarzenie">
-%%PSU%%
-    </svg>
-  </div>
-  <p class="note">* Na zimno, zanim KT88 się nagrzeją, wszystkie węzły anodowe dochodzą do szczytowej wartości uzwojenia, ok. 495 V, a przy +10% w sieci nawet 545 V. Stąd 550 V na wszystkich elektrolitach. W praktyce to pary 2× 400 V połączone szeregowo z rezystorami wyrównującymi 220 k na każdym. C5 i C6 to elektrolity z plusem do masy.</p>
-</section>
-
 <div class="cols">
 <section>
-  <h2>Co się zmienia względem 6S33S</h2>
+  <h2>Do zmiany pod toroid i własny zasilacz</h2>
   <ul>
-    <li><b>Lampy sterujące oktalowe</b>, jak na płytce Onyxa: 6SL7 (μ 70) zamiast 6N2P na wejściu i w katodynie, 6SN7 zamiast 6N6P w driverze, przy 8 mA na triodę.</li>
-    <li><b>Szyny front endu</b> podniesione: 400 V dla wejścia (było 360 V) i 410 V dla drivera (było 400 V), żeby katodyna na 6SL7 miała ok. 130 V między anodą a katodą.</li>
-    <li><b>Bieguny LF rozsunięte</b>: katodyna → driver 470 n / 470 k (0,7 Hz), driver → KT88 100 n / 220 k (7 Hz). Toroid ma 427 H, więc jego biegun leży poniżej 1 Hz. Mniejsze ryzyko pompowania na dole pasma.</li>
-    <li><b>Anodowe</b> 450 V zamiast 165 V na końcówce. Prąd spoczynkowy spada z 200 mA do 50 mA na lampę.</li>
-    <li><b>Transformator wyjściowy</b> 4 kΩ z odczepami UL zamiast 1 kΩ. Siatki drugie idą przez R128/R129 na odczepy 43%.</li>
-    <li><b>Rezystory upływowe</b> R119/R120 zmniejszone do 220 k. To górna granica dla KT88 przy stałym biasie.</li>
-    <li><b>Bias</b> z osobnym dzielnikiem i potencjometrem dla każdej lampy, bo toroid wymaga dobrego balansu prądów stałych.</li>
-    <li><b>Rezystory katodowe</b> 10 Ω 1% zamiast 1 Ω, żeby wygodnie mierzyć prąd: 50 mA daje 0,50 V.</li>
-    <li><b>Sprzężenie zwrotne</b> z odczepu 4 Ω, bo kolumny mają 4 Ω. Wzmocnienie bez pętli ok. 47 dB, z R127 = 22 k sprzężenie wynosi ok. 21 dB, a czułość ok. 0,6 V na 40 W. R127 i C100 trzeba sprawdzić na oscyloskopie.</li>
-    <li><b>Żarzenie</b> lżejsze: 6,4 A dla KT88 zamiast 13 A dla 6S33S. Lampy sterujące biorą 1,8 A. Ich żarzenie jest podniesione do ok. +67 V, bo katoda katodyny siedzi na +134 V. Dla 6SL7 dopuszczalne napięcie żarzenie–katoda to ok. 90 V.</li>
+    <li><b>R129 / R229 22k:</b> start bez zmian. Sprzężenie zwrotne brać z <b>odczepu 8 Ω</b> toroidu (kolumny zostają na 4 Ω). Daje to ok. 10 dB, czyli głębokość zbliżoną do tej u Onyxa z Hammondem. Z odczepu 4 Ω byłoby ok. 8 dB.</li>
+    <li><b>C123 / C223:</b> najpierw bez. Jeśli prostokąt 10 kHz dzwoni, wlutować 33–150 pF.</li>
+    <li><b>R128 / R228 4k7 3 W:</b> dobrać tak, żeby Uaa wyszło ok. 380–420 V przy Twoim Ua.</li>
+    <li><b>Dzielnik biasu</b> (P101/P102 47k, R139/R140 47k, R119/R120 470k): suwak daje od 0,5 do 1,0 napięcia szyny. Przy szynie ok. −90 V zakres −45…−90 V jest dobry.</li>
+    <li><b>Dławiki L106 i L206:</b> po jednym na kanał, 10 H. Prąd ok. 145 mA na kanał, więc wystarczy 200 mA; Onyx dał 400 mA.</li>
+    <li><b>Zworki B101–B104:</b> ustawić pod własne uzwojenia (wspólne anodowe dla obu kanałów, konfiguracja żarzenia).</li>
+    <li><b>Dodatek: RL 100 Ω 2 W</b> między 4 Ω a COM, żeby transformator nie pracował bez obciążenia przy odłączonych kolumnach.</li>
   </ul>
 </section>
 
 <section>
   <h2>Uruchomienie</h2>
   <ol>
-    <li>Najpierw sam zasilacz bez lamp, przez żarówkę w szereg z siecią. Sprawdź −90 V, a potem ustaw P201 i P202 w obu kanałach na maksimum ujemnego napięcia (ok. −64 V na suwaku).</li>
-    <li>Włóż lampy, podłącz rezystor 4 Ω do odczepu 4 Ω zamiast głośnika, NFB na razie odłączone (R127 rozpięty).</li>
-    <li>Po nagrzaniu sprawdź napięcia z tabeli. Podnoś prąd KT88 potencjometrami P201 (V3) i P202 (V4) do 0,50 V na TP-A i TP-B, z różnicą najwyżej ok. 10 mV (1 mA).</li>
-    <li>Podłącz R127. Jeśli wzmocnienie wzrośnie zamiast spaść albo pojawi się wzbudzenie, zamień końce uzwojenia wtórnego (4 Ω z COM).</li>
-    <li>Na generatorze 1 kHz ustaw P100 na minimum zniekształceń albo na równe amplitudy na anodach V2a i V2b.</li>
-    <li>Prostokąt 1 kHz i 10 kHz na 4 Ω, potem z dołożonym 0,1–0,47 µF równolegle. Dobierz C100 tak, żeby nie było dzwonienia.</li>
-    <li>Przy włączaniu i wyłączaniu obserwuj membrany (lub napięcie na wyjściu): powolne pompowanie oznacza problem ze stabilnością na dole pasma.</li>
-    <li>Po kilku godzinach grania i po pierwszych tygodniach ponownie wyrównaj bias.</li>
+    <li>Sprawdzić płytkę po strychu: luty, wybrzuszone elektrolity, przebarwienia. Wyczyścić i wysuszyć.</li>
+    <li>Sam zasilacz bez lamp, przez żarówkę albo autotransformator, powoli, żeby uformować elektrolity. Sprawdzić Bias-L i ustawić P101/P102 na maksimum ujemnego napięcia.</li>
+    <li>Tanie lampy, rezystor 4 Ω / 50 W na odczepie 4 Ω, <b>J102 odłączone</b>.</li>
+    <li>Po nagrzaniu: Ua, Uaa, napięcia lamp z tabeli. Prąd KT88 potencjometrami do 0,50–0,55 V na R123/R124, różnica w parze najwyżej ok. 1 mA.</li>
+    <li>Zmierzyć prądy obu triod V2 i do drivera dać lampę o najbliższych prądach.</li>
+    <li>Podłączyć J102 (odczep 8 Ω). Jeśli wzmocnienie rośnie zamiast spadać albo coś się wzbudza, zamienić końce uzwojenia wtórnego.</li>
+    <li>Prostokąt 1 kHz i 10 kHz na 4 Ω, potem z 0,1–0,47 µF równolegle. W razie dzwonienia dobrać C123.</li>
+    <li>Obserwować membrany przy włączaniu i wyłączaniu. Przy pompowaniu zwiększyć C105/C106 do 470 nF (biegun z ok. 6 Hz na ok. 3 Hz).</li>
+    <li>Po kilku godzinach i po pierwszych tygodniach ponownie wyrównać bias.</li>
   </ol>
 </section>
 </div>
 
-<section>
-  <h2>Lista elementów zmienionych i nowych <small>na kanał</small></h2>
-  <div class="tw"><table>
-    <thead><tr><th>Ozn.</th><th>Wartość</th><th>Funkcja</th></tr></thead>
-    <tbody>
-      <tr><td class="m">V1</td><td>6SL7GT / 6N9S</td><td>Wejście i katodyna (jedna lampa)</td></tr>
-      <tr><td class="m">V2</td><td>6SN7GT / 6N8S</td><td>Driver różnicowy</td></tr>
-      <tr><td class="m">V3, V4</td><td>KT88, para dobrana</td><td>Lampy mocy w UL</td></tr>
-      <tr><td class="m">R103</td><td>1 kΩ 0,6 W</td><td>Katoda V1a, punkt wejścia NFB</td></tr>
-      <tr><td class="m">R105 / R102</td><td>47 kΩ 1 W / 220 kΩ 1 W</td><td>Odsprzęganie i obciążenie anody V1a, C102 47 µF / 550 V w węźle</td></tr>
-      <tr><td class="m">R104, R106</td><td>110 kΩ 1 W</td><td>Obciążenia katodyny (anoda i katoda)</td></tr>
-      <tr><td class="m">C103, C104</td><td>470 nF / 630 V foliowy</td><td>Sprzęgające katodyna → driver</td></tr>
-      <tr><td class="m">R107, R108</td><td>470 kΩ 0,6 W</td><td>Upływowe siatek drivera</td></tr>
-      <tr><td class="m">R113, R114</td><td>22 kΩ 3 W</td><td>Obciążenia anod drivera</td></tr>
-      <tr><td class="m">R112, P100</td><td>390 Ω 1 W, 100 Ω</td><td>Wspólna katoda drivera i balans AC</td></tr>
-      <tr><td class="m">TR-OUT</td><td>toroidy.pl TTG-KT88PP</td><td>4 kΩ, UL 43%, 80 W, wyjścia 4 i 8 Ω</td></tr>
-      <tr><td class="m">R119, R120</td><td>220 kΩ 0,6 W</td><td>Upływowe siatek KT88</td></tr>
-      <tr><td class="m">R123, R124</td><td>1 kΩ 0,6 W</td><td>Antyoscylacyjne g1, przy samej podstawce</td></tr>
-      <tr><td class="m">R128, R129</td><td>220 Ω 1 W</td><td>Antyoscylacyjne g2, przy podstawce</td></tr>
-      <tr><td class="m">R125, R126</td><td>10 Ω 1% 1 W</td><td>Pomiar prądu katody</td></tr>
-      <tr><td class="m">C105, C106</td><td>100 nF / 630 V foliowy</td><td>Sprzęgające driver → KT88 (biegun ok. 7 Hz)</td></tr>
-      <tr><td class="m">P201, P202</td><td>10 kΩ cermet, wieloobrotowy</td><td>Regulacja biasu V3 i V4, zakres ok. −39…−64 V</td></tr>
-      <tr><td class="m">R130, R132</td><td>10 kΩ 0,6 W</td><td>Górna część dzielnika biasu (od −90 V)</td></tr>
-      <tr><td class="m">R131, R133</td><td>15 kΩ 0,6 W</td><td>Dolna część dzielnika biasu (do masy)</td></tr>
-      <tr><td class="m">C107, C108</td><td>10 µF / 100 V</td><td>Odsprzęganie napięcia biasu, plus do masy</td></tr>
-      <tr><td class="m">R201 / R202</td><td>2,2 kΩ 2 W / 4,7 kΩ 1 W</td><td>Spadek 450 → 410 → 400 V (osobno w każdym kanale)</td></tr>
-      <tr><td class="m">R127, C100</td><td>22 kΩ, 180 pF (start)</td><td>Sieć sprzężenia zwrotnego z odczepu 4 Ω</td></tr>
-    </tbody>
-  </table></div>
-</section>
-
-<div class="warn"><p><b>Wysokie napięcie.</b> W tym wzmacniaczu jest do 545 V DC, które utrzymuje się na kondensatorach po wyłączeniu. R301 rozładowuje je w ok. minutę, ale przed dotknięciem układu zawsze zmierz napięcie. Pracuj jedną ręką, a pierwsze uruchomienie rób przez żarówkę albo autotransformator.</p></div>
+<div class="warn"><p><b>Wysokie napięcie.</b> Ua ok. 465 V, a na zimno i przy wysokim napięciu sieci więcej. Kondensatory filtrów rozładowują się przez rezystory 680 k dość wolno, kilka minut. Przed dotknięciem płytki zawsze zmierz napięcie.</p></div>
 
 <section>
-  <h2>Do potwierdzenia</h2>
+  <h2>Pytania do Onyxa</h2>
   <ul>
-    <li>Wartości są policzone przeze mnie z danych katalogowych, nie przepisane od Onyxa. Na zdjęciu jego wzmacniacza driver ciągnął 6,4 i 7,7 mA na triodę, czyli podobnie jak tutaj. Nie wiadomo, czy na wejściu miał 6SL7, czy 6SN7.</li>
-    <li>Topologię trzeba sprawdzić na płytce, gdy ją dostaniesz: czy V1 to na pewno wejście z bezpośrednio sprzężoną katodyną, a V2 driver ze wspólną katodą. Wartości elementów są tu inne niż u Onyxa, ale footprinty powinny pasować.</li>
-    <li>Napięcie +450 V zależy od transformatora sieciowego i dławika. Uzwojenie 350 V AC jest dobrane pod ok. 260 mA poboru w spoczynku z obu kanałów.</li>
-    <li>Transformator sieciowy (≈ 300 VA) i dławik 5 H / 400 mA możesz zamówić w toroidy.pl razem z głośnikowymi.</li>
+    <li>Jakie było Ua i Uaa przy pracujących lampach oraz napięcie AC uzwojenia biasu?</li>
+    <li>Z którego odczepu Hammonda brał sprzężenie zwrotne (8 czy 16 Ω)?</li>
+    <li>Jaki prąd spoczynkowy ustawiał na KT88?</li>
+    <li>Dokąd idzie sieć UaFF-L2 (podniesienie żarzenia KT88): do masy czy do UaFF?</li>
   </ul>
 </section>
 </div>
