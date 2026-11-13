@@ -32,7 +32,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 .mkt{font-size:11.5px;font-weight:700;fill:#1d5fd0}
 </style>
 <rect width="100%" height="100%" fill="#f8faf6"/>
-<text class="ref" x="40" y="36" text-anchor="start">Przełącznik UL / trioda: lampa V5 lewego kanału (V6 i prawy kanał tak samo, patrz niżej)</text>
+<text class="ref" x="40" y="36" text-anchor="start">Przełącznik UL / trioda: lampa V5 lewego kanału (V6, V7, V8 tak samo, patrz niżej)</text>
 <rect class="part" x="40" y="110" width="290" height="230"/>
 <text class="ref" x="54" y="132" text-anchor="start">Płytka Onyxa</text>
 <circle class="term" cx="330" cy="170" r="5"/>
@@ -51,7 +51,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <text class="net" x="192" y="274" text-anchor="end">g2 V5</text>
 <text class="net" x="192" y="246" text-anchor="end">(nóżka 4)</text>
 <rect class="part" x="540" y="120" width="300" height="210"/>
-<text class="ref" x="554" y="142" text-anchor="start">Płytka UL (kanał L), K1 = lampa V5</text>
+<text class="ref" x="554" y="142" text-anchor="start">Płytka UL (jedna, 4 przekaźniki), K1 = V5</text>
 <circle class="term" cx="840" cy="170" r="5"/>
 <text class="val" x="830" y="164" text-anchor="end">J1-1 AN</text>
 <circle class="term" cx="840" cy="220" r="5"/>
@@ -73,7 +73,7 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <text class="val" x="588" y="312" text-anchor="middle">cewka</text>
 <circle class="term" cx="588" cy="330" r="5"/>
 <polyline class="w" points="588,318 588,325"/>
-<text class="net" x="588" y="356" text-anchor="middle">J3 ← sterowanie J11 (12 V)</text>
+<text class="net" x="588" y="356" text-anchor="middle">J5 ← sterowanie J11 piny 1–2 (12 V)</text>
 <path class="coil chgc" d="M1150 150 A10 10 0 0 1 1150 170 A8.33333 8.33333 0 0 1 1150 186.667 A8.33333 8.33333 0 0 1 1150 203.333 A8.33333 8.33333 0 0 1 1150 220 A8 8 0 0 1 1150 236 A8 8 0 0 1 1150 252 A8 8 0 0 1 1150 268 A8 8 0 0 1 1150 284 A8 8 0 0 1 1150 300"/>
 <text class="ref chg" x="1150" y="132" text-anchor="middle">TTG-KT88PP, uzwojenie pierwotne</text>
 <text class="val" x="1180" y="174" text-anchor="start">anoda A (V5)</text>
@@ -88,8 +88,8 @@ text{font-family:"JetBrains Mono",Consolas,monospace;fill:#1c282b}
 <text class="net" x="1000" y="212" text-anchor="middle">odczep UL tylko na płytkę UL</text>
 <polyline class="w" points="845,270 900,270 900,400 430,400 430,270 335,270"/>
 <text class="net" x="665" y="420" text-anchor="middle">G2: J1-3 płytki UL → J101-2 Onyxa (dalej przez R125 do g2 V5)</text>
-<text class="val" x="40" y="462" text-anchor="start">Lampa V6: to samo z J2 płytki UL (K2): anoda B toroidu → J101-5 i J2-1, odczep UL B → J2-2, J2-3 → J101-4.</text>
-<text class="val" x="40" y="482" text-anchor="start">Prawy kanał: druga płytka UL i złącze J201 Onyxa. Cewki: sterowanie J11 piny 1–2 → J3 płytki L, piny 3–4 → J3 płytki P.</text>
+<text class="val" x="40" y="462" text-anchor="start">V6: J2 płytki UL (K2): anoda B toroidu L → J101-5 i J2-1, odczep UL B → J2-2, J2-3 → J101-4.</text>
+<text class="val" x="40" y="482" text-anchor="start">V7, V8 (prawy kanał): J3 i J4 tej samej płytki UL, toroid P, złącze J201 Onyxa (J3-3 → J201-2, J4-3 → J201-4).</text>
 <text class="val" x="40" y="502" text-anchor="start">Bez prądu w cewce G2 dostaje odczep UL (tryb UL). Cewka 12 V: G2 dostaje anodę (trioda, ok. 20–25 W).</text>
 <text class="val" x="40" y="522" text-anchor="start">Przełączać tylko przy wyłączonych anodach (ESP32 robi to sam). Przewody anod i odczepów w izolacji min. 1 kV.</text>
 <text class="val" x="40" y="542" text-anchor="start">Płytka UL nie ma masy: mocuj ją na tulejach izolacyjnych.</text>

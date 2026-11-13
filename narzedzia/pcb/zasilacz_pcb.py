@@ -197,7 +197,10 @@ def write_lib(path, names, prefix=""):
 
 
 def main():
-    b = board()
+    return export(board(), schematic, OUT, NAME, HV, "CZYTAJ_MNIE_pcb.txt")
+
+
+def export(b, schematic, OUT, NAME, HV, readme, vp=(560, 480)):
     assert not b.failed, ("autoplace failed", b.failed)
     msgs = b.check()
     if msgs:
@@ -240,14 +243,14 @@ def main():
     netclasses.write_csv(b, OUT)
     svg = b.svg(hv_nets=HV)
     open(os.path.join(OUT, NAME + "_rozmieszczenie.svg"), "w").write(svg)
-    shutil.copy(os.path.join(D, "CZYTAJ_MNIE_pcb.txt"), os.path.join(OUT, "CZYTAJ_MNIE.txt"))
+    shutil.copy(os.path.join(D, readme), os.path.join(OUT, "CZYTAJ_MNIE.txt"))
     from playwright.sync_api import sync_playwright
     css = (".board{fill:#f4f7f2;stroke:#1d2a1f;stroke-width:.35}.body{fill:rgba(255,255,255,.55);stroke:#3a4a3c;stroke-width:.3}"
            ".body.bot{fill:none;stroke:#2f62b8;stroke-width:.3;stroke-dasharray:1.2 .8}.pad{fill:#c9a24a;stroke:#7a5c17;stroke-width:.12}"
            ".pad.hv{fill:#d9573f;stroke:#7c2414}.hole{fill:#fff;stroke:#1d2a1f;stroke-width:.25}.ref{font-size:2.2px;fill:#1d2a1f;font-weight:600}"
            ".lab{font-size:1.9px;fill:#36503a}.title{font-size:3px;fill:#1d2a1f;font-weight:700}.zone{fill:none}.zl{display:none}")
     with sync_playwright() as pw:
-        br = pw.chromium.launch(); pg = br.new_page(viewport={"width": 560, "height": 480}, device_scale_factor=2)
+        br = pw.chromium.launch(); pg = br.new_page(viewport={"width": vp[0], "height": vp[1]}, device_scale_factor=2)
         pg.set_content("<style>body{margin:0;background:#fff}%s</style>%s" % (css, svg))
         pg.screenshot(path=os.path.join(OUT, NAME + "_rozmieszczenie.png")); br.close()
     import schview2

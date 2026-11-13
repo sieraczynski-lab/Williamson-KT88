@@ -123,9 +123,9 @@ Przekaźniki K1–K4 (Omron G2RL-2-DC12, diody 1N4148 na cewkach) są na płytce
 
 ![Okablowanie UL / trioda](../schematy/ul_trioda.svg)
 
-Płytka `ul` Soloista (po jednej na kanał) wpina się między toroid a złącze J101 Onyxa. Na płytce Onyxa nic się nie zmienia. Zmienia się tylko to, **dokąd idą odczepy UL toroidu**: zamiast na J101-2 / J101-4 idą na płytkę UL, a na J101-2 / J101-4 trafia wyjście płytki UL.
+Jedna płytka UL na oba kanały ([`pcb/ul/`](../pcb/ul/), 4× G2RL-2, po jednym na KT88; zastępuje dwie płytki `ul` Soloista) wpina się między toroidy a złącza J101/J201 Onyxa. Na płytce Onyxa nic się nie zmienia. Zmienia się tylko to, **dokąd idą odczepy UL toroidu**: zamiast na J101-2 / J101-4 idą na płytkę UL, a na J101-2 / J101-4 trafia wyjście płytki UL.
 
-Każda KT88 ma na płytce UL swój przekaźnik i swoje złącze (J1 dla V5, J2 dla V6), każde po 3 przewody:
+Każda KT88 ma na płytce UL swój przekaźnik i swoje złącze (J1 V5, J2 V6, J3 V7, J4 V8), każde po 3 przewody. Lewy kanał:
 
 | Przewód | Skąd | Dokąd |
 |---|---|---|
@@ -136,9 +136,9 @@ Każda KT88 ma na płytce UL swój przekaźnik i swoje złącze (J1 dla V5, J2 d
 | anoda B | toroid, anoda B | Onyx **J101-5** **i** płytka UL **J2-1** |
 | odczep UL B | toroid, odczep UL B | płytka UL **J2-2** (nie na J101-4) |
 | G2 V6 | płytka UL **J2-3** | Onyx **J101-4** (dalej przez R126 do g2 V6) |
-| cewki | sterowanie **J11** piny 1–2 | płytka UL kanału L **J3** (prawy kanał: piny 3–4) |
+| cewki | sterowanie **J11** piny 1–2 | płytka UL **J5** (piny 3–4 J11 wolne) |
 
-Prawy kanał: druga płytka UL i złącze J201 Onyxa.
+Prawy kanał tak samo, z toroidem P i złączem J201: V7 na J3 płytki UL (J3-3 → J201-2), V8 na J4 (J4-3 → J201-4).
 
 Jak to działa: przekaźnik ma styk przełączny. Wspólny (COM) idzie przez J1-3 do siatki drugiej. **Bez prądu w cewce** COM jest zwarty z NC, czyli z odczepem UL: normalny tryb UL. **Cewka 12 V** przełącza COM na NO, czyli na anodę: tryb triodowy (ok. 20–25 W). Przełączać tylko przy wyłączonych anodach, jak w Soloiście (ESP32 robi to sam: MUTE, K3/K4 wyłączone, czeka na Ua < 30 V, przełącza, włącza anody).
 

@@ -552,7 +552,7 @@ def psu_w():
 
 def ul():
     S.clear()
-    txt(40, 36, "Przełącznik UL / trioda: lampa V5 lewego kanału (V6 i prawy kanał tak samo, patrz niżej)", "ref")
+    txt(40, 36, "Przełącznik UL / trioda: lampa V5 lewego kanału (V6, V7, V8 tak samo, patrz niżej)", "ref")
     # plytka Onyxa
     add('<rect class="part" x="40" y="110" width="290" height="230"/>')
     txt(54, 132, "Płytka Onyxa", "ref")
@@ -564,7 +564,7 @@ def ul():
     wire((220, 270), (200, 270)); txt(192, 274, "g2 V5", "net", "end"); txt(192, 246, "(nóżka 4)", "net", "end")
     # plytka UL
     add('<rect class="part" x="540" y="120" width="300" height="210"/>')
-    txt(554, 142, "Płytka UL (kanał L), K1 = lampa V5", "ref")
+    txt(554, 142, "Płytka UL (jedna, 4 przekaźniki), K1 = V5", "ref")
     for y, t in ((170, "J1-1 AN"), (220, "J1-2 UL"), (270, "J1-3 G2")):
         term(840, y); txt(830, y - 6, t, "val", "end")
     wire((835, 170), (724, 170)); wire((835, 220), (724, 220)); wire((835, 270), (640, 270))
@@ -577,7 +577,7 @@ def ul():
     txt(640, 290, "COM", "val", "middle")
     add('<rect class="part" x="560" y="296" width="56" height="22"/>'); txt(588, 312, "cewka", "val", "middle")
     term(588, 330); wire((588, 318), (588, 325))
-    txt(588, 356, "J3 ← sterowanie J11 (12 V)", "net", "middle")
+    txt(588, 356, "J5 ← sterowanie J11 piny 1–2 (12 V)", "net", "middle")
     # toroid
     coil_v(1150, [150, 170, 220, 300], bulge=1, cls="coil chgc")
     txt(1150, 132, "TTG-KT88PP, uzwojenie pierwotne", "ref chg", "middle")
@@ -590,8 +590,8 @@ def ul():
     wire((845, 270), (900, 270), (900, 400), (430, 400), (430, 270), (335, 270))
     txt(665, 420, "G2: J1-3 płytki UL → J101-2 Onyxa (dalej przez R125 do g2 V5)", "net", "middle")
     for k, t in enumerate((
-            "Lampa V6: to samo z J2 płytki UL (K2): anoda B toroidu → J101-5 i J2-1, odczep UL B → J2-2, J2-3 → J101-4.",
-            "Prawy kanał: druga płytka UL i złącze J201 Onyxa. Cewki: sterowanie J11 piny 1–2 → J3 płytki L, piny 3–4 → J3 płytki P.",
+            "V6: J2 płytki UL (K2): anoda B toroidu L → J101-5 i J2-1, odczep UL B → J2-2, J2-3 → J101-4.",
+            "V7, V8 (prawy kanał): J3 i J4 tej samej płytki UL, toroid P, złącze J201 Onyxa (J3-3 → J201-2, J4-3 → J201-4).",
             "Bez prądu w cewce G2 dostaje odczep UL (tryb UL). Cewka 12 V: G2 dostaje anodę (trioda, ok. 20–25 W).",
             "Przełączać tylko przy wyłączonych anodach (ESP32 robi to sam). Przewody anod i odczepów w izolacji min. 1 kV.",
             "Płytka UL nie ma masy: mocuj ją na tulejach izolacyjnych.")):

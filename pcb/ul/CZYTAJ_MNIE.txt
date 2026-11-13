@@ -1,0 +1,31 @@
+WILLIAMSON KT88 - PRZELACZNIK UL / TRIODA v1.0 (13.11.2026)
+===========================================================
+
+Jedna plytka 100 x 66 mm na oba kanaly: 4x Omron G2RL-2-DC12, po jednym na KT88.
+Zastepuje dwie plytki "ul" z Soloista. Okablowanie: schematy/ul_trioda.svg, docs/09 (9.7).
+
+ZLACZA (sruby 7,62 mm: 1 anoda, 2 odczep UL, 3 G2)
+  J1 V5 (kanal L): 1 anoda A toroidu L (i J101-1 Onyxa), 2 odczep UL A toroidu L, 3 -> J101-2
+  J2 V6 (kanal L): 1 anoda B toroidu L (i J101-5),       2 odczep UL B toroidu L, 3 -> J101-4
+  J3 V7 (kanal P): 1 anoda A toroidu P (i J201-1),       2 odczep UL A toroidu P, 3 -> J201-2
+  J4 V8 (kanal P): 1 anoda B toroidu P (i J201-5),       2 odczep UL B toroidu P, 3 -> J201-4
+  J5 cewki: ze sterowania J11 pin 1 (+12V) i pin 2 (RLY_UL); piny 3-4 J11 zostaja wolne.
+  Odczepy UL toroidow NIE ida na J101-2/-4 i J201-2/-4 - tylko na te plytke.
+
+DZIALANIE
+  Bez pradu w cewkach: G2 <- odczep UL (tryb UL). Cewki 12 V (4 x 33 mA): G2 <- anoda (trioda).
+  Przelaczac tylko przy wylaczonych anodach - robi to ESP32 (MUTE, K3/K4 off, Ua < 30 V, przelacz, start).
+
+PCB
+  Plik .kicad_pcb zawiera klasy sieci: UL_HV 0,8 mm / odstep 3,0 mm (anody, odczepy, G2 obu kanalow),
+  CEWKI 0,5 / 0,3. Elementy rozmieszczone, sciezki do poprowadzenia w EasyEDA, potem DRC.
+  Bez wylewki masy (plytka nie ma masy). Mocowanie na tulejach izolacyjnych M3.
+  Lewa polowa plytki = kanal L, prawa = kanal P; nie prowadz sciezek jednego kanalu przez polowe drugiego.
+
+PRZED ZAMOWIENIEM
+  Przekaznik G2RL-2: bez zasilania cewki zwarte 3-2 i 6-7, przy 12 V na 1-8 zwarte 3-4 i 6-5.
+  Zlacza srubowe 7,62 mm 3-pin (300 V / 10 A lub wiecej) - przyloz do wydruku 1:1.
+  W obudowie: plytka na srodku pod plytka Onyxa (miejsce po dwoch plytkach UL Soloista);
+  przewody anod i odczepow razem, w izolacji min. 1 kV, z dala od wejsc.
+
+Generator: narzedzia/pcb/ul_pcb.py (python3 ul_pcb.py).

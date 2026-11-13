@@ -18,7 +18,7 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 | [`schematy/kanal.svg`](schematy/kanal.svg) | Jeden kanał wg VA1523: 6SN7 (wejście + katodyna) → 6SN7 (driver) → 2× KT88 UL, bias osobno dla każdej lampy |
 | [`schematy/zasilacz.svg`](schematy/zasilacz.svg) | Zasilacz z płytki (osobno w każdym kanale): mostek, CLC z dławikiem 10 H, Uaa przez R128, bias, podniesienie żarzenia |
 | [`schematy/plytka_zasilacza.svg`](schematy/plytka_zasilacza.svg) | Własna płytka zasilacza: bezpieczniki, miękki start K1/K2, opóźnione anody K3/K4 z R_IN, napięcia przemienne do płytki Onyxa, pomiar Ua i dioda HV |
-| [`pcb/`](pcb/) | Płytki do zamówienia (KiCad 4 dla EasyEDA Standard, 5 dla EasyEDA Pro i KiCad 8, z klasami sieci): nowy zasilacz 100 × 100 mm oraz z Soloista sterowanie ESP32, 2× UL/trioda, przełącznik kolumn, selektor. Połączenia: [`pcb/CZYTAJ_MNIE.txt`](pcb/CZYTAJ_MNIE.txt) |
+| [`pcb/`](pcb/) | Płytki do zamówienia (KiCad 4 dla EasyEDA Standard, 5 dla EasyEDA Pro i KiCad 8, z klasami sieci): nowy zasilacz 100 × 100 mm, nowa płytka UL/trioda na oba kanały (4 przekaźniki, 100 × 66 mm) oraz z Soloista sterowanie ESP32, przełącznik kolumn, selektor. Połączenia: [`pcb/CZYTAJ_MNIE.txt`](pcb/CZYTAJ_MNIE.txt) |
 | [`docs/soloist/`](docs/soloist/) | Opis sterowania i selektora (kopia z Soloista) |
 | [`schematy/ul_trioda.svg`](schematy/ul_trioda.svg) | Okablowanie przełącznika UL / trioda: toroid, płytka UL, J101 Onyxa |
 | [`schematy/williamson-kt88.html`](schematy/williamson-kt88.html) | Oba schematy z punktami pracy, różnicami płytka/schemat, listą zmian i uruchomieniem (otwórz w przeglądarce) |
@@ -66,7 +66,7 @@ Płytka **VA1523-V1.0** jest kupiona od Onyxa (bez lamp i transformatorów), a O
 
 ## Zasilacz, sterowanie, dodatki i obudowa
 
-Płytka Onyxa dostaje własną, prostą płytkę zasilacza (bez prostowników i filtrów, bo te są na płytce Onyxa): miękki start, opóźnione anody, pomiar Ua. Z [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88) bierze sterownik ESP32 z automatyczną korektą biasu, przełącznik UL / trioda, przełącznik kolumn z triggerem, selektor z drabinką głośności i obudowę. Te płytki Soloista bez zmian w PCB, płytka Onyxa bez cięcia ścieżek. Szczegóły: [docs/09-integracja-soloist.md](docs/09-integracja-soloist.md), obudowa: [`obudowa/`](obudowa/).
+Płytka Onyxa dostaje własną, prostą płytkę zasilacza (bez prostowników i filtrów, bo te są na płytce Onyxa): miękki start, opóźnione anody, pomiar Ua. Z [Soloist-KT88](https://github.com/sieraczynski-lab/Soloist-KT88) bierze sterownik ESP32 z automatyczną korektą biasu, układ przełącznika UL / trioda (tu jedna płytka na oba kanały), przełącznik kolumn z triggerem, selektor z drabinką głośności i obudowę. Te płytki Soloista bez zmian w PCB, płytka Onyxa bez cięcia ścieżek. Szczegóły: [docs/09-integracja-soloist.md](docs/09-integracja-soloist.md), obudowa: [`obudowa/`](obudowa/).
 
 ![Obudowa z płytką Onyxa pod pokrywą](obudowa/widok_przod.png)
 

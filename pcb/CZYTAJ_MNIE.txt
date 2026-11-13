@@ -6,12 +6,12 @@ Plytka wzmacniacza to plytka Onyxa VA1523 (kupiona). Pozostale plytki:
   Folder       Plytka                        Rozmiar     Ilosc  Zrodlo
   zasilacz/    zasilacz Williamsona          100 x 100   1      nowa (narzedzia/pcb/zasilacz_pcb.py)
   sterowanie/  sterownik ESP32-S3            100 x 100   1      Soloist-KT88 v0.23, bez zmian
-  ul/          przelacznik UL / trioda       74 x 48     2      Soloist-KT88 v0.23, bez zmian
+  ul/          przelacznik UL / trioda       100 x 66    1      nowa, 4 przekazniki (narzedzia/pcb/ul_pcb.py)
   glosniki/    przelacznik kolumn + trigger  100 x 42    1      Soloist-KT88 v0.23, bez zmian
   selektor/    selektor wejsc i glosnosc     -           1      Soloist-KT88 (TubeSel), bez zmian
 
-Plytki kanalu, zasilacz_siec i zasilacz_hv Soloista NIE sa potrzebne (zastepuje je plytka Onyxa
-i plytka zasilacz/).
+Plytki kanalu, zasilacz_siec, zasilacz_hv i dwie plytki ul Soloista NIE sa potrzebne (zastepuja je
+plytka Onyxa, zasilacz/ i ul/).
 
 Opis sterowania i selektora: docs/soloist/03-sterowanie.md, docs/soloist/11-selektor.md.
 Podlaczenie do plytki Onyxa: docs/09-integracja-soloist.md.
@@ -25,14 +25,13 @@ PLIKI W KAZDYM FOLDERZE (zasilacz, sterowanie, ul, glosniki)
   import_EasyEDA/<plytka>_Standard_pcb.zip        - EasyEDA Standard: PCB (KiCad 4)
   KiCad4_dla_EasyEDA_Standard/, KiCad5_dla_EasyEDA_Pro_i_KiCad8/ - te same projekty rozpakowane
   <plytka>_BOM.csv, _netlista.csv, _klasy_sieci.csv, _rozmieszczenie.png/.svg
-  <plytka>_rozmieszczenie_1do1.pdf  - do wydruku 100% (sterowanie, ul, glosniki)
-  <plytka>_BOM_LCSC.xlsx            - czesci z numerami LCSC (sterowanie, ul, glosniki)
+  <plytka>_rozmieszczenie_1do1.pdf  - do wydruku 100% (sterowanie, glosniki)
+  <plytka>_BOM_LCSC.xlsx            - czesci z numerami LCSC (sterowanie, glosniki)
   sterowanie/sterowanie_BOM_JLCPCB.csv - montaz SMD w JLCPCB
 Selektor ma wlasny uklad folderow: selektor/kicad (KiCad 8/9) i selektor/kicad5-easyeda.
 
 KLASY SIECI (szerokosci sciezek i odstepy) sa zapisane w plikach .kicad_pcb (net_class) -
 wczytuja sie przy imporcie. PCB sa rozmieszczone, z polaczeniami (ratsnest), bez sciezek.
-Ilosci w *_BOM_LCSC.xlsx: kolumna "Ilosc razem" liczy 2 plytki UL (tak jak w Williamsonie).
 
 
 POLACZENIA MIEDZY PLYTKAMI (WILLIAMSON)
@@ -57,8 +56,9 @@ Korekta biasu (przewody skrecone z masa, z dala od anod):
                  pin 3 -> R217 (V7)                       pin 4 -> R218 (V8)
   Kolejnosc jak w J4. Wszystkie przesuwniki korekty biora szyne z J5 pin 1 (Bias-L).
 UL / trioda:
-  sterowanie J11 piny 1-2 (+12V, RLY_UL) -> plytka UL kanalu L J3;  piny 3-4 -> plytka UL kanalu P J3
-  plytka UL: J1/J2 pin 1 anoda (toroid), 2 odczep UL (toroid), 3 -> Onyx J101 pin 2 / pin 4
+  sterowanie J11 piny 1-2 (+12V, RLY_UL) -> plytka UL J5 (piny 3-4 wolne)
+  plytka UL: J1 V5, J2 V6, J3 V7, J4 V8; pin 1 anoda (toroid i J101-1/-5, J201-1/-5),
+             2 odczep UL toroidu (NIE na J101/J201), 3 -> J101-2 / J101-4 / J201-2 / J201-4
 Kolumny:
   odczep 4 Ohm + COM toroidu -> glosniki J2 (L) / J5 (P); Marantz -> J1/J4; kolumny <- J3/J6
   cewki glosniki J7 <- sterowanie J13;  TRIGGER (jack 3,5 mm) -> sterowanie J12

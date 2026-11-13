@@ -5,6 +5,6 @@ last_client=eeschema
 version=1
 LibDir=
 [eeschema/libraries]
-LibName1=soloist88
+LibName1=williamson
 [pcbnew]
 version=1

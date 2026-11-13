@@ -53,8 +53,8 @@ MH = {"sterowanie": [(4.5, 4.5), (95.5, 4.5), (4.5, 95.5), (95.5, 95.5)],
       "zasilacz_siec": [(4.5, 4.5), (95.5, 4.5), (4.5, 95.5), (95.5, 95.5)],
       "zasilacz_hv": [(4.5, 4.5), (95.5, 4.5), (67.0, 95.5), (95.5, 95.5)],
       "glosniki": [(4.5, 37.5), (51.0, 37.5), (95.5, 22.0)],
-      "ul": [(4.5, 4.5), (4.5, 43.5), (48.0, 24.0)]}
-UL_POS = {"L": (40.0, 242.0), "R": (286.0, 242.0)}                # plytki UL 74 x 48 na dnie, pod KT88 kanalu
+      "ul": [(4.5, 4.5), (78.0, 4.5), (4.5, 61.5), (95.5, 61.5)]}
+UL_POS = {"LP": (150.0, 230.0)}                                    # jedna plytka UL 100 x 66 na dnie, na srodku pod plytka Onyxa
 SEL_BOX = (24.0, 150.0, 136.0, 210.0)                               # selektor w puszce aluminiowej ok. 112 x 60 x 31 (Hammond 1590), pod plytka
 SEL_MH = [(30.0, 156.0), (130.0, 156.0), (30.0, 204.0), (130.0, 204.0)]
 TRAFO_POS = {"OT_L": (65.0, 385.0, 120.0, 65.0), "TR1": (200.0, 385.0, 130.0, 65.0), "OT_R": (335.0, 385.0, 120.0, 65.0)}
@@ -285,9 +285,9 @@ for k, (x, y) in enumerate([ob(xx, 100.0) for xx in (60.0, 100.0, 180.0, 260.0, 
 for (x, y) in POTS:
     ref.append(cyl("REF_potencjometr_biasu", (0.2, 0.35, 0.8), x, y, 10, OB_ZTOP, OB_ZTOP + 8))
 for side_, (ux, uy) in UL_POS.items():
-    ref.append(box("REF_plytka_UL_" + side_, PCB, ux, uy, 9, ux + 74, uy + 48, 10.6))
-    for cxb in (20.0, 52.0):
-        ref.append(box("REF_przekaznik_G2RL_UL", BLACK, ux + cxb - 6.25, uy + 24 - 14.4, 10.6, ux + cxb + 6.25, uy + 24 + 14.4, 26.3))
+    ref.append(box("REF_plytka_UL_" + side_, PCB, ux, uy, 9, ux + 100, uy + 66, 10.6))
+    for (cxb, cyb) in ((17.0, 16.5), (17.0, 40.5), (67.0, 16.5), (67.0, 40.5)):
+        ref.append(box("REF_przekaznik_G2RL_UL", BLACK, ux + cxb - 14.4, uy + cyb - 6.25, 10.6, ux + cxb + 14.6, uy + cyb + 6.25, 26.3))
 ref.append(box("REF_selektor_puszka_1590", (0.55, 0.57, 0.6), *SEL_BOX[:2], T, SEL_BOX[2], SEL_BOX[3], T + 31))
 for name, (x0, y0) in BOARDS_DNO.items():
     ref.append(box("REF_plytka_" + name, PCB, x0, y0, 13, x0 + 100, y0 + 100, 14.6))

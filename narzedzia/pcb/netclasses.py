@@ -13,6 +13,11 @@ CLASSES = {
         ("CEWKI", 0.5, 0.3, "6,0 do SIEC_230/HT_AC", "+12V RLY1 RLY2 RLY3 RLY4", "ok. 35 mA na cewke"),
         ("GND", 1.0, 0.3, "", "GND", ""),
     ],
+    "ul_trioda_williamson": [
+        ("UL_HV", 0.8, 3.0, "6,0 do CEWKI", " ".join("%s_%s" % (a, t) for t in ("V5", "V6", "V7", "V8") for a in ("AN", "UL", "G2")),
+         "anody i odczepy UL, ok. 465 V DC + sygnal (do ok. 850 V szczyt); 3 mm takze miedzy kanalami"),
+        ("CEWKI", 0.5, 0.3, "6,0 do UL_HV", "+12V RLY_UL", "cewki 4 x 33 mA"),
+    ],
 }
 DEFAULT = (0.4, 0.3)
 

@@ -38,7 +38,7 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
       sterowanie X 45-145, zasilacz_siec X 150-250, zasilacz_hv X 255-355, wszystkie Y 8-108;
       UWAGA: zasilacz jest teraz jedna prosta plytka (docs/09) - zajmuje miejsce zasilacz_siec,
       miejsce zasilacz_hv zostaje wolne (zapas, ew. dlawiki 10 H, jesli nie wejda pod oslone TR);
-    - plytki UL pod rzedem KT88 (X 40-114 i 286-360, Y 242-290);
+    - jedna plytka UL (4 przekazniki, 100 x 66) na srodku pod plytka Onyxa (X 150-250, Y 230-296);
     - puszka selektora pod plytka, z przodu z lewej (X 24-136, Y 150-210);
     - bez pierscieni otworow pod podstawki KT88; wentylacja pod srodkiem plytki (Y 156-196).
   BEZ ZMIAN
@@ -47,7 +47,7 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
     plytka glosnikow pod lewym TG.
 
 WYSOKOSCI POD PLYTKA ONYXA (spod plytki Z 88,4, kondensatory do ok. Z 38)
-  plytki UL do Z ok. 27; puszka selektora do Z 34. Zapas min. ok. 4 mm nad puszka selektora -
+  plytka UL do Z ok. 27; puszka selektora do Z 34. Zapas min. ok. 4 mm nad puszka selektora -
   jesli mniej, puszke przesunac poza obrys kondensatorow albo uzyc nizszej (np. Hammond 1590 25 mm).
 
 DO USTALENIA (zmierzyc na plytce)

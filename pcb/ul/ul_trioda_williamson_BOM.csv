@@ -1,0 +1,18 @@
+﻿Oznaczenie;Wartosc;Footprint;Strona;X [mm];Y [mm];Grupa;LCSC;Uwagi
+K1;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;17.00;16.50;PRZEKAZNIKI UL/TRIODA;C61458;"lampa V5 (kanal L): bez pradu cewki G2 <- odczep UL (NC); cewka 12 V: G2 <- anoda (NO)"
+D1;1N4148;D_DO-35_P7.62;GORA;20.00;59.00;PRZEKAZNIKI UL/TRIODA;;dioda cewki K1
+J1;LAMPA_V5;TerminalBlock_1x03_P7.62_V;GORA;42.00;16.50;ZLACZA;;zlacze srubowe 7,62 mm, V5: 1 anoda (toroid i J101-1), 2 odczep UL toroidu, 3 do J101--2 (G2)
+K2;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;17.00;40.50;PRZEKAZNIKI UL/TRIODA;C61458;"lampa V6 (kanal L): bez pradu cewki G2 <- odczep UL (NC); cewka 12 V: G2 <- anoda (NO)"
+D2;1N4148;D_DO-35_P7.62;GORA;32.00;59.00;PRZEKAZNIKI UL/TRIODA;;dioda cewki K2
+J2;LAMPA_V6;TerminalBlock_1x03_P7.62_V;GORA;42.00;40.50;ZLACZA;;zlacze srubowe 7,62 mm, V6: 1 anoda (toroid i J101-5), 2 odczep UL toroidu, 3 do J101--4 (G2)
+K3;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;67.00;16.50;PRZEKAZNIKI UL/TRIODA;C61458;"lampa V7 (kanal P): bez pradu cewki G2 <- odczep UL (NC); cewka 12 V: G2 <- anoda (NO)"
+D3;1N4148;D_DO-35_P7.62;GORA;68.00;59.00;PRZEKAZNIKI UL/TRIODA;;dioda cewki K3
+J3;LAMPA_V7;TerminalBlock_1x03_P7.62_V;GORA;92.00;16.50;ZLACZA;;zlacze srubowe 7,62 mm, V7: 1 anoda (toroid i J201-1), 2 odczep UL toroidu, 3 do J201--2 (G2)
+K4;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;67.00;40.50;PRZEKAZNIKI UL/TRIODA;C61458;"lampa V8 (kanal P): bez pradu cewki G2 <- odczep UL (NC); cewka 12 V: G2 <- anoda (NO)"
+D4;1N4148;D_DO-35_P7.62;GORA;80.00;59.00;PRZEKAZNIKI UL/TRIODA;;dioda cewki K4
+J4;LAMPA_V8;TerminalBlock_1x03_P7.62_V;GORA;92.00;40.50;ZLACZA;;zlacze srubowe 7,62 mm, V8: 1 anoda (toroid i J201-5), 2 odczep UL toroidu, 3 do J201--4 (G2)
+J5;CEWKI;TerminalBlock_1x02_P5.08;GORA;50.00;60.00;ZLACZA;;ze sterowania J11 piny 1-2 (+12 V, RLY_UL)
+MH1;M3;MountingHole_M3;GORA;4.50;4.50;OTWORY;;
+MH2;M3;MountingHole_M3;GORA;78.00;4.50;OTWORY;;
+MH3;M3;MountingHole_M3;GORA;4.50;61.50;OTWORY;;
+MH4;M3;MountingHole_M3;GORA;95.50;61.50;OTWORY;;
