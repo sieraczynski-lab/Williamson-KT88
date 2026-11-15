@@ -46,9 +46,9 @@ TS = 2.5
 G_LEVELS = [Z_COV + T + 30.0, Z_COV + T + 30.0 + TS + 60.0, Z_COV + T + 30.0 + 2 * (TS + 60.0)]   # spody ramek: 136 / 198,5 / 261
 G_RIN, G_BAND, G_BAR, G_BOSS, G_FILLET = 28.0, 5.0, 4.0, 8.0, 6.0   # otwor fi 56 (banka fi 52), obwodka 5 mm, mostki 8 mm
 _GX = [50.0, 150.0, 250.0, 350.0]; _GY6, _GYK = 172.0, 262.0         # osie 6SN7 / KT88 (jak SMALL / KT)
-G_RODS = ([(x, _GY6) for x in (100.0, 200.0, 300.0)]                 # przod: miedzy 6SN7, w osi lamp
-          + [(x, (_GY6 + _GYK) / 2) for x in _GX]                     # miedzy 6SN7 i KT88, w osi kazdej lampy
-          + [(x, _GYK + 26.0) for x in (100.0, 200.0, 300.0)])        # tyl: miedzy KT88, na wysokosci brzegu banki
+G_RODS = ([(x, _GY6) for x in (100.0, 300.0)]                        # przod: skrajne polaczenia miedzy 6SN7, w osi lamp
+          + [(x, (_GY6 + _GYK) / 2) for x in (_GX[0], _GX[-1])]       # miedzy 6SN7 i KT88, na skrajnych lampach
+          + [(x, _GYK + 26.0) for x in (100.0, 300.0)])               # tyl: skrajne polaczenia miedzy KT88, brzeg banki
 POT_HOLE = 8.0                        # otwor na srubokret do potencjometru biasu
 def ob(x, y):                          # wspolrzedne z rysunku Onyxa -> obudowa
     return (OB_X0 + x, OB_Y1 - y)

@@ -32,7 +32,7 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
     - 4 otwory fi 8 na srubokret do potencjometrow biasu: X 85 / 115 / 285 / 315, Y 262;
     - BEZ otworow na tuleje plytki (plytka stoi na dnie);
     - wentylacja: jeden wieniec otworow fi 6 (r 27 mm) wokol kazdej KT88; przy 6SN7 bez otworow;
-    - bez otworow KT88 fi 60; 10 otworow fi 4,5 na slupki oslony lamp (ponizej);
+    - bez otworow KT88 fi 60; 6 otworow fi 4,5 na slupki oslony lamp (ponizej);
     - tylko 4 sruby M4 w rogach (X 11 / 389, Y 11 / 302), wkrecane w TROJKATNE ZACZEPY
       (AL_zaczep_pokrywy_*, 4 szt.): blacha 3 mm, przyprostokatne 25 mm, poziomo w rogach komory
       wzmacniacza, Z 95-98 (5 mm pod gorna krawedzia scianek); po 2 wpusty 7 x 3 w bok i 2 w scianke
@@ -60,11 +60,12 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
     - osie potencjometrow biasu (X 85 / 115 / 285 / 315) w wolnych polach miedzy obwodkami KT88
       (ok. 2 mm od obwodki) - srubokret fi 3 przechodzi przez wszystkie ramki;
     - 6SN7 (Psvane UK-6SN7 Plus) przyjete jak KT88: fi 52 x 140 - zmierzyc;
-    - 10 slupkow M4: przod miedzy 6SN7 w osi lamp (X 100 / 200 / 300, Y 172), miedzy 6SN7 i KT88
-      w osi kazdej lampy (X 50 / 150 / 250 / 350, Y 217), tyl miedzy KT88 na wysokosci brzegu banki
-      (X 100 / 200 / 300, Y 288). Od spodu pokrywy sruba M4 (leb pod pokrywa, ok. 10 mm nad plytka
-      Onyxa - sprawdzic, czy w tych miejscach nie ma na plytce wysokich elementow), tuleje M4
-      zensko-meskie 30 / 60 / 60 mm, na gorze nakretki kolpakowe. Pokrywa ma 10 otworow fi 4,5.
+    - 6 slupkow M4: przod miedzy 6SN7 w osi lamp (X 100 / 300, Y 172), miedzy 6SN7 i KT88 na skrajnych
+      lampach (X 50 / 350, Y 217), tyl miedzy KT88 na wysokosci brzegu banki (X 100 / 300, Y 288);
+      pozostale polaczenia ramki bez slupkow (ten sam ksztalt, bez otworu). Od spodu pokrywy sruba M4
+      (leb pod pokrywa, ok. 10 mm nad plytka Onyxa - sprawdzic, czy w tych miejscach nie ma na plytce
+      wysokich elementow), tuleje M4 zensko-meskie 30 / 60 / 60 mm, na gorze nakretki kolpakowe.
+      Pokrywa ma 6 otworow fi 4,5.
   OBUDOWA TRANSFORMATOROW (W3)
     - DACH (AL_trafo_dach): bez wentylacji; 4 gniazda 20 x 3 na zaczepy tylnej scianki.
     - PRZOD (AL_trafo_przod): 3 rzedy otworow fi 8 (Z 62/74/86, pod pokrywa) - przeplyw z komory
