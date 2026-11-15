@@ -40,17 +40,19 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
     - puszka selektora pod plytka, z przodu z lewej (X 24-136, Y 150-210);
     - bez pierscieni otworow pod podstawki KT88; wentylacja pod srodkiem plytki (Y 156-196).
   OBUDOWA TRANSFORMATOROW (W3)
-    - DACH (AL_trafo_dach): bez wentylacji; 4 wpusty 7 x 30 na wsporniki tylnej scianki.
+    - DACH (AL_trafo_dach): bez wentylacji; 4 gniazda 20 x 3 na zaczepy tylnej scianki.
     - PRZOD (AL_trafo_przod): 3 rzedy otworow fi 8 (Z 62/74/86, pod pokrywa) - przeplyw z komory
       wzmacniacza do komor transformatorow; przepusty gumowe fi 16 bez zmian.
-    - TYL (AL_trafo_tyl_zdejmowany): plaska plyta 400 x 156 x 3, ZDEJMOWANA, 13 x M4:
-        boki 2+2 (X 16,5 / 383,5, Z 20 / 120), dno 3 (X 150 / 250 / 335, Z 16,5),
-        dach 4 (X 65 / 150 / 250 / 335, Z 139,5).
-      Dno, boki, dach i przegrody koncza sie na Y 457 (bez wypustow do tylu).
-    - WSPORNIKI (AL_wspornik_tyl_*, 11 szt.): katownik z aluminium 5 mm, dl. 30 mm, kolnierz do
-      scianki 17 mm + wypust 7 x 30 x 3 w gniazdo scianki (klejony, np. epoksyd), kolnierz do tylnej
-      scianki 20 mm z gwintem M4 (os 13,5 mm od scianki). Najprosciej: wyfrezowac albo wyciac z
-      katownika 20 x 20 x 5 i dopilowac wypust. DXF: przekroj (wyciagniecie 30 mm).
+    - TYL (AL_trafo_tyl_zdejmowany): plaska plyta 393 x 149 x 3, ZDEJMOWANA, wchodzi w otwor
+      obudowy (miedzy boki, dno i dach) z luzem 0,5 mm na strone, rowno z krawedziami. 13 x M4:
+        boki 2+2 (X 14 / 386, Z 20 / 120), dno 3 (X 150 / 250 / 335, Z 14),
+        dach 4 (X 65 / 150 / 250 / 335, Z 142).
+      Dno, boki i dach dochodza do Y 460 (bez wypustow do tylnej scianki); przegrody do Y 457.
+    - ZACZEPY (AL_zaczep_tyl_*, 11 szt.): z blachy aluminiowej 3 mm jak reszta, plytka 30 x 22
+      rownolegla do tylnej scianki, tuz za nia (Y 454-457), z wypustem 20 x 3 w gniazdo boku / dna /
+      dachu - klejone (np. epoksyd). Otwor fi 3,3 pod gwint M4; jesli gwint w 3 mm za slaby,
+      rozwiercic na fi 6 i dac nakretke nitowana M4. Tylna scianka opiera sie o zaczepy, sruby
+      ja do nich dociagaja.
     - Transformatory przesuniete do przodu: TG Y 377, TR1 Y 382 (byly Y 385).
     - Profile stalowe 20 x 20 USUNIETE (gniazda RCA przeniesione), plytka glosnikow Y 330-430.
   TYLNA SCIANKA - ROZMIESZCZENIE (X jak od przodu; patrzac od tylu strony sa odwrocone)
@@ -65,10 +67,10 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
       (WYMIARY Z KARTY KATALOGOWEJ - SPRAWDZ NA RYSUNKU PRODUCENTA PRZED CIECIEM); glebokosc 46,6 mm,
       korpus nad TR1. Np. DD11.0124.1110 (bezpiecznik 2-biegunowy, wylacznik podswietlany zielony)
       + szuflada bezpiecznikow 4301.1403; bezpieczniki T2,5 A 5x20;
-    - TRIGGER jack 3,5 mm fi 6: X 140, Z 30; sruba PE fi 4,5: X 260, Z 35;
+    - TRIGGER jack 3,5 mm fi 6: X 140, Z 36; sruba PE fi 4,5: X 260, Z 35;
     - wentylacja: otwory fi 8 w gornej 1/3 (Z 108-144), z ominieciem przegrod, wspornikow, zaciskow.
   BEZ ZMIAN
-    boki (poza wpustami na wsporniki i koncem na Y 457), przednia scianka, front drewniany,
+    boki (poza gniazdami na zaczepy i bez wypustow do tylu), przednia scianka, front drewniany,
     przegrody (bez wypustow do tylu), ekran sterowania, plytka glosnikow pod lewym TG.
 
 WYSOKOSCI POD PLYTKA ONYXA (spod plytki Z 88,4, kondensatory do ok. Z 38)

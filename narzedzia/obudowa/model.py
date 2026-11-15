@@ -58,21 +58,22 @@ SEL_BOX = (24.0, 150.0, 136.0, 210.0)                               # selektor w
 SEL_MH = [(30.0, 156.0), (130.0, 156.0), (30.0, 204.0), (130.0, 204.0)]
 TRAFO_POS = {"OT_L": (65.0, 377.0, 120.0, 65.0), "TR1": (200.0, 382.0, 130.0, 65.0), "OT_R": (335.0, 377.0, 120.0, 65.0)}   # przesuniete do przodu: miejsce na zaciski i gniazda z tylu
 OT_RAISE = 35.0                      # TG na tulejach: pod nimi gniazda RCA (lewa komora)
-YP = D - T                           # wewnetrzna plaszczyzna zdejmowanej tylnej scianki (dno, boki, dach koncza sie tu)
+YP = D - T                           # wewnetrzna plaszczyzna zdejmowanej tylnej scianki (wchodzi w obudowe, rowno z krawedziami)
+RP_CL = 0.5                          # luz tylnej scianki w otworze obudowy (na strone)
 # tylna scianka (x, z) - x jak patrzac od przodu, czyli patrzac od tylu lewa komora (TG L) jest po PRAWEJ
 RCA = [(x, z) for x in (34.0, 56.0, 78.0, 100.0) for z in (32.0, 13.0)]   # 4 wejscia x (L gora, P dol), komora TG L
 SPK_OUT = [(30.0, z) for z in (100.0, 75.0, 50.0)] + [(W - 30.0, z) for z in (100.0, 75.0, 50.0)]  # wyjscia 8 / 4 Ohm / COM
 SPK_MAR = [(100.0, z) for z in (88.0, 62.0)] + [(W - 100.0, z) for z in (88.0, 62.0)]                # wejscie z Marantza +/-
 IEC = (200.0, 100.0)                 # Schurter DD11 (C14 + bezpiecznik 5x20 + wylacznik 2-bieg.), pionowo, nad TR1
 IEC_CUT = (27.1, 56.0); IEC_SCR = 32.5; IEC_DEPTH = 46.6
-TRIG_JACK = (140.0, 30.0)
+TRIG_JACK = (140.0, 36.0)
 PE_STUD = (260.0, 35.0)
 BR_SIDE_Z = [20.0, 120.0]            # wsporniki tylnej scianki (na wpust, klejone): boki
 BR_FLOOR_X = [150.0, 250.0, 335.0]   # (w komorze TR1 tylko niskie wsporniki - TR1 obok)   # dno
 BR_LID_X = [65.0, 150.0, 250.0, 335.0]   # dach obudowy trafo
-BR_LEN, BR_TH, BR_FL, BR_WD = 30.0, 5.0, 20.0, 17.0
-BR_T0, BR_T1 = 15.0, 8.0               # wpust: od YP-15 do YP-8 (7 x 30 mm)
-BR_SCR = 13.5                        # os otworu M4 od wewnetrznej powierzchni sciany
+BR_LEN, BR_H, BR_TAB = 30.0, 22.0, 20.0  # zaczep z blachy 3 mm: plytka 30 x 22 rownolegla do tylnej scianki, wpust 20 x 3
+BR_FL = BR_H
+BR_SCR = 11.0                        # os otworu M4 od wewnetrznej powierzchni sciany
 CORNER_POSTS = [(12.0, 12.0), (388.0, 12.0), (12.0, 295.0), (388.0, 295.0)]
 FEET = [(35.0, 25.0), (365.0, 25.0), (45.0, 440.0), (355.0, 440.0)]
 GL_X0, GL_Y0 = 82.0, 330.0
@@ -93,7 +94,7 @@ parts = []
 def dno():
     f = {"left": tabs([50, 160, 270, 380], -T), "right": tabs([50, 160, 270, 380], -T),
          "bottom": tabs([60, 200, 340], -T)}
-    outer = edge_features(0, 0, W, YP, f)
+    outer = edge_features(0, 0, W, D, f)
     H = []
     for x in (60, 200, 340):
         H.append(slot(x, Y_BOX + T / 2, TAB, T))                   # przednia scianka trafo
@@ -110,7 +111,7 @@ def dno():
         H.append(circle(x, y, 8.5))
     for name, (x0, y0) in BOARDS_DNO.items():
         H += [circle(x0 + mx, y0 + my, 3.5) for (mx, my) in board_mh(name)]
-    H += [slot(x, YP - (BR_T0 + BR_T1) / 2, BR_LEN, BR_T0 - BR_T1) for x in BR_FLOOR_X]                             # wpusty wspornikow tylnej scianki
+    H += [slot(x, YP - T / 2, BR_TAB, T) for x in BR_FLOOR_X]                             # wpusty wspornikow tylnej scianki
     H += [circle(GL_X0 + my, GL_Y0 + mx, 3.5) for (mx, my) in board_mh("glosniki")]      # plytka glosnikow
     H += [circle(x, y, 4.5) for (x, y) in CORNER_POSTS]
     H += [circle(x, y, 5.0) for (x, y) in FEET]
@@ -125,8 +126,8 @@ def side(name, x0):
     P = [(T, T)]
     for (a, b) in [(c - TAB / 2, c + TAB / 2) for c in (50, 160, 270, 380)]:
         P += [(a, T), (a, 0), (b, 0), (b, T)]
-    P.append((D - T, T))
-    P.append((D - T, Z_LID))
+    P.append((D, T))
+    P.append((D, Z_LID))
     for (a, b) in sorted([(c - TAB / 2, c + TAB / 2) for c in (335, 385, 435)], reverse=True):
         P += [(b, Z_LID), (b, Z_LID + T), (a, Z_LID + T), (a, Z_LID)]
     P += [(Y_STEP, Z_LID), (Y_STEP, Z_COV), (T, Z_COV)]
@@ -134,7 +135,7 @@ def side(name, x0):
         P += [(T, b), (0, b), (0, a), (T, a)]
     H = [slot(Y_BOX + T / 2, (a + b) / 2, T, b - a) for (a, b) in BOXFRONT_TABS]
     H += [circle(y, 53, 4.5) for y in (60, 180, 290, 400)]       # mocowanie bokow drewnianych
-    H += [slot(YP - (BR_T0 + BR_T1) / 2, z, BR_T0 - BR_T1, BR_LEN) for z in BR_SIDE_Z]       # wpusty wspornikow tylnej scianki
+    H += [slot(YP - T / 2, z, T, BR_TAB) for z in BR_SIDE_Z]       # wpusty wspornikow tylnej scianki
     return prism(name, ALU, P, H, x0, x0 + T, "YZ")
 parts.append(side("AL_bok_lewy", 0.0))
 parts.append(side("AL_bok_prawy", W - T))
@@ -169,8 +170,8 @@ def box_front():
 parts.append(box_front())
 
 def box_rear():
-    """Zdejmowana tylna scianka: plaska plyta 400 x 156, przykrecana M4 do wspornikow klejonych w boki, dno i dach."""
-    outer = rect(0, 0, W, Z_LID + T)
+    """Zdejmowana tylna scianka: plaska plyta wchodzaca w otwor obudowy z luzem 0,5 mm, przykrecana M4 do zaczepow."""
+    outer = rect(T + RP_CL, T + RP_CL, W - T - RP_CL, Z_LID - RP_CL)
     H = [circle(T + BR_SCR, z, 4.5) for z in BR_SIDE_Z] + [circle(W - T - BR_SCR, z, 4.5) for z in BR_SIDE_Z]
     H += [circle(x, T + BR_SCR, 4.5) for x in BR_FLOOR_X] + [circle(x, Z_LID - BR_SCR, 4.5) for x in BR_LID_X]
     H += [circle(x, z, 11) for (x, z) in RCA]                         # RCA izolowane, 4 pary
@@ -183,8 +184,8 @@ def box_rear():
     taken = [(x, z, 4.5) for (x, z) in RCA] + [(x, z, 9) for (x, z) in SPK_OUT + SPK_MAR]
     for z in (108.0, 120.0, 132.0, 144.0):                            # wentylacja: gorna 1/3 scianki
         for i in range(33):
-            x = 8.0 + i * 12
-            if x > 392: continue
+            x = 14.0 + i * 12
+            if x > 386: continue
             if abs(x - (X_P1 + T / 2)) < 9 or abs(x - (X_P2 + T / 2)) < 9: continue
             if (x < T + BR_FL + 6 or x > W - T - BR_FL - 6) and 100 < z < 141: continue
             if any(abs(x - bx) < BR_LEN / 2 + 5 for bx in BR_LID_X) and z > Z_LID - BR_FL - 8: continue
@@ -193,20 +194,27 @@ def box_rear():
             H.append(circle(x, z, 8))
     return prism("AL_trafo_tyl_zdejmowany", ALU, outer, H, YP, D, "XZ")
 def brackets():
-    """Wsporniki z aluminium 5 mm (lub frezowane z katownika), wpust 7 x 30 w scianie, klejone; gwint M4 w kolnierzu."""
+    """Zaczepy z blachy aluminiowej 3 mm (jak reszta), plytka 30 x 22 rownolegla do tylnej scianki, tuz za nia
+    (Y 454-457); wpust 20 x 3 w gniazdo boku / dna / dachu, klejony. Otwor fi 3,3 pod gwint M4
+    albo fi 6 pod nakretke nitowana M4."""
     out = []
-    L = [(0, YP - BR_T0), (T, YP - BR_T0), (T, YP - BR_WD), (T + BR_TH, YP - BR_WD), (T + BR_TH, YP - BR_TH),
-         (T + BR_FL, YP - BR_TH), (T + BR_FL, YP), (T, YP), (T, YP - BR_T1), (0, YP - BR_T1)]
+    y0, y1 = YP - T, YP
+    h = (BR_LEN - BR_TAB) / 2
     for k, z in enumerate(BR_SIDE_Z):
-        out.append(prism("AL_wspornik_tyl_bok_L%d" % (k + 1), ALU2, L, [], z - BR_LEN / 2, z + BR_LEN / 2, "XY"))
-        out.append(prism("AL_wspornik_tyl_bok_P%d" % (k + 1), ALU2, [(W - u, v) for (u, v) in L], [], z - BR_LEN / 2, z + BR_LEN / 2, "XY"))
-    Fl = [(YP - BR_WD, T), (YP - BR_T0, T), (YP - BR_T0, 0), (YP - BR_T1, 0), (YP - BR_T1, T), (YP, T), (YP, T + BR_FL),
-          (YP - BR_TH, T + BR_FL), (YP - BR_TH, T + BR_TH), (YP - BR_WD, T + BR_TH)]
+        for side_, sx in (("L", 1), ("P", -1)):
+            X = (lambda u: u) if sx == 1 else (lambda u: W - u)
+            P = [(X(T), z - BR_LEN / 2), (X(T + BR_H), z - BR_LEN / 2), (X(T + BR_H), z + BR_LEN / 2), (X(T), z + BR_LEN / 2),
+                 (X(T), z + BR_TAB / 2), (X(0), z + BR_TAB / 2), (X(0), z - BR_TAB / 2), (X(T), z - BR_TAB / 2)]
+            H = [circle(X(T + BR_SCR), z, 3.3)]
+            out.append(prism("AL_zaczep_tyl_bok_%s%d" % (side_, k + 1), ALU2, P, H, y0, y1, "XZ"))
     for k, x in enumerate(BR_FLOOR_X):
-        out.append(prism("AL_wspornik_tyl_dno_%d" % (k + 1), ALU2, Fl, [], x - BR_LEN / 2, x + BR_LEN / 2, "YZ"))
-    Li = [(u, Z_LID + T - v) for (u, v) in Fl]                      # lustro: dno (0..T) -> dach (Z_LID..Z_LID+T)
+        P = [(x - BR_LEN / 2, T), (x - BR_TAB / 2, T), (x - BR_TAB / 2, 0), (x + BR_TAB / 2, 0), (x + BR_TAB / 2, T),
+             (x + BR_LEN / 2, T), (x + BR_LEN / 2, T + BR_H), (x - BR_LEN / 2, T + BR_H)]
+        out.append(prism("AL_zaczep_tyl_dno_%d" % (k + 1), ALU2, P, [circle(x, T + BR_SCR, 3.3)], y0, y1, "XZ"))
     for k, x in enumerate(BR_LID_X):
-        out.append(prism("AL_wspornik_tyl_dach_%d" % (k + 1), ALU2, Li, [], x - BR_LEN / 2, x + BR_LEN / 2, "YZ"))
+        P = [(x - BR_LEN / 2, Z_LID - BR_H), (x + BR_LEN / 2, Z_LID - BR_H), (x + BR_LEN / 2, Z_LID), (x + BR_TAB / 2, Z_LID),
+             (x + BR_TAB / 2, Z_LID + T), (x - BR_TAB / 2, Z_LID + T), (x - BR_TAB / 2, Z_LID), (x - BR_LEN / 2, Z_LID)]
+        out.append(prism("AL_zaczep_tyl_dach_%d" % (k + 1), ALU2, P, [circle(x, Z_LID - BR_SCR, 3.3)], y0, y1, "XZ"))
     return out
 parts += brackets()
 parts.append(box_rear())
@@ -222,10 +230,10 @@ parts.append(partition("AL_trafo_przegroda_P", X_P2))
 
 def lid():
     f = {"left": tabs([335, 385, 435], -T), "right": tabs([335, 385, 435], -T)}
-    outer = edge_features(0, Y_STEP, W, YP, f)
+    outer = edge_features(0, Y_STEP, W, D, f)
     H = [slot(x, Y_BOX + T / 2, TAB, T) for x in (60, 200, 340)]
     H += [slot(xp + T / 2, y, T, TAB) for xp in (X_P1, X_P2) for y in (335, 385, 435)]
-    H += [slot(x, YP - (BR_T0 + BR_T1) / 2, BR_LEN, BR_T0 - BR_T1) for x in BR_LID_X]               # wpusty wspornikow tylnej scianki
+    H += [slot(x, YP - T / 2, BR_TAB, T) for x in BR_LID_X]               # wpusty wspornikow tylnej scianki
     return prism("AL_trafo_dach", ALU, outer, H, Z_LID, Z_LID + T, "XY")
 parts.append(lid())
 
