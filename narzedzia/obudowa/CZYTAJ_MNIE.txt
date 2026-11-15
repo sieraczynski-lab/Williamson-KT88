@@ -48,12 +48,14 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
   OSLONA LAMP (SS_oslona_lamp_dolna / srodkowa / gorna) - stal nierdzewna 2,5 mm (2-3 mm), laser
     - 3 jednakowe ramki, spody na Z 136 / 198,5 / 261 (nad lampami ok. 15 mm);
     - kazda lampa w obwodce 5 mm: otwor fi 56 (banka fi 52);
-    - WARIANT B (w STEP i DXF/): polaczenia srubowe wyplaszczone - od zewnatrz prosta styczna do obwodek,
+    - WARIANT C (w STEP i DXF/): tyl i srodek jak w B, przod jak boki - polokragle obwodki 6SN7,
+      w miejscu slupka przewezenie z polokraglymi wcieciami z obu stron. Rysunek: oslona_lamp_wariant_C_z_gory.png;
+    - WARIANT B: polaczenia srubowe wyplaszczone - od zewnatrz prosta styczna do obwodek,
       od srodka polokragle wciecie przechodzace stycznie w zewnetrzna krawedz obwodek; miedzy rzedami
       przewezenie z wcieciami z obu stron. Rysunek: oslona_lamp_wariant_B_z_gory.png;
     - WARIANT A (zachowany): obwodki polaczone mostkami 8 mm z wypustkami wokol slupkow, wciecia R6.
-      DXF: DXF/oslona_inny_wariant/, rysunki: oslona_lamp_wariant_A_z_gory.png, widok_przod_oslona_A.png.
-      Model z wariantem A: OSLONA=A python3 export.py;
+      Warianty A i B: DXF/oslona_inne_warianty/, rysunki oslona_lamp_wariant_*_z_gory.png,
+      widok_przod_oslona_A/B.png. Inny wariant w modelu: OSLONA=A (albo B) python3 export.py;
       lampy wyjmuje sie do gory przez obwodki, bez zdejmowania oslony;
     - osie potencjometrow biasu (X 85 / 115 / 285 / 315) w wolnych polach miedzy obwodkami KT88
       (ok. 2 mm od obwodki) - srubokret fi 3 przechodzi przez wszystkie ramki;

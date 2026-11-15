@@ -78,14 +78,15 @@ def top_png(part, path):
     img.save(path)
 cur = [p for p in model.parts if p.name.startswith("SS_oslona_lamp_") and p.name.endswith("gorna")][0]
 top_png(cur, os.path.join(OUT, "oslona_lamp_wariant_%s_z_gory.png" % model.GUARD_VARIANT))
-other = model.guard_A() if model.GUARD_VARIANT == "B" else model.guard_B()
-for S in other:
-    outer, holes, th = REC[S.name]
-    xs = [p[0] for p in outer]; ys = [p[1] for p in outer]
-    os.makedirs(os.path.join(OUT, "DXF", "oslona_inny_wariant"), exist_ok=True)
-    dxf(os.path.join(OUT, "DXF", "oslona_inny_wariant", S.name + ".dxf"), [outer] + list(holes), min(xs), min(ys))
-top_png([p for p in other if p.name.endswith("gorna")][0], os.path.join(OUT, "oslona_lamp_wariant_%s_z_gory.png" % ("A" if model.GUARD_VARIANT == "B" else "B")))
 base = [p for p in model.parts if not p.name.startswith("SS_oslona")]
-render(base + other + model.ref, os.path.join(OUT, "widok_przod_oslona_%s.png" % ("A" if model.GUARD_VARIANT == "B" else "B")), azim=-62, elev=26,
-       title="Oslona lamp - drugi wariant")
+for v, fn in sorted(model.GUARDS.items()):
+    if v == model.GUARD_VARIANT: continue
+    other = fn()
+    os.makedirs(os.path.join(OUT, "DXF", "oslona_inne_warianty"), exist_ok=True)
+    for S in other:
+        outer, holes, th = REC[S.name]
+        xs = [p[0] for p in outer]; ys = [p[1] for p in outer]
+        dxf(os.path.join(OUT, "DXF", "oslona_inne_warianty", S.name + ".dxf"), [outer] + list(holes), min(xs), min(ys))
+    top_png([p for p in other if p.name.endswith("gorna")][0], os.path.join(OUT, "oslona_lamp_wariant_%s_z_gory.png" % v))
+    render(base + other + model.ref, os.path.join(OUT, "widok_przod_oslona_%s.png" % v), azim=-62, elev=26, title="Oslona lamp - wariant %s" % v)
 print(OUT, len(rows))

@@ -289,7 +289,7 @@ def guard_A():
     return [prism("SS_oslona_lamp_A_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
 
 
-def guard_B():
+def guard_B(front="flat", tag="B"):
     """Oslona lamp, WARIANT B: obwodki 5 mm wokol lamp; polaczenia srubowe wyplaszczone - od zewnatrz prosta
     styczna do obwodek, od srodka polokragle wciecie styczne do zewnetrznej krawedzi obwodek (bez wypustek)."""
     import numpy as np
@@ -316,6 +316,15 @@ def guard_B():
         d = disk(c, Ro); f = d if f is None else np.minimum(f, d)
     webs = []
     for (yA, nrm, sft) in ((_GY6, -1.0, -32.0), (_GYK, +1.0, +3.0)):   # przod / tyl: plaska strona n, wciecie z drugiej
+        if yA == _GY6 and front == "waist":                               # wariant C: przod jak boki - przewezenie
+            for i in range(3):
+                A, B = (_GX[i], yA), (_GX[i + 1], yA)
+                xm = (A[0] + B[0]) / 2
+                cd, cu = (xm, yA - 32.0), (xm, yA + 32.0)
+                r = notch_r(A, cd)
+                P = [tan_pt(A, cd), tan_pt(B, cd), tan_pt(B, cu), tan_pt(A, cu)]
+                webs.append(np.maximum(np.maximum(poly(P), -disk(cd, r)), -disk(cu, r)))
+            continue
         for i in range(3):
             A, B = (_GX[i], yA), (_GX[i + 1], yA)
             nc = ((A[0] + B[0]) / 2, yA + nrm * sft)
@@ -339,9 +348,16 @@ def guard_B():
     outer, windows = loops[0], [L for L in loops[1:] if abs(area2(L)) > 20.0]
     H = windows + [circle(x, y, 2 * G_RIN) for (x, y) in tubes] + [circle(x, y, 4.5) for (x, y) in G_RODS]
     names = ("dolna", "srodkowa", "gorna")
-    return [prism("SS_oslona_lamp_B_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
-GUARD_VARIANT = os.environ.get("OSLONA", "B")
-parts += guard_B() if GUARD_VARIANT == "B" else guard_A()
+    return [prism("SS_oslona_lamp_%s_%s" % (tag, names[k]), SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
+
+def guard_C():
+    """Oslona lamp, WARIANT C: jak B (tyl plaski, srodek przewezenia), ale przod jak boki - polokragle obwodki
+    6SN7 z przewezeniem i wcieciami z obu stron w miejscu slupka."""
+    return guard_B(front="waist", tag="C")
+
+GUARDS = {"A": guard_A, "B": guard_B, "C": guard_C}
+GUARD_VARIANT = os.environ.get("OSLONA", "C")
+parts += GUARDS[GUARD_VARIANT]()
 parts.append(box_rear())
 
 def partition(name, x0):
