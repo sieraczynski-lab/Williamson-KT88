@@ -278,12 +278,11 @@ def cover():
         VENTS.append((x, y))
         return True
     VENTS = []
-    for (x, y) in socks:                                                 # wence tylko wokol lamp (KT88 i 6SN7)
-        for (rr, n, d) in ((27.0, 12, 6.0), (37.0, 16, 6.0)):
-            for k in range(n):
-                a = math.radians(360.0 * k / n + (0 if rr < 30 else 11.25))
-                vx, vy = x + rr * math.cos(a), y + rr * math.sin(a)
-                if free(vx, vy, d / 2): H.append(circle(vx, vy, d))
+    for (x, y) in KT:                                                    # jeden wieniec 12 x fi 6 wokol kazdej KT88
+        for k in range(12):
+            a = math.radians(30.0 * k)
+            vx, vy = x + 27.0 * math.cos(a), y + 27.0 * math.sin(a)
+            if free(vx, vy, 3.0): H.append(circle(vx, vy, 6.0))
     return prism("AL_pokrywa_gorna", ALU, outer, H, Z_COV, Z_COV + T, "XY")
 parts.append(cover())
 
