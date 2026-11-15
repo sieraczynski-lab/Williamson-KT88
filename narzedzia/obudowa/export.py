@@ -60,8 +60,19 @@ allp = model.parts + model.ref
 render(allp, os.path.join(OUT, "widok_przod.png"), azim=-62, elev=26, title="Williamson KT88 w obudowie Soloist - widok z przodu")
 render(allp, os.path.join(OUT, "widok_tyl.png"), azim=118, elev=26, title="Widok z tylu")
 render(allp, os.path.join(OUT, "widok_plytka.png"), azim=-58, elev=34, title="Bez pokrywy: plytka Onyxa pod pokrywa",
-       skip=("AL_pokrywa", "DREWNO", "AL_trafo_dach", "REF_KT88", "REF_V", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
+       skip=("AL_pokrywa", "SS_oslona", "REF_tuleja_M4", "REF_nakretka", "REF_sruba_M4", "DREWNO", "AL_trafo_dach", "REF_KT88", "REF_V", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
 render(allp, os.path.join(OUT, "widok_wnetrze.png"), azim=-58, elev=40, title="Wnetrze (bez pokrywy, plytki Onyxa, drewna i dachu trafo)",
-       skip=("AL_pokrywa", "DREWNO", "AL_trafo_dach", "REF_plytka_Onyx", "REF_KT88", "REF_V", "REF_podstawka", "REF_kondensatory", "REF_potencjometr", "REF_tuleja_M3", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
+       skip=("AL_pokrywa", "SS_oslona", "REF_tuleja_M4", "REF_nakretka", "REF_sruba_M4", "DREWNO", "AL_trafo_dach", "REF_plytka_Onyx", "REF_KT88", "REF_V", "REF_podstawka", "REF_kondensatory", "REF_potencjometr", "REF_tuleja_M3", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
 shutil.copy(os.path.join(HERE, "CZYTAJ_MNIE.txt"), OUT)
+# rysunek ramki oslony lamp z gory (z osiami potencjometrow)
+from PIL import Image, ImageDraw
+g = [p for p in model.parts if p.name == "SS_oslona_lamp_gorna"][0]
+go, gh = g.exact[0], g.exact[1]
+S_, Y0 = 3, 320
+img = Image.new("RGB", (412 * S_, 190 * S_), "white"); dr = ImageDraw.Draw(img)
+def _p(segs): return [((x + 6) * S_, (Y0 - y - 2) * S_) for sg in segs for (x, y) in stepw.seg_pts(sg, 24)]
+dr.polygon(_p(go), fill=(205, 207, 212), outline="black")
+for h in gh: dr.polygon(_p(h), fill="white", outline="black")
+for (x, y) in model.POTS: dr.ellipse(((x + 4) * S_, (Y0 - y - 4) * S_, (x + 8) * S_, (Y0 - y) * S_), fill=(200, 30, 30))
+img.save(os.path.join(OUT, "oslona_lamp_z_gory.png"))
 print(OUT, len(rows))

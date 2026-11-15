@@ -40,6 +40,11 @@ OB_ZTOP = Z_COV + T - SOCK_H          # wierzch plytki: gora podstawki rowno z w
 
 OB_BOTTOM_H = 50.0                    # wysokie elementy pod plytka (kondensatory)
 SOCK_HOLE = 30.0                      # otwor na podstawke (srednica korpusu + 1-2 mm)
+# oslona lamp: 3 ramki ze stali nierdzewnej 2,5 mm (laser), na tulejach M4 przykreconych do pokrywy
+TS = 2.5
+G_LEVELS = [Z_COV + T + 30.0, Z_COV + T + 30.0 + TS + 60.0, Z_COV + T + 30.0 + 2 * (TS + 60.0)]   # spody ramek: 136 / 198,5 / 261
+G_R, G_TONG, G_BORDER, G_CORNER = 30.0, 12.0, 14.0, 30.0   # otwor lampy r30 (banka fi 52), jezyk do potencjometru r12
+G_RODS = [(20.0, 144.0), (380.0, 144.0), (20.0, 290.0), (380.0, 290.0), (200.0, 140.0), (200.0, 294.0)]  # case xy
 POT_HOLE = 8.0                        # otwor na srubokret do potencjometru biasu
 def ob(x, y):                          # wspolrzedne z rysunku Onyxa -> obudowa
     return (OB_X0 + x, OB_Y1 - y)
@@ -242,6 +247,56 @@ def gussets():
         out.append(prism("AL_zaczep_pokrywy_" + name, ALU2, Q, [circle(hx, hy, 3.3)], GUS_Z0, GUS_Z0 + T, "XY"))
     return out
 parts += gussets()
+
+def _loop(segs, n=16):
+    pts = []
+    for sg in segs:
+        if sg[0] == "L":
+            pts.append(sg[1])
+        else:
+            _, c, r, a0, a1, _cc = sg
+            pts += [(c[0] + r * math.cos(a0 + (a1 - a0) * k / n), c[1] + r * math.sin(a0 + (a1 - a0) * k / n)) for k in range(n)]
+    L = Segs(pts); L.segs = segs
+    return L
+
+def tube_opening(cx, cy, d):
+    """Otwor lampy: kolo r30 + zaokraglony jezyk w strone srodka pary (d=+1 w prawo, -1 w lewo); w koncu jezyka
+    jest os potencjometru biasu (35 mm od lampy) - srubokret przechodzi przez wszystkie ramki."""
+    R_, h = G_R, G_TONG
+    al = math.asin(h / R_); xi = R_ * math.cos(al)
+    ex = cx + d * (35.0 - 1.0)
+    if d > 0:
+        return _loop([("A", (cx, cy), R_, al, 2 * math.pi - al, True), ("L", (cx + xi, cy - h), (ex, cy - h)),
+                      ("A", (ex, cy), h, -math.pi / 2, math.pi / 2, True), ("L", (ex, cy + h), (cx + xi, cy + h))])
+    return _loop([("A", (cx, cy), R_, math.pi + al, 3 * math.pi - al, True), ("L", (cx - xi, cy + h), (ex, cy + h)),
+                  ("A", (ex, cy), h, math.pi / 2, 3 * math.pi / 2, True), ("L", (ex, cy - h), (cx - xi, cy - h))])
+
+def lens(cx, cy, w, h, vertical=False):
+    """Soczewka (vesica) z dwoch lukow: ozdoba miedzy lampami."""
+    if vertical:
+        w, h = h, w
+    c = w / 2.0; sg = h / 2.0
+    Rr = (c * c + sg * sg) / (2 * sg); off = Rr - sg
+    a = math.atan2(off, c)
+    if not vertical:
+        return _loop([("A", (cx, cy - off), Rr, a, math.pi - a, True), ("A", (cx, cy + off), Rr, math.pi + a, 2 * math.pi - a, True)])
+    return _loop([("A", (cx - off, cy), Rr, -math.pi / 2 + a, math.pi / 2 - a, True), ("A", (cx + off, cy), Rr, math.pi / 2 + a, 3 * math.pi / 2 - a, True)])
+
+def guard():
+    tubes = list(KT) + [(x, y) for (x, y, n) in SMALL]
+    xs = [p[0] for p in tubes]; ys = [p[1] for p in tubes]
+    m = G_R + G_BORDER
+    outer = rrect(min(xs) - m, min(ys) - m, max(xs) + m, max(ys) + m, G_CORNER, n=12)
+    H = []
+    for (x, y) in tubes:
+        H.append(tube_opening(x, y, +1 if (x < 100 or 200 < x < 300) else -1))
+    yc = (min(ys) + max(ys)) / 2.0
+    H += [lens(100.0, yc, 36.0, 14.0), lens(300.0, yc, 36.0, 14.0), lens(200.0, yc, 12.0, 28.0, vertical=True),
+          circle(185.0, yc, 6.0), circle(215.0, yc, 6.0)]
+    H += [circle(x, y, 4.5) for (x, y) in G_RODS]
+    names = ("dolna", "srodkowa", "gorna")
+    return [prism("SS_oslona_lamp_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
+parts += guard()
 parts.append(box_rear())
 
 def partition(name, x0):
@@ -266,6 +321,7 @@ parts.append(lid())
 def cover():
     outer = rect(0, 0, W, Y_STEP)
     H = [circle(x, y, 4.5) for (x, y) in CORNER_POSTS]
+    H += [circle(x, y, 4.5) for (x, y) in G_RODS]                       # sruby M4 od spodu w tuleje oslony lamp
     socks = [(x, y) for (x, y) in KT] + [(x, y) for (x, y, n) in SMALL]
     H += [circle(x, y, SOCK_HOLE) for (x, y) in socks]
     H += [circle(x, y, POT_HOLE) for (x, y) in POTS]
@@ -273,7 +329,7 @@ def cover():
         if any(math.hypot(x - a, y - b) < SOCK_HOLE / 2 + r + 2 for (a, b) in socks): return False
         if any(math.hypot(x - a, y - b) < POT_HOLE / 2 + r + 2 for (a, b) in POTS): return False
         if any(math.hypot(x - a, y - b) < 1.7 + r + 3 for (a, b) in OB_MH): return False
-        if any(math.hypot(x - a, y - b) < 2.25 + r + 4 for (a, b) in CORNER_POSTS): return False
+        if any(math.hypot(x - a, y - b) < 2.25 + r + 4 for (a, b) in CORNER_POSTS + G_RODS): return False
         if any(math.hypot(x - a, y - b) < 2 * r + 3 for (a, b) in VENTS): return False
         VENTS.append((x, y))
         return True
@@ -320,7 +376,14 @@ for (x, y) in KT:
     ref.append(cyl("REF_KT88_banka", GLASS, x, y, 52, Z_COV + T + 26, Z_COV + T + 140))
 for (x, y, n) in SMALL:
     ref.append(cyl("REF_podstawka_oktal", (0.92, 0.90, 0.85), x, y, 28, OB_ZTOP, OB_ZTOP + SOCK_H))
-    ref.append(cyl("REF_" + n.replace(" ", "_") + "_butelka", GLASS, x, y, 47, Z_COV + T, Z_COV + T + 113))
+    ref.append(cyl("REF_" + n.replace(" ", "_") + "_cokol", BLACK, x, y, 40, Z_COV + T, Z_COV + T + 26))
+    ref.append(cyl("REF_" + n.replace(" ", "_") + "_Psvane_UK_Plus", GLASS, x, y, 52, Z_COV + T + 26, Z_COV + T + 140))
+for (x, y) in G_RODS:
+    zs = [Z_COV + T] + [z for zl in G_LEVELS for z in (zl, zl + TS)]
+    for k in range(0, len(zs) - 1, 2):
+        ref.append(cyl("REF_tuleja_M4_%dmm" % round(zs[k + 1] - zs[k]), (0.75, 0.75, 0.70), x, y, 7, zs[k], zs[k + 1], n=6))
+    ref.append(cyl("REF_nakretka_kolpakowa_M4", (0.75, 0.75, 0.70), x, y, 7, G_LEVELS[-1] + TS, G_LEVELS[-1] + TS + 7))
+    ref.append(cyl("REF_sruba_M4_spod_pokrywy", BLACK, x, y, 7, Z_COV - 3, Z_COV))
 for k, (x, y) in enumerate([ob(xx, 100.0) for xx in (60.0, 100.0, 180.0, 260.0, 300.0)]):
     ref.append(box("REF_kondensatory_pod_plytka_%d" % k, (0.7, 0.15, 0.12), x - 20, y - 10, ZB - OB_BOTTOM_H, x + 20, y + 10, ZB))
 for (x, y) in POTS:
