@@ -155,6 +155,17 @@ Płytka `glosniki` i wejście TRIGGER bez zmian:
 - RL 100 Ω / 2 W zostaje na wtórnym toroidu, więc lampa nigdy nie gra bez obciążenia;
 - Marantz → glosniki J1/J4, kolumny → J3/J6, cewki → sterowanie J13.
 
+**Zaciski na tylnej ściance, na kanał** (od góry): **8 Ω**, **4 Ω**, **GND** (wyjścia), obok **+** i **GND** wejścia z Marantza.
+
+| Zacisk | Podłączenie w środku |
+|---|---|
+| 4 Ω (wyjście) | glosniki J3-1 (KOLUMNA +), czyli wspólny przekaźnika: lampa 4 Ω albo Marantz + |
+| GND (wyjście) | glosniki J3-2 (KOLUMNA −), drugi styk przekaźnika: COM toroidu albo Marantz − |
+| 8 Ω (wyjście) | odczep 8 Ω toroidu wprost (bez przełączania) |
+| Marantz + / GND | glosniki J1-1 / J1-2 |
+
+Kolumnę podłączasz do **4 Ω i GND**: przekaźnik przełącza ją między lampą (cewka 12 V, NO) a Marantzem (bez prądu, NC). Płytka przełącza **oba bieguny**, więc zacisk GND wyjścia nie jest na stałe masą wzmacniacza, a GND Marantza nie łączy się z masą lampy. To ważne: jeśli Marantz ma wyjście mostkowe (BTL) albo jego minus nie jest masą, wspólna masa zwarłaby mu wyjście, a dwa wzmacniacze połączone masą przez kable kolumn mogą brumić. Zacisk 8 Ω działa tylko z lampą (np. do kolumn 8 Ω), bez przełączania na Marantza.
+
 ## 9.9 Selektor i głośność
 
 Płytka selektora Soloista (TubeSel) w puszce aluminiowej (np. Hammond 1590, ok. 112 × 60 × 31 mm) na dnie, pod płytką Onyxa z przodu z lewej, blisko wejść J100:
@@ -200,7 +211,7 @@ Wariant obudowy Soloista z płytką Onyxa: [`obudowa/`](../obudowa/), opis w [`o
 - **Przepływ powietrza:** otwory w dnie pod płytką → wieńce wokół lamp; komora wzmacniacza łączy się z komorami transformatorów rzędem otworów ⌀8 w przedniej ściance obudowy trafo (pod pokrywą), a te wychodzą otworami ⌀8 w **górnej 1/3 tylnej ścianki**.
 - **Płytki na dnie w przednim rzędzie**: sterowanie i płytka zasilacza; miejsce X 255–355 wolne (np. dławiki 10 H). Pod płytką Onyxa tylko płytka UL (jedna, 4 przekaźniki) i puszka selektora.
 - **Tylna ścianka zdejmowana** (płyta 393 × 149 × 3) wchodzi w otwór obudowy z luzem 0,5 mm na stronę, równo z krawędziami. Przykręcana 13 śrubami M4 do zaczepów z blachy 3 mm, które siedzą na wpust (20 × 3 mm) w bokach (4), dnie (3) i dachu obudowy trafo (4) i są klejone. Otwór w zaczepie ⌀3,3 pod gwint M4 albo ⌀6 pod nakrętkę nitowaną.
-- **Na tylnej ściance** (patrząc od tyłu): po prawej (komora TG lewego kanału) 4 pary RCA pod transformatorem i zaciski kanału L; po lewej zaciski kanału P; w środku gniazdo zasilania **Schurter DD11** (IEC C14 + bezpiecznik 5×20 + wyłącznik dwubiegunowy), TRIGGER i śruba PE. Zaciski na kanał: 3 wyjścia (COM / 4 Ω / 8 Ω) i 2 wejścia z Marantza.
+- **Na tylnej ściance** (patrząc od tyłu): po prawej (komora TG lewego kanału) 4 pary RCA pod transformatorem i zaciski kanału L; po lewej zaciski kanału P; w środku gniazdo zasilania **Schurter DD11** (IEC C14 + bezpiecznik 5×20 + wyłącznik dwubiegunowy), TRIGGER i śruba PE. Zaciski na kanał: wyjścia 8 Ω / 4 Ω / GND i wejście z Marantza + / GND (podłączenie w 9.8).
 - Transformatory przesunięte o 3–8 mm do przodu (miejsce na zaciski z tyłu). Profile stalowe na przewody wejściowe usunięte: gniazda RCA są teraz w lewej komorze, tuż obok selektora.
 - Front i drewno jak w Soloiście 0.4.
 - Do zmierzenia na płytce: wysokość i średnica podstawek, wysokość elementów od spodu, pozycje osi potencjometrów.

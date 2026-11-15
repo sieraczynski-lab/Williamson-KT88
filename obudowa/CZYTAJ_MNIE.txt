@@ -64,8 +64,9 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
   TYLNA SCIANKA - ROZMIESZCZENIE (X jak od przodu; patrzac od tylu strony sa odwrocone)
     - wejscia: 4 pary RCA fi 11 (izolowane), X 34 / 56 / 78 / 100, Z 32 (L) i 13 (P) - komora TG L,
       pod transformatorem (TG na tulejach 35 mm) - patrzac od tylu PO PRAWEJ;
-    - wyjscia kanalu L: zaciski fi 9 X 30, Z 100 / 75 / 50 (8 Ohm / 4 Ohm / COM);
-      wejscie z Marantza L: X 100, Z 88 (+) / 62 (-);
+    - wyjscia kanalu L: zaciski fi 9 X 30, Z 100 / 75 / 50 (8 Ohm / 4 Ohm / GND);
+      wejscie z Marantza L: X 100, Z 88 (+) / 62 (GND); kolumna na 4 Ohm + GND, przekaznik
+      przelacza oba bieguny (docs/09, 9.8) - zaciskow GND NIE laczyc z obudowa (izolowane);
     - kanal P lustrzanie: wyjscia X 370, Marantz X 300;
       zaciski gleboko max ok. 25 mm za scianka (TG blisko) - wybierz krotkie;
     - gniazdo zasilania Schurter DD11 (C14 + bezpiecznik 5x20 + wylacznik 2-biegunowy), pionowo,

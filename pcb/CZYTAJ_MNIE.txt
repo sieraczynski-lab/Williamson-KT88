@@ -60,7 +60,9 @@ UL / trioda:
   plytka UL: J1 V5, J2 V6, J3 V7, J4 V8; pin 1 anoda (toroid i J101-1/-5, J201-1/-5),
              2 odczep UL toroidu (NIE na J101/J201), 3 -> J101-2 / J101-4 / J201-2 / J201-4
 Kolumny:
-  odczep 4 Ohm + COM toroidu -> glosniki J2 (L) / J5 (P); Marantz -> J1/J4; kolumny <- J3/J6
+  odczep 4 Ohm + COM toroidu -> glosniki J2 (L) / J5 (P); Marantz (zaciski + / GND) -> J1/J4;
+  J3/J6 -> zaciski wyjsciowe 4 Ohm (+) i GND (-) - GND wyjscia jest przelaczany, NIE laczyc z masa;
+  zacisk 8 Ohm -> odczep 8 Ohm toroidu wprost (bez przelaczania)
   cewki glosniki J7 <- sterowanie J13;  TRIGGER (jack 3,5 mm) -> sterowanie J12
   Sprzezenie zwrotne: odczep 8 Ohm toroidu -> Onyx J102 (przed przekaznikiem)
 Selektor:
