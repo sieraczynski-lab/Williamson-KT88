@@ -43,8 +43,11 @@ SOCK_HOLE = 30.0                      # otwor na podstawke (srednica korpusu + 1
 # oslona lamp: 3 ramki ze stali nierdzewnej 2,5 mm (laser), na tulejach M4 przykreconych do pokrywy
 TS = 2.5
 G_LEVELS = [Z_COV + T + 30.0, Z_COV + T + 30.0 + TS + 60.0, Z_COV + T + 30.0 + 2 * (TS + 60.0)]   # spody ramek: 136 / 198,5 / 261
-G_R, G_TONG, G_BORDER, G_CORNER = 30.0, 12.0, 14.0, 30.0   # otwor lampy r30 (banka fi 52), jezyk do potencjometru r12
-G_RODS = [(20.0, 144.0), (380.0, 144.0), (20.0, 290.0), (380.0, 290.0), (200.0, 140.0), (200.0, 294.0)]  # case xy
+G_RIN, G_BAND, G_BAR, G_BOSS, G_FILLET = 28.0, 5.0, 4.0, 8.0, 6.0   # otwor fi 56 (banka fi 52), obwodka 5 mm, mostki 8 mm
+_GX = [50.0, 150.0, 250.0, 350.0]; _GY6, _GYK = 172.0, 262.0         # osie 6SN7 / KT88 (jak SMALL / KT)
+G_RODS = ([(x, _GY6) for x in (100.0, 200.0, 300.0)]                 # przod: miedzy 6SN7, w osi lamp
+          + [(x, (_GY6 + _GYK) / 2) for x in _GX]                     # miedzy 6SN7 i KT88, w osi kazdej lampy
+          + [(x, _GYK + 26.0) for x in (100.0, 200.0, 300.0)])        # tyl: miedzy KT88, na wysokosci brzegu banki
 POT_HOLE = 8.0                        # otwor na srubokret do potencjometru biasu
 def ob(x, y):                          # wspolrzedne z rysunku Onyxa -> obudowa
     return (OB_X0 + x, OB_Y1 - y)
@@ -248,52 +251,39 @@ def gussets():
     return out
 parts += gussets()
 
-def _loop(segs, n=16):
-    pts = []
-    for sg in segs:
-        if sg[0] == "L":
-            pts.append(sg[1])
-        else:
-            _, c, r, a0, a1, _cc = sg
-            pts += [(c[0] + r * math.cos(a0 + (a1 - a0) * k / n), c[1] + r * math.sin(a0 + (a1 - a0) * k / n)) for k in range(n)]
-    L = Segs(pts); L.segs = segs
-    return L
-
-def tube_opening(cx, cy, d):
-    """Otwor lampy: kolo r30 + zaokraglony jezyk w strone srodka pary (d=+1 w prawo, -1 w lewo); w koncu jezyka
-    jest os potencjometru biasu (35 mm od lampy) - srubokret przechodzi przez wszystkie ramki."""
-    R_, h = G_R, G_TONG
-    al = math.asin(h / R_); xi = R_ * math.cos(al)
-    ex = cx + d * (35.0 - 1.0)
-    if d > 0:
-        return _loop([("A", (cx, cy), R_, al, 2 * math.pi - al, True), ("L", (cx + xi, cy - h), (ex, cy - h)),
-                      ("A", (ex, cy), h, -math.pi / 2, math.pi / 2, True), ("L", (ex, cy + h), (cx + xi, cy + h))])
-    return _loop([("A", (cx, cy), R_, math.pi + al, 3 * math.pi - al, True), ("L", (cx - xi, cy + h), (ex, cy + h)),
-                  ("A", (ex, cy), h, math.pi / 2, 3 * math.pi / 2, True), ("L", (ex, cy - h), (cx - xi, cy - h))])
-
-def lens(cx, cy, w, h, vertical=False):
-    """Soczewka (vesica) z dwoch lukow: ozdoba miedzy lampami."""
-    if vertical:
-        w, h = h, w
-    c = w / 2.0; sg = h / 2.0
-    Rr = (c * c + sg * sg) / (2 * sg); off = Rr - sg
-    a = math.atan2(off, c)
-    if not vertical:
-        return _loop([("A", (cx, cy - off), Rr, a, math.pi - a, True), ("A", (cx, cy + off), Rr, math.pi + a, 2 * math.pi - a, True)])
-    return _loop([("A", (cx - off, cy), Rr, -math.pi / 2 + a, math.pi / 2 - a, True), ("A", (cx + off, cy), Rr, math.pi / 2 + a, 3 * math.pi / 2 - a, True)])
-
 def guard():
-    tubes = list(KT) + [(x, y) for (x, y, n) in SMALL]
-    xs = [p[0] for p in tubes]; ys = [p[1] for p in tubes]
-    m = G_R + G_BORDER
-    outer = rrect(min(xs) - m, min(ys) - m, max(xs) + m, max(ys) + m, G_CORNER, n=12)
-    H = []
-    for (x, y) in tubes:
-        H.append(tube_opening(x, y, +1 if (x < 100 or 200 < x < 300) else -1))
-    yc = (min(ys) + max(ys)) / 2.0
-    H += [lens(100.0, yc, 36.0, 14.0), lens(300.0, yc, 36.0, 14.0), lens(200.0, yc, 12.0, 28.0, vertical=True),
-          circle(185.0, yc, 6.0), circle(215.0, yc, 6.0)]
-    H += [circle(x, y, 4.5) for (x, y) in G_RODS]
+    """Oslona lamp: kazda ramka to obwodki 5 mm wokol lamp polaczone mostkami 8 mm przez slupki; zaokraglone
+    wciecia (fillet ok. 6 mm) w miejscach polaczen. Kontur z pola odleglosci (smooth union), otwory lamp i slupkow dokladne."""
+    import numpy as np
+    from skimage import measure
+    tubes = [(x, y) for y in (_GY6, _GYK) for x in _GX]
+    caps = [((_GX[i], _GY6), (_GX[i + 1], _GY6)) for i in range(3)]             # przod: wzdluz osi 6SN7
+    caps += [((x, _GY6), (x, _GYK)) for x in _GX]                                 # miedzy rzedami
+    caps += [((_GX[i], _GYK + 26.0), (_GX[i + 1], _GYK + 26.0)) for i in range(3)]   # tyl: na brzegu KT88
+    st = 0.2
+    xs = np.arange(-5.0, 405.0, st); ys = np.arange(120.0, 320.0, st)
+    X, Y = np.meshgrid(xs, ys)
+    def smin(a, b, k):
+        h = np.clip(0.5 + 0.5 * (b - a) / k, 0.0, 1.0)
+        return b * (1 - h) + a * h - k * h * (1 - h)
+    f = None
+    prims = [np.hypot(X - cx, Y - cy) - (G_RIN + G_BAND) for (cx, cy) in tubes]
+    prims += [np.hypot(X - cx, Y - cy) - G_BOSS for (cx, cy) in G_RODS]
+    for (a, b) in caps:
+        ax, ay = a; bx, by = b
+        dx, dy = bx - ax, by - ay
+        t = np.clip(((X - ax) * dx + (Y - ay) * dy) / (dx * dx + dy * dy), 0, 1)
+        prims.append(np.hypot(X - ax - t * dx, Y - ay - t * dy) - G_BAR)
+    for p_ in prims:
+        f = p_ if f is None else smin(f, p_, G_FILLET)
+    loops = []
+    for c in measure.find_contours(f, 0.0):
+        c = measure.approximate_polygon(c, tolerance=0.02)
+        pts = [(float(xs[0] + col * st), float(ys[0] + row * st)) for (row, col) in c[:-1]]
+        loops.append(pts)
+    loops.sort(key=lambda L: -abs(area2(L)))
+    outer, windows = loops[0], loops[1:]
+    H = windows + [circle(x, y, 2 * G_RIN) for (x, y) in tubes] + [circle(x, y, 4.5) for (x, y) in G_RODS]
     names = ("dolna", "srodkowa", "gorna")
     return [prism("SS_oslona_lamp_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
 parts += guard()

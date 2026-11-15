@@ -19,14 +19,14 @@ AL_zaczep_pokrywy_LP;aluminium 5754;3.0;28.0;28.0;1;1
 AL_zaczep_pokrywy_PP;aluminium 5754;3.0;28.0;28.0;1;1
 AL_zaczep_pokrywy_LT;aluminium 5754;3.0;28.0;28.0;1;1
 AL_zaczep_pokrywy_PT;aluminium 5754;3.0;28.0;28.0;1;1
-SS_oslona_lamp_dolna;MDF + fornir;2.5;388.0;178.0;19;1
-SS_oslona_lamp_srodkowa;MDF + fornir;2.5;388.0;178.0;19;1
-SS_oslona_lamp_gorna;MDF + fornir;2.5;388.0;178.0;19;1
+SS_oslona_lamp_dolna;MDF + fornir;2.5;366.0;157.2;21;1
+SS_oslona_lamp_srodkowa;MDF + fornir;2.5;366.0;157.2;21;1
+SS_oslona_lamp_gorna;MDF + fornir;2.5;366.0;157.2;21;1
 AL_trafo_tyl_zdejmowany;aluminium 5754;3.0;393.0;149.0;100;1
 AL_trafo_przegroda_L;aluminium 5754;3.0;147.0;156.0;2;1
 AL_trafo_przegroda_P;aluminium 5754;3.0;147.0;156.0;2;1
 AL_trafo_dach;aluminium 5754;3.0;400.0;153.0;13;1
-AL_pokrywa_gorna;aluminium 5754;3.0;400.0;307.0;66;1
+AL_pokrywa_gorna;aluminium 5754;3.0;400.0;307.0;70;1
 AL_ekran_sterowania;aluminium 5754;3.0;104.0;100.5;5;1
 DREWNO_front_lico_5mm;MDF + fornir;5.0;440.0;106.0;7;1
 DREWNO_front_rama_15mm;MDF + fornir;15.0;440.0;106.0;7;1
