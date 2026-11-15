@@ -1,4 +1,4 @@
-WILLIAMSON KT88 (PLYTKA ONYXA VA1523) W OBUDOWIE SOLOIST 88 - wariant W2 (12.11.2026)
+WILLIAMSON KT88 (PLYTKA ONYXA VA1523) W OBUDOWIE SOLOIST 88 - wariant W3 (15.11.2026)
 =====================================================================================
 
 Na bazie obudowy Soloist 88 v0.4 (repozytorium Soloist-KT88, hardware/case).
@@ -29,22 +29,47 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
     - 8 otworow fi 30 na podstawki (fi = korpus podstawki + 1-2 mm, DO SPRAWDZENIA na podstawce);
     - 4 otwory fi 8 na srubokret do potencjometrow biasu: X 85 / 115 / 285 / 315, Y 262;
     - 10 otworow fi 3,4 na tuleje plytki Onyxa;
-    - wentylacja fi 6: wieniec wokol kazdej KT88, pas miedzy rzedami lamp, pole nad plytkami w przednim rzedzie;
+    - wentylacja fi 6 TYLKO wokol lamp: dwa wience (r 27 i 37 mm) wokol kazdej KT88 i 6SN7;
     - bez otworow KT88 fi 60 i bez pretow oslony lamp Soloista (oslona lamp opcjonalnie, do dorobienia);
     - 4 sruby M4 w rogach jak dotad (tuleje 100 mm). Zdjecie pokrywy podnosi tez plytke Onyxa
       (przewody do niej musza miec zapas dlugosci, jak w Soloist).
   DNO (AL_dno_400x460x3)
     - plytki Soloista w PRZEDNIM RZEDZIE (pod plytka Onyxa sa kondensatory do ok. Z 38):
-      sterowanie X 45-145, zasilacz_siec X 150-250, zasilacz_hv X 255-355, wszystkie Y 8-108;
-      UWAGA: zasilacz jest teraz jedna prosta plytka (docs/09) - zajmuje miejsce zasilacz_siec,
-      miejsce zasilacz_hv zostaje wolne (zapas, ew. dlawiki 10 H, jesli nie wejda pod oslone TR);
+      sterowanie X 45-145, zasilacz (docs/09) X 150-250, Y 8-108; X 255-355 wolne (np. dlawiki 10 H);
     - jedna plytka UL (4 przekazniki, 100 x 66) na srodku pod plytka Onyxa (X 150-250, Y 230-296);
     - puszka selektora pod plytka, z przodu z lewej (X 24-136, Y 150-210);
     - bez pierscieni otworow pod podstawki KT88; wentylacja pod srodkiem plytki (Y 156-196).
+  OBUDOWA TRANSFORMATOROW (W3)
+    - DACH (AL_trafo_dach): bez wentylacji; 4 wpusty 7 x 30 na wsporniki tylnej scianki.
+    - PRZOD (AL_trafo_przod): 3 rzedy otworow fi 8 (Z 62/74/86, pod pokrywa) - przeplyw z komory
+      wzmacniacza do komor transformatorow; przepusty gumowe fi 16 bez zmian.
+    - TYL (AL_trafo_tyl_zdejmowany): plaska plyta 400 x 156 x 3, ZDEJMOWANA, 13 x M4:
+        boki 2+2 (X 16,5 / 383,5, Z 20 / 120), dno 3 (X 150 / 250 / 335, Z 16,5),
+        dach 4 (X 65 / 150 / 250 / 335, Z 139,5).
+      Dno, boki, dach i przegrody koncza sie na Y 457 (bez wypustow do tylu).
+    - WSPORNIKI (AL_wspornik_tyl_*, 11 szt.): katownik z aluminium 5 mm, dl. 30 mm, kolnierz do
+      scianki 17 mm + wypust 7 x 30 x 3 w gniazdo scianki (klejony, np. epoksyd), kolnierz do tylnej
+      scianki 20 mm z gwintem M4 (os 13,5 mm od scianki). Najprosciej: wyfrezowac albo wyciac z
+      katownika 20 x 20 x 5 i dopilowac wypust. DXF: przekroj (wyciagniecie 30 mm).
+    - Transformatory przesuniete do przodu: TG Y 377, TR1 Y 382 (byly Y 385).
+    - Profile stalowe 20 x 20 USUNIETE (gniazda RCA przeniesione), plytka glosnikow Y 330-430.
+  TYLNA SCIANKA - ROZMIESZCZENIE (X jak od przodu; patrzac od tylu strony sa odwrocone)
+    - wejscia: 4 pary RCA fi 11 (izolowane), X 34 / 56 / 78 / 100, Z 32 (L) i 13 (P) - komora TG L,
+      pod transformatorem (TG na tulejach 35 mm) - patrzac od tylu PO PRAWEJ;
+    - wyjscia kanalu L: zaciski fi 9 X 30, Z 100 / 75 / 50 (8 Ohm / 4 Ohm / COM);
+      wejscie z Marantza L: X 100, Z 88 (+) / 62 (-);
+    - kanal P lustrzanie: wyjscia X 370, Marantz X 300;
+      zaciski gleboko max ok. 25 mm za scianka (TG blisko) - wybierz krotkie;
+    - gniazdo zasilania Schurter DD11 (C14 + bezpiecznik 5x20 + wylacznik 2-biegunowy), pionowo,
+      X 200, Z 100: wyciecie 27,1 x 56 R1, 2 otwory fi 3,4 w osi pionowej co 65 mm
+      (WYMIARY Z KARTY KATALOGOWEJ - SPRAWDZ NA RYSUNKU PRODUCENTA PRZED CIECIEM); glebokosc 46,6 mm,
+      korpus nad TR1. Np. DD11.0124.1110 (bezpiecznik 2-biegunowy, wylacznik podswietlany zielony)
+      + szuflada bezpiecznikow 4301.1403; bezpieczniki T2,5 A 5x20;
+    - TRIGGER jack 3,5 mm fi 6: X 140, Z 30; sruba PE fi 4,5: X 260, Z 35;
+    - wentylacja: otwory fi 8 w gornej 1/3 (Z 108-144), z ominieciem przegrod, wspornikow, zaciskow.
   BEZ ZMIAN
-    boki, przednia scianka, front drewniany, obudowa transformatorow (przod, tyl, przegrody, dach),
-    profile stalowe na przewody wejsciowe, ekran sterowania (przesuwa sie z plytka sterowania),
-    plytka glosnikow pod lewym TG.
+    boki (poza wpustami na wsporniki i koncem na Y 457), przednia scianka, front drewniany,
+    przegrody (bez wypustow do tylu), ekran sterowania, plytka glosnikow pod lewym TG.
 
 WYSOKOSCI POD PLYTKA ONYXA (spod plytki Z 88,4, kondensatory do ok. Z 38)
   plytka UL do Z ok. 27; puszka selektora do Z 34. Zapas min. ok. 4 mm nad puszka selektora -
@@ -53,4 +78,5 @@ WYSOKOSCI POD PLYTKA ONYXA (spod plytki Z 88,4, kondensatory do ok. Z 38)
 DO USTALENIA (zmierzyc na plytce)
   - srednica korpusu podstawki (otwor fi 30) i wysokosc elementow pod plytka (50 mm) - potwierdzone;
   - pozycje osi potencjometrow (z rysunku Onyxa: 35 i 65 mm od srodka KT88 w strone srodka plytki);
-  - tylna scianka: selektor ma 4 wejscia stereo, a tylna scianka Soloista 0.4 ma 2 gniazda RCA - dodac 6.
+  - wymiary gniazda DD11 (wyciecie, rozstaw srub) z rysunku Schurtera;
+  - glebokosc zaciskow glosnikowych za scianka (max ok. 25 mm) i ich srednica otworu (fi 9 przyjete).

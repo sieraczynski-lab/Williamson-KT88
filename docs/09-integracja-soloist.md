@@ -22,7 +22,7 @@ Projekt PCB (KiCad 4/5, import do EasyEDA, otwiera się też w KiCad 8): [`pcb/z
 ## 9.1 Schemat blokowy
 
 ```
-230 V ─ IEC/F1 T2,5 A ─┬─ K1 (R1 R_SS 47 Ω) → K2 (+1,5 s) ─ TR1 400 VA
+230 V ─ DD11 (IEC, F1 T2,5 A, wył.) ─┬─ K1 (R1 R_SS 47 Ω) → K2 (+1,5 s) ─ TR1 400 VA
                        └─ F2 T500 mA ─ PS1 IRM-15-12 (12 V czuwania dla sterowania)
 
 S1 360 V ─ F3 T1 A ─ K3 (+45 s) ─ R2 R_IN 100 Ω → K4 (+1,5 s) ─┬─ Onyx J103 → mostek, R134, C119/120, L106 10 H, C121/122 = Ua-L ≈ 465 V
@@ -196,9 +196,13 @@ Reszta (sekwencja, UL/trioda, kolumny, trigger, selektor, IR, wyświetlacze) bez
 Wariant obudowy Soloista z płytką Onyxa: [`obudowa/`](../obudowa/), opis w [`obudowa/CZYTAJ_MNIE.txt`](../obudowa/CZYTAJ_MNIE.txt).
 
 - Płytka Onyxa (360 × 160 mm) **wisi pod pokrywą** na 10 krótkich tulejach M3, jak płytki kanałów Soloista. Od góry ma tylko podstawki, małe rezystory i potencjometry biasu, wysokie elementy są pod spodem.
-- **Pokrywa** ma otwory na 8 podstawek, 4 otwory na śrubokręt do potencjometrów biasu (ok. 8 mm) i otwory wentylacyjne: wieńce wokół KT88, pas między rzędami lamp i pole nad płytkami zasilaczy.
-- **Płytki na dnie w przednim rzędzie**: sterowanie i płytka zasilacza (pod płytką Onyxa są kondensatory). Model ma jeszcze dwa miejsca po zasilaczach Soloista; nowa płytka zajmuje jedno z nich, drugie zostaje wolne albo na dławiki, jeśli nie zmieszczą się w obudowie transformatorów. Pod płytką Onyxa zostają tylko niskie płytki UL i puszka selektora.
-- Obudowa transformatorów, tył, front i drewno jak w Soloiście 0.4.
+- **Pokrywa** ma otwory na 8 podstawek, 4 otwory na śrubokręt do potencjometrów biasu (ok. 8 mm) i wentylację **tylko wokół lamp** (po dwa wieńce otworów ⌀6 wokół każdej KT88 i 6SN7). Dach obudowy transformatorów jest pełny.
+- **Przepływ powietrza:** otwory w dnie pod płytką → wieńce wokół lamp; komora wzmacniacza łączy się z komorami transformatorów rzędem otworów ⌀8 w przedniej ściance obudowy trafo (pod pokrywą), a te wychodzą otworami ⌀8 w **górnej 1/3 tylnej ścianki**.
+- **Płytki na dnie w przednim rzędzie**: sterowanie i płytka zasilacza; miejsce X 255–355 wolne (np. dławiki 10 H). Pod płytką Onyxa tylko płytka UL (jedna, 4 przekaźniki) i puszka selektora.
+- **Tylna ścianka zdejmowana** (płyta 400 × 156 × 3), przykręcana 13 śrubami M4 do wsporników z aluminium 5 mm, które siedzą na wpust (7 × 30 mm) w bokach (4), dnie (3) i dachu obudowy trafo (4) i są klejone. Dno, boki, dach i przegrody kończą się 3 mm przed tyłem.
+- **Na tylnej ściance** (patrząc od tyłu): po prawej (komora TG lewego kanału) 4 pary RCA pod transformatorem i zaciski kanału L; po lewej zaciski kanału P; w środku gniazdo zasilania **Schurter DD11** (IEC C14 + bezpiecznik 5×20 + wyłącznik dwubiegunowy), TRIGGER i śruba PE. Zaciski na kanał: 3 wyjścia (COM / 4 Ω / 8 Ω) i 2 wejścia z Marantza.
+- Transformatory przesunięte o 3–8 mm do przodu (miejsce na zaciski z tyłu). Profile stalowe na przewody wejściowe usunięte: gniazda RCA są teraz w lewej komorze, tuż obok selektora.
+- Front i drewno jak w Soloiście 0.4.
 - Do zmierzenia na płytce: wysokość i średnica podstawek, wysokość elementów od spodu, pozycje osi potencjometrów.
 
 ## 9.12 Lista „zamontować / zmienić”
