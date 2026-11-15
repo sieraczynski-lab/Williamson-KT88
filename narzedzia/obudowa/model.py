@@ -4,6 +4,7 @@ Uklad osi: X w prawo (patrzac od przodu), Y do tylu, Z w gore. 0,0,0 = lewy prze
 import sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from stepw import *
+import os
 
 # ================================================================ parametry
 T = 3.0          # aluminium
@@ -251,8 +252,8 @@ def gussets():
     return out
 parts += gussets()
 
-def guard():
-    """Oslona lamp: kazda ramka to obwodki 5 mm wokol lamp polaczone mostkami 8 mm przez slupki; zaokraglone
+def guard_A():
+    """Oslona lamp, WARIANT A: kazda ramka to obwodki 5 mm wokol lamp polaczone mostkami 8 mm przez slupki; zaokraglone
     wciecia (fillet ok. 6 mm) w miejscach polaczen. Kontur z pola odleglosci (smooth union), otwory lamp i slupkow dokladne."""
     import numpy as np
     from skimage import measure
@@ -285,8 +286,62 @@ def guard():
     outer, windows = loops[0], loops[1:]
     H = windows + [circle(x, y, 2 * G_RIN) for (x, y) in tubes] + [circle(x, y, 4.5) for (x, y) in G_RODS]
     names = ("dolna", "srodkowa", "gorna")
-    return [prism("SS_oslona_lamp_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
-parts += guard()
+    return [prism("SS_oslona_lamp_A_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
+
+
+def guard_B():
+    """Oslona lamp, WARIANT B: obwodki 5 mm wokol lamp; polaczenia srubowe wyplaszczone - od zewnatrz prosta
+    styczna do obwodek, od srodka polokragle wciecie styczne do zewnetrznej krawedzi obwodek (bez wypustek)."""
+    import numpy as np
+    from skimage import measure
+    Ro = G_RIN + G_BAND
+    tubes = [(x, y) for y in (_GY6, _GYK) for x in _GX]
+    st = 0.2
+    xs = np.arange(-5.0, 405.0, st); ys = np.arange(120.0, 320.0, st)
+    X, Y = np.meshgrid(xs, ys)
+    def disk(c, r): return np.hypot(X - c[0], Y - c[1]) - r
+    def poly(P):                                  # wypukly wielokat CCW: max po krawedziach
+        P = ccw(P); d = None
+        for i in range(len(P)):
+            (ax, ay), (bx, by) = P[i], P[(i + 1) % len(P)]
+            ex, ey = bx - ax, by - ay; L = math.hypot(ex, ey)
+            di = ((X - ax) * ey - (Y - ay) * ex) / L     # >0 na zewnatrz (po prawej krawedzi CCW)
+            d = di if d is None else np.maximum(d, di)
+        return d
+    def unit(v): L = math.hypot(*v); return (v[0] / L, v[1] / L)
+    def tan_pt(A, c): u = unit((c[0] - A[0], c[1] - A[1])); return (A[0] + Ro * u[0], A[1] + Ro * u[1])
+    def notch_r(A, c): return math.hypot(c[0] - A[0], c[1] - A[1]) - Ro
+    f = None
+    for c in tubes:
+        d = disk(c, Ro); f = d if f is None else np.minimum(f, d)
+    webs = []
+    for (yA, nrm, sft) in ((_GY6, -1.0, -32.0), (_GYK, +1.0, +3.0)):   # przod / tyl: plaska strona n, wciecie z drugiej
+        for i in range(3):
+            A, B = (_GX[i], yA), (_GX[i + 1], yA)
+            nc = ((A[0] + B[0]) / 2, yA + nrm * sft)
+            r = notch_r(A, nc)
+            P = [tan_pt(A, nc), tan_pt(B, nc), (B[0], yA + nrm * Ro), (A[0], yA + nrm * Ro)]
+            webs.append(np.maximum(poly(P), -disk(nc, r)))
+    for x in _GX:                                                        # miedzy rzedami: wciecia z obu stron
+        A, B = (x, _GY6), (x, _GYK)
+        ym = (_GY6 + _GYK) / 2
+        cl, cr = (x - 24.0, ym), (x + 24.0, ym)
+        r = notch_r(A, cl)
+        P = [tan_pt(A, cr), tan_pt(B, cr), tan_pt(B, cl), tan_pt(A, cl)]
+        webs.append(np.maximum(np.maximum(poly(P), -disk(cl, r)), -disk(cr, r)))
+    for w in webs:
+        f = np.minimum(f, w)
+    loops = []
+    for c in measure.find_contours(f, 0.0):
+        c = measure.approximate_polygon(c, tolerance=0.02)
+        loops.append([(float(xs[0] + col * st), float(ys[0] + row * st)) for (row, col) in c[:-1]])
+    loops.sort(key=lambda L: -abs(area2(L)))
+    outer, windows = loops[0], [L for L in loops[1:] if abs(area2(L)) > 20.0]
+    H = windows + [circle(x, y, 2 * G_RIN) for (x, y) in tubes] + [circle(x, y, 4.5) for (x, y) in G_RODS]
+    names = ("dolna", "srodkowa", "gorna")
+    return [prism("SS_oslona_lamp_B_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
+GUARD_VARIANT = os.environ.get("OSLONA", "B")
+parts += guard_B() if GUARD_VARIANT == "B" else guard_A()
 parts.append(box_rear())
 
 def partition(name, x0):

@@ -42,6 +42,7 @@ def dxf(path, loops, ox, oy):
 def mat(n):
     if n.startswith("AL_"): return "aluminium 5754"
     if n.startswith("ST_"): return "profil stalowy 20x20x1,5 ocynk/czarny - dlugosc"
+    if n.startswith("SS_"): return "stal nierdzewna 2,5 mm (laser)"
     return "MDF + fornir"
 rows = []
 for S in model.parts:
@@ -64,15 +65,27 @@ render(allp, os.path.join(OUT, "widok_plytka.png"), azim=-58, elev=34, title="Be
 render(allp, os.path.join(OUT, "widok_wnetrze.png"), azim=-58, elev=40, title="Wnetrze (bez pokrywy, plytki Onyxa, drewna i dachu trafo)",
        skip=("AL_pokrywa", "SS_oslona", "REF_tuleja_M4", "REF_nakretka", "REF_sruba_M4", "DREWNO", "AL_trafo_dach", "REF_plytka_Onyx", "REF_KT88", "REF_V", "REF_podstawka", "REF_kondensatory", "REF_potencjometr", "REF_tuleja_M3", "REF_galka", "REF_przycisk", "REF_LED", "REF_wyswietl"))
 shutil.copy(os.path.join(HERE, "CZYTAJ_MNIE.txt"), OUT)
-# rysunek ramki oslony lamp z gory (z osiami potencjometrow)
+# rysunki ramek oslony lamp z gory (z osiami potencjometrow) + wariant A jako DXF i widok
 from PIL import Image, ImageDraw
-g = [p for p in model.parts if p.name == "SS_oslona_lamp_gorna"][0]
-go, gh = g.exact[0], g.exact[1]
-S_, Y0 = 3, 320
-img = Image.new("RGB", (412 * S_, 190 * S_), "white"); dr = ImageDraw.Draw(img)
-def _p(segs): return [((x + 6) * S_, (Y0 - y - 2) * S_) for sg in segs for (x, y) in stepw.seg_pts(sg, 24)]
-dr.polygon(_p(go), fill=(205, 207, 212), outline="black")
-for h in gh: dr.polygon(_p(h), fill="white", outline="black")
-for (x, y) in model.POTS: dr.ellipse(((x + 4) * S_, (Y0 - y - 4) * S_, (x + 8) * S_, (Y0 - y) * S_), fill=(200, 30, 30))
-img.save(os.path.join(OUT, "oslona_lamp_z_gory.png"))
+def top_png(part, path):
+    go, gh = part.exact[0], part.exact[1]
+    S_, Y0 = 3, 320
+    img = Image.new("RGB", (412 * S_, 190 * S_), "white"); dr = ImageDraw.Draw(img)
+    def _p(segs): return [((x + 6) * S_, (Y0 - y - 2) * S_) for sg in segs for (x, y) in stepw.seg_pts(sg, 24)]
+    dr.polygon(_p(go), fill=(205, 207, 212), outline="black")
+    for h in gh: dr.polygon(_p(h), fill="white", outline="black")
+    for (x, y) in model.POTS: dr.ellipse(((x + 4) * S_, (Y0 - y - 4) * S_, (x + 8) * S_, (Y0 - y) * S_), fill=(200, 30, 30))
+    img.save(path)
+cur = [p for p in model.parts if p.name.startswith("SS_oslona_lamp_") and p.name.endswith("gorna")][0]
+top_png(cur, os.path.join(OUT, "oslona_lamp_wariant_%s_z_gory.png" % model.GUARD_VARIANT))
+other = model.guard_A() if model.GUARD_VARIANT == "B" else model.guard_B()
+for S in other:
+    outer, holes, th = REC[S.name]
+    xs = [p[0] for p in outer]; ys = [p[1] for p in outer]
+    os.makedirs(os.path.join(OUT, "DXF", "oslona_inny_wariant"), exist_ok=True)
+    dxf(os.path.join(OUT, "DXF", "oslona_inny_wariant", S.name + ".dxf"), [outer] + list(holes), min(xs), min(ys))
+top_png([p for p in other if p.name.endswith("gorna")][0], os.path.join(OUT, "oslona_lamp_wariant_%s_z_gory.png" % ("A" if model.GUARD_VARIANT == "B" else "B")))
+base = [p for p in model.parts if not p.name.startswith("SS_oslona")]
+render(base + other + model.ref, os.path.join(OUT, "widok_przod_oslona_%s.png" % ("A" if model.GUARD_VARIANT == "B" else "B")), azim=-62, elev=26,
+       title="Oslona lamp - drugi wariant")
 print(OUT, len(rows))
