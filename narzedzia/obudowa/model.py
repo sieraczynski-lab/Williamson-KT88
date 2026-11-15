@@ -31,13 +31,13 @@ def slot(cu, cv, lu, lv):
 
 # ---------------- plytka Onyxa VA1523 (360 x 160 mm) pod pokrywa
 # Od gory: podstawki oktalowe, male rezystory, potencjometry biasu (na srubokret). Wysokie elementy od spodu.
-# Plytka wisi pod pokrywa na tulejach M3, podstawki wchodza w otwory pokrywy (jak plytki kanalow Soloista).
+# Plytka stoi na dlugich tulejach M3 przykreconych do dna; podstawki wchodza w otwory pokrywy (pokrywa bez nakretek).
 # uklad plytki z rysunku mechanicznego Onyxa: x od lewej, y od tylnej krawedzi (strona KT88)
 OB_W, OB_D = 360.0, 160.0
 OB_X0, OB_Y1 = 20.0, 302.0            # lewa krawedz plytki, tylna krawedz plytki (Y); przod = Y 142
 SOCK_H = 16.0                         # wysokosc podstawki oktalowej nad plytka (zmierzone)
 OB_ZTOP = Z_COV + T - SOCK_H          # wierzch plytki: gora podstawki rowno z wierzchem pokrywy (Z 90)
-OB_STANDOFF = Z_COV - OB_ZTOP         # tuleje M3 miedzy plytka a pokrywa (13 mm)
+
 OB_BOTTOM_H = 50.0                    # wysokie elementy pod plytka (kondensatory)
 SOCK_HOLE = 30.0                      # otwor na podstawke (srednica korpusu + 1-2 mm)
 POT_HOLE = 8.0                        # otwor na srubokret do potencjometru biasu
@@ -46,7 +46,7 @@ def ob(x, y):                          # wspolrzedne z rysunku Onyxa -> obudowa
 KT = [ob(x, 40.0) for x in (30.0, 130.0, 230.0, 330.0)]          # KT88 (rzad tylny)
 SMALL = [ob(x, 130.0) + (n,) for x, n in ((30.0, "V1_L 6SN7"), (130.0, "V2_L 6SN7"), (230.0, "V2_R 6SN7"), (330.0, "V1_R 6SN7"))]
 POTS = [ob(x, 40.0) for x in (65.0, 95.0, 265.0, 295.0)]          # osie P101/P102, P201/P202
-OB_MH = [ob(x, y) for (x, y) in ((4, 4), (356, 4), (4, 76), (356, 76), (4, 104), (356, 104), (4, 156), (80, 156), (280, 156), (356, 156))]
+OB_MH = [ob(x, y) for (x, y) in ((4, 4), (356, 4), (4, 76), (356, 76), (356, 104), (4, 156), (80, 156), (280, 156), (356, 156))]  # (4,104) pomijam: nad puszka selektora
 # plytki Soloista na dnie - w przednim rzedzie, bo pod plytka Onyxa sa wysokie elementy
 BOARDS_DNO = {"sterowanie": (45.0, 8.0), "zasilacz": (150.0, 8.0)}      # X 255-355 wolne (np. dlawiki 10 H)
 MH = {"sterowanie": [(4.5, 4.5), (95.5, 4.5), (4.5, 95.5), (95.5, 95.5)],
@@ -74,7 +74,10 @@ BR_LID_X = [65.0, 150.0, 250.0, 335.0]   # dach obudowy trafo
 BR_LEN, BR_H, BR_TAB = 30.0, 22.0, 20.0  # zaczep z blachy 3 mm: plytka 30 x 22 rownolegla do tylnej scianki, wpust 20 x 3
 BR_FL = BR_H
 BR_SCR = 11.0                        # os otworu M4 od wewnetrznej powierzchni sciany
-CORNER_POSTS = [(12.0, 12.0), (388.0, 12.0), (12.0, 295.0), (388.0, 295.0)]
+CORNER_POSTS = [(11.0, 11.0), (W - 11.0, 11.0), (11.0, Y_BOX - 8.0), (W - 11.0, Y_BOX - 8.0)]   # sruby pokrywy w rogach
+GUS = 25.0                             # trojkatne zaczepy pokrywy 25 x 25 x 3, poziomo pod pokrywa
+GUS_Z0 = Z_COV - 8.0                   # Z 95-98 (5 mm pod gorna krawedzia scianek)
+GUS_TABS = [(5.0, 12.0), (15.0, 22.0)]  # wpusty 7 x 3 na kazdym boku (od naroza)
 FEET = [(35.0, 25.0), (365.0, 25.0), (45.0, 440.0), (355.0, 440.0)]
 GL_X0, GL_Y0 = 82.0, 330.0
 # front: (x, z)
@@ -113,7 +116,7 @@ def dno():
         H += [circle(x0 + mx, y0 + my, 3.5) for (mx, my) in board_mh(name)]
     H += [slot(x, YP - T / 2, BR_TAB, T) for x in BR_FLOOR_X]                             # wpusty wspornikow tylnej scianki
     H += [circle(GL_X0 + my, GL_Y0 + mx, 3.5) for (mx, my) in board_mh("glosniki")]      # plytka glosnikow
-    H += [circle(x, y, 4.5) for (x, y) in CORNER_POSTS]
+    H += [circle(x, y, 3.4) for (x, y) in OB_MH]                       # tuleje M3 plytki Onyxa (z dna)
     H += [circle(x, y, 5.0) for (x, y) in FEET]
     return prism("AL_dno_400x460x3", ALU2, outer, H, 0, T, "XY")
 parts.append(dno())
@@ -135,6 +138,8 @@ def side(name, x0):
         P += [(T, b), (0, b), (0, a), (T, a)]
     H = [slot(Y_BOX + T / 2, (a + b) / 2, T, b - a) for (a, b) in BOXFRONT_TABS]
     H += [circle(y, 53, 4.5) for y in (60, 180, 290, 400)]       # mocowanie bokow drewnianych
+    H += [slot(T + (a + b) / 2, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS]          # zaczepy pokrywy (przod)
+    H += [slot(Y_BOX - (a + b) / 2, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS]      # zaczepy pokrywy (tyl)
     H += [slot(YP - T / 2, z, T, BR_TAB) for z in BR_SIDE_Z]       # wpusty wspornikow tylnej scianki
     return prism(name, ALU, P, H, x0, x0 + T, "YZ")
 parts.append(side("AL_bok_lewy", 0.0))
@@ -148,6 +153,7 @@ def front_wall():
     H = [circle(*FR_BTN, 22), circle(*FR_LED, 10), circle(*FR_SEL, 7.5), circle(*FR_VOL, 7.5), circle(*FR_IR, 12)]
     H += [rect(x - 12, z - 6, x + 12, z + 6) for (x, z) in FR_DISP]
     H += [circle(x, z, 4.5) for (x, z) in ((60, 20), (340, 20), (200, 20), (200, 90))]
+    H += [slot(xx, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS for xx in (T + (a + b) / 2, W - T - (a + b) / 2)]
     return prism("AL_przod_wewn", ALU, outer, H, 0, T, "XZ")
 parts.append(front_wall())
 
@@ -160,6 +166,7 @@ def box_front():
     Q = P
     H = [slot(xp + T / 2, (a + b) / 2, T, b - a) for xp in (X_P1, X_P2) for (a, b) in PART_END_TABS]
     H += [circle(x, 40, 16) for x in (65, 185, 215, 335)]          # przepusty przewodow (gumowe)
+    H += [slot(xx, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS for xx in (T + (a + b) / 2, W - T - (a + b) / 2)]
     for z in (62.0, 74.0, 86.0):                                    # wentylacja komor trafo <-> komora wzmacniacza (pod pokrywa)
         for i in range(32):
             x = 14.0 + i * 12
@@ -217,6 +224,24 @@ def brackets():
         out.append(prism("AL_zaczep_tyl_dach_%d" % (k + 1), ALU2, P, [circle(x, Z_LID - BR_SCR, 3.3)], y0, y1, "XZ"))
     return out
 parts += brackets()
+
+def gussets():
+    """Trojkatne zaczepy pokrywy z blachy 3 mm (przyprostokatne 25 mm), poziomo w rogach komory wzmacniacza,
+    po 2 wpusty 7 x 3 w bok i 2 w scianke przednia / przod obudowy trafo, klejone. Otwor fi 3,3 (M4) albo fi 6 (nakretka nitowana)."""
+    P = [(T + GUS, T), (T, T + GUS)]
+    for (a, b) in sorted(GUS_TABS, reverse=True):
+        P += [(T, T + b), (0, T + b), (0, T + a), (T, T + a)]
+    P.append((T, T))
+    for (a, b) in GUS_TABS:
+        P += [(T + a, T), (T + a, 0), (T + b, 0), (T + b, T)]
+    out = []
+    for name, fx, fy in (("LP", lambda x: x, lambda y: y), ("PP", lambda x: W - x, lambda y: y),
+                         ("LT", lambda x: x, lambda y: Y_BOX + T - y), ("PT", lambda x: W - x, lambda y: Y_BOX + T - y)):
+        Q = [(fx(x), fy(y)) for (x, y) in P]
+        hx, hy = fx(11.0), fy(11.0) if name.endswith("P") else Y_BOX - 8.0
+        out.append(prism("AL_zaczep_pokrywy_" + name, ALU2, Q, [circle(hx, hy, 3.3)], GUS_Z0, GUS_Z0 + T, "XY"))
+    return out
+parts += gussets()
 parts.append(box_rear())
 
 def partition(name, x0):
@@ -237,14 +262,13 @@ def lid():
     return prism("AL_trafo_dach", ALU, outer, H, Z_LID, Z_LID + T, "XY")
 parts.append(lid())
 
-# ---------------- POKRYWA GORNA (zdejmowana, 4 wkrety w rogach); plytka Onyxa wisi pod nia
+# ---------------- POKRYWA GORNA (zdejmowana, tylko 4 sruby M4 w rogach, w trojkatne zaczepy)
 def cover():
     outer = rect(0, 0, W, Y_STEP)
     H = [circle(x, y, 4.5) for (x, y) in CORNER_POSTS]
     socks = [(x, y) for (x, y) in KT] + [(x, y) for (x, y, n) in SMALL]
     H += [circle(x, y, SOCK_HOLE) for (x, y) in socks]
     H += [circle(x, y, POT_HOLE) for (x, y) in POTS]
-    H += [circle(x, y, 3.4) for (x, y) in OB_MH]                       # tuleje M3 plytki Onyxa
     def free(x, y, r):
         if any(math.hypot(x - a, y - b) < SOCK_HOLE / 2 + r + 2 for (a, b) in socks): return False
         if any(math.hypot(x - a, y - b) < POT_HOLE / 2 + r + 2 for (a, b) in POTS): return False
@@ -290,7 +314,7 @@ ref = []
 ZB = OB_ZTOP - 1.6
 ref.append(box("REF_plytka_Onyx_VA1523", PCB, OB_X0, OB_Y1 - OB_D, ZB, OB_X0 + OB_W, OB_Y1, OB_ZTOP))
 for (x, y) in OB_MH:
-    ref.append(cyl("REF_tuleja_M3_%dmm" % OB_STANDOFF, BLACK, x, y, 5.5, OB_ZTOP, Z_COV, n=6))
+    ref.append(cyl("REF_tuleja_M3_dno_%dmm" % round(ZB - T), BLACK, x, y, 5.5, T, ZB, n=6))
 for (x, y) in KT:
     ref.append(cyl("REF_podstawka_oktal", (0.92, 0.90, 0.85), x, y, 28, OB_ZTOP, OB_ZTOP + SOCK_H))
     ref.append(cyl("REF_KT88_cokol", BLACK, x, y, 40, Z_COV + T, Z_COV + T + 26))
@@ -321,8 +345,6 @@ x0, y0 = BOARDS_DNO["sterowanie"]
 for (mx, my) in board_mh("sterowanie"):
     if True:
         ref.append(cyl("REF_tulejka_M3_ekran", BLACK, x0 + mx, y0 + my, 5.5, 14.6, 47, n=6))
-for (x, y) in CORNER_POSTS:
-    ref.append(cyl("REF_tulejka_M4_100mm", BLACK, x, y, 7, T, Z_COV, n=6))
 for (x, y) in FEET:
     ref.append(cyl("REF_noga", BLACK, x, y, 40, -15, 0))
 for (x, z) in (FR_SEL, FR_VOL):

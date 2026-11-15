@@ -195,7 +195,7 @@ Reszta (sekwencja, UL/trioda, kolumny, trigger, selektor, IR, wyświetlacze) bez
 
 Wariant obudowy Soloista z płytką Onyxa: [`obudowa/`](../obudowa/), opis w [`obudowa/CZYTAJ_MNIE.txt`](../obudowa/CZYTAJ_MNIE.txt).
 
-- Płytka Onyxa (360 × 160 mm) **wisi pod pokrywą** na 10 krótkich tulejach M3, jak płytki kanałów Soloista. Od góry ma tylko podstawki, małe rezystory i potencjometry biasu, wysokie elementy są pod spodem.
+- Płytka Onyxa (360 × 160 mm) **stoi na dnie** na 9 tulejach M3 ok. 85 mm; podstawki wchodzą w otwory pokrywy, góra podstawek równo z pokrywą. Pokrywa nie ma nakrętek ani tulei, tylko **4 śruby M4 w rogach**, wkręcane w trójkątne zaczepy z blachy 3 mm (25 × 25 mm) klejone na wpust w boki i ścianki przednie. Od góry płytka ma tylko podstawki, małe rezystory i potencjometry biasu, wysokie elementy są pod spodem.
 - **Pokrywa** ma otwory na 8 podstawek, 4 otwory na śrubokręt do potencjometrów biasu (ok. 8 mm) i wentylację **tylko wokół lamp** (po dwa wieńce otworów ⌀6 wokół każdej KT88 i 6SN7). Dach obudowy transformatorów jest pełny.
 - **Przepływ powietrza:** otwory w dnie pod płytką → wieńce wokół lamp; komora wzmacniacza łączy się z komorami transformatorów rzędem otworów ⌀8 w przedniej ściance obudowy trafo (pod pokrywą), a te wychodzą otworami ⌀8 w **górnej 1/3 tylnej ścianki**.
 - **Płytki na dnie w przednim rzędzie**: sterowanie i płytka zasilacza; miejsce X 255–355 wolne (np. dławiki 10 H). Pod płytką Onyxa tylko płytka UL (jedna, 4 przekaźniki) i puszka selektora.
