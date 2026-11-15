@@ -107,6 +107,7 @@ WYSOKOSCI POD PLYTKA ONYXA (spod plytki Z 88,4, kondensatory do ok. Z 38)
 
 DO USTALENIA (zmierzyc na plytce)
   - srednica korpusu podstawki (otwor fi 30) i wysokosc elementow pod plytka (50 mm) - potwierdzone;
-  - pozycje osi potencjometrow (z rysunku Onyxa: 35 i 65 mm od srodka KT88 w strone srodka plytki);
+  - pozycje osi potencjometrow - POTWIERDZONE: potencjometry przykrecone do plytki, osie jak na rysunku
+    PCB Onyxa (X 65 / 95 / 265 / 295 plytki = 35 mm od srodka KT88);
   - wymiary gniazda DD11 (wyciecie, rozstaw srub) z rysunku Schurtera;
   - glebokosc zaciskow glosnikowych za scianka (max ok. 25 mm) i ich srednica otworu (fi 9 przyjete).
