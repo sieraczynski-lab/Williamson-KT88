@@ -1,0 +1,44 @@
+﻿Lp;Sekcja;Oznaczenie;Element;Parametry;Ilosc;Zapas;Priorytet;Gdzie;Uwagi
+1;A. Płytka Onyxa;R123, R124, R223, R224;Rezystor pomiarowy 10 Ω 1 %;metalizowany, 1 % (lepiej 0,5–0,1 %), 1–3 W, nóżki pod rozstaw 3 W na płytce;4;2;konieczne;TME;"Pomiar prądu KT88 przez ESP32; moc w pracy ok. 0,03 W, liczy się dokładność"
+2;A. Płytka Onyxa;R136 (lewy kanał);Rezystor 300 kΩ;metalizowany 2 W, napięcie pracy min. 500 V;1;1;konieczne;TME;"Brakuje na płytce; podniesienie żarzenia 6SN7 ok. 86 V (jak R236)"
+3;A. Płytka Onyxa;R137 (lewy kanał);Rezystor 68 kΩ;metalizowany 0,6–1 W;1;1;konieczne;TME;Brakuje na płytce (jak R237)
+4;A. Płytka Onyxa;wejście J100, J200;Kondensator wejściowy 220 nF;folia MKP/MKS, min. 63 V (np. WIMA MKS2/MKP2 220 nF 100 V);2;2;konieczne;TME;"Szeregowo w przewód przed J100/J200; z R101 220k granica ok. 3 Hz"
+5;A. Płytka Onyxa;RL (odczep 4 Ω – COM);Rezystor obciążenia 100 Ω;2 W, metalowo-tlenkowy;2;0;konieczne;TME;"Przy zaciskach albo transformatorze; trzyma obciążenie, gdy przekaźnik przełączy kolumnę na Marantza"
+6;A. Płytka Onyxa;R125, R126, R225, R226;Rezystor siatki drugiej 270 Ω;2 W, metalowo-tlenkowy;4;0;zalecane;TME;"Na płytce 150 Ω; 270 Ω zalecane przy trybie triodowym"
+7;A. Płytka Onyxa;C123, C223;Kondensatory kompensacji (zestaw);"33, 47, 68, 100, 150 pF; mika srebrna lub C0G, min. 500 V";10;0;opcjonalne;TME;"Po 2 szt. każdej wartości; dobór prostokątem na oscyloskopie"
+8;A. Płytka Onyxa;R102/C101, R202/C201;Sieć w anodzie V1B;1,2 kΩ 0,5 W + 680 pF 500 V (C0G/mika);4;0;opcjonalne;TME;Tylko gdy C123 nie wystarczy (2 rezystory + 2 kondensatory)
+9;A. Płytka Onyxa;C105, C106, C205, C206;Kondensator sprzęgający 470 nF;folia MKP, 630 V;4;0;opcjonalne;TME;Tylko gdy membrany pompują przy włączaniu
+10;B. Płytka zasilacza;R3, R4, R5;Rezystor 1 MΩ 1 % 1600 V;metalizowany wysokonapięciowy (np. Vishay VR37);3;1;konieczne;TME;Dzielnik pomiaru Ua (precyzyjny)
+11;B. Płytka zasilacza;R6;Rezystor 15 kΩ 1 %;metalizowany 0,6 W;1;1;konieczne;TME;Dzielnik pomiaru Ua (precyzyjny)
+12;B. Płytka zasilacza;reszta;Elementy wg BOM płytki;pcb/zasilacz/zasilacz_williamson_BOM.csv;1;0;konieczne;TME / LCSC;K1–K4 G2RL-2-DC12, R_SS 47 Ω 10 W, R_IN 100 Ω 10 W, oprawki 5x20, LED, 1N4148, złącza śrubowe
+13;B. Płytka zasilacza;F2 / F3 / F4;Bezpieczniki 5x20;T500 mA 250 V / T1 A 500 V (np. Schurter SPT) / T100 mA 250 V;3;3;konieczne;TME;F3 musi mieć min. 400 V AC
+14;C. Tylna ścianka;gniazdo zasilania;Schurter DD11 (IEC C14 + bezpiecznik + wyłącznik 2-bieg.);np. DD11.0124.1110 + szuflada bezpieczników wg karty DD11;1;0;konieczne;TME / Farnell;Przed cięciem sprawdzić wycięcie 27,1 x 56 mm i rozstaw śrub 65 mm
+15;C. Tylna ścianka;F1;Bezpiecznik 5x20 T2,5 A 250 V;zwłoczny;2;4;konieczne;TME;W szufladzie DD11
+16;C. Tylna ścianka;wejścia;Gniazdo RCA panelowe izolowane;otwór ⌀11, izolowane od obudowy;8;0;konieczne;TME;4 pary: L czerwone, P białe/czarne
+17;C. Tylna ścianka;wyjścia i Marantz;Zacisk głośnikowy izolowany;otwór ⌀9, max ok. 25 mm za ścianką;10;0;konieczne;TME;"Na kanał: 8 Ω, 4 Ω, GND + Marantz +, GND; GND izolowane od obudowy"
+18;C. Tylna ścianka;TRIGGER;Gniazdo jack 3,5 mm mono panelowe izolowane;otwór ⌀6;1;0;konieczne;TME;
+19;C. Tylna ścianka;PE;Śruba M4 + nakrętki, podkładka ząbkowana, oczko;nierdzewna;1;0;konieczne;sklep;Uziemienie obudowy
+20;C. Tylna ścianka;przepusty;Przepust gumowy ⌀16;do blachy 3 mm;4;0;konieczne;TME;Przednia ścianka obudowy transformatorów
+21;D. Mechanika;płytka Onyxa;Tuleja dystansowa M3 ż-m 45 mm;mosiężna/stalowa;9;1;konieczne;TME;"Składane z 40 mm do ok. 85 mm; długość dobrać tak, żeby podstawki stały równo z pokrywą"
+22;D. Mechanika;płytka Onyxa;Tuleja dystansowa M3 ż-m 40 mm;mosiężna/stalowa;9;1;konieczne;TME;
+23;D. Mechanika;płytka Onyxa;Śruba M3 x 6;;18;4;konieczne;sklep;
+24;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 30 mm;nierdzewna;6;0;konieczne;TME / sklep;
+25;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 60 mm;nierdzewna;12;0;konieczne;TME / sklep;
+26;D. Mechanika;osłona lamp;Nakrętka kołpakowa M4;nierdzewna;6;2;konieczne;sklep;
+27;D. Mechanika;osłona lamp;Śruba M4 x 10 (od spodu pokrywy);nierdzewna, łeb płaski;6;2;konieczne;sklep;
+28;D. Mechanika;pokrywa + tylna ścianka;Śruba M4 x 8 imbus;nierdzewna;17;4;konieczne;sklep;4 pokrywa + 13 tylna ścianka
+29;D. Mechanika;zaczepy;Nakrętka nitowana M4 (aluminium);otwór ⌀6 w zaczepie;17;5;opcjonalne;sklep;Tylko jeśli gwint M4 w blasze 3 mm będzie za słaby
+30;D. Mechanika;zaczepy;Klej epoksydowy;do aluminium;1;0;konieczne;sklep;11 zaczepów tylnej ścianki + 4 trójkątne zaczepy pokrywy
+31;D. Mechanika;płytki na dnie;Tuleja M3 10 mm (płytka UL: izolacyjna);nylon lub mosiądz;19;4;konieczne;TME;sterowanie 4, zasilacz 4, UL 4 (nylon), głośniki 3, selektor 4
+32;D. Mechanika;osłona lamp;Ramki ze stali nierdzewnej 2,5 mm (laser);DXF: obudowa/DXF/SS_oslona_lamp_C_*.dxf;3;0;konieczne;usługa laser;Wariant C
+33;D. Mechanika;obudowa;Blachy aluminiowe 3 mm (CNC/laser);DXF: obudowa/DXF/AL_*.dxf, lista_czesci.csv;1;0;konieczne;usługa CNC;Komplet
+34;E. Przewody;anody, odczepy UL, Ua;Przewód silikonowy 0,75 mm², izolacja 1 kV;;6;0;konieczne;TME;metry
+35;E. Przewody;żarzenie KT88;Przewód 1,5 mm² (skręcany);;3;0;konieczne;sklep;metry
+36;E. Przewody;wejścia, NFB;Przewód ekranowany sygnałowy 1-żyłowy;;3;0;konieczne;TME;metry
+37;E. Przewody;sterowanie, cewki;Przewód 0,25–0,5 mm² (kolorowy) + koszulki termokurczliwe;;10;0;konieczne;sklep;metry
+38;F. Transformatory, lampy;TR1;Transformator sieciowy 400 VA;"S1 360 V (345/375 V) 0,65 A; S4 58 V 0,1 A; 6,3 V 8 A; 6,3 V 3 A; ekran";1;0;konieczne;toroidy.pl;docs/08
+39;F. Transformatory, lampy;L106, L206;Dławik 10 H / 250 mA / 45 Ω;filtr anodowy;2;0;konieczne;toroidy.pl;
+40;F. Transformatory, lampy;TG;Transformator głośnikowy TTG-KT88PP;4 kΩ, UL 43 %, 4/8 Ω;2;0;konieczne;toroidy.pl;
+41;F. Transformatory, lampy;V5–V8;KT88;;4;0;masz;–;
+42;F. Transformatory, lampy;V1, V2;6SN7 Psvane UK-6SN7 Plus;;4;0;kupione;–;Zmierzyć bańkę i wysokość (osłona: otwór ⌀56)
+43;G. Płytki PCB;zasilacz, UL, sterowanie, głośniki, selektor;Płytki PCB + elementy;wg BOM w pcb/*/;1;0;konieczne;JLCPCB / LCSC / TME;Sterowanie: montaż SMD w JLCPCB (sterowanie_BOM_JLCPCB.csv)

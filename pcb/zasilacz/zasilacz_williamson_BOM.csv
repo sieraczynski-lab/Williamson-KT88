@@ -18,10 +18,10 @@ F4;T100mA 250V;Fuseholder_5x20_Closed_P22.5;GORA;24.00;92.00;BIAS (AC);;bezpiecz
 J11;BIAS_L;TerminalBlock_1x02_P5.08;GORA;52.00;95.00;BIAS (AC);;zlacze srubowe: do Onyx J106
 J12;BIAS_R;TerminalBlock_1x02_P5.08;GORA;62.00;95.00;BIAS (AC);;zlacze srubowe: do Onyx J206
 J13;UA_IN;WirePad_4.5;GORA;70.00;75.00;POMIAR Ua;;"z Ua-L na plytce Onyxa (plus C121); przewod w izolacji 1 kV"
-R3;1M 1600V;R_Axial_1W_P15.24_V;GORA;80.00;88.00;POMIAR Ua;;np. Vishay VR37
-R4;1M 1600V;R_Axial_1W_P15.24_V;GORA;85.00;88.00;POMIAR Ua;;
-R5;1M 1600V;R_Axial_1W_P15.24_V;GORA;90.00;88.00;POMIAR Ua;;
-R6;15k;R_Axial_0.5W_P12.7_V;GORA;94.00;84.00;POMIAR Ua;;ok. 2,3 V przy 465 V
+R3;1M 1% 1600V;R_Axial_1W_P15.24_V;GORA;80.00;88.00;POMIAR Ua;;metalizowany 1 %, np. Vishay VR37 (dzielnik pomiaru Ua)
+R4;1M 1% 1600V;R_Axial_1W_P15.24_V;GORA;85.00;88.00;POMIAR Ua;;
+R5;1M 1% 1600V;R_Axial_1W_P15.24_V;GORA;90.00;88.00;POMIAR Ua;;
+R6;15k 1%;R_Axial_0.5W_P12.7_V;GORA;94.00;84.00;POMIAR Ua;;"metalizowany 1 %; ok. 2,3 V przy 465 V"
 J14;HV_SENSE;WirePad_3.5;GORA;97.50;75.00;POMIAR Ua;;do sterowania J5 pin 2
 J15;GND_ONYX;WirePad_4.5;GORA;87.00;74.00;ZLACZA;;masa: do gwiazdy na plytce Onyxa (minus C120)
 J18;GND_STER;WirePad_3.5;GORA;92.00;74.50;ZLACZA;;masa pomiaru: do sterowania J5
