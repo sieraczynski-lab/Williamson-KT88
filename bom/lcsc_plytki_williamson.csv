@@ -1,0 +1,22 @@
+﻿LCSC;Opis;Ilosc;Gdzie
+C8465;WJ500V-5.08-2P 250 V 18 A;13;zasilacz:J1, zasilacz:J3, zasilacz:J5, zasilacz:J10, zasilacz:J11, zasilacz:J12, ul:J5, glosniki:J1, glosniki:J2, glosniki:J3, glosniki:J4, glosniki:J5, glosniki:J6
+C187509;"UWAGA: oprawki 5x20 >= 400 V do PCB brak w LCSC; ta ma 250 V (Littelfuse 648)";3;zasilacz:F2, zasilacz:F3, zasilacz:F4
+C61458;Omron G2RL-2-DC12;10;zasilacz:K1, zasilacz:K2, zasilacz:K3, zasilacz:K4, ul:K1, ul:K2, ul:K3, ul:K4, glosniki:K1, glosniki:K2
+C349125;EWWR0010J47R0T9 drutowy 10 W 47R, 9 x 36,5 mm (cementowego 10 W brak);1;zasilacz:R1
+C581337;DG636-7.62-02P 630 V 32 A;3;zasilacz:J7, zasilacz:J8, zasilacz:J9
+C349082;EWWR0010J100RT9 drutowy 10 W 100R, 9 x 36,5 mm;1;zasilacz:R2
+C1365660;Vishay VR37 1M 1% (VR37000001004FR500);3;zasilacz:R3, zasilacz:R4, zasilacz:R5
+C601895;15k 1% 0,5 W 350 V (MF1/2W-15K);1;zasilacz:R6
+C82511;220k 1% 1 W 350 V (MFR01SF2203A10);2;zasilacz:R7, zasilacz:R8
+C779429;LED 3 mm czerwona, jasna 600 mcd (dobrze swieci przy 1 mA);1;zasilacz:D1
+C49257;goldpin 1x3 prosty;2;zasilacz:J16, zasilacz:J17
+C402212;1N4148 DO-35;10;zasilacz:D2, zasilacz:D3, zasilacz:D4, zasilacz:D5, ul:D1, ul:D2, ul:D3, ul:D4, glosniki:D1, glosniki:D2
+C480591;Phoenix 1731734 7,62 mm 3P 500 V;4;ul:J1, ul:J2, ul:J3, ul:J4
+C492401;goldpin 1x2 prosty;1;glosniki:J7
+C172965;100k 1% 0,25 W 50 ppm (MFR-25FTE52-100K);2;glosniki:R1, glosniki:R2
+C173033;5,1k 1% 0,25 W 50 ppm (MFR-25FTE52-5K1);2;glosniki:R3, glosniki:R4
+C2170624;1 nF 50 V C0G raster 5 mm (K102J15C0GF5TH5);2;glosniki:C1, glosniki:C2
+C2798198;"BAT42 DO-35 (zamiennik BAT85, 30 V; BAT85 brak w LCSC)";4;glosniki:D3, glosniki:D4, glosniki:D5, glosniki:D6
+C172978;1k 1% 0,25 W (MFR-25FTE52-1K);2;glosniki:R5, glosniki:R6
+C216288;10 uF 16 V 5 x 11, raster 2 mm (RL1C100MC110A00CV0);1;glosniki:C3
+C492412;goldpin 1x4 katowy;1;glosniki:J8
