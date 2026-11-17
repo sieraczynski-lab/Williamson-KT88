@@ -1,4 +1,11 @@
 ﻿LCSC;Opis;Ilosc;Gdzie
+C58751;10 Ω 1 % 3 W 50 ppm 500 V (MFR03SF100JA10), 5 x 15,5 mm;4;Onyx: R123, R124, R223, R224 (pomiar prądu KT88)
+C1741174;opcja precyzyjna: 10 Ω 0,1 % 0,5 W Vishay CMF55 (zamiast C58751);0;Onyx: R123, R124, R223, R224
+C1387676;300 kΩ 3 W 5 % węglowy, 5 x 15,5 mm (2 W 300k brak);1;Onyx: R136
+C1364508;68 kΩ 1 % 0,6 W Vishay MBB0207;1;Onyx: R137
+C58717;100 Ω 1 % 2 W 500 V;2;RL odczep 4 Ω – COM
+C479464;270 Ω 5 % 2 W metalowo-tlenkowy 400 V;4;Onyx: R125, R126, R225, R226 (zalecane)
+C1373572;1,2 kΩ 1 % 0,5 W;2;Onyx: R102, R202 (opcja)
 C8465;WJ500V-5.08-2P 250 V 18 A;13;zasilacz:J1, zasilacz:J3, zasilacz:J5, zasilacz:J10, zasilacz:J11, zasilacz:J12, ul:J5, glosniki:J1, glosniki:J2, glosniki:J3, glosniki:J4, glosniki:J5, glosniki:J6
 C187509;"UWAGA: oprawki 5x20 >= 400 V do PCB brak w LCSC; ta ma 250 V (Littelfuse 648)";3;zasilacz:F2, zasilacz:F3, zasilacz:F4
 C61458;Omron G2RL-2-DC12;10;zasilacz:K1, zasilacz:K2, zasilacz:K3, zasilacz:K4, ul:K1, ul:K2, ul:K3, ul:K4, glosniki:K1, glosniki:K2
