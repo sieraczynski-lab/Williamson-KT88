@@ -148,12 +148,13 @@ Jak to działa: przekaźnik ma styk przełączny. Wspólny (COM) idzie przez J1-
 
 ## 9.8 Przełącznik kolumn i trigger
 
-Płytka `glosniki` i wejście TRIGGER bez zmian:
+Płytka `glosniki` (wersja Williamsona 100 × 44 mm, `pcb/glosniki/`): przekaźniki jak w Soloiście, dodany tor pomiaru sygnału do wskaźników VU (docs/10, 2.4). Wejście TRIGGER bez zmian:
 
 - odczep **4 Ω** i COM toroidu → glosniki J2 (LAMPA_L), prawy kanał J5;
 - **sprzężenie zwrotne z odczepu 8 Ω prosto z toroidu** do Onyx J102, przed przekaźnikiem;
 - RL 100 Ω / 2 W zostaje na wtórnym toroidu, więc lampa nigdy nie gra bez obciążenia;
-- Marantz → glosniki J1/J4, kolumny → J3/J6, cewki → sterowanie J13.
+- Marantz → glosniki J1/J4, kolumny → J3/J6, cewki → sterowanie J13;
+- glosniki J8 (VU: 3V3, GND, VU_L, VU_R) → ESP32 3V3, GND, GPIO2, GPIO3, przewód ekranowany 4-żyłowy, ekran do masy tylko przy sterowaniu.
 
 **Zaciski na tylnej ściance, na kanał** (od góry): **8 Ω**, **4 Ω**, **GND** (wyjścia), obok **+** i **GND** wejścia z Marantza.
 

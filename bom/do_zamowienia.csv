@@ -52,6 +52,6 @@
 51;H. Front i sterowanie;VU L, VU P;"Okrągły LCD 1,28"" GC9A01";240 x 240, SPI;2;0;do decyzji;AliExpress / TME;Wariant B - zamiast A
 52;H. Front i sterowanie;zasilanie wyświetlaczy;Przetwornica 12 V → 5 V;min. 1,5 A;1;0;zalecane;TME;Przy wariancie A
 53;H. Front i sterowanie;temperatura (sterowanie J6);Czujnik DS18B20;TO-92 albo w osłonce;1;1;konieczne;TME;Pod płytką Onyxa, przy KT88
-54;H. Front i sterowanie;VU L, VU P (GPIO2/3);Układ pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 %, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G, 10 µF, 4x BAT85, płytka uniwersalna;1;0;do decyzji;TME;docs/10, 2.4
+54;H. Front i sterowanie;płytka głośników: R1–R6, C1–C3, D3–D6, J8;Tor pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 % 0,6 W, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G 5 mm, 10 µF 16 V, 4x BAT85, goldpin kątowy 1x4;1;0;zalecane;TME;Na płytce głośników (pcb/glosniki), docs/10, 2.4
 55;H. Front i sterowanie;prawa listwa ESP32;Listwa goldpin 1x22 + przewody z wtykami;2,54 mm;1;0;konieczne;TME;Drugi enkoder, UART, wejścia VU
 56;H. Front i sterowanie;wyświetlacze, VU;Skrętka / przewód 4-żyłowy ekranowany;;3;0;konieczne;TME;metry

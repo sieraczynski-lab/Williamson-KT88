@@ -60,7 +60,7 @@ OB_MH = [ob(x, y) for (x, y) in ((4, 4), (356, 4), (4, 76), (356, 76), (356, 104
 BOARDS_DNO = {"sterowanie": (45.0, 8.0), "zasilacz": (150.0, 8.0)}      # X 255-355 wolne (np. dlawiki 10 H)
 MH = {"sterowanie": [(4.5, 4.5), (95.5, 4.5), (4.5, 95.5), (95.5, 95.5)],
       "zasilacz": [(4.5, 4.5), (95.5, 4.5), (4.5, 95.5), (95.5, 95.5)],
-      "glosniki": [(4.5, 37.5), (51.0, 37.5), (95.5, 22.0)],
+      "glosniki": [(4.5, 39.5), (51.0, 17.5), (95.5, 39.5)],
       "ul": [(4.5, 4.5), (78.0, 4.5), (4.5, 61.5), (95.5, 61.5)]}
 UL_POS = {"LP": (150.0, 230.0)}                                    # jedna plytka UL 100 x 66 na dnie, na srodku pod plytka Onyxa
 SEL_BOX = (24.0, 150.0, 136.0, 210.0)                               # selektor w puszce aluminiowej ok. 112 x 60 x 31 (Hammond 1590), pod plytka
@@ -88,7 +88,7 @@ GUS = 25.0                             # trojkatne zaczepy pokrywy 25 x 25 x 3, 
 GUS_Z0 = Z_COV - 8.0                   # Z 95-98 (5 mm pod gorna krawedzia scianek)
 GUS_TABS = [(5.0, 12.0), (15.0, 22.0)]  # wpusty 7 x 3 na kazdym boku (od naroza)
 FEET = [(35.0, 25.0), (365.0, 25.0), (45.0, 440.0), (355.0, 440.0)]
-GL_X0, GL_Y0 = 82.0, 330.0
+GL_X0, GL_Y0 = 81.5, 330.0
 # front: (x, z)
 FR_BTN, FR_LED, FR_SEL, FR_VOL, FR_IR = (35.0, 48.0), (35.0, 80.0), (100.0, 53.0), (300.0, 53.0), (365.0, 53.0)
 FR_DISP = [(165.0, 55.0), (235.0, 55.0)]
@@ -484,7 +484,7 @@ for k, (x, z) in enumerate(SPK_MAR):
     ref.append(cyl("REF_zacisk_tyl", (0.8, 0.7, 0.3), x, z, 10, YP - 25, YP, axis="Y"))
 ref.append(cyl("REF_PE", (0.8, 0.7, 0.3), PE_STUD[0], PE_STUD[1], 10, YP - 8, D + 8, axis="Y"))
 ref.append(cyl("REF_gniazdo_trigger_3.5mm", BLACK, TRIG_JACK[0], TRIG_JACK[1], 8, D - T - 12, D + 8, axis="Y"))
-ref.append(box("REF_plytka_glosniki", PCB, GL_X0, GL_Y0, 9, GL_X0 + 42, GL_Y0 + 100, 10.6))
+ref.append(box("REF_plytka_glosniki", PCB, GL_X0, GL_Y0, 9, GL_X0 + 44, GL_Y0 + 100, 10.6))
 for cxb in (30, 72):
     ref.append(box("REF_przekaznik_G2RL", BLACK, GL_X0 + 28 - 6.25, GL_Y0 + cxb - 14.4, 10.6, GL_X0 + 28 + 6.25, GL_Y0 + cxb + 14.4, 26.3))
 cx, cz = IEC

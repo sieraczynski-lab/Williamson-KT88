@@ -18,6 +18,12 @@ CLASSES = {
          "anody i odczepy UL, ok. 465 V DC + sygnal (do ok. 850 V szczyt); 3 mm takze miedzy kanalami"),
         ("CEWKI", 0.5, 0.3, "6,0 do UL_HV", "+12V RLY_UL", "cewki 4 x 33 mA"),
     ],
+    "glosniki_williamson": [
+        ("GLOSNIK", 2.0, 0.5, "", "MAR_LP MAR_LN MAR_RP MAR_RN TUBE_LP TUBE_LN TUBE_RP TUBE_RN SPK_LP SPK_LN SPK_RP SPK_RN",
+         "do ok. 5 A skutecznie (Marantz 100 W / 4 Ohm); sciezki obustronnie lub szerzej, jesli sie zmiesci"),
+        ("CEWKI", 0.5, 0.3, "", "+12V RLY_SPK", "2 x 33 mA"),
+        ("VU", 0.3, 0.3, "1,0 do GLOSNIK", "VU_L VU_R VMID 3V3 GND", "tor pomiaru VU, < 2 mA; GND = masa sterowania, nie laczyc z TUBE_xN"),
+    ],
 }
 DEFAULT = (0.4, 0.3)
 

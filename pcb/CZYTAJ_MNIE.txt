@@ -7,7 +7,7 @@ Plytka wzmacniacza to plytka Onyxa VA1523 (kupiona). Pozostale plytki:
   zasilacz/    zasilacz Williamsona          100 x 100   1      nowa (narzedzia/pcb/zasilacz_pcb.py)
   sterowanie/  sterownik ESP32-S3            100 x 100   1      Soloist-KT88 v0.23, bez zmian
   ul/          przelacznik UL / trioda       100 x 66    1      nowa, 4 przekazniki (narzedzia/pcb/ul_pcb.py)
-  glosniki/    przelacznik kolumn + trigger  100 x 42    1      Soloist-KT88 v0.23, bez zmian
+  glosniki/    przelacznik kolumn + VU       100 x 44    1      Soloist + tor VU (narzedzia/pcb/glosniki_pcb.py)
   selektor/    selektor wejsc i glosnosc     -           1      Soloist-KT88 (TubeSel), bez zmian
 
 Plytki kanalu, zasilacz_siec, zasilacz_hv i dwie plytki ul Soloista NIE sa potrzebne (zastepuja je
@@ -25,8 +25,8 @@ PLIKI W KAZDYM FOLDERZE (zasilacz, sterowanie, ul, glosniki)
   import_EasyEDA/<plytka>_Standard_pcb.zip        - EasyEDA Standard: PCB (KiCad 4)
   KiCad4_dla_EasyEDA_Standard/, KiCad5_dla_EasyEDA_Pro_i_KiCad8/ - te same projekty rozpakowane
   <plytka>_BOM.csv, _netlista.csv, _klasy_sieci.csv, _rozmieszczenie.png/.svg
-  <plytka>_rozmieszczenie_1do1.pdf  - do wydruku 100% (sterowanie, glosniki)
-  <plytka>_BOM_LCSC.xlsx            - czesci z numerami LCSC (sterowanie, glosniki)
+  <plytka>_rozmieszczenie_1do1.pdf  - do wydruku 100% (sterowanie)
+  <plytka>_BOM_LCSC.xlsx            - czesci z numerami LCSC (sterowanie)
   sterowanie/sterowanie_BOM_JLCPCB.csv - montaz SMD w JLCPCB
 Selektor ma wlasny uklad folderow: selektor/kicad (KiCad 8/9) i selektor/kicad5-easyeda.
 
@@ -64,6 +64,9 @@ Kolumny:
   J3/J6 -> zaciski wyjsciowe 4 Ohm (+) i GND (-) - GND wyjscia jest przelaczany, NIE laczyc z masa;
   zacisk 8 Ohm -> odczep 8 Ohm toroidu wprost (bez przelaczania)
   cewki glosniki J7 <- sterowanie J13;  TRIGGER (jack 3,5 mm) -> sterowanie J12
+  VU: glosniki J8 (1 3V3, 2 GND, 3 VU_L, 4 VU_R) -> ESP32 3V3, GND, GPIO2, GPIO3 (prawa/lewa listwa modulu,
+      docs/10, 2.2); przewod ekranowany 4-zylowy, ekran do masy tylko przy sterowaniu.
+      Masa VU NIE jest polaczona z COM toroidow na plytce glosnikow.
   Sprzezenie zwrotne: odczep 8 Ohm toroidu -> Onyx J102 (przed przekaznikiem)
 Selektor:
   wyjscie selektora J5 -> przewod ekranowany -> Onyx J100 / J200 przez 220 nF folia szeregowo

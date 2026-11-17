@@ -1,0 +1,29 @@
+﻿Oznaczenie;Wartosc;Footprint;Strona;X [mm];Y [mm];Grupa;LCSC;Uwagi
+K1;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;30.00;28.00;PRZEKAZNIKI GLOSNIKOW;C61458;"kanal L: bez pradu cewki kolumna <- Marantz (NC), cewka zasilona: kolumna <- Lampa (NO); + i - przelaczane"
+K2;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;72.00;28.00;PRZEKAZNIKI GLOSNIKOW;C61458;"kanal R: bez pradu cewki kolumna <- Marantz (NC), cewka zasilona: kolumna <- Lampa (NO); + i - przelaczane"
+D1;1N4148;D_DO-35_P7.62;GORA;8.00;15.00;PRZEKAZNIKI GLOSNIKOW;;dioda cewki K1
+D2;1N4148;D_DO-35_P7.62;GORA;93.00;15.00;PRZEKAZNIKI GLOSNIKOW;;dioda cewki K2
+J1;MARANTZ_L;TerminalBlock_1x02_P5.08;GORA;12.00;5.00;ZLACZA;;z zaciskow Marantza na tylnej sciance, kanal L: 1 +, 2 GND
+J2;LAMPA_L;TerminalBlock_1x02_P5.08;GORA;27.00;5.00;ZLACZA;;z wtornego toroidu L: 1 odczep 4 Ohm, 2 COM (masa Lampy)
+J3;KOLUMNA_L;TerminalBlock_1x02_P5.08;GORA;42.00;5.00;ZLACZA;;do zaciskow wyjsciowych L: 1 -> 4 Ohm, 2 -> GND (izolowany od obudowy)
+J4;MARANTZ_R;TerminalBlock_1x02_P5.08;GORA;58.00;5.00;ZLACZA;;z Marantza, kanal P
+J5;LAMPA_R;TerminalBlock_1x02_P5.08;GORA;73.00;5.00;ZLACZA;;z wtornego toroidu P: 1 odczep 4 Ohm, 2 COM
+J6;KOLUMNA_R;TerminalBlock_1x02_P5.08;GORA;88.00;5.00;ZLACZA;;do zaciskow wyjsciowych P
+J7;CEWKI;PinHeader_1x02_P2.54;GORA;95.50;22.00;ZLACZA;;ze sterowania J13 (+12 V, RLY_SPK)
+R1;100k 1%;R_Axial_0.5W_P12.7;GORA;17.00;40.50;POMIAR VU;;"metalizowany 1 % 0,6 W; dzielnik VU kanal L (odczep 4 Ohm)"
+R3;5k1 1%;R_Axial_0.5W_P12.7;GORA;32.00;40.50;POMIAR VU;;"metalizowany 1 %; k = 5,1 / 105,1 = 0,0485"
+C1;1n C0G;C_Box_P5_7x4;GORA;44.00;38.00;POMIAR VU;;"C0G/NP0 50 V raster 5 mm; filtr ok. 31 kHz"
+D3;BAT85;D_DO-35_P7.62_V;GORA;46.00;28.00;POMIAR VU;;Schottky: ogranicznik do 3,3 V
+D4;BAT85;D_DO-35_P7.62_V;GORA;49.00;28.00;POMIAR VU;;Schottky: ogranicznik do masy
+R2;100k 1%;R_Axial_0.5W_P12.7;GORA;84.00;40.50;POMIAR VU;;"metalizowany 1 % 0,6 W; dzielnik VU kanal R (odczep 4 Ohm)"
+R4;5k1 1%;R_Axial_0.5W_P12.7;GORA;69.00;40.50;POMIAR VU;;"metalizowany 1 %; k = 5,1 / 105,1 = 0,0485"
+C2;1n C0G;C_Box_P5_7x4;GORA;57.00;38.00;POMIAR VU;;"C0G/NP0 50 V raster 5 mm; filtr ok. 31 kHz"
+D5;BAT85;D_DO-35_P7.62_V;GORA;56.00;28.00;POMIAR VU;;Schottky: ogranicznik do 3,3 V
+D6;BAT85;D_DO-35_P7.62_V;GORA;53.00;28.00;POMIAR VU;;Schottky: ogranicznik do masy
+R5;1k;R_Axial_0.5W_P12.7_V;GORA;5.00;24.00;POMIAR VU;;punkt srodkowy 1,65 V
+R6;1k;R_Axial_0.5W_P12.7_V;GORA;9.00;24.00;POMIAR VU;;punkt srodkowy 1,65 V
+C3;10u 16V;CP_Radial_D6.3_P2.5;GORA;90.00;30.00;POMIAR VU;;elektrolit 10 uF, + do VMID
+J8;VU;PinHeader_1x04_P2.54_H;GORA;51.00;41.50;ZLACZA;;"goldpin 4: 1 3V3, 2 GND (masa sterowania), 3 VU_L -> ESP32 GPIO2, 4 VU_R -> ESP32 GPIO3; przewod ekranowany 4-zylowy, ekran do masy tylko od strony sterowania"
+MH1;M3;MountingHole_M3;GORA;4.50;39.50;OTWORY;;
+MH2;M3;MountingHole_M3;GORA;51.00;17.50;OTWORY;;
+MH3;M3;MountingHole_M3;GORA;95.50;39.50;OTWORY;;

@@ -63,14 +63,16 @@ Okrągły LCD 2,1" ma 480 × 480 pikseli i interfejs RGB (ok. 18 linii na wyświ
 
 Przy wariancie A: zasilanie modułów z 5 V płytki sterowania (sprawdzić wydajność przetwornicy U2, w razie potrzeby osobna 5 V / 1 A), masa wspólna, przewody UART skręcone z masą, z dala od anod. Wymiary i wycięcie we froncie drewnianym dopasować do modułu.
 
-### 2.4 Sygnał do wskaźników wysterowania **[DECYZJA]**
+### 2.4 Sygnał do wskaźników wysterowania
 
-Płytka sterowania nie ma wejścia sygnału audio, trzeba dołożyć mały układ (np. na płytce uniwersalnej obok sterowania), po jednym na kanał:
+Tor pomiarowy jest na **płytce głośników** (`pcb/glosniki/`, 100 × 44 mm), po jednym na kanał. Na tej płytce jest już odczep 4 Ω obu toroidów, więc nie trzeba osobnej płytki uniwersalnej.
 
-- źródło: odczep **4 Ω** toroidu (strona lampy, **przed** przekaźnikiem kolumn), względem masy wzmacniacza; wskaźnik pokazuje więc tylko lampę (w trybie Marantz wyświetlacze pokazują „MARANTZ”);
-- dzielnik 100 kΩ / 5,1 kΩ do punktu 1,65 V (bufor albo 2× 1 kΩ + 10 µF z 3,3 V), 1 nF równolegle do 5,1 kΩ, diody BAT54S do 3,3 V i masy;
-- skala: 45 W / 4 Ω = 13,4 V RMS (19 V szczytowo) → ok. ±0,93 V na ADC, zapas +3 dB do obcinania;
-- ESP32: ADC1 w trybie ciągłym (DMA), 2 kanały po ok. 10 kS/s.
+- źródło: odczep **4 Ω** toroidu (J2-1 / J5-1, strona lampy, **przed** przekaźnikiem kolumn); wskaźnik pokazuje więc tylko lampę (w trybie Marantz wyświetlacze pokazują „MARANTZ”);
+- R1/R2 100 kΩ 1 % i R3/R4 5,1 kΩ 1 % do punktu 1,65 V (VMID: R5/R6 2× 1 kΩ z 3,3 V + C3 10 µF), C1/C2 1 nF C0G równolegle do 5,1 kΩ, D3–D6 BAT85 do 3,3 V i masy;
+- **masa toru VU = masa sterowania** (J8-2), na płytce NIE połączona z COM toroidów (J2-2, J5-2). COM jest uziemiony na płytce Onyxa, więc prąd głośnika nie płynie przewodem do sterowania;
+- złącze J8 (goldpin 1×4): 3V3, GND, VU_L → GPIO2, VU_R → GPIO3; przewód ekranowany 4-żyłowy (ok. 40 cm), ekran do masy tylko po stronie sterowania;
+- skala: 45 W / 4 Ω = 13,4 V RMS (19 V szczytowo) → ok. ±0,92 V na ADC, zapas +3 dB do obcinania;
+- ESP32: ADC1 w trybie ciągłym (DMA), 2 kanały po ok. 10 kS/s; składową stałą (VMID) program liczy jako średnią i odejmuje, dokładność 1,65 V nie ma znaczenia.
 
 Alternatywa: detektor obwiedni (wzmacniacz operacyjny) na wolne wejścia ADS1115 0x49 A2/A3. Wolniejsze (ok. 400 próbek/s na kanał, dzielone z pomiarami biasu) i bez prawdziwego RMS, ale bez nowych pinów.
 
@@ -288,7 +290,7 @@ Rzadko używane, przez długie naciśnięcie enkodera głośności albo MENU z p
 ## 17. Do ustalenia **[DECYZJA]**
 
 1. Wyświetlacze: wariant A (2 moduły ESP32-S3 + LCD 2,1" dotykowy) czy B (GC9A01 1,28" SPI)?
-2. Sygnał VU: dzielnik na ADC ESP32 (2.4) czy detektor obwiedni na ADS1115?
+2. Sygnał VU: dzielnik na płytce głośników → ADC ESP32 (2.4) – przyjęte; detektor na ADS1115 tylko jako rezerwa.
 3. Drugi enkoder: piny z prawej listwy DevKitC (dolutowane złącze) czy nowa wersja płytki sterowania?
 4. Pilot: pilot Marantza (nauka kodów) czy osobny?
 5. Przycisk włączania na froncie zostaje (jak w Soloiście)?
