@@ -92,6 +92,7 @@ Płytka Onyxa dostaje własną, prostą płytkę zasilacza (bez prostowników i 
 7. [Wersje Onyxa: zdjęcia, schemat i płytka VA1523](docs/07-wersje-onyxa.md)
 8. [Specyfikacja do zamówienia w toroidy.pl](docs/08-zamowienie-toroidy.md)
 9. [Zasilacz, sterowanie, dodatki i obudowa](docs/09-integracja-soloist.md)
+10. [Oprogramowanie ESP32: założenia](docs/10-oprogramowanie-esp32.md)
 
 ## Generowanie schematów
 
