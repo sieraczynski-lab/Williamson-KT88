@@ -2,3 +2,5 @@ __pycache__/
 *.svgpart
 .DS_Store
 __pycache__/
+.pio/
+.vscode/
