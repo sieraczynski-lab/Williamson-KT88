@@ -48,10 +48,10 @@
 47;H. Front i sterowanie;BTN (sterowanie J9-4);Przycisk włączania;chwilowy (NO), metalowy ⌀16–19 mm, z pierścieniem LED 12 V;1;0;konieczne;TME;"Włącz / czuwanie; wyłącznik sieciowy w DD11"
 48;H. Front i sterowanie;głośność (J9), selektor (nowe piny);Enkoder obrotowy z przyciskiem;24 imp./obr., z zapadkami, oś 6 mm (np. Bourns PEC11R, ALPS EC11);2;1;konieczne;TME;
 49;H. Front i sterowanie;enkodery;Gałka aluminiowa;na oś 6 mm;2;0;konieczne;sklep;
-50;H. Front i sterowanie;VU L, VU P;"Moduł ESP32-S3 + okrągły LCD 2,1""";480 x 480, dotykowy (np. Waveshare ESP32-S3-Touch-LCD-2.1);2;0;do decyzji;Waveshare / TME;Wariant A (zalecany)
-51;H. Front i sterowanie;VU L, VU P;"Okrągły LCD 1,28"" GC9A01";240 x 240, SPI;2;0;do decyzji;AliExpress / TME;Wariant B - zamiast A
-52;H. Front i sterowanie;zasilanie wyświetlaczy;Przetwornica 12 V → 5 V;min. 1,5 A;1;0;zalecane;TME;Przy wariancie A
+50;H. Front i sterowanie;VU L, VU P;"Okrągły LCD 2,1"" GC9B72";IPS 360 x 360, SPI, moduł 10-pinowy, 3,3 V;2;0;konieczne;AliExpress;"Najpierw 1 szt. na próbę (nowy sterownik esp_lcd_gc9b72), potem druga; docs/10, 2.3"
+51;H. Front i sterowanie;ESP wyświetlaczy;Moduł ESP32-S3 mini z PSRAM;np. Lolin/Wemos S3 Mini (ESP32-S3FH4R2, 4 MB flash, 2 MB PSRAM);1;0;masz;–;"Rysuje oba ekrany i mierzy VU; bez WiFi, programowany przez sterownik po UART (docs/10, 12.3)"
+52;H. Front i sterowanie;zasilanie wyświetlaczy;Przetwornica 12 V → 5 V;min. 1,5 A (moduł step-down);1;0;konieczne;TME / Allegro;Zasilanie S3 mini i ekranów (ok. 300–400 mA)
 53;H. Front i sterowanie;temperatura (sterowanie J6);Czujnik DS18B20;TO-92 albo w osłonce;1;1;konieczne;TME;Pod płytką Onyxa, przy KT88
-54;H. Front i sterowanie;płytka głośników: R1–R6, C1–C3, D3–D6, J8;Tor pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 % 0,6 W, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G 5 mm, 10 µF 16 V, 4x BAT85, goldpin kątowy 1x4;1;0;zalecane;TME;Na płytce głośników (pcb/glosniki), docs/10, 2.4
-55;H. Front i sterowanie;prawa listwa ESP32;Listwa goldpin 1x22 + przewody z wtykami;2,54 mm;1;0;konieczne;TME;Drugi enkoder, UART, wejścia VU
-56;H. Front i sterowanie;wyświetlacze, VU;Skrętka / przewód 4-żyłowy ekranowany;;3;0;konieczne;TME;metry
+54;H. Front i sterowanie;płytka głośników: R1–R6, C1–C3, D3–D6, J8;Tor pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 % 0,6 W, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G 5 mm, 10 µF 16 V, 4x BAT85, goldpin kątowy 1x4;1;0;zalecane;TME;"Na płytce głośników (pcb/glosniki), J8 → S3 mini GPIO1/2; docs/10, 2.4"
+55;H. Front i sterowanie;prawa listwa ESP32;Listwa goldpin 1x22 + przewody z wtykami;2,54 mm;1;0;konieczne;TME;Drugi enkoder, łącze z S3 mini (GPIO39–42)
+56;H. Front i sterowanie;łącze S3 mini, VU;Skrętka / przewód 4-żyłowy ekranowany;;3;0;konieczne;TME;"metry: VU 4-żyłowy ekranowany; łącze sterowanie–S3 mini 5 żył"

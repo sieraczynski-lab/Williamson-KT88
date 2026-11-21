@@ -50,7 +50,7 @@ def board():
         ("R6", "1k", "R", ["VMID", "GND"], g_v, "punkt srodkowy 1,65 V"),
         ("C3", "10u 16V", "CP", ["VMID", "GND"], g_v, "elektrolit 10 uF, + do VMID"),
         ("J8", "VU", "CONN_4", ["3V3", "GND", "VU_L", "VU_R"], g_c,
-         "goldpin 4: 1 3V3, 2 GND (masa sterowania), 3 VU_L -> ESP32 GPIO2, 4 VU_R -> ESP32 GPIO3; przewod ekranowany 4-zylowy, ekran do masy tylko od strony sterowania"),
+         "goldpin 4: 1 3V3, 2 GND, 3 VU_L -> S3 mini GPIO1, 4 VU_R -> S3 mini GPIO2 (ESP wyswietlaczy); przewod ekranowany 4-zylowy, ekran do masy tylko od strony S3 mini"),
     ]
     comps += [("MH%d" % k, "M3", None, {}, g_mh, "") for k in (1, 2, 3)]
     fixed = {"K1": (30, 28, "T", "G2RL"), "K2": (72, 28, "T", "G2RL"),
@@ -109,9 +109,9 @@ def schematic(b):
                     (800, 1120, "Cewki bez pradu: kolumny <- Marantz (NC). Lampa gotowa (ESP32): kolumny <- Lampa (NO). Oba bieguny przelaczane."),
                     (800, 1240, "ESP32 przelacza tylko przy MUTE. RL 100R 2W zostaje na wtornym kazdego toroidu (odczep 4 Ohm - COM)."),
                     (7300, 1600, "POMIAR VU: odczep 4 Ohm PRZED przekaznikiem -> 100k / 5k1 do 1,65 V"),
-                    (7300, 1720, "45 W / 4 Ohm = 19 V szczyt -> +-0,92 V na ADC. GND toru VU = masa sterowania,"),
+                    (7300, 1720, "45 W / 4 Ohm = 19 V szczyt -> +-0,92 V na ADC. GND toru VU = masa ESP wyswietlaczy / sterowania,"),
                     (7300, 1840, "NIE laczyc z TUBE_xN na plytce (COM toroidu jest uziemiony na plytce Onyxa)."),
-                    (7300, 7900, "J8 -> sterowanie: 3V3, GND, GPIO2 (L), GPIO3 (P)"),
+                    (7300, 7900, "J8 -> ESP wyswietlaczy (S3 mini): 3V3, GND, GPIO1 (L), GPIO2 (P)"),
                     (800, 7900, "J7: z plytki sterowania J13 (+12 V, RLY_SPK)")):
         S.note(x, y, t, 60)
     S.autolabel()

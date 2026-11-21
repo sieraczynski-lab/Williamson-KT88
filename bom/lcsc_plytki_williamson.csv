@@ -85,9 +85,9 @@ G. Front, tylna ścianka (elektryka);Odbiornik IR;"38 kHz; 2,5–5,5 V (pracuje 
 G. Front, tylna ścianka (elektryka);Enkoder obrotowy z przyciskiem;"24 imp./obrót; zapadki; przycisk; oś 6 mm";2;1;3;konieczne;C143790;Bourns PEC11R-4215F-S0024;LCSC;głośność, selektor;
 G. Front, tylna ścianka (elektryka);Czujnik temperatury DS18B20;"TO-92; 3–5,5 V";1;1;2;konieczne;C376006;DS18B20 (UMW);LCSC;sterowanie J6;"Pod płytką Onyxa przy KT88; + rezystor 4,7k jest na sterowaniu"
 G. Front, tylna ścianka (elektryka);Przycisk włączania;"chwilowy NO; metalowy Ø16–19 mm; pierścień LED 12 V";1;0;1;konieczne;;antywandalowy z LED 12 V;TME;BTN (sterowanie J9-4);
-G. Front, tylna ścianka (elektryka);Wyświetlacz VU (wariant A);"ESP32-S3 + okrągły LCD 2,1"" 480x480, dotyk";2;0;2;do decyzji;;Waveshare ESP32-S3-Touch-LCD-2.1;Waveshare / TME;VU L, VU P;Albo wariant B (następny wiersz)
-G. Front, tylna ścianka (elektryka);Wyświetlacz VU (wariant B);"okrągły LCD 1,28"" GC9A01 240x240 SPI";0;0;0;do decyzji;;"GC9A01 1,28""";AliExpress / TME;VU L, VU P;Wpisz 2, jeśli wybierasz B
-G. Front, tylna ścianka (elektryka);Przetwornica 12 V → 5 V;"≥ 1,5 A; moduł step-down";1;0;1;zalecane;;moduł step-down 5 V 2–3 A;TME / Allegro;zasilanie wyświetlaczy;Przy wariancie A
+G. Front, tylna ścianka (elektryka);"Okrągły LCD 2,1"" GC9B72";"IPS 360 x 360; SPI; moduł 10-pinowy; 3,3 V";2;0;2;konieczne;;"GC9B72 2,1"" 10P";AliExpress;VU L, VU P;Najpierw 1 szt. na próbę
+G. Front, tylna ścianka (elektryka);Moduł ESP32-S3 mini z PSRAM (ESP wyświetlaczy);ESP32-S3, min. 2 MB PSRAM, UART0 i EN/GPIO0 wyprowadzone;1;0;1;masz;;Lolin/Wemos S3 Mini;–;za frontem;Masz w domu
+G. Front, tylna ścianka (elektryka);Przetwornica 12 V → 5 V;"≥ 1,5 A; moduł step-down";1;0;1;konieczne;;moduł step-down 5 V 2–3 A;TME / Allegro;zasilanie S3 mini i ekranów;
 G. Front, tylna ścianka (elektryka);Gniazdo IEC C14 z bezpiecznikiem i wyłącznikiem;"IEC C14; szuflada 5x20; wyłącznik 2-biegunowy; 250 V 10 A";1;0;1;konieczne;;Schurter DD11.0124.1110;TME / Farnell;tylna ścianka;Sprawdź wycięcie 27,1 x 56 mm
 G. Front, tylna ścianka (elektryka);Bezpiecznik sieciowy T2,5 A;"5x20; zwłoczny (T); 2,5 A; 250 V";2;4;6;konieczne;C142705;Littelfuse 021802.5MXP;LCSC;F1 (w DD11);
 G. Front, tylna ścianka (elektryka);Gniazdo RCA panelowe izolowane;"otwór Ø11; izolowane od obudowy";8;0;8;konieczne;;np. Amphenol / Neutrik izolowane;TME;wejścia;4 pary

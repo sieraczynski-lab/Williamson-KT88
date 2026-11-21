@@ -8,23 +8,23 @@ ZLACZA
   J1 Marantz L (1 +, 2 GND)     J2 Lampa L (1 odczep 4 Ohm, 2 COM toroidu L)   J3 kolumna L (1 -> zacisk 4 Ohm, 2 -> GND)
   J4 Marantz P                  J5 Lampa P                                     J6 kolumna P
   J7 cewki: ze sterowania J13 (+12 V, RLY_SPK)
-  J8 VU (goldpin 4): 1 3V3, 2 GND, 3 VU_L -> ESP32 GPIO2, 4 VU_R -> ESP32 GPIO3
-     Przewod ekranowany 4-zylowy (np. LiYCY 4x0,14), ekran do masy TYLKO od strony sterowania.
-     GPIO2 i GPIO3 nie sa wyprowadzone na plytce sterowania - przewod do listwy modulu (docs/10, 2.2).
+  J8 VU (goldpin 4): 1 3V3, 2 GND, 3 VU_L -> GPIO1, 4 VU_R -> GPIO2 ESP wyswietlaczy (ESP32-S3 mini
+     za frontem, docs/10, 2.3). Przewod ekranowany 4-zylowy (np. LiYCY 4x0,14, ok. 40-50 cm),
+     ekran do masy TYLKO od strony S3 mini.
   Zaciski GND wyjsc (J3-2, J6-2) sa przelaczane - izolowane od obudowy, NIE laczyc z masa.
 
 POMIAR VU (na kanal)
   odczep 4 Ohm (J2-1 / J5-1, przed przekaznikiem) -> R1/R2 100k 1% -> wezel VU_x -> R3/R4 5k1 1% -> VMID 1,65 V
   C1/C2 1 nF C0G rownolegle do 5k1 (filtr ok. 31 kHz), D3-D6 BAT85: ograniczniki do 3,3 V i do masy.
-  VMID: R5/R6 1k z 3V3 sterowania + C3 10 uF. Program odejmuje skladowa stala (srednia), wiec dokladnosc
+  VMID: R5/R6 1k z 3V3 S3 mini + C3 10 uF. Program odejmuje skladowa stala (srednia), wiec dokladnosc
   punktu 1,65 V nie ma znaczenia.
   Skala: 45 W / 4 Ohm = 13,4 V RMS, 19 V szczyt -> +-0,92 V na ADC (zapas ok. 3 dB do obciecia ADC).
   Wskaznik pokazuje TYLKO Lampe (w trybie Marantz wyswietlacze pokazuja "MARANTZ").
 
 MASA TORU VU
-  GND toru VU (J8-2) to masa sterowania (= gwiazda Onyxa). Na plytce NIE jest polaczona z COM toroidow
+  GND toru VU (J8-2) to masa S3 mini = masa sterowania (= gwiazda Onyxa). Na plytce NIE jest polaczona z COM toroidow
   (J2-2, J5-2): COM jest uziemiony na plytce Onyxa, wiec napiecie odczepu wzgledem masy sterowania
-  to sygnal. Dzieki temu prad glosnika nie plynie przewodem do sterowania (brak petli masy).
+  to sygnal. Dzieki temu prad glosnika nie plynie przewodem pomiarowym (brak petli masy).
 
 PCB
   Klasy sieci w .kicad_pcb: GLOSNIK 2,0 / 0,5 mm, CEWKI 0,5 / 0,3, VU 0,3 / 0,3.

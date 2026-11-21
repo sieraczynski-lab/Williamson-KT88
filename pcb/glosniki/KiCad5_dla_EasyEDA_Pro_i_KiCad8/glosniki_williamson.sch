@@ -642,11 +642,11 @@ ESP32 przelacza tylko przy MUTE. RL 100R 2W zostaje na wtornym kazdego toroidu (
 Text Notes 7300 1600 0    60   ~ 16
 POMIAR VU: odczep 4 Ohm PRZED przekaznikiem -> 100k / 5k1 do 1,65 V
 Text Notes 7300 1720 0    60   ~ 16
-45 W / 4 Ohm = 19 V szczyt -> +-0,92 V na ADC. GND toru VU = masa sterowania,
+45 W / 4 Ohm = 19 V szczyt -> +-0,92 V na ADC. GND toru VU = masa ESP wyswietlaczy / sterowania,
 Text Notes 7300 1840 0    60   ~ 16
 NIE laczyc z TUBE_xN na plytce (COM toroidu jest uziemiony na plytce Onyxa).
 Text Notes 7300 7900 0    60   ~ 16
-J8 -> sterowanie: 3V3, GND, GPIO2 (L), GPIO3 (P)
+J8 -> ESP wyswietlaczy (S3 mini): 3V3, GND, GPIO1 (L), GPIO2 (P)
 Text Notes 800 7900 0    60   ~ 16
 J7: z plytki sterowania J13 (+12 V, RLY_SPK)
 $EndSCHEMATC

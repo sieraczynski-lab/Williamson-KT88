@@ -127,7 +127,7 @@
     (add_net "RLY_SPK")
   )
 
-  (net_class VU "tor pomiaru VU, < 2 mA; GND = masa sterowania, nie laczyc z TUBE_xN; 1,0 do GLOSNIK"
+  (net_class VU "tor pomiaru VU, < 2 mA; GND = masa ESP wyswietlaczy/sterowania, nie laczyc z TUBE_xN; 1,0 do GLOSNIK"
     (clearance 0.3)
     (trace_width 0.3)
     (via_dia 1.2)

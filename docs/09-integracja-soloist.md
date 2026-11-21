@@ -154,7 +154,7 @@ Płytka `glosniki` (wersja Williamsona 100 × 44 mm, `pcb/glosniki/`): przekaźn
 - **sprzężenie zwrotne z odczepu 8 Ω prosto z toroidu** do Onyx J102, przed przekaźnikiem;
 - RL 100 Ω / 2 W zostaje na wtórnym toroidu, więc lampa nigdy nie gra bez obciążenia;
 - Marantz → glosniki J1/J4, kolumny → J3/J6, cewki → sterowanie J13;
-- glosniki J8 (VU: 3V3, GND, VU_L, VU_R) → ESP32 3V3, GND, GPIO2, GPIO3, przewód ekranowany 4-żyłowy, ekran do masy tylko przy sterowaniu.
+- glosniki J8 (VU: 3V3, GND, VU_L, VU_R) → ESP wyświetlaczy (ESP32-S3 mini za frontem) 3V3, GND, GPIO1, GPIO2, przewód ekranowany 4-żyłowy, ekran do masy tylko przy S3 mini (docs/10, 2.3–2.4).
 
 **Zaciski na tylnej ściance, na kanał** (od góry): **8 Ω**, **4 Ω**, **GND** (wyjścia), obok **+** i **GND** wejścia z Marantza.
 
