@@ -48,8 +48,9 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
   OSLONA LAMP (SS_oslona_lamp_C_dolna / _srodkowa / _gorna_KT88) - stal nierdzewna 2,5 mm (2-3 mm), laser
     - lampy zmierzone (26.11.2026): KT88 fi 53 x 103 mm, 6SN7 fi 46 x 89 mm (od spodu cokolu do czubka,
       bez pinow); spod cokolu = wierzch pokrywy (Z 106): czubek KT88 Z 209, 6SN7 Z 195;
-    - ramki 1 (dolna) i 2 (srodkowa) jednakowe, obejmuja wszystkie lampy: spody na Z 141 i 183,5,
-      ramka 2 ok. 9 mm ponizej czubka 6SN7;
+    - ramki 1 (dolna) i 2 (srodkowa) jednakowe, obejmuja wszystkie lampy: spody na Z 141 i 173,5
+      (35 i 67,5 mm nad pokrywa), ramka 2 posrodku miedzy 1 i 3 (ok. 19 mm ponizej czubka 6SN7);
+      porownanie innych wysokosci: porownanie_wysokosci_ramek.png (wybrany uklad B);
     - ramka 3 (gorna_KT88) tylko wokol KT88: spod Z 201, ok. 5,5 mm ponizej czubka KT88 (kopuly wystaja);
       tyl jak w ramkach 1-2, przod polokragle obwodki, 2 ucha do slupkow miedzy rzedami.
       Rysunki: oslona_lamp_wariant_C_z_gory.png (ramki 1-2), oslona_lamp_gorna_KT88_z_gory.png;
@@ -71,8 +72,8 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
       pozostale polaczenia ramki bez slupkow (ten sam ksztalt, bez otworu). Slupki przednie (miedzy 6SN7)
       koncza sie na ramce 2; ramka 3 stoi na 4 slupkach: srodkowych (X 50 / 350) i tylnych (X 100 / 300). Od spodu pokrywy sruba M4
       (leb pod pokrywa, ok. 10 mm nad plytka Onyxa - sprawdzic, czy w tych miejscach nie ma na plytce
-      wysokich elementow), tuleje M4 zensko-meskie: pokrywa-ramka 1 35 mm (6 szt.), ramka 1-2 40 mm (6 szt.), ramka 2-3 15 mm
-      (4 szt.); nakretki kolpakowe: 2 na ramce 2 (przod), 4 na ramce 3.
+      wysokich elementow), tuleje M4 zensko-meskie (szesciokatne SW7 albo okragle fi 7-8, gwint meski ok. 6 mm):
+      pokrywa-ramka 1 35 mm (6 szt.), ramka 1-2 30 mm (6 szt.), ramka 2-3 25 mm (4 szt.); nakretki kolpakowe: 2 na ramce 2 (przod), 4 na ramce 3.
       Pokrywa ma 6 otworow fi 4,5.
   OBUDOWA TRANSFORMATOROW (W3)
     - DACH (AL_trafo_dach): bez wentylacji; 4 gniazda 20 x 3 na zaczepy tylnej scianki.

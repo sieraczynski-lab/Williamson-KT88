@@ -47,13 +47,13 @@ TS = 2.5
 KT_D, KT_H, S6_D, S6_H = 53.0, 103.0, 46.0, 89.0
 TUBE_BASE_Z = Z_COV + T                                               # spod cokolu = gora podstawki = wierzch pokrywy (Z 106)
 G_GAP = 5.0                                                           # luz lampa - ramka (na promieniu)
-G_STANDOFFS = [35.0, 40.0, 15.0]                                      # tuleje M4: pokrywa-1, 1-2, 2-3
+G_STANDOFFS = [35.0, 30.0, 25.0]                                      # tuleje M4: pokrywa-1, 1-2, 2-3
 if os.environ.get("OSLONA_TULEJE"): G_STANDOFFS = [float(v) for v in os.environ["OSLONA_TULEJE"].split(",")]   # podglad innych wysokosci
 G_LEVELS = []
 _z = TUBE_BASE_Z
 for _so in G_STANDOFFS:
-    _z += _so; G_LEVELS.append(_z); _z += TS                          # spody ramek: 141 / 183,5 / 201
-# ramka 1 i 2: wszystkie lampy (2 ok. 9 mm ponizej czubka 6SN7); ramka 3: tylko KT88, ok. 5,5 mm ponizej czubka KT88
+    _z += _so; G_LEVELS.append(_z); _z += TS                          # spody ramek: 141 / 173,5 / 201 (35 / 67,5 / 95 mm nad pokrywa)
+# ramka 1 i 2: wszystkie lampy (2 posrodku miedzy 1 i 3); ramka 3: tylko KT88, ok. 5,5 mm ponizej czubka KT88
 G_RIN6, G_RINK = S6_D / 2 + G_GAP, KT_D / 2 + G_GAP                   # otwory fi 56 (6SN7) i fi 63 (KT88)
 G_RIN = G_RIN6
 G_BAND, G_BAR, G_BOSS, G_FILLET = 5.0, 4.0, 8.0, 6.0                  # obwodka 5 mm, mostki 8 mm (wariant A)
