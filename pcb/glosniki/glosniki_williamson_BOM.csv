@@ -23,7 +23,7 @@ D6;BAT85;D_DO-35_P7.62_V;GORA;53.00;28.00;POMIAR VU;C2798198;Schottky: ograniczn
 R5;1k;R_Axial_0.5W_P12.7_V;GORA;5.00;24.00;POMIAR VU;C172978;punkt srodkowy 1,65 V
 R6;1k;R_Axial_0.5W_P12.7_V;GORA;9.00;24.00;POMIAR VU;C172978;punkt srodkowy 1,65 V
 C3;10u 16V;CP_Radial_D6.3_P2.5;GORA;90.00;30.00;POMIAR VU;C216288;elektrolit 10 uF, + do VMID
-J8;VU;PinHeader_1x04_P2.54_H;GORA;51.00;41.50;ZLACZA;C492412;"goldpin 4: 1 3V3, 2 GND (masa sterowania), 3 VU_L -> ESP32 GPIO2, 4 VU_R -> ESP32 GPIO3; przewod ekranowany 4-zylowy, ekran do masy tylko od strony sterowania"
+J8;VU;PinHeader_1x04_P2.54_H;GORA;51.00;41.50;ZLACZA;C492412;"goldpin 4: 1 3V3, 2 GND, 3 VU_L -> S3 mini GPIO1, 4 VU_R -> S3 mini GPIO2 (ESP wyswietlaczy); przewod ekranowany 4-zylowy, ekran do masy tylko od strony S3 mini"
 MH1;M3;MountingHole_M3;GORA;4.50;39.50;OTWORY;;
 MH2;M3;MountingHole_M3;GORA;51.00;17.50;OTWORY;;
 MH3;M3;MountingHole_M3;GORA;95.50;39.50;OTWORY;;

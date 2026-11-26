@@ -22,8 +22,9 @@
 21;D. Mechanika;płytka Onyxa;Tuleja dystansowa M3 ż-m 45 mm;mosiężna/stalowa;9;1;konieczne;TME;"Składane z 40 mm do ok. 85 mm; długość dobrać tak, żeby podstawki stały równo z pokrywą"
 22;D. Mechanika;płytka Onyxa;Tuleja dystansowa M3 ż-m 40 mm;mosiężna/stalowa;9;1;konieczne;TME;
 23;D. Mechanika;płytka Onyxa;Śruba M3 x 6;;18;4;konieczne;sklep;
-24;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 30 mm;nierdzewna;6;0;konieczne;TME / sklep;
-25;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 60 mm;nierdzewna;12;0;konieczne;TME / sklep;
+24;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 35 mm;nierdzewna, sześciokątna SW7 (lub okrągła ⌀7–8), gwint męski ok. 6 mm;6;0;konieczne;TME / sklep;pokrywa – ramka 1
+24a;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 30 mm;nierdzewna, sześciokątna SW7 (lub okrągła ⌀7–8), gwint męski ok. 6 mm;6;0;konieczne;TME / sklep;ramka 1 – ramka 2
+24b;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 25 mm;nierdzewna, sześciokątna SW7 (lub okrągła ⌀7–8), gwint męski ok. 6 mm;4;0;konieczne;TME / sklep;ramka 2 – ramka 3 (KT88)
 26;D. Mechanika;osłona lamp;Nakrętka kołpakowa M4;nierdzewna;6;2;konieczne;sklep;
 27;D. Mechanika;osłona lamp;Śruba M4 x 10 (od spodu pokrywy);nierdzewna, łeb płaski;6;2;konieczne;sklep;
 28;D. Mechanika;pokrywa + tylna ścianka;Śruba M4 x 8 imbus;nierdzewna;17;4;konieczne;sklep;4 pokrywa + 13 tylna ścianka
@@ -40,7 +41,7 @@
 39;F. Transformatory, lampy;L106, L206;Dławik 10 H / 250 mA / 45 Ω;filtr anodowy;2;0;konieczne;toroidy.pl;
 40;F. Transformatory, lampy;TG;Transformator głośnikowy TTG-KT88PP;4 kΩ, UL 43 %, 4/8 Ω;2;0;konieczne;toroidy.pl;
 41;F. Transformatory, lampy;V5–V8;KT88;;4;0;masz;–;
-42;F. Transformatory, lampy;V1, V2;6SN7 Psvane UK-6SN7 Plus;;4;0;kupione;–;Zmierzyć bańkę i wysokość (osłona: otwór ⌀56)
+42;F. Transformatory, lampy;V1, V2;6SN7 Psvane UK-6SN7 Plus;;4;0;kupione;–;"⌀46 x 89 mm (zmierzone); osłona: otwór ⌀56"
 43;G. Płytki PCB;zasilacz, UL, sterowanie, głośniki, selektor;Płytki PCB + elementy;wg BOM w pcb/*/;1;0;konieczne;JLCPCB / LCSC / TME;Sterowanie: montaż SMD w JLCPCB (sterowanie_BOM_JLCPCB.csv)
 44;H. Front i sterowanie;IR (sterowanie J7);Odbiornik IR TSOP38238;38 kHz, 3,3 V;1;1;konieczne;TME;"Na froncie za okienkiem; przy odbiorniku 100 Ω + 10 µF"
 45;H. Front i sterowanie;front;Okienko IR;ciemny akryl / filtr IR ok. 10 x 10 mm;1;0;opcjonalne;sklep;
@@ -48,10 +49,10 @@
 47;H. Front i sterowanie;BTN (sterowanie J9-4);Przycisk włączania;chwilowy (NO), metalowy ⌀16–19 mm, z pierścieniem LED 12 V;1;0;konieczne;TME;"Włącz / czuwanie; wyłącznik sieciowy w DD11"
 48;H. Front i sterowanie;głośność (J9), selektor (nowe piny);Enkoder obrotowy z przyciskiem;24 imp./obr., z zapadkami, oś 6 mm (np. Bourns PEC11R, ALPS EC11);2;1;konieczne;TME;
 49;H. Front i sterowanie;enkodery;Gałka aluminiowa;na oś 6 mm;2;0;konieczne;sklep;
-50;H. Front i sterowanie;VU L, VU P;"Moduł ESP32-S3 + okrągły LCD 2,1""";480 x 480, dotykowy (np. Waveshare ESP32-S3-Touch-LCD-2.1);2;0;do decyzji;Waveshare / TME;Wariant A (zalecany)
-51;H. Front i sterowanie;VU L, VU P;"Okrągły LCD 1,28"" GC9A01";240 x 240, SPI;2;0;do decyzji;AliExpress / TME;Wariant B - zamiast A
-52;H. Front i sterowanie;zasilanie wyświetlaczy;Przetwornica 12 V → 5 V;min. 1,5 A;1;0;zalecane;TME;Przy wariancie A
+50;H. Front i sterowanie;VU L, VU P;"Okrągły LCD 2,1"" GC9B72";IPS 360 x 360, SPI, moduł 10-pinowy, 3,3 V;2;0;konieczne;AliExpress;"Najpierw 1 szt. na próbę (nowy sterownik esp_lcd_gc9b72), potem druga; docs/10, 2.3"
+51;H. Front i sterowanie;ESP wyświetlaczy;Moduł ESP32-S3 mini z PSRAM;np. Lolin/Wemos S3 Mini (ESP32-S3FH4R2, 4 MB flash, 2 MB PSRAM);1;0;masz;–;"Rysuje oba ekrany i mierzy VU; bez WiFi, programowany przez sterownik po UART (docs/10, 12.3)"
+52;H. Front i sterowanie;zasilanie wyświetlaczy;Przetwornica 12 V → 5 V;min. 1,5 A (moduł step-down);1;0;konieczne;TME / Allegro;Zasilanie S3 mini i ekranów (ok. 300–400 mA)
 53;H. Front i sterowanie;temperatura (sterowanie J6);Czujnik DS18B20;TO-92 albo w osłonce;1;1;konieczne;TME;Pod płytką Onyxa, przy KT88
-54;H. Front i sterowanie;płytka głośników: R1–R6, C1–C3, D3–D6, J8;Tor pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 % 0,6 W, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G 5 mm, 10 µF 16 V, 4x BAT85, goldpin kątowy 1x4;1;0;zalecane;TME;Na płytce głośników (pcb/glosniki), docs/10, 2.4
-55;H. Front i sterowanie;prawa listwa ESP32;Listwa goldpin 1x22 + przewody z wtykami;2,54 mm;1;0;konieczne;TME;Drugi enkoder, UART, wejścia VU
-56;H. Front i sterowanie;wyświetlacze, VU;Skrętka / przewód 4-żyłowy ekranowany;;3;0;konieczne;TME;metry
+54;H. Front i sterowanie;płytka głośników: R1–R6, C1–C3, D3–D6, J8;Tor pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 % 0,6 W, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G 5 mm, 10 µF 16 V, 4x BAT85, goldpin kątowy 1x4;1;0;zalecane;TME;"Na płytce głośników (pcb/glosniki), J8 → S3 mini GPIO1/2; docs/10, 2.4"
+55;H. Front i sterowanie;prawa listwa ESP32;Listwa goldpin 1x22 + przewody z wtykami;2,54 mm;1;0;konieczne;TME;Drugi enkoder, łącze z S3 mini (GPIO39–42)
+56;H. Front i sterowanie;łącze S3 mini, VU;Skrętka / przewód 4-żyłowy ekranowany;;3;0;konieczne;TME;"metry: VU 4-żyłowy ekranowany; łącze sterowanie–S3 mini 5 żył"

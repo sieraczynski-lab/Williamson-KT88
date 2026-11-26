@@ -64,8 +64,12 @@ Kolumny:
   J3/J6 -> zaciski wyjsciowe 4 Ohm (+) i GND (-) - GND wyjscia jest przelaczany, NIE laczyc z masa;
   zacisk 8 Ohm -> odczep 8 Ohm toroidu wprost (bez przelaczania)
   cewki glosniki J7 <- sterowanie J13;  TRIGGER (jack 3,5 mm) -> sterowanie J12
-  VU: glosniki J8 (1 3V3, 2 GND, 3 VU_L, 4 VU_R) -> ESP32 3V3, GND, GPIO2, GPIO3 (prawa/lewa listwa modulu,
-      docs/10, 2.2); przewod ekranowany 4-zylowy, ekran do masy tylko przy sterowaniu.
+  VU: glosniki J8 (1 3V3, 2 GND, 3 VU_L, 4 VU_R) -> ESP wyswietlaczy (S3 mini) 3V3, GND, GPIO1, GPIO2
+      (docs/10, 2.3-2.4); przewod ekranowany 4-zylowy, ekran do masy tylko przy S3 mini.
+Wyswietlacze:
+  sterowanie GPIO41 (TX) -> S3 mini GPIO44 (RX0), GPIO42 (RX) <- GPIO43 (TX0), GPIO39 -> EN, GPIO40 -> GPIO0,
+  GND - GND (przewod 5-zylowy, prawa listwa DevKitC); przetwornica 12 V -> 5 V -> 5V S3 mini;
+  2x LCD GC9B72 na SPI S3 mini (docs/10, 2.3). Program S3 mini wgrywa sterownik przez UART (docs/10, 12.3).
       Masa VU NIE jest polaczona z COM toroidow na plytce glosnikow.
   Sprzezenie zwrotne: odczep 8 Ohm toroidu -> Onyx J102 (przed przekaznikiem)
 Selektor:

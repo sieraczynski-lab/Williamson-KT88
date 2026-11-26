@@ -1,6 +1,6 @@
 # 10. Oprogramowanie ESP32: założenia
 
-Założenia do napisania programu sterownika (płytka `sterowanie`, ESP32-S3) dla Williamsona KT88. Opis sprzętu: [docs/soloist/03-sterowanie.md](soloist/03-sterowanie.md), selektor: [docs/soloist/11-selektor.md](soloist/11-selektor.md), różnice względem Soloista: [docs/09](09-integracja-soloist.md) (9.10). Połączenia: [pcb/CZYTAJ_MNIE.txt](../pcb/CZYTAJ_MNIE.txt).
+Założenia do napisania programów dla Williamsona KT88: **sterownika** (płytka `sterowanie`, ESP32-S3-DevKitC-1, „główne ESP”) i **modułu wyświetlaczy** (ESP32-S3 mini za frontem, „ESP wyświetlaczy”, rozdz. 12). Opis sprzętu: [docs/soloist/03-sterowanie.md](soloist/03-sterowanie.md), selektor: [docs/soloist/11-selektor.md](soloist/11-selektor.md), różnice względem Soloista: [docs/09](09-integracja-soloist.md) (9.10). Połączenia: [pcb/CZYTAJ_MNIE.txt](../pcb/CZYTAJ_MNIE.txt).
 
 Rzeczy oznaczone **[DECYZJA]** są do ustalenia przed pisaniem kodu (zebrane na końcu, rozdz. 17).
 
@@ -12,13 +12,13 @@ Rzeczy oznaczone **[DECYZJA]** są do ustalenia przed pisaniem kodu (zebrane na 
 | Selektor i głośność | 4 wejścia, drabinka przekaźnikowa 0–63 dB, MUTE, limity głośności na wejście |
 | Enkodery | głośność (istniejący) i selektor (drugi, nowy) |
 | Pilot IR | wszystkie funkcje z frontu + strona punktu pracy + rzadkie ustawienia |
-| Pomiary | prądy 4× KT88, szyna biasu, Ua, temperatura, poziom wysterowania L/P |
+| Pomiary | prądy 4× KT88, szyna biasu, Ua, temperatura (sterownik); poziom wysterowania L/P (ESP wyświetlaczy) |
 | Korekta biasu | automatyczna, w ciszy, małymi krokami |
 | UL / trioda | przełączanie tylko przy wyłączonych anodach |
 | Kolumny | Marantz ↔ lampa, trigger 12 V z Marantza |
-| Wyświetlacze | 2 okrągłe LCD: wskaźniki wysterowania (VU) L i P, nakładki głośności i wejścia, punkt pracy, komunikaty |
+| Wyświetlacze | 2 okrągłe LCD 2,1" 360 × 360 sterowane przez osobne ESP32-S3 mini: wskaźniki VU L i P, nakładki głośności i wejścia, punkt pracy, komunikaty |
 | Zabezpieczenia | progi prądów i napięć, temperatura, watchdog, bezpieczny stan |
-| Serwis | konsola USB, kalibracja, licznik godzin lamp, dziennik alarmów |
+| Serwis | konsola USB, WiFi (strona WWW, OTA sterownika, programowanie ESP wyświetlaczy przez UART), kalibracja, licznik godzin lamp, dziennik alarmów |
 
 ## 2. Sprzęt i przydział pinów
 
@@ -38,30 +38,37 @@ Rzeczy oznaczone **[DECYZJA]** są do ustalenia przed pisaniem kodu (zebrane na 
 | Enkoder głośności | A GPIO6, B GPIO7, SW GPIO15 | |
 | Przycisk | GPIO16 (BTN) | włącz / czuwanie |
 
-### 2.2 Nowe (do dołączenia)
+### 2.2 Nowe piny sterownika (do dołączenia)
 
 ESP32-S3-DevKitC-1 ma wolne piny tylko na prawej listwie, której płytka sterowania nie wyprowadza. Do czasu nowej wersji PCB: dolutować złącze (goldpin) do listwy modułu.
 
 | Funkcja | Pin | Uwagi |
 |---|---|---|
 | Enkoder selektora A / B / SW | GPIO21 / GPIO47 / GPIO48 | GPIO48 lub GPIO38 zależnie od wersji DevKitC: na drugim jest dioda RGB, sprawdzić nadruk modułu |
-| Wyświetlacz L (UART1) | TX GPIO41, RX GPIO42 | wariant A wyświetlaczy (2.3) |
-| Wyświetlacz P (UART2) | TX GPIO39, RX GPIO40 | wariant A |
-| Poziom L (VU) | GPIO2, ADC1 | 2.4 |
-| Poziom P (VU) | GPIO3, ADC1 | pin strapping JTAG: bez znaczenia przy fabrycznych eFuse, sygnał musi mieć polaryzację 1,65 V, nie zwierać do masy |
+| Łącze z ESP wyświetlaczy (UART1) | TX GPIO41 → RX0 S3 mini, RX GPIO42 ← TX0 S3 mini | 921600 b/s (rozdz. 12.2); te same przewody służą do programowania S3 mini (12.3) |
+| RESET ESP wyświetlaczy | GPIO39 → EN S3 mini | wyjście otwarty dren, szeregowo 1 kΩ; podciąganie zostaje na S3 mini |
+| BOOT ESP wyświetlaczy | GPIO40 → GPIO0 S3 mini | jw. |
 
-Nie używać: GPIO0, 45, 46 (strapping), 19/20 (USB), 35–37 (PSRAM w wersji N16R8), 43/44 (konsola).
+GPIO2 i GPIO3 zostają wolne (pomiar VU przeniesiony na ESP wyświetlaczy). Nie używać: GPIO0, 45, 46 (strapping), 19/20 (USB), 35–37 (PSRAM w wersji N16R8), 43/44 (konsola).
 
-### 2.3 Wyświetlacze **[DECYZJA]**
+### 2.3 Wyświetlacze i ESP wyświetlaczy (przyjęte)
 
-Okrągły LCD 2,1" ma 480 × 480 pikseli i interfejs RGB (ok. 18 linii na wyświetlacz). Dwóch takich główny ESP32 nie obsłuży (brak pinów, pamięci i czasu na rysowanie przy pracy sterownika).
+- **2× okrągły LCD 2,1" IPS 360 × 360, sterownik GC9B72, SPI** (moduł 10-pinowy, bez dotyku). Komponent ESP-IDF `esp_lcd_gc9b72` (SPI/QSPI, domyślnie 360 × 360 RGB565) jest nowy: **kupić najpierw 1 sztukę na próbę** (inicjalizacja panelu, kierunek, kolory), potem komplet.
+- **ESP wyświetlaczy: ESP32-S3 mini z PSRAM** (np. Lolin/Wemos S3 Mini, ESP32-S3FH4R2: 4 MB flash, 2 MB PSRAM), za frontem, między ekranami. Rysuje oba ekrany przez własne SPI (krótkie przewody, zegar 40 MHz, LVGL z odświeżaniem tylko zmienionych fragmentów) i mierzy poziom VU (2.4). **WiFi w ESP wyświetlaczy wyłączone na stałe**; program wgrywa sterownik przez UART (12.3).
+- ESP32-C3 mini odpada przy dwóch ekranach 360 × 360 (1 rdzeń, brak PSRAM); możliwy tylko jako 1 moduł na 1 ekran.
+- Zasilanie: przetwornica 12 V → 5 V (min. 1,5 A) z +12 V płytki sterowania → pin 5V S3 mini; ekrany z 3V3 S3 mini (sprawdzić prąd podświetlenia, łącznie z ESP ok. 300–400 mA; przy niewystarczającym LDO osobny stabilizator 3,3 V dla ekranów). Masa wspólna przez przewód łącza.
+- Przewód sterownik ↔ S3 mini: 5 żył (TX, RX, RESET, BOOT, GND) + osobno 5 V / GND z przetwornicy; skręcony z masą, z dala od anod.
 
-| Wariant | Co | Plusy | Minusy |
-|---|---|---|---|
-| **A (zalecany)** | 2 gotowe moduły **ESP32-S3 + okrągły dotykowy LCD 2,1" 480 × 480** (np. Waveshare ESP32-S3-Touch-LCD-2.1), każdy z własnym programem; sterownik wysyła im dane po UART | duży, ładny obraz (płynna wskazówka 50 fps), sterownik wolny od grafiki, **dotyk** (wywołanie punktu pracy bez przycisków), osobny program wyświetlaczy łatwo zmieniać | drugi program do napisania, dwa dodatkowe moduły (ok. 2× 40 USD), zasilanie 5 V ok. 2× 250 mA |
-| B | 2× okrągły LCD 1,28" 240 × 240 GC9A01 (SPI) na wspólnej magistrali, rysowane przez sterownik (LVGL) | tanie, bez drugiego programu | mały (32 mm), bez dotyku, obciąża sterownik, 7 pinów |
+Piny S3 mini (logicznie; dopasować do nadruku konkretnego modułu, nie używać pinu diody RGB):
 
-Przy wariancie A: zasilanie modułów z 5 V płytki sterowania (sprawdzić wydajność przetwornicy U2, w razie potrzeby osobna 5 V / 1 A), masa wspólna, przewody UART skręcone z masą, z dala od anod. Wymiary i wycięcie we froncie drewnianym dopasować do modułu.
+| Funkcja | Pin S3 mini | Uwagi |
+|---|---|---|
+| Łącze ze sterownikiem | RX0 GPIO44, TX0 GPIO43 | **musi być UART0**: tylko na nim bootloader w krzemie przyjmuje program (12.3) |
+| RESET / BOOT | EN / GPIO0 | sterowane przez sterownik (otwarty dren) |
+| VU L / VU P | GPIO1 / GPIO2 (ADC1) | z płytki głośników J8 (2.4); nie ADC2 |
+| SPI ekranów | SCK GPIO12, MOSI GPIO11, DC GPIO10, RST GPIO7 | wspólne dla obu ekranów |
+| CS ekran L / P | GPIO9 / GPIO8 | |
+| Podświetlenie | GPIO6 (PWM, LEDC) | wspólne, przez tranzystor, jeśli moduł ekranu nie ma własnego |
 
 ### 2.4 Sygnał do wskaźników wysterowania
 
@@ -69,16 +76,16 @@ Tor pomiarowy jest na **płytce głośników** (`pcb/glosniki/`, 100 × 44 mm), 
 
 - źródło: odczep **4 Ω** toroidu (J2-1 / J5-1, strona lampy, **przed** przekaźnikiem kolumn); wskaźnik pokazuje więc tylko lampę (w trybie Marantz wyświetlacze pokazują „MARANTZ”);
 - R1/R2 100 kΩ 1 % i R3/R4 5,1 kΩ 1 % do punktu 1,65 V (VMID: R5/R6 2× 1 kΩ z 3,3 V + C3 10 µF), C1/C2 1 nF C0G równolegle do 5,1 kΩ, D3–D6 BAT85 do 3,3 V i masy;
-- **masa toru VU = masa sterowania** (J8-2), na płytce NIE połączona z COM toroidów (J2-2, J5-2). COM jest uziemiony na płytce Onyxa, więc prąd głośnika nie płynie przewodem do sterowania;
-- złącze J8 (goldpin 1×4): 3V3, GND, VU_L → GPIO2, VU_R → GPIO3; przewód ekranowany 4-żyłowy (ok. 40 cm), ekran do masy tylko po stronie sterowania;
+- **masa toru VU = masa ESP wyświetlaczy = masa sterowania** (J8-2, połączona ze sterowaniem przez przewód łącza i zasilania, a sterowanie z gwiazdą Onyxa), na płytce głośników NIE połączona z COM toroidów (J2-2, J5-2). COM jest uziemiony na płytce Onyxa, więc prąd głośnika nie płynie przewodem pomiarowym;
+- złącze J8 (goldpin 1×4): 3V3, GND, VU_L, VU_R → **S3 mini** 3V3, GND, GPIO1, GPIO2; przewód ekranowany 4-żyłowy (ok. 40–50 cm, z tyłu na front), ekran do masy tylko po stronie S3 mini;
 - skala: 45 W / 4 Ω = 13,4 V RMS (19 V szczytowo) → ok. ±0,92 V na ADC, zapas +3 dB do obcinania;
-- ESP32: ADC1 w trybie ciągłym (DMA), 2 kanały po ok. 10 kS/s; składową stałą (VMID) program liczy jako średnią i odejmuje, dokładność 1,65 V nie ma znaczenia.
+- ESP wyświetlaczy: ADC1 w trybie ciągłym (DMA), 2 kanały po ok. 10 kS/s; składową stałą (VMID) program liczy jako średnią i odejmuje, dokładność 1,65 V nie ma znaczenia. Wynik dla sterownika (flaga ciszy, RMS): 12.2.
 
-Alternatywa: detektor obwiedni (wzmacniacz operacyjny) na wolne wejścia ADS1115 0x49 A2/A3. Wolniejsze (ok. 400 próbek/s na kanał, dzielone z pomiarami biasu) i bez prawdziwego RMS, ale bez nowych pinów.
+Zalety pomiaru na ESP wyświetlaczy: wskazówki bez opóźnienia łącza, sterownik bez ciągłej pracy ADC, łącze przenosi tylko stan i zdarzenia. Rezerwa: detektor obwiedni na wolne wejścia ADS1115 0x49 A2/A3 sterownika.
 
 ## 3. Platforma i architektura
 
-- **pioarduino** (PlatformIO, Arduino core 3.x na ESP-IDF 5), płytka `esp32-s3-devkitc-1`, jak w zaleceniach selektora (11.1). Program wyświetlaczy (wariant A) w tym samym środowisku, grafika w **LVGL**.
+- **pioarduino** (PlatformIO, Arduino core 3.x na ESP-IDF 5), płytka `esp32-s3-devkitc-1`, jak w zaleceniach selektora (11.1). Program ESP wyświetlaczy (płytka `lolin_s3_mini` lub odpowiednik) w tym samym środowisku, grafika w **LVGL**, sterownik ekranu `esp_lcd_gc9b72`.
 - Zadania FreeRTOS:
 
 | Zadanie | Priorytet | Okres | Zakres |
@@ -86,13 +93,14 @@ Alternatywa: detektor obwiedni (wzmacniacz operacyjny) na wolne wejścia ADS1115
 | `safety` | najwyższy | 20 ms | progi, stany awaryjne, watchdog sprzętowy (TWDT) |
 | `sequencer` | wysoki | 10 ms | maszyna stanów (rozdz. 4), przekaźniki K1–K4, MUTE, UL, kolumny |
 | `measure` | wysoki | ciągle | ADS1115 (kolejno 6 kanałów), DS18B20 co 2 s, filtry |
-| `audio_level` | średni | blok 20 ms | ADC DMA → RMS, szczyt, wskazówka VU |
 | `input` | średni | zdarzenia | enkodery (PCNT), przyciski, IR (RMT), trigger |
 | `selector` | średni | kolejka | MCP23017: wejścia, drabinka, mute selektora |
 | `bias_ctrl` | niski | 1 s | korekta biasu (rozdz. 6) |
-| `display_link` | niski | 20 ms / 1 s | ramki do wyświetlaczy (rozdz. 12) |
+| `display_link` | niski | zdarzenia / 1 s | ramki do ESP wyświetlaczy i od niego (12.2), programowanie S3 mini (12.3) |
 | `console` | najniższy | zdarzenia | USB CDC: komendy serwisowe, log |
-| `wifi` (opcja) | najniższy | | strona WWW / WebSocket, OTA |
+| `wifi` | najniższy | | stale włączone: strona WWW / WebSocket, OTA sterownika, wgrywanie programu ESP wyświetlaczy |
+
+Zadania ESP wyświetlaczy: `audio_level` (blok 20 ms: ADC DMA → RMS, szczyt, wskazówka VU, cisza, obcinanie), `link` (UART), `ui` (LVGL, ok. 50 fps animacji wskazówek).
 
 - **Jedna kolejka komend** do `sequencer` i `selector`: enkoder, pilot, trigger i ewentualna aplikacja wysyłają komendy (`VOL_UP`, `INPUT_SET 2`, `MODE_TRIODE`, `POWER_OFF`…), nikt nie steruje przekaźnikami bezpośrednio.
 - Stan całości w jednej strukturze (`AmpState`) chronionej muteksem; wyświetlacze i konsola tylko ją czytają.
@@ -133,11 +141,11 @@ STANDBY ─(przycisk / IR POWER / trigger)→ MAINS ─1,5 s→ BYPASS ─→ BI
 | Szyna biasu | ADS1115 0x49 A0 | współczynnik dzielnika z płytki sterowania (kalibracja multimetrem) | średnia 1 s |
 | Ua | ADS1115 0x49 A1 | U<sub>a</sub> = U × (3 MΩ + 15 kΩ) / 15 kΩ ≈ 201 × U (kalibracja) | średnia 0,5 s |
 | Temperatura | DS18B20 | °C | co 2 s |
-| Poziom L/P | ADC1 GPIO2/3 (2.4) | U<sub>wy</sub> = (U<sub>ADC</sub> − U<sub>śr</sub>) / k; P = U<sub>RMS</sub>² / 4 Ω | rozdz. 11 |
+| Poziom L/P | ESP wyświetlaczy, ADC1 GPIO1/2 (2.4) | U<sub>wy</sub> = (U<sub>ADC</sub> − U<sub>śr</sub>) / k; P = U<sub>RMS</sub>² / 4 Ω | rozdz. 11; do sterownika ramka `LEVEL_SUM` 5 Hz |
 
 - ADS1115: pomiar pojedynczy na kanał, 250–475 SPS, kolejno po kanałach. Odrzucać wyniki z nasyceniem.
 - Wszystkie współczynniki kalibracji w NVS, ustawiane z konsoli albo z menu serwisowego.
-- „Cisza” (do korekty biasu i alarmu spoczynkowego): poziom RMS obu kanałów poniżej −50 dB względem pełnej mocy przez co najmniej 30 s **oraz** MUTE albo głośność ≥ 50 dB tłumienia. Bez sygnału VU (wariant bez 2.4) tylko: MUTE albo prądy stabilne ±0,5 mA przez 60 s.
+- „Cisza” (do korekty biasu i alarmu spoczynkowego): flaga `silent` z ESP wyświetlaczy (RMS obu kanałów poniżej −50 dB względem pełnej mocy przez co najmniej 30 s) **oraz** MUTE albo głośność ≥ 50 dB tłumienia. Gdy łącze z ESP wyświetlaczy nie działa (brak heartbeatu > 5 s): kryterium zapasowe, tylko MUTE albo prądy stabilne ±0,5 mA przez 60 s.
 
 ## 6. Automatyczna korekta biasu
 
@@ -195,8 +203,8 @@ Enkodery czytane sprzętowo (PCNT), bez gubienia kroków; drgania styków przyci
 ## 11. Wskaźniki wysterowania (VU)
 
 - Wyświetlacz lewy = kanał L, prawy = P. Do wyboru w menu: **wskazówka VU** (klasyczna skala), **słupek** z kropką szczytu, **waty** (skala 0,1–45 W, logarytmiczna).
-- Obliczenia w `audio_level` co 20 ms na kanał: RMS z bloku, wartość szczytowa, wskazówka VU (filtr 2. rzędu: 99 % wskazania w 300 ms, przerzut ok. 1,5 %), pamięć szczytu 1,5 s, wskaźnik **obcinania** (szczyt > 95 % napięcia dla 45 W przez ≥ 3 próbki, czerwona dioda na tarczy przez 1 s).
-- Wysyłka do wyświetlaczy 50 razy na sekundę: 2 bajty wskazówki, 2 bajty szczytu, bit obcinania. Animację wygładza wyświetlacz.
+- Obliczenia w `audio_level` **ESP wyświetlaczy** co 20 ms na kanał: RMS z bloku, wartość szczytowa, wskazówka VU (filtr 2. rzędu: 99 % wskazania w 300 ms, przerzut ok. 1,5 %), pamięć szczytu 1,5 s, wskaźnik **obcinania** (szczyt > 95 % napięcia dla 45 W przez ≥ 3 próbki, czerwona dioda na tarczy przez 1 s).
+- Wskazówki rysowane od razu na miejscu; sterownik dostaje tylko podsumowanie `LEVEL_SUM` (5 Hz: RMS L/P w dB, szczyt, flagi `silent` i `clip`).
 - Kalibracja „0 VU” w menu (np. 0 VU = 10 W albo = 1 W), kalibracja wzmocnienia toru pomiarowego z konsoli (sinus 1 kHz, miernik na 4 Ω).
 - W trybie Marantz i przy MUTE: wskazówka w spoczynku, napis „MARANTZ” / „MUTE”.
 
@@ -206,24 +214,36 @@ Enkodery czytane sprzętowo (PCNT), bez gubienia kroków; drgania styków przyci
 
 | Ekran | Kiedy | Co |
 |---|---|---|
-| Czuwanie | STANDBY | wygaszone (opcja: przyciemniony zegar z NTP, jeśli WiFi) |
+| Czuwanie | STANDBY | wygaszone (opcja: przyciemniony zegar z NTP przez WiFi sterownika) |
 | Start | MAINS…STABILIZE | kroki sekwencji, odliczanie do anod, Ua, prądy lamp rosnące do celu |
 | VU | PLAY | rozdz. 11; na dole tarczy mała nazwa wejścia i tryb UL/T |
 | Nakładka głośności | przy zmianie, przez 3 s | duża liczba dB (np. „−32 dB”) na obu tarczach, łuk z położeniem |
 | Nakładka wejścia | przy obracaniu selektora, do 3 s po wyborze | lista / nazwa wejścia |
-| Punkt pracy | długie naciśnięcie selektora, INFO z pilota, dotyk (wariant A), pozycja „Status” selektora | rozdz. 13 |
+| Punkt pracy | długie naciśnięcie selektora, INFO z pilota, pozycja „Status” selektora | rozdz. 13 |
 | Komunikat | ostrzeżenie / alarm | tekst, kod, co zrobić; alarm czerwony do potwierdzenia |
 | Menu | długie naciśnięcie głośności, MENU z pilota | rozdz. 14 |
 
 - Jasność: ustawiana, automatyczne przyciemnienie po 5 min bez obsługi (opcja: wyłączenie wskazówek po 30 min ciszy).
 
-### 12.2 Łącze z wyświetlaczami (wariant A)
+### 12.2 Łącze sterownik ↔ ESP wyświetlaczy
 
-- UART 921600 b/s, osobny port na każdy wyświetlacz, ramki COBS + CRC16.
-- Sterownik → wyświetlacz: `LEVEL` (50 Hz), `STATE` (przy zmianie: stan, wejście, głośność, tryb, MUTE, kolumny), `OPPOINT` (1 Hz, gdy otwarta strona punktu pracy), `OVERLAY` (głośność / wejście), `MESSAGE`, `CONFIG` (styl tarczy, jasność, język).
-- Wyświetlacz → sterownik: `HELLO` (wersja programu), `TOUCH` (stuknięcie, przytrzymanie, przesunięcie), `ACK`, co 1 s `HEARTBEAT`.
-- Brak heartbeatu przez 5 s → ostrzeżenie w konsoli, wzmacniacz działa dalej (wyświetlacze nie są potrzebne do bezpiecznej pracy).
-- Aktualizacja programu wyświetlaczy przez ich USB (opcja: przez sterownik).
+- UART 921600 b/s (sterownik UART1 GPIO41/42 ↔ S3 mini UART0 GPIO44/43), ramki COBS + CRC16.
+- Sterownik → ESP wyświetlaczy: `STATE` (przy zmianie: stan, wejście, głośność, tryb, MUTE, kolumny), `OPPOINT` (1 Hz, gdy otwarta strona punktu pracy: prądy, Ua, bias, temperatura, korekta), `OVERLAY` (głośność / wejście), `MESSAGE`, `CONFIG` (styl tarczy, jasność, kalibracja VU, 0 VU).
+- ESP wyświetlaczy → sterownik: `HELLO` (wersja programu), `LEVEL_SUM` (5 Hz: RMS L/P, szczyt, `silent`, `clip`), `ACK`, co 1 s `HEARTBEAT`.
+- Brak heartbeatu przez 5 s: ostrzeżenie w konsoli i na stronie WWW, cisza wg kryterium zapasowego (rozdz. 5); wzmacniacz działa dalej (wyświetlacze nie są potrzebne do bezpiecznej pracy). Sterownik może zrestartować S3 mini linią RESET.
+
+### 12.3 Programowanie ESP wyświetlaczy przez sterownik
+
+ESP wyświetlaczy nie ma WiFi ani USB wyprowadzonego na zewnątrz. Program wgrywa sterownik, przez to samo łącze UART:
+
+1. Na stronie WWW sterownika (WiFi stale włączone) wgrywa się plik programu wyświetlaczy (`.bin`); sterownik zapisuje go w swojej pamięci (partycja na pliki, ok. 2 MB).
+2. Sterownik przechodzi w MUTE (zabezpieczenia działają dalej, programowanie to zadanie o niskim priorytecie), ustawia **BOOT (GPIO0 S3 mini) w stan niski, robi reset linią EN**, puszcza BOOT: S3 mini startuje w bootloaderze z krzemu (ROM), który przyjmuje program przez UART0.
+3. Sterownik wgrywa program biblioteką Espressifu **esp-serial-flasher** (ten sam protokół, którego używa esptool przez USB), prędkość 460800–921600 b/s, ok. 20–40 s; sprawdza sumę MD5.
+4. Reset bez BOOT: S3 mini startuje z nowym programem, wysyła `HELLO` z wersją; sterownik zdejmuje MUTE.
+
+- Bootloader ROM działa zawsze, także gdy program w S3 mini jest uszkodzony (np. przerwana aktualizacja), więc moduł nie może się „zablokować” i nie trzeba otwierać obudowy.
+- Pierwsze wgranie: przez USB S3 mini na stole, przed montażem (albo od razu przez sterownik).
+- Konsola sterownika: `disp flash`, `disp reset`, `disp version`.
 
 ## 13. Punkt pracy bez dodatkowych przycisków
 
@@ -232,7 +252,7 @@ Propozycja: kilka równoległych dróg, żadna nie wymaga nowego przycisku.
 1. **Długie naciśnięcie enkodera selektora** (≥ 2 s) otwiera punkt pracy; obrót selektora przełącza strony, krótkie naciśnięcie albo 10 s bez ruchu wraca do VU. Najwygodniejsze na co dzień.
 2. **Pozycja „Status” selektora**: po wejściu 4 obrót dalej pokazuje „Status” zamiast wejścia (dźwięk zostaje na bieżącym wejściu). Wygodne dla gości: nic się nie przełącza, tylko widać dane.
 3. **Pilot: INFO** (kolejne naciśnięcia = kolejne strony).
-4. **Dotyk tarczy** (wariant A): stuknięcie w tarczę L/P pokazuje punkt pracy tego kanału, drugie stuknięcie wraca.
+4. **Strona WWW** sterownika: wszystkie dane punktu pracy na telefonie.
 5. **Automatycznie**: przez 10 s po stabilizacji przy każdym włączeniu oraz przy każdym ostrzeżeniu dotyczącym lamp.
 
 Strony punktu pracy (na każdej tarczy dane jej kanału):
@@ -276,7 +296,7 @@ Rzadko używane, przez długie naciśnięcie enkodera głośności albo MENU z p
 
 **NVS:** wejście, głośności, nazwy i limity wejść, tryb UL/T, DAC korekty (osobno UL i T), prąd docelowy, kalibracje, kody pilota, ustawienia wyświetlaczy, liczniki godzin, dziennik alarmów.
 
-**Konsola USB** (komendy tekstowe): `status`, `meas` (strumień pomiarów), `relay K3 on` (tylko w trybie serwisowym bez anod), `dac 0 2048`, `cal ua 465.2`, `cal ik 0 10.03`, `log`, `nvs reset`.
+**Konsola USB** (komendy tekstowe, także przez WiFi): `status`, `meas` (strumień pomiarów), `relay K3 on` (tylko w trybie serwisowym bez anod), `dac 0 2048`, `cal ua 465.2`, `cal ik 0 10.03`, `log`, `nvs reset`, `disp flash` / `disp reset` / `disp version`.
 
 **Etapy:**
 1. Szkielet: zadania, kolejka komend, konsola, NVS, przekaźniki na stole (diody zamiast cewek).
@@ -284,15 +304,20 @@ Rzadko używane, przez długie naciśnięcie enkodera głośności albo MENU z p
 3. Sekwencja i zabezpieczenia na płytce zasilacza bez lamp (żarówka w szeregu, Ua bez obciążenia).
 4. Selektor, enkodery, pilot.
 5. Pierwsze uruchomienie z lampami: ręczny bias, potem korekta automatyczna.
-6. Wskaźniki VU i wyświetlacze, punkt pracy, menu.
-7. Opcje: WiFi (strona WWW, OTA), zegar.
+6. ESP wyświetlaczy: 1 ekran GC9B72 na próbę, potem oba, pomiar VU, łącze UART, programowanie przez sterownik (12.3).
+7. Punkt pracy, menu, strona WWW, OTA sterownika, zegar.
 
 ## 17. Do ustalenia **[DECYZJA]**
 
-1. Wyświetlacze: wariant A (2 moduły ESP32-S3 + LCD 2,1" dotykowy) czy B (GC9A01 1,28" SPI)?
-2. Sygnał VU: dzielnik na płytce głośników → ADC ESP32 (2.4) – przyjęte; detektor na ADS1115 tylko jako rezerwa.
+Przyjęte (21.11.2026):
+- wyświetlacze: 2× okrągły LCD 2,1" 360 × 360 GC9B72 SPI, rysowane przez osobne ESP32-S3 mini (2.3);
+- sygnał VU: dzielnik na płytce głośników → ADC ESP wyświetlaczy (2.4);
+- WiFi sterownika: stale włączone; ESP wyświetlaczy bez WiFi, programowane przez UART ze sterownika (12.3).
+
+Otwarte:
+
 3. Drugi enkoder: piny z prawej listwy DevKitC (dolutowane złącze) czy nowa wersja płytki sterowania?
 4. Pilot: pilot Marantza (nauka kodów) czy osobny?
 5. Przycisk włączania na froncie zostaje (jak w Soloiście)?
-6. WiFi: potrzebne (strona WWW, aktualizacja bez otwierania obudowy)? Zasięg osłabia ekran nad płytką sterowania.
+6. Zasięg WiFi: ekran nad płytką sterowania go osłabia; ewentualnie moduł z anteną zewnętrzną (ESP32-S3-DevKitC-1U) wyprowadzoną na tył.
 7. Skala VU: 0 VU = ile watów?
