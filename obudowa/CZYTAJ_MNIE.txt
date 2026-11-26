@@ -75,8 +75,10 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
       widok_przod_oslona_A/B.png. Inny wariant w modelu: OSLONA=A (albo B) python3 export.py;
       lampy wyjmuje sie do gory przez obwodki, bez zdejmowania oslony;
     - osie potencjometrow biasu (X 85 / 115 / 285 / 315, 35 mm od osi KT88) wypadaja na obwodce KT88:
-      w otworze lampy wyciecie fi 7 na srubokret (dziurka od klucza), na zewnatrz ucho obwodki
-      (min. 4 mm blachy wokol) - srubokret do fi 6 przechodzi przez wszystkie ramki (tylko wariant B/C);
+      miedzy KT88 1-2 i 3-4 pelny mostek od tylu do przodu, z przodu lagodny wklesly luk pod obydwoma
+      potencjometrami; otwor lampy ma w tym miejscu plynne wybrzuszenie na srubokret (fi 8, zamiast
+      dziurki od klucza), min. 5 mm blachy wokol - srubokret do fi 7 przechodzi przez wszystkie ramki
+      (wariant B/C i ramka 3);
     - 6 slupkow M4: przod miedzy 6SN7 w osi lamp (X 100 / 300, Y 172), miedzy 6SN7 i KT88 na skrajnych
       lampach (X 50 / 350, Y 215), tyl miedzy KT88 na srodku mostka (X 100 / 300, Y 288,5);
       pozostale polaczenia ramki bez slupkow (ten sam ksztalt, bez otworu). Slupki przednie (miedzy 6SN7)
@@ -108,10 +110,10 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
       w wycieciach krawedzi.
     - TYL (AL_trafo_tyl_zdejmowany): plaska plyta 393 x 149 x 3, ZDEJMOWANA, wchodzi w otwor
       obudowy z luzem 0,5 mm na strone. 10 x M4 do nakretek nitowanych:
-        boki 2+2 (X 14 / 386, Z 20 / 120), dno 2 (X 117 / 283, Z 14), dach 4 (X 65 / 150 / 250 / 335, Z 142).
-    - ZACZEPY TYLNEJ SCIANKI (AL_zaczep_tyl_*, 10 szt.): blacha 3 mm, plytka 15 x 20 (wolne rogi R3),
-      wypust 10 x 3 w gniazdo boku / dna / dachu, klejone; otwor fi 6 pod nakretke nitowana M4.
-      Zaczepy dna: 2 szt., w komorach TG przy przegrodach (AL_zaczep_tyl_dno_1 X 117, _dno_2 X 283);
+        boki 2+2 (X 11,5 / 388,5, Z 20 / 120), dno 2 (X 115 / 285, Z 11,5), dach 4 (X 65 / 150 / 250 / 335, Z 144,5).
+    - ZACZEPY TYLNEJ SCIANKI (AL_zaczep_tyl_*, 10 szt.): blacha 3 mm, plytka 20 x 15 dluzszym bokiem
+      przy scianie obudowy (wolne rogi R3), os otworu 8,5 mm od sciany, wypust 14 x 3 w gniazdo boku / dna / dachu, klejone; otwor fi 6 pod nakretke nitowana M4.
+      Zaczepy dna: 2 szt., w komorach TG przy przegrodach (AL_zaczep_tyl_dno_1 X 115, _dno_2 X 285);
       dawny zaczep w komorze TR1 usuniety (tam gniazdo sieciowe i wejscia).
     - Transformatory: TG Y 377, TR1 Y 382. Wymiary od toroidy.pl (26.11.2026): TG fi 115 x 65,
       TR1 ok. fi 130 x 55 (+-5 mm), dlawiki fi 88 x 35.

@@ -82,6 +82,13 @@ def ob(x, y):                          # wspolrzedne z rysunku Onyxa -> obudowa
 KT = [ob(x, 40.0) for x in (30.0, 130.0, 230.0, 330.0)]          # KT88 (rzad tylny)
 SMALL = [ob(x, 130.0) + (n,) for x, n in ((30.0, "V1_L 6SN7"), (130.0, "V2_L 6SN7"), (230.0, "V2_R 6SN7"), (330.0, "V1_R 6SN7"))]
 POTS = [ob(x, 40.0) for x in (65.0, 95.0, 265.0, 295.0)]          # osie P101/P102, P201/P202
+# miedzy KT88 z potencjometrami biasu (pary 1-2 i 3-4): mostek pelny od tylu do przodu, z przodu lagodny luk
+# wklesly pod obydwoma potencjometrami (srodek luku 30 mm przed osia lamp); otwor lampy z plynnym wybrzuszeniem
+# na srubokret zamiast dziurki od klucza (okrag lampy w tym miejscu nie musi byc idealny)
+G_POT_SFT, G_POT_CL, G_POT_K = -30.0, 0.5, 8.0
+def pot_sft(A, B, sft):
+    if abs(A[1] - _GYK) < 1.0 and any(A[0] < px < B[0] and abs(py - _GYK) < 1.0 for (px, py) in POTS): return G_POT_SFT
+    return sft
 OB_MH = [ob(x, y) for (x, y) in ((4, 4), (356, 4), (4, 76), (356, 76), (356, 104), (4, 156), (80, 156), (280, 156), (356, 156))]  # (4,104) pomijam: nad puszka selektora
 # plytki Soloista na dnie - w przednim rzedzie, bo pod plytka Onyxa sa wysokie elementy
 BOARDS_DNO = {"sterowanie": (45.0, 8.0), "zasilacz": (150.0, 8.0)}      # X 255-355 wolne (np. dlawiki 10 H)
@@ -122,11 +129,11 @@ IEC_CUT = (47.3, 27.4); IEC_SCR = 20.0; IEC_DEPTH = 40.0; IEC_FLANGE = (54.4, 49
 TRIG_JACK = (150.0, 72.0)            # nad polka TR1, od strony wejsc
 PE_STUD = (250.0, 72.0)              # nad polka TR1, od strony gniazda sieciowego
 BR_SIDE_Z = [20.0, 120.0]            # wsporniki tylnej scianki (na wpust, klejone): boki
-BR_FLOOR_X = [117.0, 283.0]          # dno: w komorach TG, przy przegrodach (w komorze TR1 brak - gniazdo sieciowe i wejscia)
+BR_FLOOR_X = [115.0, 285.0]          # dno: w komorach TG, przy przegrodach (w komorze TR1 brak - gniazdo sieciowe i wejscia)
 BR_LID_X = [65.0, 150.0, 250.0, 335.0]   # dach obudowy trafo
-BR_LEN, BR_H, BR_TAB = 15.0, 20.0, 10.0  # zaczep z blachy 3 mm: plytka 15 x 20 rownolegla do tylnej scianki, wpust 10 x 3
+BR_LEN, BR_H, BR_TAB = 20.0, 15.0, 14.0  # zaczep z blachy 3 mm: plytka 20 x 15 rownolegla do tylnej scianki, dluzszym bokiem do obudowy, wpust 14 x 3
 BR_FL = BR_H
-BR_SCR = 11.0                        # os otworu od wewnetrznej powierzchni sciany
+BR_SCR = 8.5                         # os otworu od wewnetrznej powierzchni sciany
 BR_HOLE = 6.0                        # otwor pod nakretke nitowana M4
 BR_R = 3.0                           # zaokraglenie wolnych naroznikow
 CORNER_POSTS = [(11.0, 11.0), (W - 11.0, 11.0), (11.0, Y_BOX - 8.0), (W - 11.0, Y_BOX - 8.0)]   # sruby pokrywy w rogach
@@ -297,9 +304,9 @@ def box_rear():
             H.append(circle(x, z, 8))
     return prism("AL_trafo_tyl_zdejmowany", ALU, outer, H, YP, D, "XZ")
 def brackets():
-    """Zaczepy z blachy aluminiowej 3 mm (jak reszta), plytka 30 x 22 rownolegla do tylnej scianki, tuz za nia
-    (Y 454-457); wpust 20 x 3 w gniazdo boku / dna / dachu, klejony. Otwor fi 3,3 pod gwint M4
-    albo fi 6 pod nakretke nitowana M4."""
+    """Zaczepy z blachy aluminiowej 3 mm (jak reszta), plytka 20 x 15 rownolegla do tylnej scianki, tuz za nia
+    (Y 454-457), dluzszym bokiem (20) przy scianie obudowy; wpust 14 x 3 w gniazdo boku / dna / dachu, klejony.
+    Otwor fi 6 pod nakretke nitowana M4, os 8,5 mm od sciany."""
     out = []
     y0, y1 = YP - T, YP
     def bracket(fn):
@@ -418,7 +425,7 @@ def guard_B(front="flat", tag="B"):
             continue
         for i in range(3):
             A, B = (_GX[i], yA), (_GX[i + 1], yA)
-            nc = ((A[0] + B[0]) / 2, yA + nrm * sft)
+            nc = ((A[0] + B[0]) / 2, yA + nrm * pot_sft(A, B, sft))
             r = notch_r(A, nc)
             P = [tan_pt(A, nc), tan_pt(B, nc), (B[0], yA + nrm * Ro_(B)), (A[0], yA + nrm * Ro_(A))]
             webs.append(np.maximum(poly(P), -disk(nc, r)))
@@ -437,8 +444,7 @@ def guard_B(front="flat", tag="B"):
     # potencjometry biasu wypadaja na obwodce KT88 (35 mm od osi lampy): otwor na srubokret fi 7 polaczony z otworem
     # lampy (dziurka od klucza) i ucho obwodki na zewnatrz, zeby wokol zostalo min. 4 mm blachy
     pots = [(x, y) for (x, y) in POTS]
-    for pc in pots:
-        f = smin(f, disk(pc, G_POT_R + 4.0), 3.0)
+    # (uszy wokol potencjometrow zbedne: potencjometry leza w pelnym mostku miedzy lampami)
     loops = []
     for c in measure.find_contours(f, 0.0):
         c = measure.approximate_polygon(c, tolerance=0.02)
@@ -449,7 +455,7 @@ def guard_B(front="flat", tag="B"):
     for c in tubes:
         d = disk(c, g_rin(c[1])); g = d if g is None else np.minimum(g, d)
     for pc in pots:
-        g = smin(g, disk(pc, G_POT_R), 1.5)
+        g = smin(g, disk(pc, G_POT_R + G_POT_CL), G_POT_K)
     tube_holes = []
     for c in measure.find_contours(-g, 0.0):
         c = measure.approximate_polygon(c, tolerance=0.02)
@@ -488,7 +494,7 @@ def guard_top_KT(tag):
         d = disk(c, Ro); f = d if f is None else np.minimum(f, d)
     for i in range(3):                                                  # tyl: plaski mostek z polokraglym wcieciem od przodu
         A, B = tubes[i], tubes[i + 1]
-        nc = ((A[0] + B[0]) / 2, _GYK + 3.0)
+        nc = ((A[0] + B[0]) / 2, _GYK + pot_sft(A, B, 3.0))
         r = math.hypot(nc[0] - A[0], nc[1] - A[1]) - Ro
         P = [tan_pt(A, nc), tan_pt(B, nc), (B[0], _GYK + Ro), (A[0], _GYK + Ro)]
         f = np.minimum(f, np.maximum(poly(P), -disk(nc, r)))
@@ -498,8 +504,7 @@ def guard_top_KT(tag):
         dx, dy = 0.0, ry - ay
         t = np.clip(((X - ax) * dx + (Y - ay) * dy) / (dx * dx + dy * dy), 0, 1)
         f = smin(f, np.hypot(X - ax - t * dx, Y - ay - t * dy) - G_BOSS, 6.0)
-    for pc in POTS:
-        f = smin(f, disk(pc, G_POT_R + 4.0), 3.0)
+    # (uszy wokol potencjometrow zbedne: potencjometry leza w pelnym mostku miedzy lampami)
     loops = []
     for c in measure.find_contours(f, 0.0):
         c = measure.approximate_polygon(c, tolerance=0.02)
@@ -510,7 +515,7 @@ def guard_top_KT(tag):
     for c in tubes:
         d = disk(c, G_RINK); g = d if g is None else np.minimum(g, d)
     for pc in POTS:
-        g = smin(g, disk(pc, G_POT_R), 1.5)
+        g = smin(g, disk(pc, G_POT_R + G_POT_CL), G_POT_K)
     holes = []
     for c in measure.find_contours(-g, 0.0):
         c = measure.approximate_polygon(c, tolerance=0.02)
