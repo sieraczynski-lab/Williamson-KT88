@@ -39,7 +39,7 @@ def board():
         ("J5", "TR1_PRI", "CONN_2", ["L_TR", "N_SW"], g_m, "zlacze srubowe: pierwotne TR1, 1 L, 2 N"),
         # ---- anody ----
         ("J7", "S1_IN", "CONN_2", ["HT_TR", "HT_B"], g_ht, "zlacze srubowe 7,62 mm: S1 360 V z TR1 (1 przez F3, 2 drugi koniec)"),
-        ("F3", "T1A 500V", "FUSE", ["HT_TR", "HT_F"], g_ht, "bezpiecznik anodowy 5x20, napiecie znamionowe >= 400 V AC (np. Schurter SPT 5x20 500 V)"),
+        ("F3", "T1A 500V", "FUSE", ["HT_TR", "HT_F"], g_ht, "bezpiecznik anodowy 5x20 >= 400 V AC (np. Schurter SPT 500 V); OPRAWKA tez min. 400 V AC - DO DECYZJI (w LCSC tylko 250 V; oprawka z TME albo klipsy Littelfuse 520 600 V, zmiana footprintu)"),
         ("K3", "G2RL-2-DC12", "RELAY_G2RL", {"1": "+12V", "8": "RLY3", "3": "HT_F", "2": None, "4": "K3_MID",
                                        "6": "K3_MID", "7": None, "5": "HT_K3"}, g_ht, "anody (+45 s); dwa styki szeregowo"),
         ("R2", "100R 10W", "R", ["HT_K3", "HT_IN"], g_ht, "R_IN: udar ladowania kondensatorow Onyxa ok. 5 A"),

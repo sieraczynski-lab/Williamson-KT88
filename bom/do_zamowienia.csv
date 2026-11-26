@@ -12,6 +12,7 @@
 11;B. Płytka zasilacza;R6;Rezystor 15 kΩ 1 %;metalizowany 0,6 W;1;1;konieczne;LCSC C601895 / TME;Dzielnik pomiaru Ua (precyzyjny)
 12;B. Płytka zasilacza;reszta;Elementy wg BOM płytki;pcb/zasilacz/zasilacz_williamson_BOM.csv;1;0;konieczne;TME / LCSC;K1–K4 G2RL-2-DC12, R_SS 47 Ω 10 W, R_IN 100 Ω 10 W, oprawki 5x20, LED, 1N4148, złącza śrubowe
 13;B. Płytka zasilacza;F2 / F3 / F4;Bezpieczniki 5x20;T500 mA 250 V / T1 A 500 V (np. Schurter SPT) / T100 mA 250 V;3;3;konieczne;LCSC C142727 (T500 mA) / TME (T1 A 500 V, T100 mA);F3 musi mieć min. 400 V AC
+12a;B. Płytka zasilacza;F3;Oprawka bezpiecznika F3 (anody 360 V AC);5x20 do druku, z pokrywką, min. 400 V AC, raster ok. 22,5 mm;1;0;do decyzji;TME;UWAGA: oprawki 5x20 z LCSC mają 250 V (za mało). Albo oprawka >= 400 V z TME (sprawdzić raster), albo 2 klipsy Littelfuse 520 600 V (LCSC C142924) ze zmianą footprintu F3
 14;C. Tylna ścianka;gniazdo zasilania;Schurter DD11 (IEC C14 + bezpiecznik + wyłącznik 2-bieg.);np. DD11.0124.1110 + szuflada bezpieczników wg karty DD11;1;0;konieczne;TME / Farnell;Przed cięciem sprawdzić wycięcie 27,1 x 56 mm i rozstaw śrub 65 mm
 15;C. Tylna ścianka;F1;Bezpiecznik 5x20 T2,5 A 250 V;zwłoczny;2;4;konieczne;LCSC C142705 / TME;W szufladzie DD11
 16;C. Tylna ścianka;wejścia;Gniazdo RCA panelowe izolowane;otwór ⌀11, izolowane od obudowy;8;0;konieczne;TME;4 pary: L czerwone, P białe/czarne
@@ -36,7 +37,10 @@
 33a;D. Mechanika;płytki na dnie;Śruba M3 x 6 (płytki na dnie);"stal; dla płytki UL nylonowe (8 szt.)";38;4;konieczne;sklep;Po 2 na tuleję: 30 stalowych + 8 nylonowych (UL)
 33b;D. Mechanika;dno;Nóżki obudowy;gumowe / antywibracyjne, mocowanie śrubą przez otwór ⌀10 w dnie;4;0;konieczne;sklep;Pozycje w modelu obudowy (FEET)
 33c;D. Mechanika;front, boki;Drewno: front 5 + 15 mm, boki 20 mm;MDF + fornir wg obudowa/lista_czesci.csv;1;0;konieczne;stolarz;"Otwory frontu wg modelu; okienka wyświetlaczy do poprawy pod 2,1"""
-33d;D. Mechanika;selektor;Ekran selektora;"płytka 96 x 74 mm; wysokość pod kondensatorami płytki Onyxa max ok. 31 mm";1;0;do decyzji;–;"Hammond 1590B (112 x 60) za mały; 1590BB (119,5 x 94 x 34) za wysoki pod kondensatorami. Propozycja: osłona z blachy Al 1 mm w komplecie DXF"
+33d;D. Mechanika;selektor;Ekran selektora (blacha Al 3 mm);"4 ścianki 25 mm z wypustami + pokrywka 119 x 99; DXF: obudowa/DXF/AL_ekran_selektora_*.dxf";1;0;konieczne;usługa CNC (z blachami obudowy);"Ścianki klejone do pokrywki; całość zdejmowana, przykręcona do tulei M3"
+33e;D. Mechanika;ekran selektora;Tuleja dystansowa M3 ż-ż 25 mm;mosiężna/stalowa;4;0;konieczne;TME;"Pokrywka ekranu; od dna śruba M3 x 6"
+33f;D. Mechanika;ekran selektora;Śruba M3 x 6 (ekran selektora);4 z łbem stożkowym (pokrywka) + 4 zwykłe (od dna);8;2;konieczne;sklep;
+33g;D. Mechanika;dławiki;Śruba centralna dławików;zwykle w komplecie z toroidem (śruba, podkładki, przekładki gumowe);2;0;konieczne;toroidy.pl;"Otwory fi 8,5 w dnie; dławik 1 z przodu z prawej, dławik 2 pod płytką Onyxa z prawej z tyłu"
 34;E. Przewody;anody, odczepy UL, B+, dławiki, HT AC, Ua;Przewód silikonowy 0,75 mm², izolacja 1 kV;;10;0;konieczne;TME;"metry łącznie (nie kawałki), szacunek ok. 8 m + zapas; najlepiej 2–3 kolory"
 35;E. Przewody;żarzenie KT88 i 6SN7;Przewód 1,5 mm² (skręcany);;4;0;konieczne;sklep;"metry; skręcać parami"
 36;E. Przewody;wejścia, NFB;Przewód ekranowany sygnałowy 1-żyłowy;;3;0;konieczne;TME;metry
@@ -46,9 +50,9 @@
 37c;E. Przewody;złącza śrubowe na płytkach;Tulejki kablowe izolowane (zestaw);0,5 / 0,75 / 1 / 1,5 mm²;1;0;konieczne;sklep;Linka w złączach śrubowych zawsze w tulejce
 37d;E. Przewody;złącza goldpin: sterowanie J2–J13, zasilacz J16/J17, głośniki J7/J8, S3 mini;Wtyki Dupont 2,54 mm (obudowy 1–6 pin + piny żeńskie);"zestaw; do zaciskania (zaciskarka SN-28B) albo gotowe przewody";1;0;konieczne;sklep / Allegro;Selektor ma własne wtyki JST XH (w BOM selektora)
 37e;E. Przewody;wnętrze;Opaski i uchwyty samoprzylepne do kabli;;1;0;konieczne;sklep;
-38;F. Transformatory, lampy;TR1;Transformator sieciowy 400 VA;"S1 360 V (345/375 V) 0,65 A; S4 58 V 0,1 A; 6,3 V 8 A; 6,3 V 3 A; ekran";1;0;konieczne;toroidy.pl;docs/08
-39;F. Transformatory, lampy;L106, L206;Dławik 10 H / 250 mA / 45 Ω;filtr anodowy;2;0;konieczne;toroidy.pl;
-40;F. Transformatory, lampy;TG;Transformator głośnikowy TTG-KT88PP;4 kΩ, UL 43 %, 4/8 Ω;2;0;konieczne;toroidy.pl;
+38;F. Transformatory, lampy;TR1;Transformator sieciowy 400 VA;"S1 360 V (345/375 V) 0,65 A; S4 58 V 0,1 A; 6,3 V 8 A; 6,3 V 3 A; ekran; ok. fi 130 x 55 mm";1;0;konieczne;toroidy.pl;docs/08
+39;F. Transformatory, lampy;L106, L206;Dławik 10 H / 250 mA / 45 Ω;"filtr anodowy; fi 88 x 35 mm";2;0;konieczne;toroidy.pl;
+40;F. Transformatory, lampy;TG;Transformator głośnikowy TTG-KT88PP;"4 kΩ, UL 43 %, 4/8 Ω; fi 115 x 65 mm";2;0;konieczne;toroidy.pl;
 41;F. Transformatory, lampy;V5–V8;KT88;;4;0;masz;–;
 42;F. Transformatory, lampy;V1, V2;6SN7 Psvane UK-6SN7 Plus;;4;0;kupione;–;"⌀46 x 89 mm (zmierzone); osłona: otwór ⌀56"
 43;G. Płytki PCB;zasilacz, UL, sterowanie, głośniki, selektor;Płytki PCB + elementy;wg BOM w pcb/*/;1;0;konieczne;JLCPCB / LCSC / TME;SMD montuje JLCPCB: sterowanie (sterowanie_BOM_JLCPCB.csv) i selektor (selektor_BOM_JLCPCB.csv + selektor_CPL_JLCPCB.csv)

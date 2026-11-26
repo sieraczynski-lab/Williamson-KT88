@@ -37,7 +37,7 @@ PARTS = {
     ("LED HV czerwona", "LED_D3.0_P2.54"): ("LED 3 mm czerwona, jasna 600 mcd (dobrze swieci przy 1 mA)", "C779429"),
     ("T500mA 250V", "Fuseholder_5x20_Closed_P22.5"): ("oprawka 5x20 z pokrywka Littelfuse 64800001009, 250 V, raster 22,7", "C187509"),
     ("T100mA 250V", "Fuseholder_5x20_Closed_P22.5"): ("oprawka 5x20 z pokrywka Littelfuse 64800001009, 250 V, raster 22,7", "C187509"),
-    ("T1A 500V", "Fuseholder_5x20_Closed_P22.5"): ("UWAGA: oprawki 5x20 >= 400 V do PCB brak w LCSC; ta ma 250 V (Littelfuse 648)", "C187509"),
+    ("T1A 500V", "Fuseholder_5x20_Closed_P22.5"): ("DO DECYZJI: oprawka 5x20 min. 400 V AC z TME (w LCSC tylko 250 V) albo 2 klipsy Littelfuse 520 600 V C142924 (zmiana footprintu)", ""),
 }
 
 # zlacza: po footprincie (wartosc to nazwa sygnalu)

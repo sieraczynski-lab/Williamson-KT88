@@ -7,7 +7,7 @@ K2;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;25.00;30.00;SIEC 230 V;C61458;"bocznik
 R1;47R 10W;R_Cement_10W_P55.88_V;GORA;46.00;32.00;SIEC 230 V;C349125;R_SS, rezystor cementowy
 J5;TR1_PRI;TerminalBlock_1x02_P5.08_V;GORA;95.00;22.00;SIEC 230 V;C8465;zlacze srubowe: pierwotne TR1, 1 L, 2 N
 J7;S1_IN;TerminalBlock_1x02_P7.62_V;GORA;5.50;55.00;ANODY (AC);C581337;zlacze srubowe 7,62 mm: S1 360 V z TR1 (1 przez F3, 2 drugi koniec)
-F3;T1A 500V;Fuseholder_5x20_Closed_P22.5_V;GORA;70.00;38.00;ANODY (AC);C187509;bezpiecznik anodowy 5x20, napiecie znamionowe >= 400 V AC (np. Schurter SPT 5x20 500 V)
+F3;T1A 500V;Fuseholder_5x20_Closed_P22.5_V;GORA;70.00;38.00;ANODY (AC);;"bezpiecznik anodowy 5x20 >= 400 V AC (np. Schurter SPT 500 V); OPRAWKA tez min. 400 V AC - DO DECYZJI (w LCSC tylko 250 V; oprawka z TME albo klipsy Littelfuse 520 600 V, zmiana footprintu)"
 K3;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;25.00;54.00;ANODY (AC);C61458;"anody (+45 s); dwa styki szeregowo"
 R2;100R 10W;R_Cement_10W_P55.88_V;GORA;58.00;50.00;ANODY (AC);C349082;R_IN: udar ladowania kondensatorow Onyxa ok. 5 A
 K4;G2RL-2-DC12;Relay_DPDT_Omron_G2RL;GORA;25.00;72.00;ANODY (AC);C61458;"bocznik R_IN (+1,5 s); 2 styki rownolegle"

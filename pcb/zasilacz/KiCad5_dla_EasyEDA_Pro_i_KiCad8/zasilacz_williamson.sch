@@ -125,8 +125,6 @@ F 0 "F3" H 1520 4440 50  0000 L CNN
 F 1 "T1A 500V" H 1520 4590 50  0000 L CNN
 F 2 "williamson:Fuseholder_5x20_Closed_P22.5_V" H 1600 4500 50  0001 C CNN
 F 3 "~" H 1600 4500 50  0001 C CNN
-F 4 "LCSC" H 1600 4500 50  0001 C CNN "Supplier"
-F 5 "C187509" H 1600 4500 50  0001 C CNN "Supplier Part"
 	1    1600 4500
 	1    0    0    -1  
 $EndComp

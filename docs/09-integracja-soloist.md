@@ -169,7 +169,7 @@ Kolumnę podłączasz do **4 Ω i GND**: przekaźnik przełącza ją między lam
 
 ## 9.9 Selektor i głośność
 
-Płytka selektora Soloista (TubeSel) w puszce aluminiowej (np. Hammond 1590, ok. 112 × 60 × 31 mm) na dnie, pod płytką Onyxa z przodu z lewej, blisko wejść J100:
+Płytka selektora Soloista (TubeSel, 96 × 74 mm) na dnie, pod płytką Onyxa z przodu z lewej, blisko wejść J100, w ekranie z blachy aluminiowej 3 mm (ścianki 25 mm z wypustami klejone do pokrywki, całość zdejmowana, przykręcona do 4 tulei M3 25 mm; szczegóły w obudowa/CZYTAJ_MNIE.txt). Gotowa puszka nie pasuje: Hammond 1590B jest za mały, 1590BB za wysoki pod kondensatorami płytki Onyxa:
 
 - wyjście selektora (J5) → przewód ekranowany → Onyx **J100** i **J200** (We-L, We-P), ekran podłączony tylko po stronie płytki;
 - wejście Onyxa nie ma kondensatora sprzęgającego (J100 → R100 → siatka, R101 do masy; na płytce R101 = 220k). Żeby odciąć składową stałą ze źródeł, dodaj **220 nF folia** szeregowo: z 220 kΩ daje to filtr ok. 3 Hz;

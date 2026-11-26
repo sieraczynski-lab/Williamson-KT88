@@ -1,5 +1,10 @@
 ﻿Czesc;Material;Grubosc [mm];Wymiar A [mm];Wymiar B [mm];Otwory/gniazda;Szt.
-AL_dno_400x460x3;aluminium 5754;3.0;400.0;460.0;77;1
+AL_dno_400x460x3;aluminium 5754;3.0;400.0;460.0;83;1
+AL_ekran_selektora_przod;aluminium 5754;3.0;116.0;28.0;1;1
+AL_ekran_selektora_tyl;aluminium 5754;3.0;116.0;28.0;1;1
+AL_ekran_selektora_bok_L;aluminium 5754;3.0;90.0;28.0;0;1
+AL_ekran_selektora_bok_P;aluminium 5754;3.0;90.0;28.0;0;1
+AL_ekran_selektora_pokrywka;aluminium 5754;3.0;119.0;99.0;10;1
 AL_bok_lewy;aluminium 5754;3.0;460.0;156.0;13;1
 AL_bok_prawy;aluminium 5754;3.0;460.0;156.0;13;1
 AL_przod_wewn;aluminium 5754;3.0;400.0;103.0;15;1

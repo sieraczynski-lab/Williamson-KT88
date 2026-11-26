@@ -90,9 +90,17 @@ MH = {"sterowanie": [(4.5, 4.5), (95.5, 4.5), (4.5, 95.5), (95.5, 95.5)],
       "glosniki": [(4.5, 39.5), (51.0, 17.5), (95.5, 39.5)],
       "ul": [(4.5, 4.5), (78.0, 4.5), (4.5, 61.5), (95.5, 61.5)]}
 UL_POS = {"LP": (150.0, 230.0)}                                    # jedna plytka UL 100 x 66 na dnie, na srodku pod plytka Onyxa
-SEL_BOX = (24.0, 150.0, 136.0, 210.0)                               # selektor w puszce aluminiowej ok. 112 x 60 x 31 (Hammond 1590), pod plytka
-SEL_MH = [(30.0, 156.0), (130.0, 156.0), (30.0, 204.0), (130.0, 204.0)]
-TRAFO_POS = {"OT_L": (65.0, 377.0, 120.0, 65.0), "TR1": (200.0, 382.0, 130.0, 65.0), "OT_R": (335.0, 377.0, 120.0, 65.0)}   # przesuniete do przodu: miejsce na zaciski i gniazda z tylu
+# selektor (plytka 96 x 74) pod plytka Onyxa, w ekranie z blachy Al 3 mm (ten sam arkusz co obudowa):
+# 4 scianki z wypustami w pokrywke (klejone), pokrywka przykrecona do 4 tulei M3 25 mm z dna (zdejmowana).
+SEL_IN = (32.0, 153.0, 142.0, 243.0)                                 # wnetrze ekranu 110 x 90
+SEL_H = 25.0                                                          # wysokosc scianek = tuleje M3 ż-ż 25 mm
+SEL_BOX = (SEL_IN[0] - T, SEL_IN[1] - T, SEL_IN[2] + T, SEL_IN[3] + T)   # scianki z zewnatrz 116 x 96, pokrywka 119 x 99 (wystaje 1,5 mm), gora Z 31
+SEL_PCB = (39.0, 235.0)                                               # lewy przedni rog plytki: X, Y krawedzi tylnej (y plytki = 0)
+SEL_PCB_MH = [(SEL_PCB[0] + bx, SEL_PCB[1] - by) for (bx, by) in ((4, 4), (92, 4), (4, 70), (92, 70))]
+SEL_MH = [(SEL_IN[0] + 4, SEL_IN[1] + 4), (SEL_IN[2] - 4, SEL_IN[1] + 4), (SEL_IN[0] + 4, SEL_IN[3] - 4), (SEL_IN[2] - 4, SEL_IN[3] - 4)]   # tuleje pokrywki
+CHOKES = [(305.0, 56.0), (330.0, 262.0)]                              # dlawiki 10 H: fi 88 x 35, srodkowa sruba przez dno
+CHOKE_D, CHOKE_H = 88.0, 35.0
+TRAFO_POS = {"OT_L": (65.0, 377.0, 115.0, 65.0), "TR1": (200.0, 382.0, 130.0, 55.0), "OT_R": (335.0, 377.0, 115.0, 65.0)}   # wymiary od toroidy.pl (TR1 +-5 mm)   # przesuniete do przodu: miejsce na zaciski i gniazda z tylu
 OT_RAISE = 35.0                      # TG na tulejach: pod nimi gniazda RCA (lewa komora)
 YP = D - T                           # wewnetrzna plaszczyzna zdejmowanej tylnej scianki (wchodzi w obudowe, rowno z krawedziami)
 RP_CL = 0.5                          # luz tylnej scianki w otworze obudowy (na strone)
@@ -142,7 +150,8 @@ def dno():
             H.append(slot(xp + T / 2, y, T, TAB))                  # przegrody
     for side_, (ux, uy) in UL_POS.items():
         H += [circle(ux + mx, uy + my, 3.5) for (mx, my) in MH["ul"]]   # plytki UL
-    H += [circle(x, y, 3.5) for (x, y) in SEL_MH]                      # puszka selektora
+    H += [circle(x, y, 3.5) for (x, y) in SEL_MH + SEL_PCB_MH]        # tuleje ekranu i plytki selektora
+    H += [circle(x, y, 8.5) for (x, y) in CHOKES]                      # sruby dlawikow
     for i in range(10):                                                  # wentylacja pod plytka (srodek)
         for j in range(3):
             H.append(circle(166 + i * 16, 160 + j * 16, 8))
@@ -156,6 +165,31 @@ def dno():
     H += [circle(x, y, 5.0) for (x, y) in FEET]
     return prism("AL_dno_400x460x3", ALU2, outer, H, 0, T, "XY")
 parts.append(dno())
+
+def sel_shield():
+    """Ekran selektora: 4 scianki 3 mm (wypusty 3 mm w pokrywke, klejone) + pokrywka na 4 tulejach M3."""
+    x0, y0, x1, y1 = SEL_BOX
+    z0, z1 = T, T + SEL_H                                   # scianki na dnie, pokrywka Z z1..z1+T
+    TABW = 20.0
+    def wall(u0, u1, tab_c):
+        P = [(u0, z0), (u1, z0), (u1, z1)]
+        for c in sorted(tab_c, reverse=True):
+            P += [(c + TABW / 2, z1), (c + TABW / 2, z1 + T), (c - TABW / 2, z1 + T), (c - TABW / 2, z1)]
+        return P + [(u0, z1)]
+    fb_tabs, side_tabs = [x0 + 22.0, x1 - 22.0], [(y0 + y1) / 2]
+    win_z = (T + 12.0, T + 22.0)                            # okna na przewody (nad zlaczami JST)
+    rear_win = [rect(SEL_PCB[0] + 11.0, win_z[0], SEL_PCB[0] + 92.0, win_z[1])]        # J1-J5
+    front_win = [rect(SEL_PCB[0] + 1.0, win_z[0], SEL_PCB[0] + 25.0, win_z[1])]        # J6 (sterowanie)
+    out = [prism("AL_ekran_selektora_przod", ALU2, wall(x0, x1, fb_tabs), front_win, y0, y0 + T, "XZ"),
+           prism("AL_ekran_selektora_tyl", ALU2, wall(x0, x1, fb_tabs), rear_win, y1 - T, y1, "XZ"),
+           prism("AL_ekran_selektora_bok_L", ALU2, wall(y0 + T, y1 - T, side_tabs), [], x0, x0 + T, "YZ"),
+           prism("AL_ekran_selektora_bok_P", ALU2, wall(y0 + T, y1 - T, side_tabs), [], x1 - T, x1, "YZ")]
+    H = [slot(c, y0 + T / 2, TABW, T) for c in fb_tabs] + [slot(c, y1 - T / 2, TABW, T) for c in fb_tabs]
+    H += [slot(x0 + T / 2, c, T, TABW) for c in side_tabs] + [slot(x1 - T / 2, c, T, TABW) for c in side_tabs]
+    H += [circle(x, y, 3.4) for (x, y) in SEL_MH]
+    out.append(prism("AL_ekran_selektora_pokrywka", ALU2, rect(x0 - 1.5, y0 - 1.5, x1 + 1.5, y1 + 1.5), H, z1, z1 + T, "XY"))
+    return out
+parts += sel_shield()
 
 # ---------------- SCIANKI BOCZNE (jedna czesc: nisko z przodu, wysoko przy trafo)
 FING_FRONT = [(13, 28), (48, 63), (78, 93)]               # z (v) zakresy wypustow do sciany przedniej
@@ -560,7 +594,12 @@ for side_, (ux, uy) in UL_POS.items():
     ref.append(box("REF_plytka_UL_" + side_, PCB, ux, uy, 9, ux + 100, uy + 66, 10.6))
     for (cxb, cyb) in ((17.0, 16.5), (17.0, 40.5), (67.0, 16.5), (67.0, 40.5)):
         ref.append(box("REF_przekaznik_G2RL_UL", BLACK, ux + cxb - 14.4, uy + cyb - 6.25, 10.6, ux + cxb + 14.6, uy + cyb + 6.25, 26.3))
-ref.append(box("REF_selektor_puszka_1590", (0.55, 0.57, 0.6), *SEL_BOX[:2], T, SEL_BOX[2], SEL_BOX[3], T + 31))
+ref.append(box("REF_plytka_selektor", PCB, SEL_PCB[0], SEL_PCB[1] - 74, T + 10, SEL_PCB[0] + 96, SEL_PCB[1], T + 11.6))
+ref.append(box("REF_selektor_przekazniki", BLACK, SEL_PCB[0] + 8, SEL_PCB[1] - 50, T + 11.6, SEL_PCB[0] + 90, SEL_PCB[1] - 14, T + 21.6))
+for (x, y) in SEL_MH:
+    ref.append(cyl("REF_tuleja_M3_%dmm_ekran" % SEL_H, (0.75, 0.75, 0.70), x, y, 5.5, T, T + SEL_H, n=6))
+for (x, y) in CHOKES:
+    ref.append(cyl("REF_dlawik_10H", TRAFO, x, y, CHOKE_D, T + 3, T + 3 + CHOKE_H, hole=20))
 for name, (x0, y0) in BOARDS_DNO.items():
     ref.append(box("REF_plytka_" + name, PCB, x0, y0, 13, x0 + 100, y0 + 100, 14.6))
 for name, (x, y, dd, h) in TRAFO_POS.items():
