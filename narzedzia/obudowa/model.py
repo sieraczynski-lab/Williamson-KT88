@@ -13,7 +13,7 @@ WOOD = 20.0      # MDF + fornir (boki), przod = 5 lico + 15 rama
 W, D = 400.0, 460.0          # dno aluminiowe
 H_CH = 100.0                 # wysokosc wnetrza czesci lampowej (dno->pokrywa)
 Z_COV = T + H_CH             # 103 - spod pokrywy
-Y_BOX = 310.0                # przednia scianka obudowy trafo (y 310..313)
+Y_BOX = 307.0                # przednia scianka obudowy trafo (y 307..310), licuje z uskokiem bokow i dachem
 Y_STEP = 307.0               # od tego miejsca boczne scianki sa wysokie
 Z_LID = 153.0                # spod dachu obudowy trafo
 TAB = 15.0                   # dlugosc wypustu
@@ -89,7 +89,7 @@ MH = {"sterowanie": [(4.5, 4.5), (95.5, 4.5), (4.5, 95.5), (95.5, 95.5)],
       "zasilacz": [(4.5, 4.5), (95.5, 4.5), (4.5, 95.5), (95.5, 95.5)],
       "glosniki": [(4.5, 39.5), (51.0, 17.5), (95.5, 39.5)],
       "ul": [(4.5, 4.5), (78.0, 4.5), (4.5, 61.5), (95.5, 61.5)]}
-UL_POS = {"LP": (150.0, 230.0)}                                    # jedna plytka UL 100 x 66 na dnie, na srodku pod plytka Onyxa
+UL_POS = {"LP": (156.0, 230.0)}                                    # jedna plytka UL 100 x 66 na dnie, na srodku pod plytka Onyxa
 # selektor (plytka 96 x 74) pod plytka Onyxa, w ekranie z blachy Al 3 mm (ten sam arkusz co obudowa):
 # 4 scianki z wypustami w pokrywke (klejone), pokrywka przykrecona do 4 tulei M3 25 mm z dna (zdejmowana).
 SEL_IN = (32.0, 153.0, 142.0, 243.0)                                 # wnetrze ekranu 110 x 90
@@ -100,27 +100,39 @@ SEL_PCB_MH = [(SEL_PCB[0] + bx, SEL_PCB[1] - by) for (bx, by) in ((4, 4), (92, 4
 SEL_MH = [(SEL_IN[0] + 4, SEL_IN[1] + 4), (SEL_IN[2] - 4, SEL_IN[1] + 4), (SEL_IN[0] + 4, SEL_IN[3] - 4), (SEL_IN[2] - 4, SEL_IN[3] - 4)]   # tuleje pokrywki
 CHOKES = [(305.0, 56.0), (330.0, 262.0)]                              # dlawiki 10 H: fi 88 x 35, srodkowa sruba przez dno
 CHOKE_D, CHOKE_H = 88.0, 35.0
-TRAFO_POS = {"OT_L": (65.0, 377.0, 115.0, 65.0), "TR1": (200.0, 382.0, 130.0, 55.0), "OT_R": (335.0, 377.0, 115.0, 65.0)}   # wymiary od toroidy.pl (TR1 +-5 mm)   # przesuniete do przodu: miejsce na zaciski i gniazda z tylu
-OT_RAISE = 35.0                      # TG na tulejach: pod nimi gniazda RCA (lewa komora)
+TRAFO_POS = {"OT_L": (65.0, 377.0, 115.0, 65.0), "TR1": (200.0, 382.0, 130.0, 55.0), "OT_R": (335.0, 377.0, 115.0, 65.0)}   # wymiary od toroidy.pl (TR1 +-5 mm)
+# transformatory na poziomych polkach z blachy 3 mm (wypusty w przod obudowy trafo i boki komory, klejone),
+# sruba srodkowa przez polke, podkladka gumowa 3 mm; pod polkami zaciski, gniazda i przewody
+SHELF_Z = {"OT_L": 50.0, "TR1": 55.0, "OT_R": 50.0}                 # spod polki (TG 15 mm wyzej niz na tulejach, TR1 ok. 55 mm)
+SHELF_X = {"OT_L": (T, X_P1), "TR1": (X_P1 + T, X_P2), "OT_R": (X_P2 + T, W - T)}
+SHELF_Y1 = 452.0                                                      # tylna krawedz polek (5 mm przed tylna scianka)
+SHELF_TABS_Y = {"OT_L": (345.0, 420.0), "TR1": (360.0, 432.0), "OT_R": (345.0, 420.0)}
+SHELF_HOLES = {"OT_L": [(16.0, 322.0), (114.0, 322.0)], "TR1": [(143.0, 322.0), (257.0, 322.0)], "OT_R": [(286.0, 322.0), (384.0, 322.0)]}
+def trafo_z0(name): return SHELF_Z[name] + T + 3.0                   # spod transformatora (polka + podkladka 3 mm)
+# kanal na przewody z wejsc: profil stalowy 20 x 20 x 1,5 na dnie, od gniazd RCA do tylu ekranu selektora
+CH_X0, CH_Y0, CH_Y1, CH_S, CH_T = 130.5, 250.0, 430.0, 20.0, 1.5
 YP = D - T                           # wewnetrzna plaszczyzna zdejmowanej tylnej scianki (wchodzi w obudowe, rowno z krawedziami)
 RP_CL = 0.5                          # luz tylnej scianki w otworze obudowy (na strone)
 # tylna scianka (x, z) - x jak patrzac od przodu, czyli patrzac od tylu lewa komora (TG L) jest po PRAWEJ
-RCA = [(x, z) for x in (34.0, 56.0, 78.0, 100.0) for z in (32.0, 13.0)]   # 4 wejscia x (L gora, P dol), komora TG L
-SPK_OUT = [(30.0, z) for z in (100.0, 75.0, 50.0)] + [(W - 30.0, z) for z in (100.0, 75.0, 50.0)]  # wyjscia 8 / 4 Ohm / COM
-SPK_MAR = [(100.0, z) for z in (88.0, 62.0)] + [(W - 100.0, z) for z in (88.0, 62.0)]                # wejscie z Marantza +/-
-IEC = (200.0, 100.0)                 # Schurter DD11 (C14 + bezpiecznik 5x20 + wylacznik 2-bieg.), pionowo, nad TR1
-IEC_CUT = (27.1, 56.0); IEC_SCR = 32.5; IEC_DEPTH = 46.6
-TRIG_JACK = (140.0, 36.0)
-PE_STUD = (260.0, 35.0)
+RCA = [(x, z) for x in (144.0, 163.0, 182.0, 201.0) for z in (40.0, 18.0)]   # 4 wejscia x (L gora, P dol), komora TR1 pod polka, przy kanale
+SPK_OUT = [(x, 40.0) for x in (32.0, 56.0, 80.0)] + [(W - x, 40.0) for x in (32.0, 56.0, 80.0)]   # wyjscia 8 / 4 Ohm / GND, rzad gorny
+SPK_MAR = [(x, 18.0) for x in (32.0, 56.0)] + [(W - x, 18.0) for x in (32.0, 56.0)]                 # wejscie z Marantza + / GND, rzad dolny
+IEC = (245.5, 29.0)                 # gniazdo IEC C14 + bezpiecznik 5x20 + wylacznik (wg rysunku), poziomo, pod polka TR1
+IEC_CUT = (47.3, 27.4); IEC_SCR = 20.0; IEC_DEPTH = 40.0; IEC_FLANGE = (54.4, 49.2)   # otwory 2 x fi 3,5 nad i pod wycieciem
+TRIG_JACK = (150.0, 72.0)            # nad polka TR1, od strony wejsc
+PE_STUD = (250.0, 72.0)              # nad polka TR1, od strony gniazda sieciowego
 BR_SIDE_Z = [20.0, 120.0]            # wsporniki tylnej scianki (na wpust, klejone): boki
-BR_FLOOR_X = [150.0, 250.0, 335.0]   # (w komorze TR1 tylko niskie wsporniki - TR1 obok)   # dno
+BR_FLOOR_X = [117.0, 283.0]          # dno: w komorach TG, przy przegrodach (w komorze TR1 brak - gniazdo sieciowe i wejscia)
 BR_LID_X = [65.0, 150.0, 250.0, 335.0]   # dach obudowy trafo
-BR_LEN, BR_H, BR_TAB = 30.0, 22.0, 20.0  # zaczep z blachy 3 mm: plytka 30 x 22 rownolegla do tylnej scianki, wpust 20 x 3
+BR_LEN, BR_H, BR_TAB = 15.0, 20.0, 10.0  # zaczep z blachy 3 mm: plytka 15 x 20 rownolegla do tylnej scianki, wpust 10 x 3
 BR_FL = BR_H
-BR_SCR = 11.0                        # os otworu M4 od wewnetrznej powierzchni sciany
+BR_SCR = 11.0                        # os otworu od wewnetrznej powierzchni sciany
+BR_HOLE = 6.0                        # otwor pod nakretke nitowana M4
+BR_R = 3.0                           # zaokraglenie wolnych naroznikow
 CORNER_POSTS = [(11.0, 11.0), (W - 11.0, 11.0), (11.0, Y_BOX - 8.0), (W - 11.0, Y_BOX - 8.0)]   # sruby pokrywy w rogach
 GUS = 25.0                             # trojkatne zaczepy pokrywy 25 x 25 x 3, poziomo pod pokrywa
-GUS_Z0 = Z_COV - 8.0                   # Z 95-98 (5 mm pod gorna krawedzia scianek)
+GUS_Z0 = Z_COV - 4.0                   # Z 99-102 (1 mm pod gorna krawedzia scianek); wpusty w otwarte wciecia od gory
+GUS_HOLE = 6.0                         # otwor pod nakretke nitowana M4
 GUS_TABS = [(5.0, 12.0), (15.0, 22.0)]  # wpusty 7 x 3 na kazdym boku (od naroza)
 FEET = [(35.0, 25.0), (365.0, 25.0), (45.0, 440.0), (355.0, 440.0)]
 GL_X0, GL_Y0 = 81.5, 330.0
@@ -158,8 +170,6 @@ def dno():
     for i in range(10):                                                  # wentylacja pod plytka (srodek)
         for j in range(3):
             H.append(circle(166 + i * 16, 160 + j * 16, 8))
-    for (x, y, dd, h) in TRAFO_POS.values():
-        H.append(circle(x, y, 8.5))
     for name, (x0, y0) in BOARDS_DNO.items():
         H += [circle(x0 + mx, y0 + my, 3.5) for (mx, my) in board_mh(name)]
     H += [slot(x, YP - T / 2, BR_TAB, T) for x in BR_FLOOR_X]                             # wpusty wspornikow tylnej scianki
@@ -206,13 +216,19 @@ def side(name, x0):
     P.append((D, Z_LID))
     for (a, b) in sorted([(c - TAB / 2, c + TAB / 2) for c in (335, 385, 435)], reverse=True):
         P += [(b, Z_LID), (b, Z_LID + T), (a, Z_LID + T), (a, Z_LID)]
-    P += [(Y_STEP, Z_LID), (Y_STEP, Z_COV), (T, Z_COV)]
+    P += [(Y_STEP, Z_LID)]
+    for (a, b) in sorted([t for t in BOXFRONT_TABS if t[0] > Z_COV], reverse=True):   # wpust przodu trafo nad pokrywa: wciecie w uskoku
+        P += [(Y_STEP, b + CL), (Y_STEP + T + CL, b + CL), (Y_STEP + T + CL, a - CL), (Y_STEP, a - CL)]
+    P += [(Y_STEP, Z_COV)]
+    for (a, b) in sorted([(Y_BOX - gb, Y_BOX - ga) for (ga, gb) in GUS_TABS] + [(T + ga, T + gb) for (ga, gb) in GUS_TABS], reverse=True):
+        P += [(b + CL, Z_COV), (b + CL, GUS_Z0 - CL), (a - CL, GUS_Z0 - CL), (a - CL, Z_COV)]   # zaczepy pokrywy (otwarte od gory)
+    P += [(T, Z_COV)]
     for (a, b) in sorted(FING_FRONT, reverse=True):
         P += [(T, b), (0, b), (0, a), (T, a)]
-    H = [slot(Y_BOX + T / 2, (a + b) / 2, T, b - a) for (a, b) in BOXFRONT_TABS]
+    H = [slot(Y_BOX + T / 2, (a + b) / 2, T, b - a) for (a, b) in BOXFRONT_TABS if b < Z_COV]
     H += [circle(y, 53, 4.5) for y in (60, 180, 290, 400)]       # mocowanie bokow drewnianych
-    H += [slot(T + (a + b) / 2, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS]          # zaczepy pokrywy (przod)
-    H += [slot(Y_BOX - (a + b) / 2, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS]      # zaczepy pokrywy (tyl)
+    sh = "OT_L" if x0 < W / 2 else "OT_R"
+    H += [slot(y, SHELF_Z[sh] + T / 2, TAB, T) for y in SHELF_TABS_Y[sh]]                # polka TG
     H += [slot(YP - T / 2, z, T, BR_TAB) for z in BR_SIDE_Z]       # wpusty wspornikow tylnej scianki
     return prism(name, ALU, P, H, x0, x0 + T, "YZ")
 parts.append(side("AL_bok_lewy", 0.0))
@@ -220,32 +236,39 @@ parts.append(side("AL_bok_prawy", W - T))
 
 # ---------------- PRZEDNIA SCIANKA ALUMINIOWA (za frontem drewnianym)
 def front_wall():
-    f = {"bottom": tabs([60, 200, 340], T),
+    gn = [(T + a - CL, T + b + CL, -(Z_COV - GUS_Z0) - CL) for (a, b) in GUS_TABS] + [(W - T - b - CL, W - T - a + CL, -(Z_COV - GUS_Z0) - CL) for (a, b) in GUS_TABS]
+    f = {"bottom": tabs([60, 200, 340], T), "top": gn,
          "left": [(a, b, -T) for (a, b) in FING_FRONT], "right": [(a, b, -T) for (a, b) in FING_FRONT]}
     outer = edge_features(0, T, W, Z_COV, f)
     H = [circle(*FR_BTN, 22), circle(*FR_LED, 10), circle(*FR_SEL, 7.5), circle(*FR_VOL, 7.5), circle(*FR_IR, 12)]
     H += [rect(x - 17, z - 39, x + 17, z - 26) for (x, z) in FR_DISP]          # przepust goldpinow / przewodow LCD
     H += [rect(x - 12, z - 6, x + 12, z + 6) for (x, z) in FR_DISP]
     H += [circle(x, z, 4.5) for (x, z) in ((60, 20), (340, 20), (200, 20), (200, 90))]
-    H += [slot(xx, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS for xx in (T + (a + b) / 2, W - T - (a + b) / 2)]
     return prism("AL_przod_wewn", ALU, outer, H, 0, T, "XZ")
 parts.append(front_wall())
 
 # ---------------- OBUDOWA TRAFO: scianka przednia
 PART_END_TABS = [(30, 45), (70, 85), (110, 125)]
+# przepusty w przedniej scianie obudowy trafo (fi 16, gumowe): nad polka (TG pierwotne, TR1 wtorne) i pod polka
+# (przewody plytki glosnikow, sieci 230 V)
+GROMMETS = [(40.0, 70.0), (40.0, 30.0), (165.0, 75.0), (235.0, 75.0), (245.0, 32.0), (360.0, 70.0), (360.0, 30.0)]
 def box_front():
-    f = {"bottom": tabs([60, 200, 340], T), "top": tabs([60, 200, 340], T),
+    f = {"bottom": tabs([60, 200, 340], T) + [(CH_X0 - 0.5, CH_X0 + CH_S + 0.5, -(CH_S + 1.5))],   # wciecie na kanal wejsc
+         "top": tabs([60, 200, 340], T),
          "left": [(a, b, T) for (a, b) in BOXFRONT_TABS], "right": [(a, b, T) for (a, b) in BOXFRONT_TABS]}
     P = edge_features(T, T, W - T, Z_LID, f)
     Q = P
     H = [slot(xp + T / 2, (a + b) / 2, T, b - a) for xp in (X_P1, X_P2) for (a, b) in PART_END_TABS]
-    H += [circle(x, 40, 16) for x in (65, 185, 215, 335)]          # przepusty przewodow (gumowe)
+    H += [circle(x, z, 16) for (x, z) in GROMMETS]                     # przepusty przewodow (gumowe fi 16)
     H += [slot(xx, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS for xx in (T + (a + b) / 2, W - T - (a + b) / 2)]
-    for z in (62.0, 74.0, 86.0):                                    # wentylacja komor trafo <-> komora wzmacniacza (pod pokrywa)
+    for nm, (xa, xb) in SHELF_X.items():                                # wpusty polek transformatorow
+        H += [slot(xa + (xb - xa) * f_, SHELF_Z[nm] + T / 2, TAB, T) for f_ in (0.25, 0.75)]
+    for z in (68.0, 80.0, 92.0):                                    # wentylacja komor trafo <-> komora wzmacniacza (pod pokrywa)
         for i in range(32):
             x = 14.0 + i * 12
             if x > 386 or abs(x - (X_P1 + T / 2)) < 10 or abs(x - (X_P2 + T / 2)) < 10: continue
-            if any(math.hypot(x - g, z - 40) < 8 + 4 + 3 for g in (65, 185, 215, 335)): continue
+            if any(math.hypot(x - g, z - gz) < 8 + 4 + 3 for (g, gz) in GROMMETS): continue
+            if abs(z - GUS_Z0 - T / 2) < 8 and (x < T + GUS + 4 or x > W - T - GUS - 4): continue
             H.append(circle(x, z, 8))
     return prism("AL_trafo_przod", ALU, Q, H, Y_BOX, Y_BOX + T, "XZ")
 parts.append(box_front())
@@ -253,13 +276,13 @@ parts.append(box_front())
 def box_rear():
     """Zdejmowana tylna scianka: plaska plyta wchodzaca w otwor obudowy z luzem 0,5 mm, przykrecana M4 do zaczepow."""
     outer = rect(T + RP_CL, T + RP_CL, W - T - RP_CL, Z_LID - RP_CL)
-    H = [circle(T + BR_SCR, z, 4.5) for z in BR_SIDE_Z] + [circle(W - T - BR_SCR, z, 4.5) for z in BR_SIDE_Z]
+    H = [circle(T + BR_SCR, z, 4.5) for z in BR_SIDE_Z] + [circle(W - T - BR_SCR, z, 4.5) for z in BR_SIDE_Z]   # M4 do nakretek nitowanych
     H += [circle(x, T + BR_SCR, 4.5) for x in BR_FLOOR_X] + [circle(x, Z_LID - BR_SCR, 4.5) for x in BR_LID_X]
     H += [circle(x, z, 11) for (x, z) in RCA]                         # RCA izolowane, 4 pary
     H += [circle(x, z, 9) for (x, z) in SPK_OUT + SPK_MAR]           # zaciski glosnikowe
     cx, cz = IEC
     H.append(rrect(cx - IEC_CUT[0] / 2, cz - IEC_CUT[1] / 2, cx + IEC_CUT[0] / 2, cz + IEC_CUT[1] / 2, 1.0))
-    H += [circle(cx, cz - IEC_SCR, 3.4), circle(cx, cz + IEC_SCR, 3.4)]
+    H += [circle(cx, cz - IEC_SCR, 3.5), circle(cx, cz + IEC_SCR, 3.5)]
     H.append(circle(TRIG_JACK[0], TRIG_JACK[1], 6))                   # TRIGGER jack 3,5 mm
     H.append(circle(PE_STUD[0], PE_STUD[1], 4.5))                     # sruba PE
     taken = [(x, z, 4.5) for (x, z) in RCA] + [(x, z, 9) for (x, z) in SPK_OUT + SPK_MAR]
@@ -270,7 +293,6 @@ def box_rear():
             if abs(x - (X_P1 + T / 2)) < 9 or abs(x - (X_P2 + T / 2)) < 9: continue
             if (x < T + BR_FL + 6 or x > W - T - BR_FL - 6) and 100 < z < 141: continue
             if any(abs(x - bx) < BR_LEN / 2 + 5 for bx in BR_LID_X) and z > Z_LID - BR_FL - 8: continue
-            if abs(x - cx) < 20 and abs(z - cz) < 42: continue
             if any(math.hypot(x - a, z - b) < r + 4 + 3 for (a, b, r) in taken): continue
             H.append(circle(x, z, 8))
     return prism("AL_trafo_tyl_zdejmowany", ALU, outer, H, YP, D, "XZ")
@@ -280,22 +302,26 @@ def brackets():
     albo fi 6 pod nakretke nitowana M4."""
     out = []
     y0, y1 = YP - T, YP
-    h = (BR_LEN - BR_TAB) / 2
+    def bracket(fn):
+        # lokalnie: u wzdluz sciany (-L/2..L/2), v od sciany (0..BR_H); wolne rogi zaokraglone, wpust v -T..0
+        L2, r = BR_LEN / 2, BR_R
+        P = [(-L2, 0.0), (-BR_TAB / 2, 0.0), (-BR_TAB / 2, -T), (BR_TAB / 2, -T), (BR_TAB / 2, 0.0), (L2, 0.0)]
+        for (cu, cv, a0) in ((L2 - r, BR_H - r, 0.0), (-L2 + r, BR_H - r, 90.0)):
+            for k in range(7):
+                a = math.radians(a0 + 15.0 * k)
+                P.append((cu + r * math.cos(a), cv + r * math.sin(a)))
+        return ccw([fn(u, v) for (u, v) in P])
     for k, z in enumerate(BR_SIDE_Z):
         for side_, sx in (("L", 1), ("P", -1)):
             X = (lambda u: u) if sx == 1 else (lambda u: W - u)
-            P = [(X(T), z - BR_LEN / 2), (X(T + BR_H), z - BR_LEN / 2), (X(T + BR_H), z + BR_LEN / 2), (X(T), z + BR_LEN / 2),
-                 (X(T), z + BR_TAB / 2), (X(0), z + BR_TAB / 2), (X(0), z - BR_TAB / 2), (X(T), z - BR_TAB / 2)]
-            H = [circle(X(T + BR_SCR), z, 3.3)]
-            out.append(prism("AL_zaczep_tyl_bok_%s%d" % (side_, k + 1), ALU2, P, H, y0, y1, "XZ"))
+            P = bracket(lambda u, v, X=X, z=z: (X(T + v), z + u))
+            out.append(prism("AL_zaczep_tyl_bok_%s%d" % (side_, k + 1), ALU2, P, [circle(X(T + BR_SCR), z, BR_HOLE)], y0, y1, "XZ"))
     for k, x in enumerate(BR_FLOOR_X):
-        P = [(x - BR_LEN / 2, T), (x - BR_TAB / 2, T), (x - BR_TAB / 2, 0), (x + BR_TAB / 2, 0), (x + BR_TAB / 2, T),
-             (x + BR_LEN / 2, T), (x + BR_LEN / 2, T + BR_H), (x - BR_LEN / 2, T + BR_H)]
-        out.append(prism("AL_zaczep_tyl_dno_%d" % (k + 1), ALU2, P, [circle(x, T + BR_SCR, 3.3)], y0, y1, "XZ"))
+        P = bracket(lambda u, v, x=x: (x - u, T + v))
+        out.append(prism("AL_zaczep_tyl_dno_%d" % (k + 1), ALU2, P, [circle(x, T + BR_SCR, BR_HOLE)], y0, y1, "XZ"))
     for k, x in enumerate(BR_LID_X):
-        P = [(x - BR_LEN / 2, Z_LID - BR_H), (x + BR_LEN / 2, Z_LID - BR_H), (x + BR_LEN / 2, Z_LID), (x + BR_TAB / 2, Z_LID),
-             (x + BR_TAB / 2, Z_LID + T), (x - BR_TAB / 2, Z_LID + T), (x - BR_TAB / 2, Z_LID), (x - BR_LEN / 2, Z_LID)]
-        out.append(prism("AL_zaczep_tyl_dach_%d" % (k + 1), ALU2, P, [circle(x, Z_LID - BR_SCR, 3.3)], y0, y1, "XZ"))
+        P = bracket(lambda u, v, x=x: (x + u, Z_LID - v))
+        out.append(prism("AL_zaczep_tyl_dach_%d" % (k + 1), ALU2, P, [circle(x, Z_LID - BR_SCR, BR_HOLE)], y0, y1, "XZ"))
     return out
 parts += brackets()
 
@@ -313,7 +339,7 @@ def gussets():
                          ("LT", lambda x: x, lambda y: Y_BOX + T - y), ("PT", lambda x: W - x, lambda y: Y_BOX + T - y)):
         Q = [(fx(x), fy(y)) for (x, y) in P]
         hx, hy = fx(11.0), fy(11.0) if name.endswith("P") else Y_BOX - 8.0
-        out.append(prism("AL_zaczep_pokrywy_" + name, ALU2, Q, [circle(hx, hy, 3.3)], GUS_Z0, GUS_Z0 + T, "XY"))
+        out.append(prism("AL_zaczep_pokrywy_" + name, ALU2, Q, [circle(hx, hy, GUS_HOLE)], GUS_Z0, GUS_Z0 + T, "XY"))
     return out
 parts += gussets()
 
@@ -508,15 +534,39 @@ def partition(name, x0):
     f = {"bottom": tabs([335, 385, 435], T), "top": tabs([335, 385, 435], T),
          "left": [(a, b, T) for (a, b) in PART_END_TABS]}
     outer = edge_features(Y_BOX + T, T, D - T, Z_LID, f)
-    H = [circle(y, 25, 16) for y in (360, 410)]
+    H = [circle(y, 35, 16) for y in (360, 410)]                     # przepusty pod polkami (nad kanalem wejsc)
+    for nm in SHELF_X:
+        xa, xb = SHELF_X[nm]
+        if abs(xa - (x0 + T)) < 0.5 or abs(xb - x0) < 0.5:              # polka przylega do tej przegrody
+            H += [slot(y, SHELF_Z[nm] + T / 2, TAB, T) for y in SHELF_TABS_Y[nm]]
     return prism(name, ALU2, outer, H, x0, x0 + T, "YZ")
 parts.append(partition("AL_trafo_przegroda_L", X_P1))
 parts.append(partition("AL_trafo_przegroda_P", X_P2))
 
+def shelves():
+    out = []
+    for nm, (xa, xb) in SHELF_X.items():
+        ty = SHELF_TABS_Y[nm]
+        f = {"bottom": [(xa + (xb - xa) * f_ - TAB / 2, xa + (xb - xa) * f_ + TAB / 2, T) for f_ in (0.25, 0.75)],
+             "left": [(y - TAB / 2, y + TAB / 2, T) for y in ty], "right": [(y - TAB / 2, y + TAB / 2, T) for y in ty]}
+        outer = edge_features(xa, Y_BOX + T, xb, SHELF_Y1, f)
+        x, y, dd, h = TRAFO_POS[nm]
+        H = [circle(x, y, 8.5)] + [circle(hx, hy, 16) for (hx, hy) in SHELF_HOLES[nm]]   # sruba srodkowa + przepusty
+        z = SHELF_Z[nm]
+        out.append(prism("AL_polka_" + nm, ALU2, outer, H, z, z + T, "XY"))
+    return out
+parts += shelves()
+
+STEEL = (0.18, 0.18, 0.2)
+parts.append(prism("ST_kanal_wejsc_profil_20x20x1.5_dl%d" % int(CH_Y1 - CH_Y0), STEEL,
+                   rect(CH_X0, T, CH_X0 + CH_S, T + CH_S), [rect(CH_X0 + CH_T, T + CH_T, CH_X0 + CH_S - CH_T, T + CH_S - CH_T)],
+                   CH_Y0, CH_Y1, "XZ"))
+
 def lid():
-    f = {"left": tabs([335, 385, 435], -T), "right": tabs([335, 385, 435], -T)}
+    f = {"left": tabs([335, 385, 435], -T), "right": tabs([335, 385, 435], -T),
+         "bottom": [(x - TAB / 2 - CL, x + TAB / 2 + CL, -T - CL) for x in (60, 200, 340)]}   # wpusty przodu trafo: wciecia w krawedzi
     outer = edge_features(0, Y_STEP, W, D, f)
-    H = [slot(x, Y_BOX + T / 2, TAB, T) for x in (60, 200, 340)]
+    H = []
     H += [slot(xp + T / 2, y, T, TAB) for xp in (X_P1, X_P2) for y in (335, 385, 435)]
     H += [slot(x, YP - T / 2, BR_TAB, T) for x in BR_LID_X]               # wpusty wspornikow tylnej scianki
     return prism("AL_trafo_dach", ALU, outer, H, Z_LID, Z_LID + T, "XY")
@@ -619,10 +669,8 @@ for (x, y) in CHOKES:
 for name, (x0, y0) in BOARDS_DNO.items():
     ref.append(box("REF_plytka_" + name, PCB, x0, y0, 13, x0 + 100, y0 + 100, 14.6))
 for name, (x, y, dd, h) in TRAFO_POS.items():
-    z0 = T + 3 + (OT_RAISE if name.startswith("OT") else 0)
+    z0 = trafo_z0(name)
     ref.append(cyl("REF_" + name, TRAFO, x, y, dd, z0, z0 + h, hole=20))
-    if name.startswith("OT"):
-        ref.append(cyl("REF_tuleja_TG_%dmm" % OT_RAISE, BLACK, x, y, 30, T, T + 3 + OT_RAISE, hole=8.5))
 for (x, z) in RCA:
     ref.append(cyl("REF_gniazdo_RCA", (0.85, 0.7, 0.2), x, z, 9, D, D + 18, axis="Y"))
     ref.append(cyl("REF_gniazdo_RCA_tyl", (0.85, 0.7, 0.2), x, z, 10, YP - 18, YP, axis="Y"))
@@ -651,8 +699,8 @@ ref.append(box("REF_plytka_glosniki", PCB, GL_X0, GL_Y0, 9, GL_X0 + 44, GL_Y0 + 
 for cxb in (30, 72):
     ref.append(box("REF_przekaznik_G2RL", BLACK, GL_X0 + 28 - 6.25, GL_Y0 + cxb - 14.4, 10.6, GL_X0 + 28 + 6.25, GL_Y0 + cxb + 14.4, 26.3))
 cx, cz = IEC
-ref.append(box("REF_Schurter_DD11_front", BLACK, cx - 16, D, cz - 37.5, cx + 16, D + 4, cz + 37.5))
-ref.append(box("REF_Schurter_DD11_korpus", BLACK, cx - IEC_CUT[0] / 2, YP - IEC_DEPTH, cz - IEC_CUT[1] / 2, cx + IEC_CUT[0] / 2, YP, cz + IEC_CUT[1] / 2))
+ref.append(box("REF_gniazdo_IEC_kolnierz", BLACK, cx - IEC_FLANGE[0] / 2, D, cz - IEC_FLANGE[1] / 2, cx + IEC_FLANGE[0] / 2, D + 4, cz + IEC_FLANGE[1] / 2))
+ref.append(box("REF_gniazdo_IEC_korpus", BLACK, cx - 23.5, YP - IEC_DEPTH, cz - 13.6, cx + 23.5, YP, cz + 13.6))
 for S in ref:
     S.ref = True
 

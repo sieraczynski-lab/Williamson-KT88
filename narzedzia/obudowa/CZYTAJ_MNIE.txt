@@ -1,4 +1,4 @@
-WILLIAMSON KT88 (PLYTKA ONYXA VA1523) W OBUDOWIE SOLOIST 88 - wariant W3 (15.11.2026)
+WILLIAMSON KT88 (PLYTKA ONYXA VA1523) W OBUDOWIE SOLOIST 88 - wariant W4 (26.11.2026)
 =====================================================================================
 
 Na bazie obudowy Soloist 88 v0.4 (repozytorium Soloist-KT88, hardware/case).
@@ -35,9 +35,11 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
     - bez otworow KT88 fi 60; 6 otworow fi 4,5 na slupki oslony lamp (ponizej);
     - tylko 4 sruby M4 w rogach (X 11 / 389, Y 11 / 302), wkrecane w TROJKATNE ZACZEPY
       (AL_zaczep_pokrywy_*, 4 szt.): blacha 3 mm, przyprostokatne 25 mm, poziomo w rogach komory
-      wzmacniacza, Z 95-98 (5 mm pod gorna krawedzia scianek); po 2 wpusty 7 x 3 w bok i 2 w scianke
-      przednia (przod) albo w przod obudowy trafo (tyl), klejone. Otwor fi 3,3 pod M4 albo fi 6 pod
-      nakretke nitowana. Pokrywa lezy NA sciankach (nie wchodzi miedzy nie). Tuleje 100 mm usuniete.
+      wzmacniacza, Z 99-102 (1 mm pod gorna krawedzia scianek); po 2 wpusty 7 x 3 w bok i 2 w scianke
+      przednia (przod) albo w przod obudowy trafo (tyl), klejone. W bokach i scianie przedniej wpusty
+      wchodza w WCIECIA OTWARTE OD GORY (4 mm gl.), w przodzie obudowy trafo w gniazda. Otwor fi 6
+      pod nakretke nitowana M4 (kolnierz nakretki miesci sie w 1 mm pod pokrywa).
+      Pokrywa lezy NA sciankach (nie wchodzi miedzy nie). Tuleje 100 mm usuniete.
   DNO (AL_dno_400x460x3)
     - plytki Soloista w PRZEDNIM RZEDZIE (pod plytka Onyxa sa kondensatory do ok. Z 38):
       sterowanie X 45-145, zasilacz (docs/09) X 150-250, Y 8-108; dlawik 1 (fi 88 x 35) w X 261-349, Y 12-100;
@@ -83,41 +85,52 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
       wysokich elementow), tuleje M4 zensko-meskie (szesciokatne SW7 albo okragle fi 7-8, gwint meski ok. 6 mm):
       pokrywa-ramka 1 35 mm (6 szt.), ramka 1-2 30 mm (6 szt.), ramka 2-3 25 mm (4 szt.); nakretki kolpakowe: 2 na ramce 2 (przod), 4 na ramce 3.
       Pokrywa ma 6 otworow fi 4,5.
-  OBUDOWA TRANSFORMATOROW (W3)
-    - DACH (AL_trafo_dach): bez wentylacji; 4 gniazda 20 x 3 na zaczepy tylnej scianki.
-    - PRZOD (AL_trafo_przod): 3 rzedy otworow fi 8 (Z 62/74/86, pod pokrywa) - przeplyw z komory
-      wzmacniacza do komor transformatorow; przepusty gumowe fi 16 bez zmian.
+  OBUDOWA TRANSFORMATOROW (W4, 26.11.2026)
+    - PRZOD (AL_trafo_przod): Y 307-310 - LICUJE z uskokiem bokow i z przodem dachu (pokrywa gorna
+      dochodzi do niego, bez szczeliny). Gorny wpust w bokach i wpusty w dachu to wciecia w krawedzi.
+      Wentylacja: 3 rzedy fi 8 (Z 68/80/92). Przepusty gumowe fi 16 (7 szt.):
+        komora TG L: X 40, Z 70 (nad polka: TG pierwotne) i Z 30 (pod polka: plytka glosnikow);
+        komora TR1:  X 165 i 235, Z 75 (nad polka: wtorne TR1, trigger), X 245, Z 32 (pod polka: 230 V);
+        komora TG P: X 360, Z 70 i Z 30.
+      Wciecie u dolu X 130-151, wys. 21,5 mm na kanal wejsc.
+    - POLKI (AL_polka_OT_L / _TR1 / _OT_R): pozioma blacha 3 mm na cala komore (Y 310-452), wypusty
+      15 x 3: 2 w przod obudowy trafo, po 2 w boki komory (bok obudowy / przegroda), klejone.
+      TG na polce Z 50-53 (spod TG Z 56 - 15 mm wyzej niz na tulejach), TR1 na polce Z 55-58 (spod
+      TR1 Z 61 - ok. 55 mm wyzej). Sruba srodkowa transformatora przez otwor fi 8,5 w polce
+      (podkladka gumowa 3 mm pod transformatorem), 2 przepusty fi 16 w przednich rogach polki.
+      Otwory na sruby transformatorow w dnie usuniete; tuleje TG 35 mm usuniete.
+    - KANAL WEJSC (ST_kanal_wejsc_profil_20x20x1.5_dl180): profil stalowy 20 x 20 x 1,5 na dnie,
+      X 130,5-150,5, Y 250-430: od gniazd RCA (komora TR1, pod polka, przy przegrodzie) przez wciecie
+      w przodzie obudowy trafo do tylu ekranu selektora. Przyklejony do dna; ekranuje przewody
+      wejsciowe od TR1 i przewodow 230 V. Plytka UL przesunieta na X 156-256.
+    - PRZEGRODY: przepusty fi 16 na Z 35 (nad kanalem), gniazda na wypusty polek.
+    - DACH (AL_trafo_dach): bez wentylacji; 4 gniazda na zaczepy tylnej scianki; wpusty przodu trafo
+      w wycieciach krawedzi.
     - TYL (AL_trafo_tyl_zdejmowany): plaska plyta 393 x 149 x 3, ZDEJMOWANA, wchodzi w otwor
-      obudowy (miedzy boki, dno i dach) z luzem 0,5 mm na strone, rowno z krawedziami. 13 x M4:
-        boki 2+2 (X 14 / 386, Z 20 / 120), dno 3 (X 150 / 250 / 335, Z 14),
-        dach 4 (X 65 / 150 / 250 / 335, Z 142).
-      Dno, boki i dach dochodza do Y 460 (bez wypustow do tylnej scianki); przegrody do Y 457.
-    - ZACZEPY (AL_zaczep_tyl_*, 11 szt.): z blachy aluminiowej 3 mm jak reszta, plytka 30 x 22
-      rownolegla do tylnej scianki, tuz za nia (Y 454-457), z wypustem 20 x 3 w gniazdo boku / dna /
-      dachu - klejone (np. epoksyd). Otwor fi 3,3 pod gwint M4; jesli gwint w 3 mm za slaby,
-      rozwiercic na fi 6 i dac nakretke nitowana M4. Tylna scianka opiera sie o zaczepy, sruby
-      ja do nich dociagaja.
-    - Transformatory przesuniete do przodu: TG Y 377, TR1 Y 382 (byly Y 385).
-    - Wymiary od toroidy.pl (26.11.2026): TG fi 115 x 65, TR1 ok. fi 130 x 55 (+-5 mm), dlawiki fi 88 x 35.
-    - Profile stalowe 20 x 20 USUNIETE (gniazda RCA przeniesione), plytka glosnikow Y 330-430.
-  TYLNA SCIANKA - ROZMIESZCZENIE (X jak od przodu; patrzac od tylu strony sa odwrocone)
-    - wejscia: 4 pary RCA fi 11 (izolowane), X 34 / 56 / 78 / 100, Z 32 (L) i 13 (P) - komora TG L,
-      pod transformatorem (TG na tulejach 35 mm) - patrzac od tylu PO PRAWEJ;
-    - wyjscia kanalu L: zaciski fi 9 X 30, Z 100 / 75 / 50 (8 Ohm / 4 Ohm / GND);
-      wejscie z Marantza L: X 100, Z 88 (+) / 62 (GND); kolumna na 4 Ohm + GND, przekaznik
-      przelacza oba bieguny (docs/09, 9.8) - zaciskow GND NIE laczyc z obudowa (izolowane);
-    - kanal P lustrzanie: wyjscia X 370, Marantz X 300;
-      zaciski gleboko max ok. 25 mm za scianka (TG blisko) - wybierz krotkie;
-    - gniazdo zasilania Schurter DD11 (C14 + bezpiecznik 5x20 + wylacznik 2-biegunowy), pionowo,
-      X 200, Z 100: wyciecie 27,1 x 56 R1, 2 otwory fi 3,4 w osi pionowej co 65 mm
-      (WYMIARY Z KARTY KATALOGOWEJ - SPRAWDZ NA RYSUNKU PRODUCENTA PRZED CIECIEM); glebokosc 46,6 mm,
-      korpus nad TR1. Np. DD11.0124.1110 (bezpiecznik 2-biegunowy, wylacznik podswietlany zielony)
-      + szuflada bezpiecznikow 4301.1403; bezpieczniki T2,5 A 5x20;
-    - TRIGGER jack 3,5 mm fi 6: X 140, Z 36; sruba PE fi 4,5: X 260, Z 35;
-    - wentylacja: otwory fi 8 w gornej 1/3 (Z 108-144), z ominieciem przegrod, wspornikow, zaciskow.
+      obudowy z luzem 0,5 mm na strone. 10 x M4 do nakretek nitowanych:
+        boki 2+2 (X 14 / 386, Z 20 / 120), dno 2 (X 117 / 283, Z 14), dach 4 (X 65 / 150 / 250 / 335, Z 142).
+    - ZACZEPY TYLNEJ SCIANKI (AL_zaczep_tyl_*, 10 szt.): blacha 3 mm, plytka 15 x 20 (wolne rogi R3),
+      wypust 10 x 3 w gniazdo boku / dna / dachu, klejone; otwor fi 6 pod nakretke nitowana M4.
+      Zaczepy dna: 2 szt., w komorach TG przy przegrodach (AL_zaczep_tyl_dno_1 X 117, _dno_2 X 283);
+      dawny zaczep w komorze TR1 usuniety (tam gniazdo sieciowe i wejscia).
+    - Transformatory: TG Y 377, TR1 Y 382. Wymiary od toroidy.pl (26.11.2026): TG fi 115 x 65,
+      TR1 ok. fi 130 x 55 (+-5 mm), dlawiki fi 88 x 35.
+  TYLNA SCIANKA - ROZMIESZCZENIE (rysunek od tylu: detal_tylna_scianka.png; X ponizej jak od przodu)
+    - zaciski glosnikowe w poziomych rzedach na dole komor TG (pod polkami):
+        kanal L (komora TG L): rzad gorny Z 40: 8 Ohm / 4 Ohm / GND na X 32 / 56 / 80,
+                               rzad dolny Z 18: Marantz + / GND na X 32 / 56;
+        kanal P lustrzanie (X 368 / 344 / 320);
+      otwory fi 9; zaciski max ok. 25 mm za scianka; GND izolowane od obudowy;
+    - wejscia: 4 pary RCA fi 11 (izolowane) w komorze TR1 pod polka: X 144 / 163 / 182 / 201,
+      Z 40 (L) i 18 (P), przy kanale wejsc;
+    - gniazdo sieciowe (IEC C14 + bezpiecznik 5x20 + wylacznik, wg rysunku producenta), POZIOMO pod
+      polka TR1: srodek X 245,5, Z 29; wyciecie 47,3 x 27,4 R1, 2 otwory fi 3,5 nad i pod wycieciem
+      co 40 mm (sruby M3); kolnierz ok. 54,4 x 49,2, korpus 47 x 27 x ok. 40 mm za scianka;
+      bezpiecznik T2,5 A 5x20;
+    - nad polka TR1: TRIGGER jack 3,5 mm fi 6 (X 150, Z 72) i sruba PE fi 4,5 (X 250, Z 72);
+    - wentylacja: otwory fi 8 w gornej 1/3 (Z 108-144).
   BEZ ZMIAN
-    boki (poza gniazdami na zaczepy i bez wypustow do tylu), przednia scianka, front drewniany,
-    przegrody (bez wypustow do tylu), ekran sterowania, plytka glosnikow pod lewym TG.
+    ekran sterowania, plytka glosnikow pod polka lewego TG (Y 330-430).
 
 WYSOKOSCI POD PLYTKA ONYXA (spod plytki Z 88,4, kondensatory do ok. Z 38)
   plytka UL do Z ok. 27; ekran selektora do Z 31 (zapas ok. 7 mm); dlawiki do Z 41 (poza kondensatorami).
@@ -126,7 +139,7 @@ DO USTALENIA (zmierzyc na plytce)
   - srednica korpusu podstawki (otwor fi 30) i wysokosc elementow pod plytka (50 mm) - potwierdzone;
   - pozycje osi potencjometrow - POTWIERDZONE: potencjometry przykrecone do plytki, osie jak na rysunku
     PCB Onyxa (X 65 / 95 / 265 / 295 plytki = 35 mm od srodka KT88);
-  - wymiary gniazda DD11 (wyciecie, rozstaw srub) z rysunku Schurtera;
+  - gniazdo sieciowe: wyciecie i rozstaw srub wg rysunku producenta - zmierzyc kupione przed cieciem;
   - glebokosc zaciskow glosnikowych za scianka (max ok. 25 mm) i ich srednica otworu (fi 9 przyjete).
 
 WYSWIETLACZE VU (2x okragly LCD 2,1" GC9B72, modul TZT: plytka fi 59,24 + jezyk, razem 67,5 mm)

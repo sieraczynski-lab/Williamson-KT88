@@ -1,25 +1,24 @@
 ﻿Czesc;Material;Grubosc [mm];Wymiar A [mm];Wymiar B [mm];Otwory/gniazda;Szt.
-AL_dno_400x460x3;aluminium 5754;3.0;400.0;460.0;83;1
+AL_dno_400x460x3;aluminium 5754;3.0;400.0;460.0;79;1
 AL_ekran_selektora_przod;aluminium 5754;3.0;116.0;28.0;1;1
 AL_ekran_selektora_tyl;aluminium 5754;3.0;116.0;28.0;1;1
 AL_ekran_selektora_bok_L;aluminium 5754;3.0;90.0;28.0;0;1
 AL_ekran_selektora_bok_P;aluminium 5754;3.0;90.0;28.0;0;1
 AL_ekran_selektora_pokrywka;aluminium 5754;3.0;119.0;99.0;10;1
-AL_bok_lewy;aluminium 5754;3.0;460.0;156.0;13;1
-AL_bok_prawy;aluminium 5754;3.0;460.0;156.0;13;1
-AL_przod_wewn;aluminium 5754;3.0;400.0;103.0;17;1
-AL_trafo_przod;aluminium 5754;3.0;400.0;156.0;98;1
-AL_zaczep_tyl_bok_L1;aluminium 5754;3.0;25.0;30.0;1;1
-AL_zaczep_tyl_bok_P1;aluminium 5754;3.0;25.0;30.0;1;1
-AL_zaczep_tyl_bok_L2;aluminium 5754;3.0;25.0;30.0;1;1
-AL_zaczep_tyl_bok_P2;aluminium 5754;3.0;25.0;30.0;1;1
-AL_zaczep_tyl_dno_1;aluminium 5754;3.0;30.0;25.0;1;1
-AL_zaczep_tyl_dno_2;aluminium 5754;3.0;30.0;25.0;1;1
-AL_zaczep_tyl_dno_3;aluminium 5754;3.0;30.0;25.0;1;1
-AL_zaczep_tyl_dach_1;aluminium 5754;3.0;30.0;25.0;1;1
-AL_zaczep_tyl_dach_2;aluminium 5754;3.0;30.0;25.0;1;1
-AL_zaczep_tyl_dach_3;aluminium 5754;3.0;30.0;25.0;1;1
-AL_zaczep_tyl_dach_4;aluminium 5754;3.0;30.0;25.0;1;1
+AL_bok_lewy;aluminium 5754;3.0;460.0;156.0;10;1
+AL_bok_prawy;aluminium 5754;3.0;460.0;156.0;10;1
+AL_przod_wewn;aluminium 5754;3.0;400.0;103.0;13;1
+AL_trafo_przod;aluminium 5754;3.0;400.0;156.0;89;1
+AL_zaczep_tyl_bok_L1;aluminium 5754;3.0;23.0;15.0;1;1
+AL_zaczep_tyl_bok_P1;aluminium 5754;3.0;23.0;15.0;1;1
+AL_zaczep_tyl_bok_L2;aluminium 5754;3.0;23.0;15.0;1;1
+AL_zaczep_tyl_bok_P2;aluminium 5754;3.0;23.0;15.0;1;1
+AL_zaczep_tyl_dno_1;aluminium 5754;3.0;15.0;23.0;1;1
+AL_zaczep_tyl_dno_2;aluminium 5754;3.0;15.0;23.0;1;1
+AL_zaczep_tyl_dach_1;aluminium 5754;3.0;15.0;23.0;1;1
+AL_zaczep_tyl_dach_2;aluminium 5754;3.0;15.0;23.0;1;1
+AL_zaczep_tyl_dach_3;aluminium 5754;3.0;15.0;23.0;1;1
+AL_zaczep_tyl_dach_4;aluminium 5754;3.0;15.0;23.0;1;1
 AL_zaczep_pokrywy_LP;aluminium 5754;3.0;28.0;28.0;1;1
 AL_zaczep_pokrywy_PP;aluminium 5754;3.0;28.0;28.0;1;1
 AL_zaczep_pokrywy_LT;aluminium 5754;3.0;28.0;28.0;1;1
@@ -27,10 +26,14 @@ AL_zaczep_pokrywy_PT;aluminium 5754;3.0;28.0;28.0;1;1
 SS_oslona_lamp_C_dolna;stal nierdzewna 2,5 mm (laser);2.5;373.0;159.5;17;1
 SS_oslona_lamp_C_srodkowa;stal nierdzewna 2,5 mm (laser);2.5;373.0;159.5;17;1
 SS_oslona_lamp_C_gorna_KT88;stal nierdzewna 2,5 mm (laser);2.5;373.0;91.5;8;1
-AL_trafo_tyl_zdejmowany;aluminium 5754;3.0;393.0;149.0;100;1
-AL_trafo_przegroda_L;aluminium 5754;3.0;147.0;156.0;2;1
-AL_trafo_przegroda_P;aluminium 5754;3.0;147.0;156.0;2;1
-AL_trafo_dach;aluminium 5754;3.0;400.0;153.0;13;1
+AL_trafo_tyl_zdejmowany;aluminium 5754;3.0;393.0;149.0;117;1
+AL_trafo_przegroda_L;aluminium 5754;3.0;150.0;156.0;6;1
+AL_trafo_przegroda_P;aluminium 5754;3.0;150.0;156.0;6;1
+AL_polka_OT_L;aluminium 5754;3.0;130.0;145.0;3;1
+AL_polka_TR1;aluminium 5754;3.0;146.0;145.0;3;1
+AL_polka_OT_R;aluminium 5754;3.0;130.0;145.0;3;1
+ST_kanal_wejsc_profil_20x20x1.5_dl180;profil stalowy 20x20x1,5 ocynk/czarny - dlugosc;180.0;20.0;20.0;1;1
+AL_trafo_dach;aluminium 5754;3.0;400.0;153.0;10;1
 AL_pokrywa_gorna;aluminium 5754;3.0;400.0;307.0;66;1
 AL_ekran_sterowania;aluminium 5754;3.0;104.0;100.5;5;1
 DREWNO_front_lico_5mm;MDF + fornir;2.5;440.0;106.0;7;1

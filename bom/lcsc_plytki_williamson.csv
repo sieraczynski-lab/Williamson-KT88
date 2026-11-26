@@ -88,8 +88,8 @@ G. Front, tylna ścianka (elektryka);Przycisk włączania;"chwilowy NO; metalowy
 G. Front, tylna ścianka (elektryka);"Okrągły LCD 2,1"" GC9B72";"IPS 360 x 360; SPI; moduł 10-pinowy; 3,3 V";2;0;2;konieczne;;"GC9B72 2,1"" 10P";AliExpress;VU L, VU P;Najpierw 1 szt. na próbę
 G. Front, tylna ścianka (elektryka);Moduł ESP32-S3 mini z PSRAM (ESP wyświetlaczy);ESP32-S3, min. 2 MB PSRAM, UART0 i EN/GPIO0 wyprowadzone;1;0;1;masz;;Lolin/Wemos S3 Mini;–;za frontem;Masz w domu
 G. Front, tylna ścianka (elektryka);Przetwornica 12 V → 5 V;"≥ 1,5 A; moduł step-down";1;0;1;konieczne;;moduł step-down 5 V 2–3 A;TME / Allegro;zasilanie S3 mini i ekranów;
-G. Front, tylna ścianka (elektryka);Gniazdo IEC C14 z bezpiecznikiem i wyłącznikiem;"IEC C14; szuflada 5x20; wyłącznik 2-biegunowy; 250 V 10 A";1;0;1;konieczne;;Schurter DD11.0124.1110;TME / Farnell;tylna ścianka;Sprawdź wycięcie 27,1 x 56 mm
-G. Front, tylna ścianka (elektryka);Bezpiecznik sieciowy T2,5 A;"5x20; zwłoczny (T); 2,5 A; 250 V";2;4;6;konieczne;C142705;Littelfuse 021802.5MXP;LCSC;F1 (w DD11);
+G. Front, tylna ścianka (elektryka);Gniazdo IEC C14 z bezpiecznikiem i wyłącznikiem;"IEC C14; bezpiecznik 5x20; wyłącznik; 250 V 10 A; wycięcie 47,3 x 27,4 mm, 2 x M3";1;0;1;konieczne;;moduł 3 w 1 wg rysunku (gniazdo + bezpiecznik + wyłącznik);TME / Allegro;tylna ścianka;Montaż poziomo pod półką TR1
+G. Front, tylna ścianka (elektryka);Bezpiecznik sieciowy T2,5 A;"5x20; zwłoczny (T); 2,5 A; 250 V";2;4;6;konieczne;C142705;Littelfuse 021802.5MXP;LCSC;F1 (w gnieździe IEC);
 G. Front, tylna ścianka (elektryka);Gniazdo RCA panelowe izolowane;"otwór Ø11; izolowane od obudowy";8;0;8;konieczne;;np. Amphenol / Neutrik izolowane;TME;wejścia;4 pary
 G. Front, tylna ścianka (elektryka);Zacisk głośnikowy izolowany;"otwór Ø9; ≤ 25 mm za ścianką; ≥ 10 A";10;0;10;konieczne;;zacisk gwintowany izolowany;TME;wyjścia i Marantz;GND izolowane od obudowy
 G. Front, tylna ścianka (elektryka);Gniazdo jack 3,5 mm mono panelowe izolowane;otwór Ø6;1;0;1;konieczne;;np. Lumberg / Cliff;TME;TRIGGER;

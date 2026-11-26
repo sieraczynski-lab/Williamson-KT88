@@ -13,13 +13,13 @@
 12;B. Płytka zasilacza;reszta;Elementy wg BOM płytki;pcb/zasilacz/zasilacz_williamson_BOM.csv;1;0;konieczne;TME / LCSC;K1–K4 G2RL-2-DC12, R_SS 47 Ω 10 W, R_IN 100 Ω 10 W, oprawki 5x20, LED, 1N4148, złącza śrubowe
 13;B. Płytka zasilacza;F2 / F3 / F4;Bezpieczniki 5x20;T500 mA 250 V / T1 A 500 V (np. Schurter SPT) / T100 mA 250 V;3;3;konieczne;LCSC C142727 (T500 mA) / TME (T1 A 500 V, T100 mA);F3 musi mieć min. 400 V AC
 12a;B. Płytka zasilacza;F3;Oprawka bezpiecznika F3 (anody 360 V AC);5x20 do druku, z pokrywką, min. 400 V AC, raster ok. 22,5 mm;1;0;do decyzji;TME;UWAGA: oprawki 5x20 z LCSC mają 250 V (za mało). Albo oprawka >= 400 V z TME (sprawdzić raster), albo 2 klipsy Littelfuse 520 600 V (LCSC C142924) ze zmianą footprintu F3
-14;C. Tylna ścianka;gniazdo zasilania;Schurter DD11 (IEC C14 + bezpiecznik + wyłącznik 2-bieg.);np. DD11.0124.1110 + szuflada bezpieczników wg karty DD11;1;0;konieczne;TME / Farnell;Przed cięciem sprawdzić wycięcie 27,1 x 56 mm i rozstaw śrub 65 mm
-15;C. Tylna ścianka;F1;Bezpiecznik 5x20 T2,5 A 250 V;zwłoczny;2;4;konieczne;LCSC C142705 / TME;W szufladzie DD11
+14;C. Tylna ścianka;gniazdo zasilania;Gniazdo IEC C14 + bezpiecznik 5x20 + wyłącznik (moduł 3 w 1);wg rysunku: wycięcie 47,3 x 27,4 mm, 2 śruby M3 (rozstaw 40), montaż poziomo;1;0;konieczne;TME / Allegro;"Pod półką TR1; przed cięciem zmierzyć kupione gniazdo"
+15;C. Tylna ścianka;F1;Bezpiecznik 5x20 T2,5 A 250 V;zwłoczny;2;4;konieczne;LCSC C142705 / TME;W gnieździe IEC
 16;C. Tylna ścianka;wejścia;Gniazdo RCA panelowe izolowane;otwór ⌀11, izolowane od obudowy;8;0;konieczne;TME;4 pary: L czerwone, P białe/czarne
 17;C. Tylna ścianka;wyjścia i Marantz;Zacisk głośnikowy izolowany;otwór ⌀9, max ok. 25 mm za ścianką;10;0;konieczne;TME;"Na kanał: 8 Ω, 4 Ω, GND + Marantz +, GND; GND izolowane od obudowy"
 18;C. Tylna ścianka;TRIGGER;Gniazdo jack 3,5 mm mono panelowe izolowane;otwór ⌀6;1;0;konieczne;TME;
 19;C. Tylna ścianka;PE;Śruba M4 + nakrętki, podkładka ząbkowana, oczko;nierdzewna;1;0;konieczne;sklep;Uziemienie obudowy
-20;C. Tylna ścianka;przepusty;Przepust gumowy ⌀16;do blachy 3 mm;4;0;konieczne;TME;Przednia ścianka obudowy transformatorów
+20;C. Tylna ścianka;przepusty;Przepust gumowy ⌀16;do blachy 3 mm;13;0;konieczne;TME;"7 w przodzie obudowy trafo, 6 w półkach transformatorów (otwory ⌀16); przegrody: 4 otwory ⌀16 bez przepustów albo z (+4)"
 21;D. Mechanika;płytka Onyxa;Tuleja dystansowa M3 ż-m 45 mm;mosiężna/stalowa;9;1;konieczne;TME;"Składane z 40 mm do ok. 85 mm; długość dobrać tak, żeby podstawki stały równo z pokrywą"
 22;D. Mechanika;płytka Onyxa;Tuleja dystansowa M3 ż-m 40 mm;mosiężna/stalowa;9;1;konieczne;TME;
 23;D. Mechanika;płytka Onyxa;Śruba M3 x 6;;18;4;konieczne;sklep;
@@ -28,9 +28,9 @@
 24b;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 25 mm;nierdzewna, sześciokątna SW7 (lub okrągła ⌀7–8), gwint męski ok. 6 mm;4;0;konieczne;TME / sklep;ramka 2 – ramka 3 (KT88)
 26;D. Mechanika;osłona lamp;Nakrętka kołpakowa M4;nierdzewna;6;2;konieczne;sklep;
 27;D. Mechanika;osłona lamp;Śruba M4 x 10 (od spodu pokrywy);nierdzewna, łeb płaski;6;2;konieczne;sklep;
-28;D. Mechanika;pokrywa + tylna ścianka;Śruba M4 x 8 imbus;nierdzewna;17;4;konieczne;sklep;4 pokrywa + 13 tylna ścianka
-29;D. Mechanika;zaczepy;Nakrętka nitowana M4 (aluminium);otwór ⌀6 w zaczepie;17;5;opcjonalne;sklep;Tylko jeśli gwint M4 w blasze 3 mm będzie za słaby
-30;D. Mechanika;zaczepy;Klej epoksydowy;do aluminium;1;0;konieczne;sklep;11 zaczepów tylnej ścianki + 4 trójkątne zaczepy pokrywy
+28;D. Mechanika;pokrywa + tylna ścianka;Śruba M4 x 8 imbus;nierdzewna;14;4;konieczne;sklep;4 pokrywa + 10 tylna ścianka
+29;D. Mechanika;zaczepy;Nakrętka nitowana M4 (aluminium);otwór ⌀6 w zaczepie;14;4;konieczne;sklep;4 zaczepy pokrywy + 10 zaczepów tylnej ścianki
+30;D. Mechanika;zaczepy;Klej epoksydowy;do aluminium;1;0;konieczne;sklep;10 zaczepów tylnej ścianki, 4 trójkątne zaczepy pokrywy, 3 półki transformatorów, ekran selektora, kanał wejść
 31;D. Mechanika;płytki na dnie;Tuleja M3 10 mm (płytka UL: izolacyjna);nylon lub mosiądz;19;4;konieczne;TME;"Tuleje ż-ż (śruby osobno); sterowanie 4, zasilacz 4, UL 4 (nylon), głośniki 3, selektor 4"
 32;D. Mechanika;osłona lamp;Ramki ze stali nierdzewnej 2,5 mm (laser);DXF: obudowa/DXF/SS_oslona_lamp_C_*.dxf;3;0;konieczne;usługa laser;Wariant C
 33;D. Mechanika;obudowa;Blachy aluminiowe 3 mm (CNC/laser);DXF: obudowa/DXF/AL_*.dxf, lista_czesci.csv;1;0;konieczne;usługa CNC;Komplet
@@ -41,6 +41,9 @@
 33e;D. Mechanika;ekran selektora;Tuleja dystansowa M3 ż-ż 25 mm;mosiężna/stalowa;4;0;konieczne;TME;"Pokrywka ekranu; od dna śruba M3 x 6"
 33f;D. Mechanika;ekran selektora;Śruba M3 x 6 (ekran selektora);4 z łbem stożkowym (pokrywka) + 4 zwykłe (od dna);8;2;konieczne;sklep;
 33g;D. Mechanika;dławiki;Śruba centralna dławików;zwykle w komplecie z toroidem (śruba, podkładki, przekładki gumowe);2;0;konieczne;toroidy.pl;"Otwory fi 8,5 w dnie; dławik 1 z przodu z prawej, dławik 2 pod płytką Onyxa z prawej z tyłu"
+33h;D. Mechanika;kanał wejść;Profil stalowy kwadratowy 20 x 20 x 1,5 mm;stal (ekranuje), dł. 180 mm;1;0;konieczne;sklep / market budowlany;ST_kanal_wejsc_*: od gniazd RCA do tyłu ekranu selektora, przyklejony do dna
+33i;D. Mechanika;gniazdo IEC;Śruba M3 x 10 + nakrętka (gniazdo sieciowe);;2;0;konieczne;sklep;
+33j;D. Mechanika;półki transformatorów;Podkładka gumowa pod toroid;3 mm, fi jak transformator (zwykle w komplecie z toroidem);5;0;konieczne;toroidy.pl;"3 transformatory + 2 dławiki; śruby środkowe TG/TR1 przez półki"
 34;E. Przewody;anody, odczepy UL, B+, dławiki, HT AC, Ua;Przewód silikonowy 0,75 mm², izolacja 1 kV;;10;0;konieczne;TME;"metry łącznie (nie kawałki), szacunek ok. 8 m + zapas; najlepiej 2–3 kolory"
 35;E. Przewody;żarzenie KT88 i 6SN7;Przewód 1,5 mm² (skręcany);;4;0;konieczne;sklep;"metry; skręcać parami"
 36;E. Przewody;wejścia, NFB;Przewód ekranowany sygnałowy 1-żyłowy;;3;0;konieczne;TME;metry
