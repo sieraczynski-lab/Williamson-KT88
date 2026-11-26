@@ -7,7 +7,7 @@ AL_ekran_selektora_bok_P;aluminium 5754;3.0;90.0;28.0;0;1
 AL_ekran_selektora_pokrywka;aluminium 5754;3.0;119.0;99.0;10;1
 AL_bok_lewy;aluminium 5754;3.0;460.0;156.0;13;1
 AL_bok_prawy;aluminium 5754;3.0;460.0;156.0;13;1
-AL_przod_wewn;aluminium 5754;3.0;400.0;103.0;15;1
+AL_przod_wewn;aluminium 5754;3.0;400.0;103.0;17;1
 AL_trafo_przod;aluminium 5754;3.0;400.0;156.0;98;1
 AL_zaczep_tyl_bok_L1;aluminium 5754;3.0;25.0;30.0;1;1
 AL_zaczep_tyl_bok_P1;aluminium 5754;3.0;25.0;30.0;1;1
@@ -33,7 +33,8 @@ AL_trafo_przegroda_P;aluminium 5754;3.0;147.0;156.0;2;1
 AL_trafo_dach;aluminium 5754;3.0;400.0;153.0;13;1
 AL_pokrywa_gorna;aluminium 5754;3.0;400.0;307.0;66;1
 AL_ekran_sterowania;aluminium 5754;3.0;104.0;100.5;5;1
-DREWNO_front_lico_5mm;MDF + fornir;5.0;440.0;106.0;7;1
+DREWNO_front_lico_5mm;MDF + fornir;2.5;440.0;106.0;7;1
+DREWNO_front_lico_5mm_frez_od_tylu;MDF + fornir;2.5;440.0;106.0;7;1
 DREWNO_front_rama_15mm;MDF + fornir;15.0;440.0;106.0;7;1
 DREWNO_bok_lewy;MDF + fornir;20.0;460.0;106.0;0;1
 DREWNO_bok_prawy;MDF + fornir;20.0;460.0;106.0;0;1

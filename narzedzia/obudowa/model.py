@@ -126,7 +126,10 @@ FEET = [(35.0, 25.0), (365.0, 25.0), (45.0, 440.0), (355.0, 440.0)]
 GL_X0, GL_Y0 = 81.5, 330.0
 # front: (x, z)
 FR_BTN, FR_LED, FR_SEL, FR_VOL, FR_IR = (35.0, 48.0), (35.0, 80.0), (100.0, 53.0), (300.0, 53.0), (365.0, 53.0)
-FR_DISP = [(165.0, 55.0), (235.0, 55.0)]
+FR_DISP = [(165.0, 55.0), (235.0, 55.0)]                             # srodki okraglych LCD 2,1" GC9B72 (X, Z)
+# modul TZT 2,1" GC9B72: plytka fi 59,24 + jezyk z goldpinami (razem 67,47 wys.), szklo LCM fi 55,92 x 2,01 + tasma 0,3,
+# pole aktywne fi 52,92; srodek kola 29,6 mm od gory plytki, jezyk 30 mm szer. do 37,9 mm ponizej srodka
+DISP_VIEW, DISP_POCKET, DISP_RECESS = 54.0, 57.0, 2.5                 # okno w licu, frez na szklo od tylu, glebokosc okna
 
 def mirror_x(p):
     return (W - p[0], p[1])
@@ -221,6 +224,7 @@ def front_wall():
          "left": [(a, b, -T) for (a, b) in FING_FRONT], "right": [(a, b, -T) for (a, b) in FING_FRONT]}
     outer = edge_features(0, T, W, Z_COV, f)
     H = [circle(*FR_BTN, 22), circle(*FR_LED, 10), circle(*FR_SEL, 7.5), circle(*FR_VOL, 7.5), circle(*FR_IR, 12)]
+    H += [rect(x - 17, z - 39, x + 17, z - 26) for (x, z) in FR_DISP]          # przepust goldpinow / przewodow LCD
     H += [rect(x - 12, z - 6, x + 12, z + 6) for (x, z) in FR_DISP]
     H += [circle(x, z, 4.5) for (x, z) in ((60, 20), (340, 20), (200, 20), (200, 90))]
     H += [slot(xx, GUS_Z0 + T / 2, b - a, T) for (a, b) in GUS_TABS for xx in (T + (a + b) / 2, W - T - (a + b) / 2)]
@@ -553,13 +557,25 @@ def screen():
 parts.append(screen())
 
 # ---------------- DREWNO
+def disp_cut(x, z, r=30.6, n=40):
+    """Przelot w ramie 15 mm: kolo fi 61,2 + jezyk 32 mm do 39 mm ponizej srodka."""
+    a0 = math.asin(16.0 / r)
+    pts = [(x + 16.0, z - 39.0)]
+    for k in range(n + 1):
+        a = -math.pi / 2 + a0 + (2 * math.pi - 2 * a0) * k / n
+        pts.append((x + r * math.cos(a), z + r * math.sin(a)))
+    pts.append((x - 16.0, z - 39.0))
+    return pts[::-1]
 def wood_front():
     X0, X1 = -WOOD, W + WOOD
     skin_h = [circle(*FR_BTN, 16.2), circle(*FR_LED, 5.2), circle(*FR_SEL, 9), circle(*FR_VOL, 9), circle(*FR_IR, 6)]
-    skin_h += [circle(x, z, 33) for (x, z) in FR_DISP]
+    skin_v = skin_h + [circle(x, z, DISP_VIEW) for (x, z) in FR_DISP]        # lico: okno fi 54 na 2,5 mm od przodu
+    skin_p = skin_h + [circle(x, z, DISP_POCKET) for (x, z) in FR_DISP]      # i frez fi 57 na 2,5 mm od tylu (szklo)
     frame_h = [circle(*FR_BTN, 26), circle(*FR_LED, 12), circle(*FR_SEL, 30), circle(*FR_VOL, 30), circle(*FR_IR, 14)]
-    frame_h += [circle(x, z, 40) for (x, z) in FR_DISP]
-    return [prism("DREWNO_front_lico_5mm", WOODF, rect(X0, 0, X1, Z_COV + T), skin_h, -WOOD, -WOOD + 5, "XZ"),
+    for (x, z) in FR_DISP:                                                    # rama: przelot na plytke LCD z jezykiem
+        frame_h.append(disp_cut(x, z))
+    return [prism("DREWNO_front_lico_5mm", WOODF, rect(X0, 0, X1, Z_COV + T), skin_v, -WOOD, -WOOD + DISP_RECESS, "XZ"),
+            prism("DREWNO_front_lico_5mm_frez_od_tylu", WOODF, rect(X0, 0, X1, Z_COV + T), skin_p, -WOOD + DISP_RECESS, -WOOD + 5, "XZ"),
             prism("DREWNO_front_rama_15mm", WOODC, rect(X0, 0, X1, Z_COV + T), frame_h, -WOOD + 5, 0, "XZ")]
 parts += wood_front()
 parts.append(prism("DREWNO_bok_lewy", WOODF, rect(0, 0, D, Z_COV + T), [], -WOOD, 0, "YZ"))
@@ -621,7 +637,8 @@ for (x, z) in (FR_SEL, FR_VOL):
 ref.append(cyl("REF_przycisk", (0.6, 0.6, 0.62), FR_BTN[0], FR_BTN[1], 16, -WOOD - 3, -WOOD + 5, axis="Y"))
 ref.append(cyl("REF_LED_2kol", (0.9, 0.3, 0.2), FR_LED[0], FR_LED[1], 5, -WOOD - 2, -WOOD + 5, axis="Y"))
 for (x, z) in FR_DISP:
-    ref.append(cyl("REF_wyswietlacz_okragly", BLACK, x, z, 38, -WOOD + 5, -WOOD + 9, axis="Y"))
+    ref.append(cyl("REF_wyswietlacz_okragly_szklo", BLACK, x, z, 55.9, -WOOD + 5 - 2.31, -WOOD + 5, axis="Y"))
+    ref.append(cyl("REF_wyswietlacz_okragly_plytka", (0.15, 0.3, 0.6), x, z, 59.2, -WOOD + 5, -WOOD + 6.2, axis="Y"))
 for k, (x, z) in enumerate(SPK_OUT):
     ref.append(cyl("REF_zacisk_wyjscie", (0.8, 0.1, 0.1) if k % 3 != 2 else BLACK, x, z, 14, D, D + 22, axis="Y"))
     ref.append(cyl("REF_zacisk_tyl", (0.8, 0.7, 0.3), x, z, 10, YP - 25, YP, axis="Y"))

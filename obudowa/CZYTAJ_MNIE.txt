@@ -128,3 +128,14 @@ DO USTALENIA (zmierzyc na plytce)
     PCB Onyxa (X 65 / 95 / 265 / 295 plytki = 35 mm od srodka KT88);
   - wymiary gniazda DD11 (wyciecie, rozstaw srub) z rysunku Schurtera;
   - glebokosc zaciskow glosnikowych za scianka (max ok. 25 mm) i ich srednica otworu (fi 9 przyjete).
+
+WYSWIETLACZE VU (2x okragly LCD 2,1" GC9B72, modul TZT: plytka fi 59,24 + jezyk, razem 67,5 mm)
+  - bez szybki; ekran cofniety ok. 2,7 mm za lico (rysunek: detal_wyswietlacz_przekroj.png);
+  - srodki: X 165 i 235, Z 55 (jezyk z goldpinami w dol);
+  - lico 5 mm frezowane schodkowo: od przodu okno fi 54 na 2,5 mm (pole aktywne fi 52,9),
+    od tylu frez fi 57 na 2,5 mm na szklo fi 55,9 (DXF: DREWNO_front_lico_5mm = warstwa z oknem,
+    DREWNO_front_lico_5mm_frez_od_tylu = ta sama plyta, druga glebokosc - to JEDNA czesc);
+  - rama 15 mm: przelot fi 61,2 + jezyk 32 mm do 39 mm ponizej srodka;
+  - plytke LCD dociska do lica pianka EPDM / neopren ok. 14 mm oparta o sciane Al; w scianie Al przepust
+    34 x 13 mm na goldpiny i przewody (do S3 mini za frontem);
+  - przed frezowaniem zmierzyc kupiony modul (tolerancje producenta +-0,15 mm).

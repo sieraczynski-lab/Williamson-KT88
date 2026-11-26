@@ -36,7 +36,7 @@
 33;D. Mechanika;obudowa;Blachy aluminiowe 3 mm (CNC/laser);DXF: obudowa/DXF/AL_*.dxf, lista_czesci.csv;1;0;konieczne;usługa CNC;Komplet
 33a;D. Mechanika;płytki na dnie;Śruba M3 x 6 (płytki na dnie);"stal; dla płytki UL nylonowe (8 szt.)";38;4;konieczne;sklep;Po 2 na tuleję: 30 stalowych + 8 nylonowych (UL)
 33b;D. Mechanika;dno;Nóżki obudowy;gumowe / antywibracyjne, mocowanie śrubą przez otwór ⌀10 w dnie;4;0;konieczne;sklep;Pozycje w modelu obudowy (FEET)
-33c;D. Mechanika;front, boki;Drewno: front 5 + 15 mm, boki 20 mm;MDF + fornir wg obudowa/lista_czesci.csv;1;0;konieczne;stolarz;"Otwory frontu wg modelu; okienka wyświetlaczy do poprawy pod 2,1"""
+33c;D. Mechanika;front, boki;Drewno: front 5 + 15 mm, boki 20 mm;MDF + fornir wg obudowa/lista_czesci.csv;1;0;konieczne;stolarz;Front: okna wyświetlaczy frezowane schodkowo (fi 54 / fi 57, ekran cofnięty ok. 2,7 mm) - obudowa/detal_wyswietlacz_przekroj.png
 33d;D. Mechanika;selektor;Ekran selektora (blacha Al 3 mm);"4 ścianki 25 mm z wypustami + pokrywka 119 x 99; DXF: obudowa/DXF/AL_ekran_selektora_*.dxf";1;0;konieczne;usługa CNC (z blachami obudowy);"Ścianki klejone do pokrywki; całość zdejmowana, przykręcona do tulei M3"
 33e;D. Mechanika;ekran selektora;Tuleja dystansowa M3 ż-ż 25 mm;mosiężna/stalowa;4;0;konieczne;TME;"Pokrywka ekranu; od dna śruba M3 x 6"
 33f;D. Mechanika;ekran selektora;Śruba M3 x 6 (ekran selektora);4 z łbem stożkowym (pokrywka) + 4 zwykłe (od dna);8;2;konieczne;sklep;
@@ -69,5 +69,5 @@
 54;H. Front i sterowanie;płytka głośników: R1–R6, C1–C3, D3–D6, J8;Tor pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 % 0,6 W, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G 5 mm, 10 µF 16 V, 4x BAT85 (w LCSC: BAT42), goldpin kątowy 1x4;1;0;zalecane;TME;"Na płytce głośników (pcb/glosniki), J8 → S3 mini GPIO1/2; docs/10, 2.4"
 55;H. Front i sterowanie;prawa listwa ESP32;Listwa goldpin 1x22 + przewody z wtykami;2,54 mm;1;0;konieczne;TME;Drugi enkoder, łącze z S3 mini (GPIO39–42)
 56;H. Front i sterowanie;łącze S3 mini, VU;Skrętka / przewód 4-żyłowy ekranowany;;3;0;konieczne;TME;"metry: VU 4-żyłowy ekranowany; łącze sterowanie–S3 mini 5 żył"
-57;H. Front i sterowanie;za frontem;Tuleje i śruby do wyświetlaczy i S3 mini;M2,5 / M3, nylon albo mosiądz, zestaw;1;0;konieczne;sklep;Zależnie od otworów w module ekranu GC9B72 (sprawdzić po zakupie próbnej sztuki)
+57;H. Front i sterowanie;za frontem;Pianka dociskowa do wyświetlaczy + mocowanie S3 mini;EPDM / neopren ok. 15 mm (2 kawałki ok. 40 x 40) + tuleje M2,5/M3 do S3 mini;1;0;konieczne;sklep;LCD dociśnięte pianką do lica, bez szybki
 58;H. Front i sterowanie;front (otwór w modelu obudowy);LED dwukolorowa 5 mm + rezystory;wspólna katoda, 2x ok. 1 kΩ;1;0;do decyzji;TME;Otwór jest w modelu frontu, ale LED nie ma przypisanego pinu w docs/10: zostawić albo usunąć otwór

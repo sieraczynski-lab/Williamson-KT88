@@ -17,7 +17,7 @@ OUT = os.path.normpath(os.path.join(HERE, "..", "..", "obudowa"))
 _keep = {}                                                   # rysunki porownawcze robione osobno - zachowac
 if os.path.isdir(OUT):
     for _n in os.listdir(OUT):
-        if _n.startswith("porownanie_"): _keep[_n] = open(os.path.join(OUT, _n), "rb").read()
+        if _n.startswith(("porownanie_", "detal_")): _keep[_n] = open(os.path.join(OUT, _n), "rb").read()
 shutil.rmtree(OUT, ignore_errors=True)
 os.makedirs(os.path.join(OUT, "DXF"))
 for _n, _b in _keep.items(): open(os.path.join(OUT, _n), "wb").write(_b)
