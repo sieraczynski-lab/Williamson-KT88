@@ -11,9 +11,9 @@ Projekt KiCad 8 (otwiera się też w KiCad 9 i nowszych).
 - `BOM.csv`: lista elementów z numerami LCSC (separator `;`)
 - `JLCPCB_BOM.csv`: BOM w formacie JLCPCB do zamówienia montażu (tylko elementy SMD)
 - `LCSC_zamowienie.csv`: komplet elementów do samodzielnego montażu (2 płytki + zapas, ze złączami JST) do wgrania w narzędziu BOM na lcsc.com
-- Podgląd schematu i rozmieszczenia: [`docs/img/selektor_*.png`](../../../docs/img/)
-- Pełna dokumentacja: [`docs/11-selektor.md`](../../../docs/11-selektor.md)
-- Pliki projektu wygenerował skrypt `src/selektor/gen.py`. **Po rozpoczęciu trasowania w KiCadzie źródłem prawdy są pliki KiCad.** Ponowne uruchomienie generatora (`src/selektor/gen.py`) nadpisze ścieżki (zobacz [`src/selektor/README.md`](../../../src/selektor/README.md)).
+- Podgląd schematu i rozmieszczenia: [`selektor_rozmieszczenie.png`, `selektor_schemat.png`](../)
+- Pełna dokumentacja: [`docs/soloist/11-selektor.md`](../../../docs/soloist/11-selektor.md)
+- Pliki projektu wygenerował skrypt `narzedzia/selektor/gen.py`. **Po rozpoczęciu trasowania w KiCadzie źródłem prawdy są pliki KiCad.** Ponowne uruchomienie generatora (`narzedzia/selektor/gen.py`) nadpisze ścieżki (zobacz [`narzedzia/selektor/README.md`](../../../narzedzia/selektor/README.md)).
 
 ## Układ
 - **Selektor K1–K4:** COM = wejście, NO = wspólna szyna, NC = 1 kΩ do masy.

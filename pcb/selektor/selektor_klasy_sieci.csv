@@ -1,0 +1,4 @@
+﻿Klasa;Szerokosc sciezki [mm];Odstep [mm];Odstep specjalny;Sieci;Uwagi
+Default;0.3;0.2;;(pozostale);logika, I2C, zasilanie 12 V i 3,3 V, masa
+Audio;0.4;0.3;;A1_L A1_R A2_L A2_R A3_L A3_R A4_L A4_R A5_L A5_R BUS_L BUS_R IN1_L IN1_R IN2_L IN2_R IN3_L IN3_R IN4_L IN4_R OUT_L OUT_R P1_L P1_R P2_L P2_R P3_L P3_R P4_L P4_R P5_L P5_R P6_L P6_R SH1_L SH1_R SH2_L SH2_R SH3_L SH3_R SH4_L SH4_R;sygnal audio: drabinka, wejscia, wyjscie
+Coil;0.3;0.25;;+12V COIL1 COIL10 COIL11 COIL2 COIL3 COIL4 COIL5 COIL6 COIL7 COIL8 COIL9;cewki przekaznikow i +12 V

@@ -8,7 +8,7 @@ Plytka wzmacniacza to plytka Onyxa VA1523 (kupiona). Pozostale plytki:
   sterowanie/  sterownik ESP32-S3            100 x 100   1      Soloist-KT88 v0.23, bez zmian
   ul/          przelacznik UL / trioda       100 x 66    1      nowa, 4 przekazniki (narzedzia/pcb/ul_pcb.py)
   glosniki/    przelacznik kolumn + VU       100 x 44    1      Soloist + tor VU (narzedzia/pcb/glosniki_pcb.py)
-  selektor/    selektor wejsc i glosnosc     -           1      Soloist-KT88 (TubeSel), bez zmian
+  selektor/    selektor wejsc i glosnosc     96 x 74     1      Soloist-KT88 (TubeSel v0.5), bez zmian
 
 Plytki kanalu, zasilacz_siec, zasilacz_hv i dwie plytki ul Soloista NIE sa potrzebne (zastepuja je
 plytka Onyxa, zasilacz/ i ul/).
@@ -25,10 +25,13 @@ PLIKI W KAZDYM FOLDERZE (zasilacz, sterowanie, ul, glosniki)
   import_EasyEDA/<plytka>_Standard_pcb.zip        - EasyEDA Standard: PCB (KiCad 4)
   KiCad4_dla_EasyEDA_Standard/, KiCad5_dla_EasyEDA_Pro_i_KiCad8/ - te same projekty rozpakowane
   <plytka>_BOM.csv, _netlista.csv, _klasy_sieci.csv, _rozmieszczenie.png/.svg
-  <plytka>_rozmieszczenie_1do1.pdf  - do wydruku 100% (sterowanie)
+  <plytka>_rozmieszczenie_1do1.pdf  - do wydruku 100% (sterowanie, selektor)
   <plytka>_BOM_LCSC.xlsx            - czesci z numerami LCSC (sterowanie)
   sterowanie/sterowanie_BOM_JLCPCB.csv - montaz SMD w JLCPCB
-Selektor ma wlasny uklad folderow: selektor/kicad (KiCad 8/9) i selektor/kicad5-easyeda.
+Selektor (projekt KiCad pisany osobno, narzedzia/selektor/): ten sam komplet plikow (selektor_BOM.csv,
+  _netlista, _klasy_sieci, _rozmieszczenie .png/.svg/_1do1.pdf, _BOM_LCSC.xlsx) plus montaz SMD w JLCPCB:
+  selektor_BOM_JLCPCB.csv + selektor_CPL_JLCPCB.csv. Import: import_EasyEDA/selektor_EasyEDA_Pro_KiCad5.zip
+  (EasyEDA Pro) albo selektor_KiCad8.zip; wersji dla EasyEDA Standard nie ma. Zrodlo: selektor/kicad.
 
 KLASY SIECI (szerokosci sciezek i odstepy) sa zapisane w plikach .kicad_pcb (net_class) -
 wczytuja sie przy imporcie. PCB sa rozmieszczone, z polaczeniami (ratsnest), bez sciezek.
@@ -96,3 +99,9 @@ PRZED ZAMOWIENIEM
   3. ESP32-S3-DevKitC-1: rozstaw listew 22,86 mm - zmierz swoj modul.
   4. Oprawki bezpiecznikow, zlacza srubowe, rezystory 10 W - przyloz do wydruku 1:1.
   5. Szczegoly kazdej plytki: zasilacz/CZYTAJ_MNIE.txt, selektor/README.md, docs/soloist/.
+  6. Zasilacz F3 (anody 360 V AC): oprawka 5x20 z LCSC ma 250 V. Do decyzji: oprawka >= 400 V (TME)
+     albo klipsy Littelfuse 520 600 V (zmiana footprintu F3).
+  7. Selektor 96 x 74 mm nie miesci sie w Hammond 1590B (112 x 60), a 1590BB (34 mm) jest za wysoki pod
+     kondensatorami plytki Onyxa (max ok. 31 mm). Do decyzji: oslona z blachy Al albo inne miejsce.
+  8. Mlodsze zmiany ustawien: glosniki J8 -> S3 mini (nie sterowanie), J8 sterowania (wyswietlacz I2C)
+     i J3 (MUTE przedwzmacniacza) w Williamsonie nieuzywane - mozna nie lutowac.

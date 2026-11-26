@@ -8,9 +8,9 @@ Wersja płytki: **v0.5** (schemat gotowy, elementy rozmieszczone, **ścieżki do
 
 | Gdzie | Co |
 |---|---|
-| [`hardware/selektor/kicad/`](../../pcb/selektor/kicad/) | projekt KiCad 8/9, BOM-y (`BOM.csv`, `JLCPCB_BOM.csv`, `LCSC_zamowienie.csv`) |
-| [`hardware/selektor/kicad5-easyeda/`](../../pcb/selektor/kicad5-easyeda/) | ten sam projekt w KiCad 5.1 do importu w EasyEDA Pro |
-| [`src/selektor/`](https://github.com/sieraczynski-lab/Soloist-KT88/tree/main/src/selektor) | generator i weryfikacja (Python) |
+| [`pcb/selektor/kicad/`](../../pcb/selektor/kicad/) | projekt KiCad 8/9, BOM-y (`BOM.csv`, `JLCPCB_BOM.csv`, `LCSC_zamowienie.csv`) |
+| [`pcb/selektor/kicad5-easyeda/`](../../pcb/selektor/kicad5-easyeda/) | ten sam projekt w KiCad 5.1 do importu w EasyEDA Pro |
+| [`narzedzia/selektor/`](../../narzedzia/selektor/) | generator, weryfikacja i eksport plików (Python) |
 
 Selektor powstał w osobnej sesji niż reszta wzmacniacza. Punkty styku z płytką sterowania są opisane w [7.5](#75-integracja-z-płytką-sterowania).
 

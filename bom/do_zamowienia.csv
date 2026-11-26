@@ -8,12 +8,12 @@
 7;A. Płytka Onyxa;C123, C223;Kondensatory kompensacji (zestaw);"33, 47, 68, 100, 150 pF; mika srebrna lub C0G, min. 500 V";10;0;opcjonalne;TME;"Po 2 szt. każdej wartości; dobór prostokątem na oscyloskopie"
 8;A. Płytka Onyxa;R102/C101, R202/C201;Sieć w anodzie V1B;1,2 kΩ 0,5 W + 680 pF 500 V (C0G/mika);4;0;opcjonalne;TME;Tylko gdy C123 nie wystarczy (2 rezystory + 2 kondensatory)
 9;A. Płytka Onyxa;C105, C106, C205, C206;Kondensator sprzęgający 470 nF;folia MKP, 630 V;4;0;opcjonalne;TME;Tylko gdy membrany pompują przy włączaniu
-10;B. Płytka zasilacza;R3, R4, R5;Rezystor 1 MΩ 1 % 1600 V;metalizowany wysokonapięciowy (np. Vishay VR37);3;1;konieczne;TME;Dzielnik pomiaru Ua (precyzyjny)
-11;B. Płytka zasilacza;R6;Rezystor 15 kΩ 1 %;metalizowany 0,6 W;1;1;konieczne;TME;Dzielnik pomiaru Ua (precyzyjny)
+10;B. Płytka zasilacza;R3, R4, R5;Rezystor 1 MΩ 1 % 1600 V;metalizowany wysokonapięciowy (np. Vishay VR37);3;1;konieczne;LCSC C1365660 / TME;Dzielnik pomiaru Ua (precyzyjny)
+11;B. Płytka zasilacza;R6;Rezystor 15 kΩ 1 %;metalizowany 0,6 W;1;1;konieczne;LCSC C601895 / TME;Dzielnik pomiaru Ua (precyzyjny)
 12;B. Płytka zasilacza;reszta;Elementy wg BOM płytki;pcb/zasilacz/zasilacz_williamson_BOM.csv;1;0;konieczne;TME / LCSC;K1–K4 G2RL-2-DC12, R_SS 47 Ω 10 W, R_IN 100 Ω 10 W, oprawki 5x20, LED, 1N4148, złącza śrubowe
-13;B. Płytka zasilacza;F2 / F3 / F4;Bezpieczniki 5x20;T500 mA 250 V / T1 A 500 V (np. Schurter SPT) / T100 mA 250 V;3;3;konieczne;TME;F3 musi mieć min. 400 V AC
+13;B. Płytka zasilacza;F2 / F3 / F4;Bezpieczniki 5x20;T500 mA 250 V / T1 A 500 V (np. Schurter SPT) / T100 mA 250 V;3;3;konieczne;LCSC C142727 (T500 mA) / TME (T1 A 500 V, T100 mA);F3 musi mieć min. 400 V AC
 14;C. Tylna ścianka;gniazdo zasilania;Schurter DD11 (IEC C14 + bezpiecznik + wyłącznik 2-bieg.);np. DD11.0124.1110 + szuflada bezpieczników wg karty DD11;1;0;konieczne;TME / Farnell;Przed cięciem sprawdzić wycięcie 27,1 x 56 mm i rozstaw śrub 65 mm
-15;C. Tylna ścianka;F1;Bezpiecznik 5x20 T2,5 A 250 V;zwłoczny;2;4;konieczne;TME;W szufladzie DD11
+15;C. Tylna ścianka;F1;Bezpiecznik 5x20 T2,5 A 250 V;zwłoczny;2;4;konieczne;LCSC C142705 / TME;W szufladzie DD11
 16;C. Tylna ścianka;wejścia;Gniazdo RCA panelowe izolowane;otwór ⌀11, izolowane od obudowy;8;0;konieczne;TME;4 pary: L czerwone, P białe/czarne
 17;C. Tylna ścianka;wyjścia i Marantz;Zacisk głośnikowy izolowany;otwór ⌀9, max ok. 25 mm za ścianką;10;0;konieczne;TME;"Na kanał: 8 Ω, 4 Ω, GND + Marantz +, GND; GND izolowane od obudowy"
 18;C. Tylna ścianka;TRIGGER;Gniazdo jack 3,5 mm mono panelowe izolowane;otwór ⌀6;1;0;konieczne;TME;
@@ -30,29 +30,40 @@
 28;D. Mechanika;pokrywa + tylna ścianka;Śruba M4 x 8 imbus;nierdzewna;17;4;konieczne;sklep;4 pokrywa + 13 tylna ścianka
 29;D. Mechanika;zaczepy;Nakrętka nitowana M4 (aluminium);otwór ⌀6 w zaczepie;17;5;opcjonalne;sklep;Tylko jeśli gwint M4 w blasze 3 mm będzie za słaby
 30;D. Mechanika;zaczepy;Klej epoksydowy;do aluminium;1;0;konieczne;sklep;11 zaczepów tylnej ścianki + 4 trójkątne zaczepy pokrywy
-31;D. Mechanika;płytki na dnie;Tuleja M3 10 mm (płytka UL: izolacyjna);nylon lub mosiądz;19;4;konieczne;TME;sterowanie 4, zasilacz 4, UL 4 (nylon), głośniki 3, selektor 4
+31;D. Mechanika;płytki na dnie;Tuleja M3 10 mm (płytka UL: izolacyjna);nylon lub mosiądz;19;4;konieczne;TME;"Tuleje ż-ż (śruby osobno); sterowanie 4, zasilacz 4, UL 4 (nylon), głośniki 3, selektor 4"
 32;D. Mechanika;osłona lamp;Ramki ze stali nierdzewnej 2,5 mm (laser);DXF: obudowa/DXF/SS_oslona_lamp_C_*.dxf;3;0;konieczne;usługa laser;Wariant C
 33;D. Mechanika;obudowa;Blachy aluminiowe 3 mm (CNC/laser);DXF: obudowa/DXF/AL_*.dxf, lista_czesci.csv;1;0;konieczne;usługa CNC;Komplet
-34;E. Przewody;anody, odczepy UL, Ua;Przewód silikonowy 0,75 mm², izolacja 1 kV;;6;0;konieczne;TME;metry
-35;E. Przewody;żarzenie KT88;Przewód 1,5 mm² (skręcany);;3;0;konieczne;sklep;metry
+33a;D. Mechanika;płytki na dnie;Śruba M3 x 6 (płytki na dnie);"stal; dla płytki UL nylonowe (8 szt.)";38;4;konieczne;sklep;Po 2 na tuleję: 30 stalowych + 8 nylonowych (UL)
+33b;D. Mechanika;dno;Nóżki obudowy;gumowe / antywibracyjne, mocowanie śrubą przez otwór ⌀10 w dnie;4;0;konieczne;sklep;Pozycje w modelu obudowy (FEET)
+33c;D. Mechanika;front, boki;Drewno: front 5 + 15 mm, boki 20 mm;MDF + fornir wg obudowa/lista_czesci.csv;1;0;konieczne;stolarz;"Otwory frontu wg modelu; okienka wyświetlaczy do poprawy pod 2,1"""
+33d;D. Mechanika;selektor;Ekran selektora;"płytka 96 x 74 mm; wysokość pod kondensatorami płytki Onyxa max ok. 31 mm";1;0;do decyzji;–;"Hammond 1590B (112 x 60) za mały; 1590BB (119,5 x 94 x 34) za wysoki pod kondensatorami. Propozycja: osłona z blachy Al 1 mm w komplecie DXF"
+34;E. Przewody;anody, odczepy UL, B+, dławiki, HT AC, Ua;Przewód silikonowy 0,75 mm², izolacja 1 kV;;10;0;konieczne;TME;"metry łącznie (nie kawałki), szacunek ok. 8 m + zapas; najlepiej 2–3 kolory"
+35;E. Przewody;żarzenie KT88 i 6SN7;Przewód 1,5 mm² (skręcany);;4;0;konieczne;sklep;"metry; skręcać parami"
 36;E. Przewody;wejścia, NFB;Przewód ekranowany sygnałowy 1-żyłowy;;3;0;konieczne;TME;metry
 37;E. Przewody;sterowanie, cewki;Przewód 0,25–0,5 mm² (kolorowy) + koszulki termokurczliwe;;10;0;konieczne;sklep;metry
+37a;E. Przewody;DD11 → zasilacz J1, J5 → TR1, J3 → sterowanie J1;Przewód sieciowy 230 V 1 mm²;linka, izolacja 300/500 V (np. H05V-K) albo silikonowa;2;0;konieczne;sklep;"metry; 2 kolory (L, N)"
+37b;E. Przewody;PE: DD11 → śruba PE, ekran TR1;Przewód PE żółto-zielony 1,5 mm²;linka;1;0;konieczne;sklep;metry
+37c;E. Przewody;złącza śrubowe na płytkach;Tulejki kablowe izolowane (zestaw);0,5 / 0,75 / 1 / 1,5 mm²;1;0;konieczne;sklep;Linka w złączach śrubowych zawsze w tulejce
+37d;E. Przewody;złącza goldpin: sterowanie J2–J13, zasilacz J16/J17, głośniki J7/J8, S3 mini;Wtyki Dupont 2,54 mm (obudowy 1–6 pin + piny żeńskie);"zestaw; do zaciskania (zaciskarka SN-28B) albo gotowe przewody";1;0;konieczne;sklep / Allegro;Selektor ma własne wtyki JST XH (w BOM selektora)
+37e;E. Przewody;wnętrze;Opaski i uchwyty samoprzylepne do kabli;;1;0;konieczne;sklep;
 38;F. Transformatory, lampy;TR1;Transformator sieciowy 400 VA;"S1 360 V (345/375 V) 0,65 A; S4 58 V 0,1 A; 6,3 V 8 A; 6,3 V 3 A; ekran";1;0;konieczne;toroidy.pl;docs/08
 39;F. Transformatory, lampy;L106, L206;Dławik 10 H / 250 mA / 45 Ω;filtr anodowy;2;0;konieczne;toroidy.pl;
 40;F. Transformatory, lampy;TG;Transformator głośnikowy TTG-KT88PP;4 kΩ, UL 43 %, 4/8 Ω;2;0;konieczne;toroidy.pl;
 41;F. Transformatory, lampy;V5–V8;KT88;;4;0;masz;–;
 42;F. Transformatory, lampy;V1, V2;6SN7 Psvane UK-6SN7 Plus;;4;0;kupione;–;"⌀46 x 89 mm (zmierzone); osłona: otwór ⌀56"
-43;G. Płytki PCB;zasilacz, UL, sterowanie, głośniki, selektor;Płytki PCB + elementy;wg BOM w pcb/*/;1;0;konieczne;JLCPCB / LCSC / TME;Sterowanie: montaż SMD w JLCPCB (sterowanie_BOM_JLCPCB.csv)
-44;H. Front i sterowanie;IR (sterowanie J7);Odbiornik IR TSOP38238;38 kHz, 3,3 V;1;1;konieczne;TME;"Na froncie za okienkiem; przy odbiorniku 100 Ω + 10 µF"
+43;G. Płytki PCB;zasilacz, UL, sterowanie, głośniki, selektor;Płytki PCB + elementy;wg BOM w pcb/*/;1;0;konieczne;JLCPCB / LCSC / TME;SMD montuje JLCPCB: sterowanie (sterowanie_BOM_JLCPCB.csv) i selektor (selektor_BOM_JLCPCB.csv + selektor_CPL_JLCPCB.csv)
+44;H. Front i sterowanie;IR (sterowanie J7);Odbiornik IR TSOP38238;38 kHz, 3,3 V;1;1;konieczne;LCSC C141632 / TME;"Na froncie za okienkiem; przy odbiorniku 100 Ω + 10 µF"
 45;H. Front i sterowanie;front;Okienko IR;ciemny akryl / filtr IR ok. 10 x 10 mm;1;0;opcjonalne;sklep;
 46;H. Front i sterowanie;pilot;Pilot IR;dowolny (NEC / RC5 / RC6);1;0;opcjonalne;sklep;Niepotrzebny, jeśli wystarczą wolne przyciski pilota Marantza (nauka kodów)
 47;H. Front i sterowanie;BTN (sterowanie J9-4);Przycisk włączania;chwilowy (NO), metalowy ⌀16–19 mm, z pierścieniem LED 12 V;1;0;konieczne;TME;"Włącz / czuwanie; wyłącznik sieciowy w DD11"
-48;H. Front i sterowanie;głośność (J9), selektor (nowe piny);Enkoder obrotowy z przyciskiem;24 imp./obr., z zapadkami, oś 6 mm (np. Bourns PEC11R, ALPS EC11);2;1;konieczne;TME;
+48;H. Front i sterowanie;głośność (J9), selektor (nowe piny);Enkoder obrotowy z przyciskiem;24 imp./obr., z zapadkami, oś 6 mm (np. Bourns PEC11R, ALPS EC11);2;1;konieczne;LCSC C143790 (PEC11R-4215F-S0024) / TME;
 49;H. Front i sterowanie;enkodery;Gałka aluminiowa;na oś 6 mm;2;0;konieczne;sklep;
 50;H. Front i sterowanie;VU L, VU P;"Okrągły LCD 2,1"" GC9B72";IPS 360 x 360, SPI, moduł 10-pinowy, 3,3 V;2;0;konieczne;AliExpress;"Najpierw 1 szt. na próbę (nowy sterownik esp_lcd_gc9b72), potem druga; docs/10, 2.3"
 51;H. Front i sterowanie;ESP wyświetlaczy;Moduł ESP32-S3 mini z PSRAM;np. Lolin/Wemos S3 Mini (ESP32-S3FH4R2, 4 MB flash, 2 MB PSRAM);1;0;masz;–;"Rysuje oba ekrany i mierzy VU; bez WiFi, programowany przez sterownik po UART (docs/10, 12.3)"
 52;H. Front i sterowanie;zasilanie wyświetlaczy;Przetwornica 12 V → 5 V;min. 1,5 A (moduł step-down);1;0;konieczne;TME / Allegro;Zasilanie S3 mini i ekranów (ok. 300–400 mA)
-53;H. Front i sterowanie;temperatura (sterowanie J6);Czujnik DS18B20;TO-92 albo w osłonce;1;1;konieczne;TME;Pod płytką Onyxa, przy KT88
-54;H. Front i sterowanie;płytka głośników: R1–R6, C1–C3, D3–D6, J8;Tor pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 % 0,6 W, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G 5 mm, 10 µF 16 V, 4x BAT85, goldpin kątowy 1x4;1;0;zalecane;TME;"Na płytce głośników (pcb/glosniki), J8 → S3 mini GPIO1/2; docs/10, 2.4"
+53;H. Front i sterowanie;temperatura (sterowanie J6);Czujnik DS18B20;TO-92 albo w osłonce;1;1;konieczne;LCSC C376006 / TME;Pod płytką Onyxa, przy KT88
+54;H. Front i sterowanie;płytka głośników: R1–R6, C1–C3, D3–D6, J8;Tor pomiaru sygnału do VU (2 kanały);2x 100 kΩ 1 % 0,6 W, 2x 5,1 kΩ 1 %, 2x 1 kΩ, 2x 1 nF C0G 5 mm, 10 µF 16 V, 4x BAT85 (w LCSC: BAT42), goldpin kątowy 1x4;1;0;zalecane;TME;"Na płytce głośników (pcb/glosniki), J8 → S3 mini GPIO1/2; docs/10, 2.4"
 55;H. Front i sterowanie;prawa listwa ESP32;Listwa goldpin 1x22 + przewody z wtykami;2,54 mm;1;0;konieczne;TME;Drugi enkoder, łącze z S3 mini (GPIO39–42)
 56;H. Front i sterowanie;łącze S3 mini, VU;Skrętka / przewód 4-żyłowy ekranowany;;3;0;konieczne;TME;"metry: VU 4-żyłowy ekranowany; łącze sterowanie–S3 mini 5 żył"
+57;H. Front i sterowanie;za frontem;Tuleje i śruby do wyświetlaczy i S3 mini;M2,5 / M3, nylon albo mosiądz, zestaw;1;0;konieczne;sklep;Zależnie od otworów w module ekranu GC9B72 (sprawdzić po zakupie próbnej sztuki)
+58;H. Front i sterowanie;front (otwór w modelu obudowy);LED dwukolorowa 5 mm + rezystory;wspólna katoda, 2x ok. 1 kΩ;1;0;do decyzji;TME;Otwór jest w modelu frontu, ale LED nie ma przypisanego pinu w docs/10: zostawić albo usunąć otwór

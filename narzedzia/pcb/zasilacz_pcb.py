@@ -242,7 +242,6 @@ def export(b, schematic, OUT, NAME, HV, readme, vp=(560, 480)):
     b.write_csv(OUT)
     netclasses.write_csv(b, OUT)
     svg = b.svg(hv_nets=HV)
-    open(os.path.join(OUT, NAME + "_rozmieszczenie.svg"), "w").write(svg)
     shutil.copy(os.path.join(D, readme), os.path.join(OUT, "CZYTAJ_MNIE.txt"))
     from playwright.sync_api import sync_playwright
     css = (".board{fill:#f4f7f2;stroke:#1d2a1f;stroke-width:.35}.body{fill:rgba(255,255,255,.55);stroke:#3a4a3c;stroke-width:.3}"
@@ -252,7 +251,15 @@ def export(b, schematic, OUT, NAME, HV, readme, vp=(560, 480)):
     with sync_playwright() as pw:
         br = pw.chromium.launch(); pg = br.new_page(viewport={"width": vp[0], "height": vp[1]}, device_scale_factor=2)
         pg.set_content("<style>body{margin:0;background:#fff}%s</style>%s" % (css, svg))
-        pg.screenshot(path=os.path.join(OUT, NAME + "_rozmieszczenie.png")); br.close()
+        pg.screenshot(path=os.path.join(OUT, NAME + "_rozmieszczenie.png"))
+        # SVG z wlasnym stylem (otwiera sie poprawnie samodzielnie) i wydruk 1:1
+        svg_s = svg.replace(">", "><style>%s</style>" % css, 1)
+        open(os.path.join(OUT, NAME + "_rozmieszczenie.svg"), "w").write(svg_s)
+        pg2 = br.new_page()
+        pg2.set_content("<style>@page{margin:0}body{margin:0;background:#fff}</style>%s" % svg_s)
+        pg2.pdf(path=os.path.join(OUT, NAME + "_rozmieszczenie_1do1.pdf"), width="%.1fmm" % (b.w + 12), height="%.1fmm" % (b.h + 12),
+                print_background=True)
+        br.close()
     import schview2
     schview2.render(os.path.join(k5, NAME + ".sch"), os.path.join(k5, LIB + ".lib"), os.path.join(OUT, NAME + "_schemat.png"), scale=6)
     print("OK", OUT, len(b.comps), "elementow,", len(b.nets()), "sieci")
