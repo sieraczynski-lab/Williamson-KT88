@@ -22,8 +22,7 @@
 21;D. Mechanika;płytka Onyxa;Tuleja dystansowa M3 ż-m 45 mm;mosiężna/stalowa;9;1;konieczne;TME;"Składane z 40 mm do ok. 85 mm; długość dobrać tak, żeby podstawki stały równo z pokrywą"
 22;D. Mechanika;płytka Onyxa;Tuleja dystansowa M3 ż-m 40 mm;mosiężna/stalowa;9;1;konieczne;TME;
 23;D. Mechanika;płytka Onyxa;Śruba M3 x 6;;18;4;konieczne;sklep;
-24;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 30 mm;nierdzewna;6;0;konieczne;TME / sklep;
-25;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 60 mm;nierdzewna;12;0;konieczne;TME / sklep;
+24;D. Mechanika;osłona lamp;Tuleja dystansowa M4 ż-m 35 mm;nierdzewna;18;0;konieczne;TME / sklep;3 poziomy x 6 słupków
 26;D. Mechanika;osłona lamp;Nakrętka kołpakowa M4;nierdzewna;6;2;konieczne;sklep;
 27;D. Mechanika;osłona lamp;Śruba M4 x 10 (od spodu pokrywy);nierdzewna, łeb płaski;6;2;konieczne;sklep;
 28;D. Mechanika;pokrywa + tylna ścianka;Śruba M4 x 8 imbus;nierdzewna;17;4;konieczne;sklep;4 pokrywa + 13 tylna ścianka
@@ -40,7 +39,7 @@
 39;F. Transformatory, lampy;L106, L206;Dławik 10 H / 250 mA / 45 Ω;filtr anodowy;2;0;konieczne;toroidy.pl;
 40;F. Transformatory, lampy;TG;Transformator głośnikowy TTG-KT88PP;4 kΩ, UL 43 %, 4/8 Ω;2;0;konieczne;toroidy.pl;
 41;F. Transformatory, lampy;V5–V8;KT88;;4;0;masz;–;
-42;F. Transformatory, lampy;V1, V2;6SN7 Psvane UK-6SN7 Plus;;4;0;kupione;–;Zmierzyć bańkę i wysokość (osłona: otwór ⌀56)
+42;F. Transformatory, lampy;V1, V2;6SN7 Psvane UK-6SN7 Plus;;4;0;kupione;–;"⌀46 x 89 mm (zmierzone); osłona: otwór ⌀56"
 43;G. Płytki PCB;zasilacz, UL, sterowanie, głośniki, selektor;Płytki PCB + elementy;wg BOM w pcb/*/;1;0;konieczne;JLCPCB / LCSC / TME;Sterowanie: montaż SMD w JLCPCB (sterowanie_BOM_JLCPCB.csv)
 44;H. Front i sterowanie;IR (sterowanie J7);Odbiornik IR TSOP38238;38 kHz, 3,3 V;1;1;konieczne;TME;"Na froncie za okienkiem; przy odbiorniku 100 Ω + 10 µF"
 45;H. Front i sterowanie;front;Okienko IR;ciemny akryl / filtr IR ok. 10 x 10 mm;1;0;opcjonalne;sklep;

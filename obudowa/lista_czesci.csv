@@ -19,9 +19,9 @@ AL_zaczep_pokrywy_LP;aluminium 5754;3.0;28.0;28.0;1;1
 AL_zaczep_pokrywy_PP;aluminium 5754;3.0;28.0;28.0;1;1
 AL_zaczep_pokrywy_LT;aluminium 5754;3.0;28.0;28.0;1;1
 AL_zaczep_pokrywy_PT;aluminium 5754;3.0;28.0;28.0;1;1
-SS_oslona_lamp_C_dolna;stal nierdzewna 2,5 mm (laser);2.5;366.0;156.0;17;1
-SS_oslona_lamp_C_srodkowa;stal nierdzewna 2,5 mm (laser);2.5;366.0;156.0;17;1
-SS_oslona_lamp_C_gorna;stal nierdzewna 2,5 mm (laser);2.5;366.0;156.0;17;1
+SS_oslona_lamp_C_dolna;stal nierdzewna 2,5 mm (laser);2.5;373.0;159.5;17;1
+SS_oslona_lamp_C_srodkowa;stal nierdzewna 2,5 mm (laser);2.5;373.0;159.5;17;1
+SS_oslona_lamp_C_gorna;stal nierdzewna 2,5 mm (laser);2.5;373.0;159.5;17;1
 AL_trafo_tyl_zdejmowany;aluminium 5754;3.0;393.0;149.0;100;1
 AL_trafo_przegroda_L;aluminium 5754;3.0;147.0;156.0;2;1
 AL_trafo_przegroda_P;aluminium 5754;3.0;147.0;156.0;2;1
