@@ -76,8 +76,9 @@ def top_png(part, path):
     for h in gh: dr.polygon(_p(h), fill="white", outline="black")
     for (x, y) in model.POTS: dr.ellipse(((x + 4) * S_, (Y0 - y - 4) * S_, (x + 8) * S_, (Y0 - y) * S_), fill=(200, 30, 30))
     img.save(path)
-cur = [p for p in model.parts if p.name.startswith("SS_oslona_lamp_") and p.name.endswith("gorna")][0]
+cur = [p for p in model.parts if p.name.startswith("SS_oslona_lamp_") and p.name.endswith("srodkowa")][0]
 top_png(cur, os.path.join(OUT, "oslona_lamp_wariant_%s_z_gory.png" % model.GUARD_VARIANT))
+top_png([p for p in model.parts if p.name.endswith("gorna_KT88")][0], os.path.join(OUT, "oslona_lamp_gorna_KT88_z_gory.png"))
 base = [p for p in model.parts if not p.name.startswith("SS_oslona")]
 for v, fn in sorted(model.GUARDS.items()):
     if v == model.GUARD_VARIANT: continue
@@ -87,6 +88,6 @@ for v, fn in sorted(model.GUARDS.items()):
         outer, holes, th = REC[S.name]
         xs = [p[0] for p in outer]; ys = [p[1] for p in outer]
         dxf(os.path.join(OUT, "DXF", "oslona_inne_warianty", S.name + ".dxf"), [outer] + list(holes), min(xs), min(ys))
-    top_png([p for p in other if p.name.endswith("gorna")][0], os.path.join(OUT, "oslona_lamp_wariant_%s_z_gory.png" % v))
+    top_png([p for p in other if p.name.endswith("srodkowa")][0], os.path.join(OUT, "oslona_lamp_wariant_%s_z_gory.png" % v))
     render(base + other + model.ref, os.path.join(OUT, "widok_przod_oslona_%s.png" % v), azim=-62, elev=26, title="Oslona lamp - wariant %s" % v)
 print(OUT, len(rows))

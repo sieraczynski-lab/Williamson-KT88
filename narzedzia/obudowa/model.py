@@ -47,8 +47,12 @@ TS = 2.5
 KT_D, KT_H, S6_D, S6_H = 53.0, 103.0, 46.0, 89.0
 TUBE_BASE_Z = Z_COV + T                                               # spod cokolu = gora podstawki = wierzch pokrywy (Z 106)
 G_GAP = 5.0                                                           # luz lampa - ramka (na promieniu)
-G_STANDOFF = 35.0                                                     # tuleje M4 35 mm na kazdym poziomie
-G_LEVELS = [TUBE_BASE_Z + G_STANDOFF + k * (TS + G_STANDOFF) for k in range(3)]   # spody ramek: 141 / 178,5 / 216
+G_STANDOFFS = [35.0, 40.0, 15.0]                                      # tuleje M4: pokrywa-1, 1-2, 2-3
+G_LEVELS = []
+_z = TUBE_BASE_Z
+for _so in G_STANDOFFS:
+    _z += _so; G_LEVELS.append(_z); _z += TS                          # spody ramek: 141 / 183,5 / 201
+# ramka 1 i 2: wszystkie lampy (2 ok. 9 mm ponizej czubka 6SN7); ramka 3: tylko KT88, ok. 5,5 mm ponizej czubka KT88
 G_RIN6, G_RINK = S6_D / 2 + G_GAP, KT_D / 2 + G_GAP                   # otwory fi 56 (6SN7) i fi 63 (KT88)
 G_RIN = G_RIN6
 G_BAND, G_BAR, G_BOSS, G_FILLET = 5.0, 4.0, 8.0, 6.0                  # obwodka 5 mm, mostki 8 mm (wariant A)
@@ -70,6 +74,7 @@ G_YM, _ = _mid_notch()
 G_RODS = ([(x, _GY6) for x in (100.0, 300.0)]                        # przod: skrajne polaczenia miedzy 6SN7, w osi lamp
           + [(x, round(G_YM, 1)) for x in (_GX[0], _GX[-1])]          # miedzy 6SN7 i KT88, na skrajnych lampach
           + [(x, _GYK + 26.5) for x in (100.0, 300.0)])               # tyl: skrajne polaczenia miedzy KT88, srodek mostka
+G_RODS_TOP = G_RODS[2:]                                               # ramka 3 (KT88) na 4 slupkach: srodkowe i tylne
 POT_HOLE = 8.0                        # otwor na srubokret do potencjometru biasu
 def ob(x, y):                          # wspolrzedne z rysunku Onyxa -> obudowa
     return (OB_X0 + x, OB_Y1 - y)
@@ -306,8 +311,8 @@ def guard_A():
     loops.sort(key=lambda L: -abs(area2(L)))
     outer, windows = loops[0], loops[1:]
     H = windows + [circle(x, y, 2 * g_rin(y)) for (x, y) in tubes] + [circle(x, y, 4.5) for (x, y) in G_RODS]
-    names = ("dolna", "srodkowa", "gorna")
-    return [prism("SS_oslona_lamp_A_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
+    names = ("dolna", "srodkowa")
+    return [prism("SS_oslona_lamp_A_%s" % names[k], SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS[:2])] + guard_top_KT("A")
 
 
 def guard_B(front="flat", tag="B"):
@@ -386,8 +391,69 @@ def guard_B(front="flat", tag="B"):
         L = [(float(xs[0] + col * st), float(ys[0] + row * st)) for (row, col) in c[:-1]]
         if abs(area2(L)) > 200.0: tube_holes.append(L)
     H = windows + tube_holes + [circle(x, y, 4.5) for (x, y) in G_RODS]
-    names = ("dolna", "srodkowa", "gorna")
-    return [prism("SS_oslona_lamp_%s_%s" % (tag, names[k]), SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS)]
+    names = ("dolna", "srodkowa")
+    return [prism("SS_oslona_lamp_%s_%s" % (tag, names[k]), SS, outer, H, z, z + TS, "XY") for k, z in enumerate(G_LEVELS[:2])] + guard_top_KT(tag)
+
+def guard_top_KT(tag):
+    """Ramka 3 (gorna): tylko rzad KT88. Obwodki 5 mm, tyl jak w B/C (plaski mostek z wcieciem), przod polokragle obwodki,
+    ucha do 2 slupkow miedzy rzedami (X 50 / 350), wyciecia na srubokret do potencjometrow biasu. 4 slupki: G_RODS_TOP."""
+    import numpy as np
+    from skimage import measure
+    tubes = [(x, _GYK) for x in _GX]
+    Ro = G_RINK + G_BAND
+    st = 0.2
+    xs = np.arange(-5.0, 405.0, st); ys = np.arange(190.0, 320.0, st)
+    X, Y = np.meshgrid(xs, ys)
+    def disk(c, r): return np.hypot(X - c[0], Y - c[1]) - r
+    def smin(a_, b_, k):
+        h = np.clip(0.5 + 0.5 * (b_ - a_) / k, 0.0, 1.0)
+        return b_ * (1 - h) + a_ * h - k * h * (1 - h)
+    def poly(P):
+        P = ccw(P); d = None
+        for i in range(len(P)):
+            (ax, ay), (bx, by) = P[i], P[(i + 1) % len(P)]
+            ex, ey = bx - ax, by - ay; L = math.hypot(ex, ey)
+            di = ((X - ax) * ey - (Y - ay) * ex) / L
+            d = di if d is None else np.maximum(d, di)
+        return d
+    def unit(v): L = math.hypot(*v); return (v[0] / L, v[1] / L)
+    def tan_pt(A, c): u = unit((c[0] - A[0], c[1] - A[1])); return (A[0] + Ro * u[0], A[1] + Ro * u[1])
+    f = None
+    for c in tubes:
+        d = disk(c, Ro); f = d if f is None else np.minimum(f, d)
+    for i in range(3):                                                  # tyl: plaski mostek z polokraglym wcieciem od przodu
+        A, B = tubes[i], tubes[i + 1]
+        nc = ((A[0] + B[0]) / 2, _GYK + 3.0)
+        r = math.hypot(nc[0] - A[0], nc[1] - A[1]) - Ro
+        P = [tan_pt(A, nc), tan_pt(B, nc), (B[0], _GYK + Ro), (A[0], _GYK + Ro)]
+        f = np.minimum(f, np.maximum(poly(P), -disk(nc, r)))
+    for (rx, ry) in G_RODS_TOP:                                         # ucha do slupkow z przodu skrajnych KT88
+        if ry > _GYK: continue
+        ax, ay = rx, _GYK - Ro + 4.0
+        dx, dy = 0.0, ry - ay
+        t = np.clip(((X - ax) * dx + (Y - ay) * dy) / (dx * dx + dy * dy), 0, 1)
+        f = smin(f, np.hypot(X - ax - t * dx, Y - ay - t * dy) - G_BOSS, 6.0)
+    for pc in POTS:
+        f = smin(f, disk(pc, G_POT_R + 4.0), 3.0)
+    loops = []
+    for c in measure.find_contours(f, 0.0):
+        c = measure.approximate_polygon(c, tolerance=0.02)
+        loops.append([(float(xs[0] + col * st), float(ys[0] + row * st)) for (row, col) in c[:-1]])
+    loops.sort(key=lambda L: -abs(area2(L)))
+    outer, windows = loops[0], [L for L in loops[1:] if abs(area2(L)) > 20.0]
+    g = None
+    for c in tubes:
+        d = disk(c, G_RINK); g = d if g is None else np.minimum(g, d)
+    for pc in POTS:
+        g = smin(g, disk(pc, G_POT_R), 1.5)
+    holes = []
+    for c in measure.find_contours(-g, 0.0):
+        c = measure.approximate_polygon(c, tolerance=0.02)
+        L = [(float(xs[0] + col * st), float(ys[0] + row * st)) for (row, col) in c[:-1]]
+        if abs(area2(L)) > 200.0: holes.append(L)
+    H = windows + holes + [circle(x, y, 4.5) for (x, y) in G_RODS_TOP]
+    z = G_LEVELS[2]
+    return [prism("SS_oslona_lamp_%s_gorna_KT88" % tag, SS, outer, H, z, z + TS, "XY")]
 
 def guard_C():
     """Oslona lamp, WARIANT C: jak B (tyl plaski, srodek przewezenia), ale przod jak boki - polokragle obwodki
@@ -479,10 +545,11 @@ for (x, y, n) in SMALL:
     ref.append(cyl("REF_" + n.replace(" ", "_") + "_cokol", BLACK, x, y, 33, TUBE_BASE_Z, TUBE_BASE_Z + 20))
     ref.append(cyl("REF_" + n.replace(" ", "_") + "_Psvane_UK_Plus", GLASS, x, y, S6_D, TUBE_BASE_Z + 20, TUBE_BASE_Z + S6_H))
 for (x, y) in G_RODS:
-    zs = [Z_COV + T] + [z for zl in G_LEVELS for z in (zl, zl + TS)]
+    lv = G_LEVELS if (x, y) in G_RODS_TOP else G_LEVELS[:2]
+    zs = [Z_COV + T] + [z for zl in lv for z in (zl, zl + TS)]
     for k in range(0, len(zs) - 1, 2):
         ref.append(cyl("REF_tuleja_M4_%dmm" % round(zs[k + 1] - zs[k]), (0.75, 0.75, 0.70), x, y, 7, zs[k], zs[k + 1], n=6))
-    ref.append(cyl("REF_nakretka_kolpakowa_M4", (0.75, 0.75, 0.70), x, y, 7, G_LEVELS[-1] + TS, G_LEVELS[-1] + TS + 7))
+    ref.append(cyl("REF_nakretka_kolpakowa_M4", (0.75, 0.75, 0.70), x, y, 7, lv[-1] + TS, lv[-1] + TS + 7))
     ref.append(cyl("REF_sruba_M4_spod_pokrywy", BLACK, x, y, 7, Z_COV - 3, Z_COV))
 for k, (x, y) in enumerate([ob(xx, 100.0) for xx in (60.0, 100.0, 180.0, 260.0, 300.0)]):
     ref.append(box("REF_kondensatory_pod_plytka_%d" % k, (0.7, 0.15, 0.12), x - 20, y - 10, ZB - OB_BOTTOM_H, x + 20, y + 10, ZB))

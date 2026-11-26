@@ -45,10 +45,14 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
     - 9 otworow fi 3,4 na tuleje plytki Onyxa; bez otworow na tuleje 100 mm w rogach;
     - puszka selektora pod plytka, z przodu z lewej (X 24-136, Y 150-210);
     - bez pierscieni otworow pod podstawki KT88; wentylacja pod srodkiem plytki (Y 156-196).
-  OSLONA LAMP (SS_oslona_lamp_dolna / srodkowa / gorna) - stal nierdzewna 2,5 mm (2-3 mm), laser
+  OSLONA LAMP (SS_oslona_lamp_C_dolna / _srodkowa / _gorna_KT88) - stal nierdzewna 2,5 mm (2-3 mm), laser
     - lampy zmierzone (26.11.2026): KT88 fi 53 x 103 mm, 6SN7 fi 46 x 89 mm (od spodu cokolu do czubka,
       bez pinow); spod cokolu = wierzch pokrywy (Z 106): czubek KT88 Z 209, 6SN7 Z 195;
-    - 3 jednakowe ramki, spody na Z 141 / 178,5 / 216 (gorna ramka 7 mm nad czubkiem KT88);
+    - ramki 1 (dolna) i 2 (srodkowa) jednakowe, obejmuja wszystkie lampy: spody na Z 141 i 183,5,
+      ramka 2 ok. 9 mm ponizej czubka 6SN7;
+    - ramka 3 (gorna_KT88) tylko wokol KT88: spod Z 201, ok. 5,5 mm ponizej czubka KT88 (kopuly wystaja);
+      tyl jak w ramkach 1-2, przod polokragle obwodki, 2 ucha do slupkow miedzy rzedami.
+      Rysunki: oslona_lamp_wariant_C_z_gory.png (ramki 1-2), oslona_lamp_gorna_KT88_z_gory.png;
     - luz 5 mm na promieniu: otwor KT88 fi 63, otwor 6SN7 fi 56; obwodka 5 mm;
     - WARIANT C (w STEP i DXF/): tyl i srodek jak w B, przod jak boki - polokragle obwodki 6SN7,
       w miejscu slupka przewezenie z polokraglymi wcieciami z obu stron. Rysunek: oslona_lamp_wariant_C_z_gory.png;
@@ -64,9 +68,11 @@ ZMIANY WZGLEDEM SOLOIST 88 v0.4
       (min. 4 mm blachy wokol) - srubokret do fi 6 przechodzi przez wszystkie ramki (tylko wariant B/C);
     - 6 slupkow M4: przod miedzy 6SN7 w osi lamp (X 100 / 300, Y 172), miedzy 6SN7 i KT88 na skrajnych
       lampach (X 50 / 350, Y 215), tyl miedzy KT88 na srodku mostka (X 100 / 300, Y 288,5);
-      pozostale polaczenia ramki bez slupkow (ten sam ksztalt, bez otworu). Od spodu pokrywy sruba M4
+      pozostale polaczenia ramki bez slupkow (ten sam ksztalt, bez otworu). Slupki przednie (miedzy 6SN7)
+      koncza sie na ramce 2; ramka 3 stoi na 4 slupkach: srodkowych (X 50 / 350) i tylnych (X 100 / 300). Od spodu pokrywy sruba M4
       (leb pod pokrywa, ok. 10 mm nad plytka Onyxa - sprawdzic, czy w tych miejscach nie ma na plytce
-      wysokich elementow), tuleje M4 zensko-meskie 35 / 35 / 35 mm, na gorze nakretki kolpakowe.
+      wysokich elementow), tuleje M4 zensko-meskie: pokrywa-ramka 1 35 mm (6 szt.), ramka 1-2 40 mm (6 szt.), ramka 2-3 15 mm
+      (4 szt.); nakretki kolpakowe: 2 na ramce 2 (przod), 4 na ramce 3.
       Pokrywa ma 6 otworow fi 4,5.
   OBUDOWA TRANSFORMATOROW (W3)
     - DACH (AL_trafo_dach): bez wentylacji; 4 gniazda 20 x 3 na zaczepy tylnej scianki.
