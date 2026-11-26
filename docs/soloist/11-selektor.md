@@ -406,6 +406,8 @@ Podgląd schematu: [`img/selektor_schemat.png`](img/selektor_schemat.png).
 
 ## 14. Zamawianie: JLCPCB i LCSC
 
+> **Williamson (27.11.2026):** wszystko lutowane ręcznie, bez montażu w JLCPCB (z JLCPCB tylko gołe płytki). Elementy selektora: [`pcb/selektor/selektor_BOM_LCSC.csv`](../../pcb/selektor/selektor_BOM_LCSC.csv), a wspólne zamówienie wszystkich płytek: [`bom/lcsc_zamowienie.csv`](../../bom/lcsc_zamowienie.csv). Sekcja 14.1 zostaje jako informacja z projektu Soloist.
+
 ### 14.1 Montaż w JLCPCB (PCBA)
 
 Montaż SMD w JLCPCB jest powtarzalny przy typowych elementach (lutowanie rozpływowe, inspekcja AOI). Problemy wynikają zwykle z projektu, najczęściej z obróconych elementów w pliku CPL.

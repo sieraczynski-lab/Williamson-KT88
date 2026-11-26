@@ -45,7 +45,21 @@ D. Płytka głośników + VU (pcb/glosniki);Rezystor 1 kΩ;"1 kΩ; 1–5 %; ≥ 
 D. Płytka głośników + VU (pcb/glosniki);Kondensator 1 nF;"1 nF; C0G/NP0; ≥ 50 V; raster 5 mm";2;0;2;zalecane;C2170624;K102J15C0GF5TH5;LCSC;C1, C2;Tor VU
 D. Płytka głośników + VU (pcb/glosniki);Kondensator 10 µF;"10 µF; elektrolit; ≥ 16 V; Ø5–6,3 mm";1;0;1;zalecane;C216288;RL1C100MC110A00CV0 (raster 2 mm);LCSC;C3;Tor VU
 D. Płytka głośników + VU (pcb/glosniki);Dioda Schottky;"BAT85 lub BAT42; DO-35; 30 V";4;0;4;zalecane;C2798198;BAT42 (BAT85 w LCSC brak);LCSC;D3–D6;Tor VU
-E. Płytka sterowania (pcb/sterowanie);SMD – montaż w JLCPCB wg sterowanie_BOM_JLCPCB.csv;1N4148W, rezystory/kondensatory 0805, ULN2803, 2x ADS1115, MCP4728, LM324;1;0;1;konieczne;;sterowanie_BOM_JLCPCB.csv;JLCPCB (montaż);U3–U7, R, C, D;Zamawiasz razem z płytką
+E. Płytka sterowania (pcb/sterowanie);Dioda 1N4148W;"dioda sygnałowa; 75–100 V; 150 mA; SOD-123";13;2;15;konieczne;C81598;1N4148W;LCSC;D1–D13;SMD – montaż ręczny.
+E. Płytka sterowania (pcb/sterowanie);Rezystor 10 kΩ 0805;"10 kΩ; 1 %; 0805; 0,125 W";15;3;18;konieczne;C17414;UNI-ROYAL 0805W8F1002T5E;LCSC;R1–R4, R6, R7, R11–R14, R19–R22, R36;SMD – montaż ręczny.
+E. Płytka sterowania (pcb/sterowanie);Rezystor 20 kΩ 0805;"20 kΩ; 1 %; 0805";4;1;5;konieczne;C4328;UNI-ROYAL 0805W8F2002T5E;LCSC;R15–R18;SMD – montaż ręczny. wzmocnienie x3 (LM324)
+E. Płytka sterowania (pcb/sterowanie);Rezystor 68 kΩ 0805;"68 kΩ; 1 %; 0805";4;1;5;konieczne;C17801;UNI-ROYAL 0805W8F6802T5E;LCSC;R23–R26;SMD – montaż ręczny. przesuwnik poziomu biasu
+E. Płytka sterowania (pcb/sterowanie);Rezystor 33 kΩ 0805;"33 kΩ; 1 %; 0805";4;1;5;konieczne;C17633;UNI-ROYAL 0805W8F3302T5E;LCSC;R27–R30;SMD – montaż ręczny. przesuwnik poziomu biasu
+E. Płytka sterowania (pcb/sterowanie);Rezystor 1 kΩ 0805;"1 kΩ; 1 %; 0805";4;1;5;konieczne;C17513;UNI-ROYAL 0805W8F1001T5E;LCSC;R31–R34;SMD – montaż ręczny.
+E. Płytka sterowania (pcb/sterowanie);Rezystor 4,7 kΩ 0805;"4,7 kΩ; 1 %; 0805";3;1;4;konieczne;C17673;UNI-ROYAL 0805W8F4701T5E;LCSC;R8–R10;SMD – montaż ręczny. I2C, DS18B20
+E. Płytka sterowania (pcb/sterowanie);Rezystor 1 kΩ 1206;"1 kΩ; 1 %; 1206; 0,25 W";1;1;2;konieczne;C4410;UNI-ROYAL 1206W4F1001T5E;LCSC;R35;SMD – montaż ręczny. wejście trigger 12 V
+E. Płytka sterowania (pcb/sterowanie);Rezystor 330 kΩ 1206;"330 kΩ; 1 %; 1206; ≥ 200 V";1;1;2;konieczne;C17929;UNI-ROYAL 1206W4F3303T5E;LCSC;R5;SMD – montaż ręczny. pomiar −78 V
+E. Płytka sterowania (pcb/sterowanie);Kondensator 100 nF 0805;"100 nF; X7R; ≥ 25 V; 0805";5;2;7;konieczne;C49678;Yageo CC0805KRX7R9BB104;LCSC;C9–C12, C17;SMD – montaż ręczny.
+E. Płytka sterowania (pcb/sterowanie);Kondensator 1 µF 0805;"1 µF; X7R; 50 V; 0805";10;2;12;konieczne;C28323;Samsung CL21B105KBFNNNE;LCSC;C3–C8, C13–C16;SMD – montaż ręczny.
+E. Płytka sterowania (pcb/sterowanie);Układ ULN2803 SOP-18;"8 x Darlington; SOP-18 szeroka (7,5 mm)";1;0;1;konieczne;C33924;UTC ULN2803G-S18-R;LCSC;U3;SMD – montaż ręczny. sterownik przekaźników
+E. Płytka sterowania (pcb/sterowanie);Przetwornik ADC ADS1115;"16 bit; I2C; MSOP-10 (raster 0,5 mm)";2;1;3;konieczne;C37593;TI ADS1115IDGSR;LCSC;U4, U5;SMD – montaż ręczny. raster 0,5 mm: lutować z topnikiem, zapas na wszelki wypadek
+E. Płytka sterowania (pcb/sterowanie);Przetwornik DAC MCP4728;"4 x 12 bit; I2C; MSOP-10 (raster 0,5 mm)";1;1;2;konieczne;C108207;Microchip MCP4728-E/UN;LCSC;U6;SMD – montaż ręczny. raster 0,5 mm: jak wyżej
+E. Płytka sterowania (pcb/sterowanie);Wzmacniacz operacyjny LM324;"4 x op-amp; zasilanie 12 V; SOIC-14";1;0;1;konieczne;C7943;TI LM324DR;LCSC;U7;SMD – montaż ręczny.
 E. Płytka sterowania (pcb/sterowanie);Kondensator 100 µF 25 V;"100 µF; ≥ 25 V; Ø6,3 mm; raster 2,5 mm";2;0;2;konieczne;C112509;ERS1EM101E11OT;LCSC;C1, C2;
 E. Płytka sterowania (pcb/sterowanie);Złącze śrubowe 2P 5,08 mm (230 V);"2 piny; raster 5,08 mm; ≥ 250 V";1;0;1;konieczne;C474952;KF128-5.08-2P;LCSC;J1;
 E. Płytka sterowania (pcb/sterowanie);Zasilacz 12 V;Mean Well IRM-15-12 (12 V, 1,25 A);1;0;1;konieczne;C6394169;Mean Well IRM-15-12;LCSC;PS1;Sprawdź footprint z LCSC

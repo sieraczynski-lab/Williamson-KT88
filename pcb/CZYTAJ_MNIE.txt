@@ -26,11 +26,13 @@ PLIKI W KAZDYM FOLDERZE (zasilacz, sterowanie, ul, glosniki)
   KiCad4_dla_EasyEDA_Standard/, KiCad5_dla_EasyEDA_Pro_i_KiCad8/ - te same projekty rozpakowane
   <plytka>_BOM.csv, _netlista.csv, _klasy_sieci.csv, _rozmieszczenie.png/.svg
   <plytka>_rozmieszczenie_1do1.pdf  - do wydruku 100% (sterowanie, selektor)
-  <plytka>_BOM_LCSC.xlsx            - czesci z numerami LCSC (sterowanie)
-  sterowanie/sterowanie_BOM_JLCPCB.csv - montaz SMD w JLCPCB
+  <plytka>_BOM_LCSC.csv             - do wgrania w LCSC BOM Tool (lcsc.com/bom), ilosci z zapasem
+  <plytka>_BOM_LCSC.xlsx            - to samo + czesci spoza LCSC
+  WSZYSTKO MONTOWANE RECZNIE (takze SMD na sterowaniu i selektorze) - bez montazu w JLCPCB.
+  Jedno zamowienie na wszystkie plytki + Onyx + front/tyl: bom/lcsc_zamowienie.csv / .xlsx
+  (generator: python3 narzedzia/bom/lcsc.py, zrodlo: bom/lcsc_plytki_williamson.csv).
 Selektor (projekt KiCad pisany osobno, narzedzia/selektor/): ten sam komplet plikow (selektor_BOM.csv,
-  _netlista, _klasy_sieci, _rozmieszczenie .png/.svg/_1do1.pdf, _BOM_LCSC.xlsx) plus montaz SMD w JLCPCB:
-  selektor_BOM_JLCPCB.csv + selektor_CPL_JLCPCB.csv. Import: import_EasyEDA/selektor_EasyEDA_Pro_KiCad5.zip
+  _netlista, _klasy_sieci, _rozmieszczenie .png/.svg/_1do1.pdf, _BOM_LCSC.csv/.xlsx). Import: import_EasyEDA/selektor_EasyEDA_Pro_KiCad5.zip
   (EasyEDA Pro) albo selektor_KiCad8.zip; wersji dla EasyEDA Standard nie ma. Zrodlo: selektor/kicad.
 
 KLASY SIECI (szerokosci sciezek i odstepy) sa zapisane w plikach .kicad_pcb (net_class) -

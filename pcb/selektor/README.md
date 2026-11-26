@@ -11,12 +11,11 @@ Status: **v0.5**: schemat gotowy, elementy rozmieszczone, ścieżki do poprowadz
 | Folder | Zawartość |
 |---|---|
 | [`docs/soloist/11-selektor.md`](../../docs/soloist/11-selektor.md) | **Pełna dokumentacja**: decyzje projektowe, drabinka, sterowanie, integracja z płytką sterowania, masy i ekranowanie, dopasowanie do EF86, firmware, zakupy, montaż, otwarte punkty |
-| [`kicad/`](kicad/) | Projekt KiCad 8/9 + BOM-y (`BOM.csv`, `JLCPCB_BOM.csv`, `LCSC_zamowienie.csv`) |
+| [`kicad/`](kicad/) | Projekt KiCad 8/9 + BOM-y (`BOM.csv`; `JLCPCB_BOM.csv` i `LCSC_zamowienie.csv` to pliki generatora Soloista, nieużywane: zamawiamy wg `selektor_BOM_LCSC.csv`) |
 | [`kicad5-easyeda/`](kicad5-easyeda/) | Ten sam projekt w formacie KiCad 5.1 do importu w EasyEDA Pro |
 | [`narzedzia/selektor/`](../../narzedzia/selektor/) | Skrypty generujące, weryfikujące i eksportujące projekt (Python); `eksport.py` robi pliki poniżej |
 | `selektor_BOM.csv`, `selektor_netlista.csv`, `selektor_klasy_sieci.csv`, `selektor_rozmieszczenie.png/.svg`, `selektor_rozmieszczenie_1do1.pdf`, `selektor_schemat.png` | Ten sam komplet plików co przy pozostałych płytkach |
-| `selektor_BOM_JLCPCB.csv`, `selektor_CPL_JLCPCB.csv` | Montaż SMD w JLCPCB: BOM i pozycje elementów (po trasowaniu w EasyEDA lepiej wziąć CPL wygenerowany przez EasyEDA) |
-| `selektor_BOM_LCSC.xlsx` | Części z LCSC na 1 płytkę, z zapasem |
+| `selektor_BOM_LCSC.csv`, `selektor_BOM_LCSC.xlsx` | Części z LCSC na 1 płytkę (montaż ręczny, także SMD), do wgrania w LCSC BOM Tool. Wspólne zamówienie wszystkich płytek: [`bom/lcsc_zamowienie.csv`](../../bom/lcsc_zamowienie.csv) |
 | `import_EasyEDA/` | `selektor_EasyEDA_Pro_KiCad5.zip` (EasyEDA Pro: Import > KiCad), `selektor_KiCad8.zip` (KiCad 8/9). Wersji dla EasyEDA Standard (KiCad 4) nie ma |
 
 ## Najważniejsze w skrócie

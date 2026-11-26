@@ -1,0 +1,24 @@
+﻿Quantity,LCSC Part Number,Manufacturer Part Number,Description,Customer Remarks
+15,C81598,1N4148W,Dioda 1N4148W: dioda sygnałowa; 75–100 V; 150 mA; SOD-123,D1–D13
+18,C17414,0805W8F1002T5E,"Rezystor 10 kΩ 0805: 10 kΩ; 1 %; 0805; 0,125 W","R1–R4, R6, R7, R11–R14, R19–R22, R36"
+5,C4328,0805W8F2002T5E,Rezystor 20 kΩ 0805: 20 kΩ; 1 %; 0805,R15–R18
+5,C17801,0805W8F6802T5E,Rezystor 68 kΩ 0805: 68 kΩ; 1 %; 0805,R23–R26
+5,C17633,0805W8F3302T5E,Rezystor 33 kΩ 0805: 33 kΩ; 1 %; 0805,R27–R30
+5,C17513,0805W8F1001T5E,Rezystor 1 kΩ 0805: 1 kΩ; 1 %; 0805,R31–R34
+4,C17673,0805W8F4701T5E,"Rezystor 4,7 kΩ 0805: 4,7 kΩ; 1 %; 0805",R8–R10
+2,C4410,1206W4F1001T5E,"Rezystor 1 kΩ 1206: 1 kΩ; 1 %; 1206; 0,25 W",R35
+2,C17929,1206W4F3303T5E,Rezystor 330 kΩ 1206: 330 kΩ; 1 %; 1206; ≥ 200 V,R5
+7,C49678,CC0805KRX7R9BB104,Kondensator 100 nF 0805: 100 nF; X7R; ≥ 25 V; 0805,"C9–C12, C17"
+12,C28323,CL21B105KBFNNNE,Kondensator 1 µF 0805: 1 µF; X7R; 50 V; 0805,"C3–C8, C13–C16"
+1,C33924,ULN2803G-S18-R,"Układ ULN2803 SOP-18: 8 x Darlington; SOP-18 szeroka (7,5 mm)",U3
+3,C37593,ADS1115IDGSR,"Przetwornik ADC ADS1115: 16 bit; I2C; MSOP-10 (raster 0,5 mm)","U4, U5"
+2,C108207,MCP4728-E/UN,"Przetwornik DAC MCP4728: 4 x 12 bit; I2C; MSOP-10 (raster 0,5 mm)",U6
+1,C7943,LM324DR,Wzmacniacz operacyjny LM324: 4 x op-amp; zasilanie 12 V; SOIC-14,U7
+2,C112509,ERS1EM101E11OT,"Kondensator 100 µF 25 V: 100 µF; ≥ 25 V; Ø6,3 mm; raster 2,5 mm","C1, C2"
+1,C474952,KF128-5.08-2P-AA,"Złącze śrubowe 2P 5,08 mm (230 V): 2 piny; raster 5,08 mm; ≥ 250 V",J1
+1,C6394169,IRM-15-12,"Zasilacz 12 V: Mean Well IRM-15-12 (12 V, 1,25 A)",PS1
+2,C124410,B-2200S20P-A120,"Listwa żeńska 1x20: 2,54 mm",U1
+2,C124411,B-2200S02P-A120,"Listwa żeńska 1x2: 2,54 mm",U1
+1,C96006,PC817X2NSZ9F,Transoptor PC817: DIP-4,U8
+1,C74252,2.54-1*40P反高弯,"Listwa kołkowa kątowa 1x40: 2,54 mm (do cięcia)","J2, J3, J6–J9, J11, J13"
+1,C2337,2.54-1*40P直针,"Listwa kołkowa prosta 1x40: 2,54 mm (do cięcia)","J4, J5, J10, J12"

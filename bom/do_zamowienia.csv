@@ -58,7 +58,7 @@
 40;F. Transformatory, lampy;TG;Transformator głośnikowy TTG-KT88PP;"4 kΩ, UL 43 %, 4/8 Ω; fi 115 x 65 mm";2;0;konieczne;toroidy.pl;
 41;F. Transformatory, lampy;V5–V8;KT88;;4;0;masz;–;
 42;F. Transformatory, lampy;V1, V2;6SN7 Psvane UK-6SN7 Plus;;4;0;kupione;–;"⌀46 x 89 mm (zmierzone); osłona: otwór ⌀56"
-43;G. Płytki PCB;zasilacz, UL, sterowanie, głośniki, selektor;Płytki PCB + elementy;wg BOM w pcb/*/;1;0;konieczne;JLCPCB / LCSC / TME;SMD montuje JLCPCB: sterowanie (sterowanie_BOM_JLCPCB.csv) i selektor (selektor_BOM_JLCPCB.csv + selektor_CPL_JLCPCB.csv)
+43;G. Płytki PCB;zasilacz, UL, sterowanie, głośniki, selektor;Płytki PCB + elementy;wg BOM w pcb/*/;1;0;konieczne;PCB: JLCPCB (bez montażu); elementy: LCSC / TME;Wszystko montowane ręcznie, także SMD (sterowanie, selektor). Elementy z LCSC: bom/lcsc_zamowienie.csv (do LCSC BOM Tool), osobno na płytkę pcb/*/*_BOM_LCSC.csv
 44;H. Front i sterowanie;IR (sterowanie J7);Odbiornik IR TSOP38238;38 kHz, 3,3 V;1;1;konieczne;LCSC C141632 / TME;"Na froncie za okienkiem; przy odbiorniku 100 Ω + 10 µF"
 45;H. Front i sterowanie;front;Okienko IR;ciemny akryl / filtr IR ok. 10 x 10 mm;1;0;opcjonalne;sklep;
 46;H. Front i sterowanie;pilot;Pilot IR;dowolny (NEC / RC5 / RC6);1;0;opcjonalne;sklep;Niepotrzebny, jeśli wystarczą wolne przyciski pilota Marantza (nauka kodów)

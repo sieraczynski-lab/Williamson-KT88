@@ -1,0 +1,318 @@
+{
+ "C2337": {
+  "mpn": "2.54-1*40P直针",
+  "opis": "54mm 2.5mm 3A 3mm 40P 6mm Black Brass Gold Pin Header Through Hole 插件,P=2.54mm Pin Headers"
+ },
+ "C4328": {
+  "mpn": "0805W8F2002T5E",
+  "opis": ""
+ },
+ "C4410": {
+  "mpn": "1206W4F1001T5E",
+  "opis": ""
+ },
+ "C7943": {
+  "mpn": "LM324DR",
+  "opis": ""
+ },
+ "C8465": {
+  "mpn": "WJ500V-5.08-2P",
+  "opis": "30 18A 1x2P 2 2.5 250V 2P 5.08mm Green M2.5 Through Hole 插件,P=5.08mm Screw Terminal Blocks"
+ },
+ "C13585": {
+  "mpn": "CL31A106KBHNNNE",
+  "opis": "10u/10V C_1206_3216Metric"
+ },
+ "C17414": {
+  "mpn": "0805W8F1002T5E",
+  "opis": "10k R_0805_2012Metric"
+ },
+ "C17513": {
+  "mpn": "0805W8F1001T5E",
+  "opis": "1k R_0805_2012Metric"
+ },
+ "C17633": {
+  "mpn": "0805W8F3302T5E",
+  "opis": ""
+ },
+ "C17673": {
+  "mpn": "0805W8F4701T5E",
+  "opis": "4.7k R_0805_2012Metric"
+ },
+ "C17801": {
+  "mpn": "0805W8F6802T5E",
+  "opis": ""
+ },
+ "C17929": {
+  "mpn": "1206W4F3303T5E",
+  "opis": ""
+ },
+ "C28323": {
+  "mpn": "CL21B105KBFNNNE",
+  "opis": ""
+ },
+ "C33924": {
+  "mpn": "ULN2803G-S18-R",
+  "opis": "ULN2803A SOIC-18W_7.5x11.6mm_P1.27mm"
+ },
+ "C37593": {
+  "mpn": "ADS1115IDGSR",
+  "opis": ""
+ },
+ "C47023": {
+  "mpn": "MCP23017-E/SO",
+  "opis": "MCP23017 SOIC-28W_7.5x17.9mm_P1.27mm"
+ },
+ "C49257": {
+  "mpn": "2.54-1*3P针",
+  "opis": ".54mm 2.5mm 3A 3P 3mm 6mm Black Brass Gold Pin Header Through Hole 插件,P=2.54mm Pin Headers"
+ },
+ "C49678": {
+  "mpn": "CC0805KRX7R9BB104",
+  "opis": "100n C_0805_2012Metric"
+ },
+ "C58717": {
+  "mpn": "MFR02SF1000A10",
+  "opis": "100Ω 2W 500V Metal Film Resistor ±1% ±50ppm/℃ 插件,D4xL11.5mm Through Hole Resistors"
+ },
+ "C58751": {
+  "mpn": "MFR03SF100JA10",
+  "opis": "10Ω 3W 500V Metal Film Resistor ±1% ±50ppm/℃ 插件,D5xL15.5mm Through Hole Resistors"
+ },
+ "C61458": {
+  "mpn": "G2RL-2-DC12",
+  "opis": "-CO) 360Ω 400mW 5ms 8A@250VAC、8A@30VDC Silver Alloy (Cd-Free) DIP,28.8x12.5mm Power Relays"
+ },
+ "C74252": {
+  "mpn": "2.54-1*40P反高弯",
+  "opis": "+105℃ 1 1x40P 2.54mm 3A 40P 6mm Black Brass Pin Header Right Angle 弯插,P=2.54mm Pin Headers"
+ },
+ "C81598": {
+  "mpn": "1N4148W",
+  "opis": "150mA 1A 1V@50mA 1uA@75V 400mW 4ns 75V Independent SOD-123 Switching Diodes"
+ },
+ "C82511": {
+  "mpn": "MFR01SF2203A10",
+  "opis": "1W 220kΩ 350V Metal Film Resistor ±1% ±50ppm/℃ 插件,D3.5xL9.5mm Through Hole Resistors"
+ },
+ "C96006": {
+  "mpn": "PC817X2NSZ9F",
+  "opis": "Transoptor PC817 (wejscie trigger)"
+ },
+ "C108207": {
+  "mpn": "MCP4728-E/UN",
+  "opis": ""
+ },
+ "C110775": {
+  "mpn": "RT0805BRD0710KL",
+  "opis": "10.0k R_0805_2012Metric"
+ },
+ "C112509": {
+  "mpn": "ERS1EM101E11OT",
+  "opis": " 2.5mm 25V 5000hrs@105℃ 6.3mm ±20% 插件,D6.3xL11mm Aluminum Electrolytic Capacitors - Leaded"
+ },
+ "C124410": {
+  "mpn": "B-2200S20P-A120",
+  "opis": " 1 1A 1x20P 2.54mm 20P 8.5mm Brass Square Hole Through Hole Top 插件,P=2.54mm Female Headers"
+ },
+ "C124411": {
+  "mpn": "B-2200S02P-A120",
+  "opis": "5℃ 1 1A 1x2P 2.54mm 2P 8.5mm Brass Square Hole Through Hole Top 插件,P=2.54mm Female Headers"
+ },
+ "C140573": {
+  "mpn": "SXH-001T-P0.6",
+  "opis": "JST XH pin do zaciskania, AWG 22-28"
+ },
+ "C141632": {
+  "mpn": "TSOP38238",
+  "opis": "-25℃~+85℃ 10mW 2.5V~5.5V 350uA 38kHz 45m ±45° SIP-3-2.54mm Infrared Remote Receiver (IRM)"
+ },
+ "C142705": {
+  "mpn": "021802.5MXP",
+  "opis": "5℃~+125℃ 2.5A 20mm 23.25 250V 35A@250VAC 5.2mm Glass Tube Fuse D5.2xL20mm Disposable fuses"
+ },
+ "C142727": {
+  "mpn": "0218.500MXP",
+  "opis": "-55℃~+125℃ 2.825 20mm 250V 35A 5.2mm 500mA Glass Tube Fuse D5.2xL20mm Disposable fuses"
+ },
+ "C142924": {
+  "mpn": "05200101Z",
+  "opis": "10A 20mm 5mm 600V Clip Cylindrical - Fuseholders"
+ },
+ "C143790": {
+  "mpn": "PEC11R-4215F-S0024",
+  "opis": "-30℃~+70℃ 10mA 24/24 5V Incremental Straight Two-phase output 插件 Rotary Encoders"
+ },
+ "C144394": {
+  "mpn": "B3B-XH-A(LF)(SN)",
+  "opis": "JST XH 3p gniazdo proste do PCB (J1-J5)"
+ },
+ "C144397": {
+  "mpn": "B6B-XH-A(LF)(SN)",
+  "opis": "JST XH 6p gniazdo do PCB (J6)"
+ },
+ "C144402": {
+  "mpn": "XHP-3",
+  "opis": "JST XH 3p wtyk (obudowa kabla)"
+ },
+ "C144405": {
+  "mpn": "XHP-6",
+  "opis": "JST XH 6p wtyk (obudowa kabla)"
+ },
+ "C149970": {
+  "mpn": "TR0805B32K4P0550Z",
+  "opis": "32.4k R_0805_2012Metric"
+ },
+ "C172965": {
+  "mpn": "MFR-25FTE52-100K",
+  "opis": "℃~+155℃ 100kΩ 250mW Metal Film Resistor ±1% ±50ppm/℃ 插件,D2.4xL6.3mm Through Hole Resistors"
+ },
+ "C172978": {
+  "mpn": "MFR-25FTE52-1K",
+  "opis": "55℃~+155℃ 1kΩ 250mW Metal Film Resistor ±1% ±50ppm/℃ 插件,D2.4xL6.3mm Through Hole Resistors"
+ },
+ "C173033": {
+  "mpn": "MFR-25FTE52-5K1",
+  "opis": "℃~+155℃ 250mW 5.1kΩ Metal Film Resistor ±1% ±50ppm/℃ 插件,D2.4xL6.3mm Through Hole Resistors"
+ },
+ "C187509": {
+  "mpn": "64800001009",
+  "opis": "20mm 250V 5mm 6.3A Fuse Holder Cover 插件,P=22.7mm Fuseholders"
+ },
+ "C216288": {
+  "mpn": "RL1C100MC110A00CV0",
+  "opis": "2000hrs@105℃ 2mm 50mA@120Hz 5mm ±20% 插件,D5xL11mm Aluminum Electrolytic Capacitors - Leaded"
+ },
+ "C326695": {
+  "mpn": "RT0805BRD076K2L",
+  "opis": "6.20k R_0805_2012Metric"
+ },
+ "C342579": {
+  "mpn": "FK26C0G2J101JN000",
+  "opis": "100pF 5mm 630V C0G ±5% Plugin,P=5mm Multilayer Ceramic Capacitors MLCC - Leaded"
+ },
+ "C349082": {
+  "mpn": "EWWR0010J100RT9",
+  "opis": "-55℃~+155℃ 100Ω 10W Wirewound Resistor ±250ppm/℃ ±5% 插件,D9xL36.5mm Through Hole Resistors"
+ },
+ "C349125": {
+  "mpn": "EWWR0010J47R0T9",
+  "opis": "-55℃~+155℃ 10W 47Ω Wirewound Resistor ±250ppm/℃ ±5% 插件,D9xL36.5mm Through Hole Resistors"
+ },
+ "C351587": {
+  "mpn": "PTFR0805B270RN9",
+  "opis": "270R R_0805_2012Metric"
+ },
+ "C374641": {
+  "mpn": "AR05BTB3751A010",
+  "opis": "3.75k R_0805_2012Metric"
+ },
+ "C376006": {
+  "mpn": "DS18B20(UMW)",
+  "opis": "-55℃~+125℃ 12bit 3V~5.5V 750ms Single-bus ±0.4℃ TO-92 Temperature Sensors"
+ },
+ "C390143": {
+  "mpn": "KP224J2G0702",
+  "opis": "-40℃~+105℃ 220nF 400V ±5% 插件,P=7.5mm Polypropylene Film Capacitors (CBB)"
+ },
+ "C397192": {
+  "mpn": "G6K-2F-Y-TR DC12",
+  "opis": " groups of conversions: 2C(Double-pole double-throw conversion) SMD,10x6.5mm Signal Relays"
+ },
+ "C402212": {
+  "mpn": "1N4148",
+  "opis": "1 Independent 150mA 1V@10mA 2A 4ns 500mW 5uA@75V 75V DO-35 Switching Diodes"
+ },
+ "C473284": {
+  "mpn": "ERA6AEB112V",
+  "opis": "1.10k R_0805_2012Metric"
+ },
+ "C474952": {
+  "mpn": "KF128-5.08-2P-AA",
+  "opis": "1 12~22 1x2P 2 2.5 24A 250V 2P 5.08mm Green Through Hole 插件,P=5.08mm Screw Terminal Blocks"
+ },
+ "C479096": {
+  "mpn": "PTFR0805B2K00P9",
+  "opis": "2.00k R_0805_2012Metric"
+ },
+ "C479464": {
+  "mpn": "MO2WS-270Ω±5%-6T63",
+  "opis": " 270Ω 2W 400V Metal Oxide Film Resistor ±350ppm/℃ ±5% 插件,D4.5xL11mm Through Hole Resistors"
+ },
+ "C480591": {
+  "mpn": "1731734",
+  "opis": "1 12~30 1x3P 24A 3 3P 500V 7.62mm Green Through Hole 插件,P=7.62mm Screw Terminal Blocks"
+ },
+ "C492401": {
+  "mpn": "PZ254V-11-02P",
+  "opis": " 250V 2P 3A 3mm 6.1mm Black Brass Gold Square pin Through Hole Plugin,P=2.54mm Pin Headers"
+ },
+ "C492412": {
+  "mpn": "PZ254R-11-04P",
+  "opis": "x4P 2.54mm 2.5mm 250V 3A 4P 6mm Black Brass Pin Header Right Angle 弯插,P=2.54mm Pin Headers"
+ },
+ "C581337": {
+  "mpn": "DG636-7.62-02P-14-00A(H)",
+  "opis": "05℃ 1 10~26 1x2P 2 2P 32A 630V 7.62mm Green Through Hole 插件,P=7.62mm Screw Terminal Blocks"
+ },
+ "C601895": {
+  "mpn": "MF1/2W-15K±1%-XT52",
+  "opis": "155℃ 15kΩ 350V 500mW Metal Film Resistor ±1% ±100ppm/℃ 插件,D3.5xL9mm Through Hole Resistors"
+ },
+ "C728655": {
+  "mpn": "RT0805BRD076K81L",
+  "opis": "6.81k R_0805_2012Metric"
+ },
+ "C728657": {
+  "mpn": "RT0805BRD0780K6L",
+  "opis": "80.6k R_0805_2012Metric"
+ },
+ "C779429": {
+  "mpn": "TZ-L2-03YYBR2RDJ30-003",
+  "opis": "ens 600mcd 60mW 620nm~625nm Discrete Diode Red Red Lens 插件,D=3mm LED Indication - Discrete"
+ },
+ "C1364508": {
+  "mpn": "MBB02070C6802FCT00",
+  "opis": "5℃~+155℃ 600mW 68kΩ Metal Film Resistor ±1% ±50ppm/℃ 插件,D2.5xL6.5mm Through Hole Resistors"
+ },
+ "C1365660": {
+  "mpn": "VR37000001004FR500",
+  "opis": "-55℃~+155℃ 1MΩ 500mW Metal Film Resistors ±1% ±200ppm/℃ 插件,D4xL9mm Through Hole Resistors"
+ },
+ "C1373572": {
+  "mpn": "MFR50SFTE52-1K2",
+  "opis": "℃~+155℃ 1.2kΩ 500mW Metal Film Resistor ±1% ±50ppm/℃ 插件,D2.4xL6.3mm Through Hole Resistors"
+ },
+ "C1387676": {
+  "mpn": "CFR3WSJT-73-300K",
+  "opis": "℃~0ppm/℃ -55℃~+155℃ 300kΩ 3W Carbon Film Resistor ±5% 插件,D5xL15.5mm Through Hole Resistors"
+ },
+ "C1741174": {
+  "mpn": "CMF5510R000BHEA",
+  "opis": "℃~+175℃ 10Ω 500mW Metal Film Resistor ±0.1% ±50ppm/℃ 插件,D2.3xL6.1mm Through Hole Resistors"
+ },
+ "C2170624": {
+  "mpn": "K102J15C0GF5TH5",
+  "opis": "1nF 50V 5mm C0G ±5% Plugin,P=5mm Multilayer Ceramic Capacitors MLCC - Leaded"
+ },
+ "C2763986": {
+  "mpn": "CFC2J474JE1IL50WA100",
+  "opis": "-40℃~+105℃ 470nF 630V ±5% 插件,P=10mm Polypropylene Film Capacitors (CBB)"
+ },
+ "C2798198": {
+  "mpn": "BAT42",
+  "opis": "-65℃~+125℃ 200mA 30V 4A 500nA@25V 650mV@50mA Independent DO-35 Schottky Diodes"
+ },
+ "C6394169": {
+  "mpn": "IRM-15-12",
+  "opis": "Zasilacz Mean Well IRM-15-12 (12 V / 1,25 A)"
+ },
+ "C21571502": {
+  "mpn": "TC0525B9101T5G",
+  "opis": "9.10k R_0805_2012Metric"
+ },
+ "C47115938": {
+  "mpn": "PTFR0805B17K4P9",
+  "opis": "17.4k R_0805_2012Metric"
+ }
+}

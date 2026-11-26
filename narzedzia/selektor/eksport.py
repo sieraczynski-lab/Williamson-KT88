@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Pliki selektora w tym samym ukladzie co pozostale plytki Williamsona (pcb/selektor/):
-BOM, BOM JLCPCB, pozycje elementow (CPL), netlista, klasy sieci, wydruk 1:1, BOM LCSC (xlsx), paczki do importu.
+BOM, netlista, klasy sieci, wydruk 1:1, BOM LCSC (csv + xlsx, montaz reczny), paczki do importu.
 Zrodlo: projekt KiCad w pcb/selektor/kicad (po trasowaniu sciezek to on jest zrodlem prawdy).
 Uzycie: python3 narzedzia/selektor/eksport.py   (po verify.py i render.py)"""
 import csv, json, math, os, re, sys, zipfile
@@ -80,20 +80,7 @@ with open(os.path.join(ROOT, NAME + "_BOM.csv"), "w", newline="", encoding="utf-
         w.writerow([ref, bi.get("Wartość", val), fpn, "GORA" if layer.startswith("F") else "DOL",
                     "%.2f" % (X - X0), "%.2f" % (Y - Y0), bi.get("LCSC", ""), bi.get("Uwagi", "")])
 
-# 2. BOM JLCPCB (montaz SMD) - kopia + 3. pozycje elementow (CPL) do montazu
-with open(os.path.join(K8, "JLCPCB_BOM.csv"), encoding="utf-8") as src, \
-        open(os.path.join(ROOT, NAME + "_BOM_JLCPCB.csv"), "w", encoding="utf-8") as dst:
-    dst.write(src.read())
-jlc_refs = set()
-with open(os.path.join(K8, "JLCPCB_BOM.csv"), encoding="utf-8") as fh:
-    for r in csv.DictReader(fh):
-        jlc_refs |= {x.strip() for x in r["Designator"].split(",")}
-with open(os.path.join(ROOT, NAME + "_CPL_JLCPCB.csv"), "w", newline="", encoding="utf-8") as fh:
-    w = csv.writer(fh)
-    w.writerow(["Designator", "Mid X", "Mid Y", "Layer", "Rotation"])
-    for ref, val, fpn, layer, X, Y, A, _ in sorted(fps, key=lambda f: key(f[0])):
-        if ref in jlc_refs:
-            w.writerow([ref, "%.3fmm" % (X - X0), "%.3fmm" % (Y1 - Y), "Top" if layer.startswith("F") else "Bottom", "%g" % A])
+# 2-3. (bez montazu w JLCPCB: wszystko lutowane recznie, czesci z LCSC - patrz krok 7)
 
 # 4. netlista
 with open(os.path.join(ROOT, NAME + "_netlista.csv"), "w", newline="", encoding="utf-8-sig") as fh:
@@ -150,25 +137,9 @@ fig.text(0.5, 1 - 22 / 297, "Drukuj w skali 100 % (bez dopasowania do strony); s
 fig.savefig(os.path.join(ROOT, NAME + "_rozmieszczenie_1do1.pdf"))
 plt.close(fig)
 
-# 7. BOM LCSC (xlsx) dla 1 plytki
-try:
-    import openpyxl
-    from openpyxl.styles import Font
-    wb = openpyxl.Workbook(); ws = wb.active; ws.title = "BOM"
-    ws.append(["Williamson KT88 - selektor (1 plytka): czesci z LCSC. SMD moze zmontowac JLCPCB (selektor_BOM_JLCPCB.csv + selektor_CPL_JLCPCB.csv)."])
-    ws["A1"].font = Font(bold=True)
-    ws.append(["LCSC", "Producent / MPN", "Opis", "Oznaczenia", "Ilosc na plytke", "Do zamowienia (z zapasem)"])
-    for c in ws[2]: c.font = Font(bold=True)
-    with open(os.path.join(K8, "LCSC_zamowienie.csv"), encoding="utf-8") as fh:
-        for r in csv.DictReader(fh):
-            q = int(r["Qty per board"]) if r["Qty per board"].isdigit() else r["Qty per board"]
-            z = (q + (1 if q < 5 else 2)) if isinstance(q, int) else r["Quantity"]
-            ws.append([r["LCSC Part Number"], r["Manufacturer Part Number"], r["Description"], r["Designator"], q, z])
-    ws.append(["", "mini DC-DC step-down 3,3 V (4 piny, 14,17 x 8,24 mm)", "poza LCSC: Allegro / AliExpress", "U4", 1, 1])
-    for col, wdt in zip("ABCDEF", (12, 26, 40, 34, 14, 22)): ws.column_dimensions[col].width = wdt
-    wb.save(os.path.join(ROOT, NAME + "_BOM_LCSC.xlsx"))
-except ImportError:
-    print("brak openpyxl - pomijam xlsx")
+# 7. BOM LCSC (csv + xlsx) - wspolny generator dla wszystkich plytek (zrodlo: bom/lcsc_plytki_williamson.csv)
+import subprocess
+subprocess.run([sys.executable, os.path.join(HERE, "..", "bom", "lcsc.py")], check=False)
 
 # 8. paczki do importu
 os.makedirs(os.path.join(ROOT, "import_EasyEDA"), exist_ok=True)

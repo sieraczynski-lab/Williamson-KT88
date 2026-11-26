@@ -1,0 +1,12 @@
+﻿Quantity,LCSC Part Number,Manufacturer Part Number,Description,Customer Remarks
+2,C61458,G2RL-2-DC12,Przekaźnik: Omron G2RL-2-DC12,"K1, K2"
+2,C402212,1N4148,Dioda 1N4148: 1N4148; DO-35,"D1, D2"
+6,C8465,WJ500V-5.08-2P,"Złącze śrubowe 2P 5,08 mm: 2 piny; raster 5,08 mm; ≥ 10 A",J1–J6
+1,C492401,PZ254V-11-02P,"Goldpin 1x2 prosty: 2,54 mm",J7
+1,C492412,PZ254R-11-04P,"Goldpin 1x4 kątowy: 2,54 mm",J8
+2,C172965,MFR-25FTE52-100K,"Rezystor 100 kΩ: 100 kΩ; 1 %; ≥ 0,25 W; metalizowany","R1, R2"
+2,C173033,MFR-25FTE52-5K1,"Rezystor 5,1 kΩ: 5,1 kΩ; 1 %; ≥ 0,25 W","R3, R4"
+2,C172978,MFR-25FTE52-1K,"Rezystor 1 kΩ: 1 kΩ; 1–5 %; ≥ 0,25 W","R5, R6"
+2,C2170624,K102J15C0GF5TH5,Kondensator 1 nF: 1 nF; C0G/NP0; ≥ 50 V; raster 5 mm,"C1, C2"
+1,C216288,RL1C100MC110A00CV0,"Kondensator 10 µF: 10 µF; elektrolit; ≥ 16 V; Ø5–6,3 mm",C3
+4,C2798198,BAT42,Dioda Schottky: BAT85 lub BAT42; DO-35; 30 V,D3–D6

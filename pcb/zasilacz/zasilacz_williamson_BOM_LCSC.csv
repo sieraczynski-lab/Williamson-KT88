@@ -1,0 +1,14 @@
+﻿Quantity,LCSC Part Number,Manufacturer Part Number,Description,Customer Remarks
+4,C61458,G2RL-2-DC12,"Przekaźnik: Omron G2RL-2-DC12 (DPDT, 12 V, 8 A / 250 V AC)",K1–K4
+1,C349125,EWWR0010J47R0T9,Rezystor soft-start 47 Ω: 47 Ω; 10 W; cementowy lub drutowy; ≥ 350 V,R1
+1,C349082,EWWR0010J100RT9,Rezystor rozruchu anod 100 Ω: 100 Ω; 10 W; cementowy lub drutowy; ≥ 500 V,R2
+4,C1365660,VR37000001004FR500,"Rezystor dzielnika HV 1 MΩ: 1 MΩ; 1 %; wysokonapięciowy ≥ 1,6 kV (Vishay VR37); 0,5 W","R3, R4, R5"
+2,C601895,MF1/2W-15K±1%-XT52,"Rezystor dzielnika 15 kΩ: 15 kΩ; 1 %; 0,5 W; metalizowany",R6
+2,C82511,MFR01SF2203A10,Rezystor LED HV 220 kΩ: 220 kΩ; 1 W; ≥ 350 V; metalizowany,"R7, R8"
+2,C779429,TZ-L2-03YYBR2RDJ30-003,LED 3 mm czerwona: 3 mm; czerwona; wysoka jasność (świeci przy 1 mA),D1
+6,C402212,1N4148,Dioda 1N4148: 1N4148; DO-35,D2–D5
+2,C187509,64800001009,"Oprawka bezpiecznika 5x20 z pokrywką (230 V): 5x20; do druku; z pokrywką; ≥ 250 V; raster ~22,5 mm","F2, F4"
+3,C142727,0218.500MXP,Bezpiecznik T500 mA: 5x20; zwłoczny (T); 500 mA; 250 V,F2
+6,C8465,WJ500V-5.08-2P,"Złącze śrubowe 2P 5,08 mm: 2 piny; raster 5,08 mm; ≥ 250 V; ≥ 10 A","J1, J3, J5, J10, J11, J12"
+3,C581337,DG636-7.62-02P-14-00A(H),"Złącze śrubowe 2P 7,62 mm (360 V AC): 2 piny; raster 7,62 mm; ≥ 500 V","J7, J8, J9"
+2,C49257,2.54-1*3P针,"Goldpin 1x3 prosty: 2,54 mm","J16, J17"

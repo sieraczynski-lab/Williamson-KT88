@@ -1,0 +1,75 @@
+﻿Quantity,LCSC Part Number,Manufacturer Part Number,Description,Customer Remarks
+6,C58751,MFR03SF100JA10,"Rezystor pomiarowy 10 Ω: 10 Ω; tolerancja 1 % lub lepsza (0,5–0,1 % zalecane); metalizowany; 1–3 W; korpus pod raster 3 W (~17,5 mm); TK ≤ 100 ppm/K","A. Płytka Onyxa R123, R124, R223, R224"
+2,C1387676,CFR3WSJT-73-300K,Rezystor 300 kΩ: 300 kΩ; 2–3 W; napięcie pracy ≥ 500 V; tolerancja ≤ 5 %,A. Płytka Onyxa R136 (lewy kanał)
+2,C1364508,MBB02070C6802FCT00,"Rezystor 68 kΩ: 68 kΩ; 1 %; 0,6–1 W; metalizowany",A. Płytka Onyxa R137 (lewy kanał)
+4,C390143,KP224J2G0702,Kondensator wejściowy 220 nF: 220 nF; folia polipropylenowa MKP (albo poliestrowa MKS/MKT); ≥ 63 V; ±5 %,"A. Płytka Onyxa szeregowo przed J100, J200"
+2,C58717,MFR02SF1000A10,Rezystor obciążenia 100 Ω: 100 Ω; 2 W; ≥ 350 V; metalizowany lub metalowo-tlenkowy,A. Płytka Onyxa RL: odczep 4 Ω – COM toroidu
+4,C479464,MO2WS-270Ω±5%-6T63,Rezystor siatki drugiej 270 Ω: 270 Ω; 2 W; metalowo-tlenkowy; ≥ 350 V,"A. Płytka Onyxa R125, R126, R225, R226"
+10,C61458,G2RL-2-DC12,"Przekaźnik: Omron G2RL-2-DC12 (DPDT, 12 V, 8 A / 250 V AC)","B. Płytka zasilacza K1–K4; C. Płytka UL / trioda K1–K4; D. Płytka głośników + VU K1, K2"
+1,C349125,EWWR0010J47R0T9,Rezystor soft-start 47 Ω: 47 Ω; 10 W; cementowy lub drutowy; ≥ 350 V,B. Płytka zasilacza R1
+1,C349082,EWWR0010J100RT9,Rezystor rozruchu anod 100 Ω: 100 Ω; 10 W; cementowy lub drutowy; ≥ 500 V,B. Płytka zasilacza R2
+4,C1365660,VR37000001004FR500,"Rezystor dzielnika HV 1 MΩ: 1 MΩ; 1 %; wysokonapięciowy ≥ 1,6 kV (Vishay VR37); 0,5 W","B. Płytka zasilacza R3, R4, R5"
+2,C601895,MF1/2W-15K±1%-XT52,"Rezystor dzielnika 15 kΩ: 15 kΩ; 1 %; 0,5 W; metalizowany",B. Płytka zasilacza R6
+2,C82511,MFR01SF2203A10,Rezystor LED HV 220 kΩ: 220 kΩ; 1 W; ≥ 350 V; metalizowany,"B. Płytka zasilacza R7, R8"
+2,C779429,TZ-L2-03YYBR2RDJ30-003,LED 3 mm czerwona: 3 mm; czerwona; wysoka jasność (świeci przy 1 mA),B. Płytka zasilacza D1
+12,C402212,1N4148,Dioda 1N4148: 1N4148; DO-35,"B. Płytka zasilacza D2–D5; C. Płytka UL / trioda D1–D4; D. Płytka głośników + VU D1, D2"
+2,C187509,64800001009,"Oprawka bezpiecznika 5x20 z pokrywką (230 V): 5x20; do druku; z pokrywką; ≥ 250 V; raster ~22,5 mm","B. Płytka zasilacza F2, F4"
+3,C142727,0218.500MXP,Bezpiecznik T500 mA: 5x20; zwłoczny (T); 500 mA; 250 V,B. Płytka zasilacza F2
+13,C8465,WJ500V-5.08-2P,"Złącze śrubowe 2P 5,08 mm: 2 piny; raster 5,08 mm; ≥ 250 V; ≥ 10 A","B. Płytka zasilacza J1, J3, J5, J10, J11, J12; C. Płytka UL / trioda J5; D. Płytka głośników + VU J1–J6"
+3,C581337,DG636-7.62-02P-14-00A(H),"Złącze śrubowe 2P 7,62 mm (360 V AC): 2 piny; raster 7,62 mm; ≥ 500 V","B. Płytka zasilacza J7, J8, J9"
+2,C49257,2.54-1*3P针,"Goldpin 1x3 prosty: 2,54 mm","B. Płytka zasilacza J16, J17"
+4,C480591,1731734,"Złącze śrubowe 3P 7,62 mm: 3 piny; raster 7,62 mm; ≥ 500 V",C. Płytka UL / trioda J1–J4
+1,C492401,PZ254V-11-02P,"Goldpin 1x2 prosty: 2,54 mm",D. Płytka głośników + VU J7
+1,C492412,PZ254R-11-04P,"Goldpin 1x4 kątowy: 2,54 mm",D. Płytka głośników + VU J8
+2,C172965,MFR-25FTE52-100K,"Rezystor 100 kΩ: 100 kΩ; 1 %; ≥ 0,25 W; metalizowany","D. Płytka głośników + VU R1, R2"
+2,C173033,MFR-25FTE52-5K1,"Rezystor 5,1 kΩ: 5,1 kΩ; 1 %; ≥ 0,25 W","D. Płytka głośników + VU R3, R4"
+2,C172978,MFR-25FTE52-1K,"Rezystor 1 kΩ: 1 kΩ; 1–5 %; ≥ 0,25 W","D. Płytka głośników + VU R5, R6"
+2,C2170624,K102J15C0GF5TH5,Kondensator 1 nF: 1 nF; C0G/NP0; ≥ 50 V; raster 5 mm,"D. Płytka głośników + VU C1, C2"
+1,C216288,RL1C100MC110A00CV0,"Kondensator 10 µF: 10 µF; elektrolit; ≥ 16 V; Ø5–6,3 mm",D. Płytka głośników + VU C3
+4,C2798198,BAT42,Dioda Schottky: BAT85 lub BAT42; DO-35; 30 V,D. Płytka głośników + VU D3–D6
+15,C81598,1N4148W,Dioda 1N4148W: dioda sygnałowa; 75–100 V; 150 mA; SOD-123,E. Płytka sterowania D1–D13
+21,C17414,0805W8F1002T5E,"Rezystor 10 kΩ 0805: 10 kΩ; 1 %; 0805; 0,125 W","E. Płytka sterowania R1–R4, R6, R7, R11–R14, R19–R22, R36; F. Selektor wejść R38–R40"
+5,C4328,0805W8F2002T5E,Rezystor 20 kΩ 0805: 20 kΩ; 1 %; 0805,E. Płytka sterowania R15–R18
+5,C17801,0805W8F6802T5E,Rezystor 68 kΩ 0805: 68 kΩ; 1 %; 0805,E. Płytka sterowania R23–R26
+5,C17633,0805W8F3302T5E,Rezystor 33 kΩ 0805: 33 kΩ; 1 %; 0805,E. Płytka sterowania R27–R30
+13,C17513,0805W8F1001T5E,Rezystor 1 kΩ 0805: 1 kΩ; 1 %; 0805,E. Płytka sterowania R31–R34; F. Selektor wejść R1–R8
+6,C17673,0805W8F4701T5E,"Rezystor 4,7 kΩ 0805: 4,7 kΩ; 1 %; 0805","E. Płytka sterowania R8–R10; F. Selektor wejść R36, R37"
+2,C4410,1206W4F1001T5E,"Rezystor 1 kΩ 1206: 1 kΩ; 1 %; 1206; 0,25 W",E. Płytka sterowania R35
+2,C17929,1206W4F3303T5E,Rezystor 330 kΩ 1206: 330 kΩ; 1 %; 1206; ≥ 200 V,E. Płytka sterowania R5
+9,C49678,CC0805KRX7R9BB104,Kondensator 100 nF 0805: 100 nF; X7R; ≥ 25 V; 0805,"E. Płytka sterowania C9–C12, C17; F. Selektor wejść C1, C2"
+12,C28323,CL21B105KBFNNNE,Kondensator 1 µF 0805: 1 µF; X7R; 50 V; 0805,"E. Płytka sterowania C3–C8, C13–C16"
+3,C33924,ULN2803G-S18-R,"Układ ULN2803 SOP-18: 8 x Darlington; SOP-18 szeroka (7,5 mm)","E. Płytka sterowania U3; F. Selektor wejść U2, U3"
+3,C37593,ADS1115IDGSR,"Przetwornik ADC ADS1115: 16 bit; I2C; MSOP-10 (raster 0,5 mm)","E. Płytka sterowania U4, U5"
+2,C108207,MCP4728-E/UN,"Przetwornik DAC MCP4728: 4 x 12 bit; I2C; MSOP-10 (raster 0,5 mm)",E. Płytka sterowania U6
+1,C7943,LM324DR,Wzmacniacz operacyjny LM324: 4 x op-amp; zasilanie 12 V; SOIC-14,E. Płytka sterowania U7
+2,C112509,ERS1EM101E11OT,"Kondensator 100 µF 25 V: 100 µF; ≥ 25 V; Ø6,3 mm; raster 2,5 mm","E. Płytka sterowania C1, C2"
+1,C474952,KF128-5.08-2P-AA,"Złącze śrubowe 2P 5,08 mm (230 V): 2 piny; raster 5,08 mm; ≥ 250 V",E. Płytka sterowania J1
+1,C6394169,IRM-15-12,"Zasilacz 12 V: Mean Well IRM-15-12 (12 V, 1,25 A)",E. Płytka sterowania PS1
+2,C124410,B-2200S20P-A120,"Listwa żeńska 1x20: 2,54 mm",E. Płytka sterowania U1
+2,C124411,B-2200S02P-A120,"Listwa żeńska 1x2: 2,54 mm",E. Płytka sterowania U1
+1,C96006,PC817X2NSZ9F,Transoptor PC817: DIP-4,E. Płytka sterowania U8
+1,C74252,2.54-1*40P反高弯,"Listwa kołkowa kątowa 1x40: 2,54 mm (do cięcia)","E. Płytka sterowania J2, J3, J6–J9, J11, J13"
+1,C2337,2.54-1*40P直针,"Listwa kołkowa prosta 1x40: 2,54 mm (do cięcia)","E. Płytka sterowania J4, J5, J10, J12"
+11,C397192,G6K-2F-Y-TR DC12,przekaźnik Omron G6K-2F-Y 12 V,F. Selektor wejść K1–K11
+2,C473284,ERA6AEB112V,"1,10 kΩ 0,1 % 0805","F. Selektor wejść R9, R11"
+2,C728657,RT0805BRD0780K6L,"80,6 kΩ 0,1 % 0805","F. Selektor wejść R10, R12"
+4,C479096,PTFR0805B2K00P9,"2,00 kΩ 0,1 % 0805","F. Selektor wejść R13, R15, R26, R28"
+2,C149970,TR0805B32K4P0550Z,"32,4 kΩ 0,1 % 0805","F. Selektor wejść R14, R16"
+2,C374641,AR05BTB3751A010,"3,75 kΩ 0,1 % 0805","F. Selektor wejść R17, R19"
+2,C47115938,PTFR0805B17K4P9,"17,4 kΩ 0,1 % 0805","F. Selektor wejść R18, R20"
+2,C326695,RT0805BRD076K2L,"6,20 kΩ 0,1 % 0805","F. Selektor wejść R21, R23"
+2,C728655,RT0805BRD076K81L,"6,81 kΩ 0,1 % 0805","F. Selektor wejść R22, R24"
+2,C21571502,TC0525B9101T5G,"9,10 kΩ 0,1 % 0805","F. Selektor wejść R25, R27"
+4,C110775,RT0805BRD0710KL,"10,0 kΩ 0,1 % 0805","F. Selektor wejść R29, R31, R33, R34"
+2,C351587,PTFR0805B270RN9,"270 Ω 0,1 % 0805","F. Selektor wejść R30, R32"
+2,C13585,CL31A106KBHNNNE,10 µF 1206 X5R,"F. Selektor wejść C3, C4"
+1,C47023,MCP23017-E/SO,MCP23017 SOIC-28,F. Selektor wejść U1
+5,C144394,B3B-XH-A(LF)(SN),gniazdo JST XH 3P,F. Selektor wejść J1–J5
+1,C144397,B6B-XH-A(LF)(SN),gniazdo JST XH 6P,F. Selektor wejść J6
+5,C144402,XHP-3,wtyk JST XH 3P,F. Selektor wejść J1–J5
+1,C144405,XHP-6,wtyk JST XH 6P,F. Selektor wejść J6
+21,C140573,SXH-001T-P0.6,pin JST XH do zaciskania,F. Selektor wejść 5x3 + 6
+2,C141632,TSOP38238,"Odbiornik IR: 38 kHz; 2,5–5,5 V (pracuje na 3,3 V)","G. Front, tylna ścianka IR (sterowanie J7)"
+3,C143790,PEC11R-4215F-S0024,Enkoder obrotowy z przyciskiem: 24 imp./obrót; zapadki; przycisk; oś 6 mm,"G. Front, tylna ścianka głośność, selektor"
+2,C376006,DS18B20(UMW),"Czujnik temperatury DS18B20: TO-92; 3–5,5 V","G. Front, tylna ścianka sterowanie J6"
+6,C142705,021802.5MXP,"Bezpiecznik sieciowy T2,5 A: 5x20; zwłoczny (T); 2,5 A; 250 V","G. Front, tylna ścianka F1 (w gnieździe IEC)"
