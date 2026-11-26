@@ -48,6 +48,7 @@ KT_D, KT_H, S6_D, S6_H = 53.0, 103.0, 46.0, 89.0
 TUBE_BASE_Z = Z_COV + T                                               # spod cokolu = gora podstawki = wierzch pokrywy (Z 106)
 G_GAP = 5.0                                                           # luz lampa - ramka (na promieniu)
 G_STANDOFFS = [35.0, 40.0, 15.0]                                      # tuleje M4: pokrywa-1, 1-2, 2-3
+if os.environ.get("OSLONA_TULEJE"): G_STANDOFFS = [float(v) for v in os.environ["OSLONA_TULEJE"].split(",")]   # podglad innych wysokosci
 G_LEVELS = []
 _z = TUBE_BASE_Z
 for _so in G_STANDOFFS:
