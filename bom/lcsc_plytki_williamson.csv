@@ -83,7 +83,7 @@ F. Selektor wejść (pcb/selektor);6,81 kΩ 0,1 % 0805;6,81 kΩ 0,1 % 0805;2;0;2
 F. Selektor wejść (pcb/selektor);9,10 kΩ 0,1 % 0805;9,10 kΩ 0,1 % 0805;2;0;2;konieczne;C21571502;TC0525B9101T5G;LCSC (SMD: można montaż JLCPCB);R25, R27;
 F. Selektor wejść (pcb/selektor);10,0 kΩ 0,1 % 0805;10,0 kΩ 0,1 % 0805;4;0;4;konieczne;C110775;RT0805BRD0710KL;LCSC (SMD: można montaż JLCPCB);R29, R31, R33, R34;
 F. Selektor wejść (pcb/selektor);270 Ω 0,1 % 0805;270 Ω 0,1 % 0805;2;0;2;konieczne;C351587;PTFR0805B270RN9;LCSC (SMD: można montaż JLCPCB);R30, R32;
-F. Selektor wejść (pcb/selektor);10 µF 1206 X5R;10 µF 1206 X5R;2;0;2;konieczne;C13585;CL31A106KBHNNNE;LCSC (SMD: można montaż JLCPCB);C3, C4;
+F. Selektor wejść (pcb/selektor);10 µF 1206 X7R;10 µF, X7R (X5R też dobry), 25 V, 1206;2;0;2;konieczne;C14860;Samsung CL31B106KAHNNNE;LCSC;C3, C4;Zamiast C13585 (minimum 50 000 szt.). C14860: minimum 20 szt. Zapasowo C9807 (CL31A106KAHNNNE, X5R 25 V, minimum 20).
 F. Selektor wejść (pcb/selektor);MCP23017 SOIC-28;MCP23017 SOIC-28;1;0;1;konieczne;C47023;MCP23017-E/SO;LCSC (SMD: można montaż JLCPCB);U1;
 F. Selektor wejść (pcb/selektor);ULN2803 SOIC-18;ULN2803 SOIC-18;2;0;2;konieczne;C33924;ULN2803G-S18-R;LCSC (SMD: można montaż JLCPCB);U2, U3;
 F. Selektor wejść (pcb/selektor);4,7 kΩ 1 % 0805;4,7 kΩ 1 % 0805;2;0;2;konieczne;C17673;0805W8F4701T5E;LCSC (SMD: można montaż JLCPCB);R36, R37;

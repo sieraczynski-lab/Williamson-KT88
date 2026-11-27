@@ -316,8 +316,8 @@ for i, (px, py) in enumerate([(X0 + BW - 4, Y0 + 4), (X0 + 4, Y0 + BH - 4), (X0 
 # --- numery LCSC (montaż JLCPCB) -----------------------------------------------
 LCSC_OTHER = {"G6K-2F-Y": ("C397192", "G6K-2F-Y-TR DC12"), "MCP23017": ("C47023", "MCP23017-E/SO"),
               "ULN2803A": ("C33924", "ULN2803G-S18-R (UTC)"), "100n": ("C49678", "CC0805KRX7R9BB104"),
-              "100n/25V": ("C49678", "CC0805KRX7R9BB104"), "10u/25V": ("C13585", "CL31A106KBHNNNE"),
-              "10u/10V": ("C13585", "CL31A106KBHNNNE")}
+              "100n/25V": ("C49678", "CC0805KRX7R9BB104"), "10u/25V": ("C14860", "CL31B106KAHNNNE"),
+              "10u/10V": ("C14860", "CL31B106KAHNNNE")}
 _r01 = {rval(v): c for v, c in LCSC_01.items()}
 _r01["10k"] = LCSC_01[10000]
 for p in parts:

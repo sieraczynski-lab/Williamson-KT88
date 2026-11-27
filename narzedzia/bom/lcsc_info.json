@@ -19,9 +19,13 @@
   "mpn": "WJ500V-5.08-2P",
   "opis": "30 18A 1x2P 2 2.5 250V 2P 5.08mm Green M2.5 Through Hole 插件,P=5.08mm Screw Terminal Blocks"
  },
- "C13585": {
-  "mpn": "CL31A106KBHNNNE",
+ "C14860": {
+  "mpn": "CL31B106KAHNNNE",
   "opis": "10u/10V C_1206_3216Metric"
+ },
+ "C14860": {
+  "mpn": "CL31B106KAHNNNE",
+  "opis": "10uF 25V X7R 1206"
  },
  "C17414": {
   "mpn": "0805W8F1002T5E",
