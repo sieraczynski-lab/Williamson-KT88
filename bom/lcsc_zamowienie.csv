@@ -72,4 +72,4 @@
 2,C141632,TSOP38238,"Odbiornik IR: 38 kHz; 2,5–5,5 V (pracuje na 3,3 V)",G. Front / tył / wnętrze - front: IR (sterowanie J7)
 3,C143790,PEC11R-4215F-S0024,Enkoder obrotowy z przyciskiem: 24 imp./obrót; zapadki; przycisk; oś 6 mm,"G. Front / tył / wnętrze - front: głośność, selektor"
 2,C376006,DS18B20(UMW),"Czujnik temperatury DS18B20: TO-92; 3–5,5 V",G. Front / tył / wnętrze - wnętrze: sterowanie J6
-6,C142705,021802.5MXP,"Bezpiecznik sieciowy T2,5 A: 5x20; zwłoczny (T); 2,5 A; 250 V","G. Front / tył / wnętrze - tył, w gnieździe IEC: F1 (w gnieździe IEC)"
+6,C142705,021802.5MXP,"Bezpiecznik sieciowy T2,5 A: 5x20; zwłoczny (T); 2,5 A; 250 V",G. Front / tył / wnętrze - tył: F1 (w gnieździe IEC)
