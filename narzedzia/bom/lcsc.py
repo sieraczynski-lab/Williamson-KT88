@@ -52,7 +52,10 @@ def desc(r):
 def remark(r, with_section=True):
     s = r["Oznaczenia"]
     if with_section:
-        s = "%s %s" % (r["Sekcja"].split(" (")[0], s)
+        sek = r["Sekcja"].split(" (")[0]
+        if sek.startswith("G."):
+            sek = "G. Front / tył / wnętrze"
+        s = "%s - %s" % (sek, s)
     return s.strip()
 
 
